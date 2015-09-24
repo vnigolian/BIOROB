@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{1253c792-23e4-46a9-8ccd-2e1cc5e6f55e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{654777e2-4d6a-44aa-89d4-84415ba672c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{16f73f5c-825d-443a-b848-3213eea2d93f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Shaders\quad_fshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\quad_vshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\sky_fshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\sky_vshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLoader.cc">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="RiftHandler.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Model.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Quad.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cc">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Cube.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoader.hh">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthBuffer.hh">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureBuffer.hh">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="RiftHandler.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Scene.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Model.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Quad.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.hh">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Cube.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.hh">
+      <Filter>GUI</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
