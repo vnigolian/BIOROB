@@ -19,6 +19,9 @@ unsigned int height = 0;
 
 RiftHandler rift;
 
+Leap::Controller leapController;
+
+Cube fingerPointer;
 
 // Gets called when the windows is resized.
 void Resize(int w, int h)
@@ -32,6 +35,8 @@ void RenderScene()
 	glm::mat4 VP = rift.glmViewProjMatrix();
 
 	scene.Render(VP);
+	fingerPointer.Draw(VP);
+
 }
 
 void Display()
@@ -41,7 +46,7 @@ void Display()
 	rift.DisplayOnRift();
 
 	glutSwapBuffers();//switch between the two buffers
-	
+
 }
 
 
@@ -63,7 +68,7 @@ void Init()
 
 	scene.AddModel(floor_quad);
 	scene.AddModel(skybox);
-	scene.AddModel(testButton);
+	//scene.AddModel(testButton);
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//<------- LINE MODE
 
@@ -74,6 +79,32 @@ void Init()
 	width = rift.ResolutionWidth() / 2;
 	height = rift.ResolutionHeight() / 2;
 	glutReshapeWindow(width, height);
+
+	if (leapController.isConnected())
+	{
+		std::cout << "LeapMotion connected !" << std::endl;
+		fingerPointer.Init("Shaders/button_vshader.glsl", "Shaders/button_fshader.glsl", "");
+		fingerPointer.SetModelMatrix(glm::scale(mat4(1.0f), vec3(0.1f))*glm::translate(mat4(1.0f), vec3(0.5f, 0.5f, -1.0f)));
+	}
+	
+
+}
+
+void updatePointer()
+{
+	if (leapController.isConnected())
+	{
+		if (!leapController.frame().hands().isEmpty())
+		{
+			Leap::Vector rm_hand_pos = leapController.frame().hands().rightmost().palmPosition();
+			rm_hand_pos *= 0.02;
+			rm_hand_pos += Leap::Vector(0.5, -2.0, -3.5);
+			std::cout << "----------------------------- right-most hand position :" << rm_hand_pos.toString() << std::endl;
+			fingerPointer.SetModelMatrix(glm::scale(mat4(1.0f), vec3(0.1f))
+				*glm::translate(mat4(1.0f), vec3(rm_hand_pos.x, rm_hand_pos.y, rm_hand_pos.z)));
+
+		}
+	}
 }
 
 void CleanUp()
@@ -92,6 +123,7 @@ void MainLoop()
 	{
 		glutMainLoopEvent();//executes one iteration of the OpenGL main loop
 		Display();//we call display at every iteration so that we update the view matrix depending on the Oculus' position
+		updatePointer();// update the pointer's position by getting data from the LeapMotion sensor
 	}
 }
 

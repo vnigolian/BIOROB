@@ -7,6 +7,7 @@
 #include "glm\glm.hpp" //for mathematical operations used in OpenGL
 #include "glm\gtc\matrix_transform.hpp"//for transformations (matrices)
 #include "glm\gtx\transform.hpp" //
+#include "glm\gtx\euler_angles.hpp"
 #include "Libraries\soil\SOIL.h"//for texture loading
 
 #include "Libraries\wgl\wglext.h"
@@ -23,6 +24,8 @@
 #include <fstream>
 #include <vector>
 #include <cmath>
+
+#include "Libraries\Leap\Leap.h"
 
 
 
