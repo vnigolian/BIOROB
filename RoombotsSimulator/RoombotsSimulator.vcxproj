@@ -77,6 +77,10 @@
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
+    <None Include="Shaders\button_fshader.glsl" />
+    <None Include="Shaders\button_vshader.glsl" />
+    <None Include="Shaders\pointer_fshader.glsl" />
+    <None Include="Shaders\pointer_vshader.glsl" />
     <None Include="Shaders\quad_fshader.glsl" />
     <None Include="Shaders\quad_vshader.glsl" />
     <None Include="Shaders\sky_fshader.glsl" />

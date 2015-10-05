@@ -5,6 +5,7 @@
 #include "Scene\Cube.hh"
 #include "RiftHandler.hh"
 #include "Scene\Scene.hh"
+#include "GUI.hh"
 
 using namespace Core;
 //using namespace OVR;
@@ -23,6 +24,8 @@ Leap::Controller leapController;
 
 Cube fingerPointer;
 
+GUI _GUI;
+
 // Gets called when the windows is resized.
 void Resize(int w, int h)
 {
@@ -35,8 +38,10 @@ void RenderScene()
 	glm::mat4 VP = rift.glmViewProjMatrix();
 
 	scene.Render(VP);
+	
 	fingerPointer.Draw(VP);
 
+	_GUI.Render(VP);
 }
 
 void Display()
@@ -50,10 +55,27 @@ void Display()
 }
 
 
+void updatePointer()
+{
+	if (leapController.isConnected())
+	{
+		if (!leapController.frame().hands().isEmpty())
+		{
+			Leap::Vector rm_hand_pos = leapController.frame().hands().rightmost().palmPosition();
+			rm_hand_pos *= 0.02f;
+			rm_hand_pos += Leap::Vector(0.5f, -2.0f, -3.5f);
+			fingerPointer.SetModelMatrix(glm::scale(mat4(1.0f), vec3(0.05f))
+				*glm::translate(mat4(1.0f), vec3(rm_hand_pos.x, rm_hand_pos.y, rm_hand_pos.z)));
+		}
+	}
+}
 
 void Init()
 {
-	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST); 
+	glEnable(GL_BLEND);
+
+
 	Quad floor_quad;
 	floor_quad.Init("Shaders/quad_vshader.glsl", "Shaders/quad_fshader.glsl", "Textures/wood2.jpg");
 	floor_quad.SetModelMatrix(glm::scale(mat4(1.0f), vec3(10.0))*glm::translate(mat4(1.0f), vec3(0.0f, -0.5f, -1.0f)));
@@ -64,7 +86,7 @@ void Init()
 
 	Cube testButton;
 	testButton.Init("Shaders/button_vshader.glsl", "Shaders/button_fshader.glsl", "");
-	testButton.SetModelMatrix(glm::scale(mat4(1.0f), vec3(0.1f))*glm::translate(mat4(1.0f), vec3(-0.5f,0.5f,-1.0f)));
+	testButton.SetModelMatrix(glm::scale(mat4(1.0f), vec3(0.2f))*glm::translate(mat4(1.0f), vec3(-0.5f, 0.5f, -1.0f)));
 
 	scene.AddModel(floor_quad);
 	scene.AddModel(skybox);
@@ -83,29 +105,16 @@ void Init()
 	if (leapController.isConnected())
 	{
 		std::cout << "LeapMotion connected !" << std::endl;
-		fingerPointer.Init("Shaders/button_vshader.glsl", "Shaders/button_fshader.glsl", "");
-		fingerPointer.SetModelMatrix(glm::scale(mat4(1.0f), vec3(0.1f))*glm::translate(mat4(1.0f), vec3(0.5f, 0.5f, -1.0f)));
+		fingerPointer.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
+		fingerPointer.SetModelMatrix(glm::scale(mat4(1.0f), vec3(0.05f))*glm::translate(mat4(1.0f), glm::vec3(0.5f, 0.5f, -1.0f)));
 	}
 	
+	//GUI INIT
+	Button button1(glm::vec3(-0.5f, 0.5f, -1.0f), 0);
+	_GUI.AddButton(button1);
 
 }
 
-void updatePointer()
-{
-	if (leapController.isConnected())
-	{
-		if (!leapController.frame().hands().isEmpty())
-		{
-			Leap::Vector rm_hand_pos = leapController.frame().hands().rightmost().palmPosition();
-			rm_hand_pos *= 0.02;
-			rm_hand_pos += Leap::Vector(0.5, -2.0, -3.5);
-			std::cout << "----------------------------- right-most hand position :" << rm_hand_pos.toString() << std::endl;
-			fingerPointer.SetModelMatrix(glm::scale(mat4(1.0f), vec3(0.1f))
-				*glm::translate(mat4(1.0f), vec3(rm_hand_pos.x, rm_hand_pos.y, rm_hand_pos.z)));
-
-		}
-	}
-}
 
 void CleanUp()
 {

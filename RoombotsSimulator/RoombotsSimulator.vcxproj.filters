@@ -38,6 +38,18 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="ClassDiagram.cd" />
+    <None Include="Shaders\pointer_fshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\pointer_vshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\button_fshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\button_vshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cc">
@@ -65,7 +77,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Button.cc">
-      <Filter>Source Files</Filter>
+      <Filter>GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

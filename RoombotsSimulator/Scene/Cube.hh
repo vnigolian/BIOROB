@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Model.hh"
 
 
@@ -25,6 +27,10 @@ class Cube : public Model {
 	  */
 public:
 	Cube* copy() const;
+	void print() const {
+
+		std::cout << "hello I'm a cube " << std::endl;
+	}
 
 protected:
 	virtual void SetVertices(std::vector<vec3> *vertices);
