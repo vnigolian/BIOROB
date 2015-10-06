@@ -29,6 +29,7 @@ void Resize(int w, int h)
 	glutReshapeWindow(width,height);
 }
 
+
 void RenderScene()
 {
 	glm::mat4 VP = rift.glmViewProjMatrix();

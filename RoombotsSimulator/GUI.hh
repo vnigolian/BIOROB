@@ -11,7 +11,7 @@
 class GUI
 {
 	std::vector<const Button> buttons;//The models contained in the scene
-	size_t nButtons;//The number of models in the scene
+	size_t nButtons = 0;//The number of models in the scene
 	LeapmotionPointer _pointer;
 
 	void AddButton();

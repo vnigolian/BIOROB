@@ -50,6 +50,15 @@
     <None Include="Shaders\button_vshader.glsl">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="Shaders\shadow_fshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\module_fshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\module_vshader.glsl">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cc">
@@ -81,6 +90,9 @@
     </ClCompile>
     <ClCompile Include="LeapmotionPointer.cc">
       <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure.cc">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +131,12 @@
     </ClInclude>
     <ClInclude Include="LeapmotionPointer.hh">
       <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Structure.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\shadow_vshader.glsl">
+      <Filter>Shaders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
