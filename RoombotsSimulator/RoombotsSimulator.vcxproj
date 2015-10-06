@@ -89,6 +89,7 @@
   <ItemGroup>
     <ClCompile Include="Button.cc" />
     <ClCompile Include="GUI.cc" />
+    <ClCompile Include="LeapmotionPointer.cc" />
     <ClCompile Include="main.cc" />
     <ClCompile Include="RiftHandler.cc" />
     <ClCompile Include="Scene\Model.cc" />
@@ -102,6 +103,7 @@
     <ClInclude Include="common.hh" />
     <ClInclude Include="DepthBuffer.hh" />
     <ClInclude Include="GUI.hh" />
+    <ClInclude Include="LeapmotionPointer.hh" />
     <ClInclude Include="RiftHandler.hh" />
     <ClInclude Include="Scene\Model.hh" />
     <ClInclude Include="Scene\Quad.hh" />

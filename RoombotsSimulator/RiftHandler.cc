@@ -135,7 +135,7 @@ void RiftHandler::DisplayOnRift()
 			OVR::Vector3f cam_pos = OVR::Vector3f(0.0, 0.0, 0.0);
 
 			OVR::Matrix4f view = OVR::Matrix4f::LookAtRH(cam_pos, cam_look, cam_up);
-			OVR::Matrix4f proj = ovrMatrix4f_Projection(hmd->DefaultEyeFov[eye], 0.2f, 1000.0f, ovrProjection_RightHanded);
+			OVR::Matrix4f proj = ovrMatrix4f_Projection(hmd->DefaultEyeFov[eye], 0.001f, 1000.0f, ovrProjection_RightHanded);
 
 			// Render world
 			viewProjMatrix = proj*view;

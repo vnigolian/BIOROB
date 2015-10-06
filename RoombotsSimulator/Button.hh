@@ -3,7 +3,9 @@
 #include "common.hh"
 #include "Scene\Cube.hh"
 
-#define BUTTON_RADIUS 0.3f
+
+#define BUTTON_SIZE 0.03f
+#define BUTTON_RADIUS 0.01f
 
 class Button
 {

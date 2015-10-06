@@ -79,6 +79,9 @@
     <ClCompile Include="Button.cc">
       <Filter>GUI</Filter>
     </ClCompile>
+    <ClCompile Include="LeapmotionPointer.cc">
+      <Filter>GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.hh">
@@ -112,6 +115,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Button.hh">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="LeapmotionPointer.hh">
       <Filter>GUI</Filter>
     </ClInclude>
   </ItemGroup>
