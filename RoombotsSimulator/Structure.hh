@@ -4,7 +4,7 @@
 #include "Scene\Cube.hh"
 #include "Scene\Quad.hh"
 
-#define MODULE_SIZE 0.03f
+#define MODULE_SIZE 0.1f
 
 class Structure
 {

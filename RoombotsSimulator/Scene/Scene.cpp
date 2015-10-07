@@ -1,5 +1,6 @@
 #include "Scene.hh"
 
+
 void Scene::AddModel(const Model& sourceModel)
 {	
 	models.push_back(sourceModel.copy());

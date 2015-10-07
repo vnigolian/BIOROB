@@ -11,7 +11,6 @@ void GUI::Init()
 
 void GUI::AddButton()
 {
-	//glm::vec3 position = glm::vec3(BUTTON_LEFT_OFFSET, BUTTON_UP_START - (this->nButtons)*(2*BUTTON_SIZE + BUTTON_SEPARATION) , BUTTON_DEPTH_OFFSET);
 	glm::vec3 position = glm::vec3(BUTTON_LEFT_OFFSET, BUTTON_UP_START - (this->nButtons)*(1.1f), BUTTON_DEPTH_OFFSET);
 
 	Button newButton(position, (int) this->nButtons);

@@ -5,8 +5,8 @@
 #include "Structure.hh"
 
 
-#define BUTTON_SIZE 0.03f
-#define BUTTON_RADIUS 0.7f
+#define BUTTON_SIZE 0.15f
+#define BUTTON_RADIUS 0.3f
 
 class Button
 {
@@ -16,12 +16,12 @@ class Button
 
 	Structure _structure;
 
+	Quad _shadow;
+
 public:
 	Button(const Button& sourceButton);
 	
 	Button(vec3 position, int ID);
-	
-	//void Init(glm::vec3 position, int ID);
 
 	void Draw(const glm::mat4& VP) const;
 

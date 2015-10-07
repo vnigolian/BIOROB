@@ -22,6 +22,28 @@ RiftHandler rift;
 
 GUI _GUI;
 
+glm::mat4 _worldMatrix = glm::mat4();
+
+void Forward()
+{
+	_worldMatrix *= glm::translate(mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.2f));
+}
+
+void Left()
+{
+	_worldMatrix *= glm::translate(mat4(1.0f), glm::vec3(0.2f, 0.0f, 0.0f));
+}
+
+void Backwards()
+{
+	_worldMatrix *= glm::translate(mat4(1.0f), glm::vec3(0.0f, 0.0f, -0.2f));
+}
+
+void Right()
+{
+	_worldMatrix *= glm::translate(mat4(1.0f), glm::vec3(-0.2f, 0.0f, 0.0f));
+}
+
 // Gets called when the windows is resized.
 void Resize(int w, int h)
 {
@@ -32,7 +54,7 @@ void Resize(int w, int h)
 
 void RenderScene()
 {
-	glm::mat4 VP = rift.glmViewProjMatrix();
+	glm::mat4 VP = rift.glmViewProjMatrix();// *_worldMatrix;
 
 	scene.Render(VP);
 
@@ -50,7 +72,24 @@ void Display()
 }
 
 
-
+void HandleKeyboard(unsigned char key, int x, int y)
+{
+	switch (key)
+	{
+	case 'w' : 
+		Forward();
+		break;
+	case 'a' :
+		Left();
+		break;
+	case 's' :
+		Backwards();
+		break;
+	case 'd' :
+		Right();
+		break;
+	}
+}
 
 void Init()
 {
@@ -60,19 +99,14 @@ void Init()
 
 	Quad floor_quad;
 	floor_quad.Init("Shaders/quad_vshader.glsl", "Shaders/quad_fshader.glsl", "Textures/wood2.jpg");
-	floor_quad.SetModelMatrix(glm::scale(mat4(1.0f), vec3(10.0))*glm::translate(mat4(1.0f), vec3(0.0f, -0.5f, -1.0f)));
+	floor_quad.SetModelMatrix(glm::translate(mat4(1.0f), vec3(0.0f, -1.2f, -5.1f))*glm::scale(mat4(1.0f), vec3(10.0f)));
 
 	Cube skybox;
 	skybox.Init("Shaders/sky_vshader.glsl", "Shaders/sky_fshader.glsl", "Textures/skybox_texture.jpg");
 	skybox.SetModelMatrix(glm::scale(mat4(1.0f), vec3(500.0f)));
 
-	Cube testButton;
-	testButton.Init("Shaders/button_vshader.glsl", "Shaders/button_fshader.glsl", "");
-	testButton.SetModelMatrix(glm::scale(mat4(1.0f), vec3(0.2f))*glm::translate(mat4(1.0f), vec3(-0.5f, 0.5f, -1.0f)));
-
 	scene.AddModel(floor_quad);
 	scene.AddModel(skybox);
-	//scene.AddModel(testButton);
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//<------- LINE MODE
 
@@ -84,7 +118,7 @@ void Init()
 	height = rift.ResolutionHeight() / 2;
 	glutReshapeWindow(width, height);
 
-	
+
 	
 	//GUI INIT
 	_GUI.Init();
@@ -120,6 +154,7 @@ int main(int argc, char **argv)
 	glutInitWindowPosition(500, 200);
 	glutInitWindowSize(0, 0); //it will be resized in Init();
 	glutCreateWindow("RoomBots Simulator");
+	glutKeyboardFunc(HandleKeyboard);
 
 	GLenum err = glewInit();
 	if (!err)

@@ -4,9 +4,9 @@
 #include "LeapmotionPointer.hh"
 
 #define BUTTON_SEPARATION 0.01f
-#define BUTTON_UP_START 1.0f
-#define BUTTON_DEPTH_OFFSET -2.0f
-#define BUTTON_LEFT_OFFSET -1.0f
+#define BUTTON_UP_START 0.1f
+#define BUTTON_DEPTH_OFFSET -0.6f
+#define BUTTON_LEFT_OFFSET 0.2f
 
 class GUI
 {

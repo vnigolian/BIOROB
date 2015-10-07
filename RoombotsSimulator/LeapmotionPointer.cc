@@ -15,6 +15,8 @@ void LeapmotionPointer::update()
 
 			_pointerModel.SetModelMatrix(glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE))
 				*glm::translate(mat4(1.0f), _position ));
+
+			_shadow.SetModelMatrix(glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE))*glm::translate(mat4(1.0f), glm::vec3(_position.x, -1.199f, _position.z)));
 		}
 	}
 	bool useless = this->Pinching();
@@ -24,6 +26,7 @@ void LeapmotionPointer::Draw(const glm::mat4& VP) const
 {
 	glEnable(GL_BLEND);
 	_pointerModel.Draw(VP);
+	_shadow.Draw(VP);
 	glDisable(GL_BLEND);
 }
 
@@ -31,8 +34,12 @@ void LeapmotionPointer::Init()
 {
 	std::cout << "LeapMotion connected !" << std::endl;
 	_pointerModel.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
-	_pointerModel.SetModelMatrix(glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE))*glm::translate(mat4(1.0f), glm::vec3(0.5f, 0.5f, -1.0f)));
+	_pointerModel.SetModelMatrix(glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE))*glm::translate(mat4(1.0f), glm::vec3(0.5f, 0.0f, -1.0f)));
+	
 	this->_offset = Leap::Vector(0.5f, -4.0f, -5.0f);
+
+	this->_shadow.Init("Shaders/shadow_vshader.glsl", "Shaders/shadow_fshader.glsl", "");
+	this->_shadow.SetModelMatrix(glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE))*glm::translate(mat4(1.0f), glm::vec3(_position.x, -1.199f, _position.z)));
 }
 
 bool LeapmotionPointer::Pinching() const

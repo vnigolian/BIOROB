@@ -2,8 +2,9 @@
 
 #include "common.hh"
 #include "Scene\Cube.hh"
+#include "Scene\Quad.hh"
 
-#define LEAP_POINTER_SIZE 0.03f
+#define LEAP_POINTER_SIZE 0.1f
 #define COORDINATE_SYSTEM_SCALE_CONVERSION 0.02f
 
 class LeapmotionPointer
@@ -12,6 +13,7 @@ class LeapmotionPointer
 	Leap::Controller _controller;
 	Cube _pointerModel;
 	glm::vec3 _position;
+	Quad _shadow;
 	
 public:
 	void update();
