@@ -21,5 +21,6 @@ class Structure
 		void Drag(const glm::vec3& position);
 		void Draw(const glm::mat4& VP) const;
 		void Init(const glm::vec3& initPosition);
+		
 		glm::vec3 Position() const;
 };

@@ -13,13 +13,13 @@ void LeapmotionPointer::update()
 
 			_position = glm::vec3(rm_hand_pos.x, rm_hand_pos.y, rm_hand_pos.z);
 
-			_pointerModel.SetModelMatrix(glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE))
-				*glm::translate(mat4(1.0f), _position ));
+			float pinchingValue(1.0f-0.5f*_controller.frame().hands().rightmost().pinchStrength());
 
-			_shadow.SetModelMatrix(glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE))*glm::translate(mat4(1.0f), glm::vec3(_position.x, -1.199f, _position.z)));
+			_pointerModel.SetModelMatrix(glm::translate(mat4(1.0f), _position)*glm::scale(mat4(1.0f), vec3(pinchingValue*LEAP_POINTER_SIZE)));
+
+			_shadow.SetModelMatrix(glm::translate(mat4(1.0f), glm::vec3(_position.x, -1.199f, _position.z))*glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE)));
 		}
 	}
-	bool useless = this->Pinching();
 }
 
 void LeapmotionPointer::Draw(const glm::mat4& VP) const
@@ -34,13 +34,14 @@ void LeapmotionPointer::Init()
 {
 	std::cout << "LeapMotion connected !" << std::endl;
 	_pointerModel.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
-	_pointerModel.SetModelMatrix(glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE))*glm::translate(mat4(1.0f), glm::vec3(0.5f, 0.0f, -1.0f)));
+	_pointerModel.SetModelMatrix(glm::translate(mat4(1.0f), glm::vec3(0.5f, 0.0f, -1.0f))*glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE)));
 	
-	this->_offset = Leap::Vector(0.5f, -4.0f, -5.0f);
+	this->_offset = Leap::Vector(0.0f, -2.0f, -2.0f);
 
 	this->_shadow.Init("Shaders/shadow_vshader.glsl", "Shaders/shadow_fshader.glsl", "");
-	this->_shadow.SetModelMatrix(glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE))*glm::translate(mat4(1.0f), glm::vec3(_position.x, -1.199f, _position.z)));
+	this->_shadow.SetModelMatrix(glm::translate(mat4(1.0f), glm::vec3(_position.x, -1.199f, _position.z))*glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE)));
 }
+
 
 bool LeapmotionPointer::Pinching() const
 {

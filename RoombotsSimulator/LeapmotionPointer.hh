@@ -4,8 +4,8 @@
 #include "Scene\Cube.hh"
 #include "Scene\Quad.hh"
 
-#define LEAP_POINTER_SIZE 0.1f
-#define COORDINATE_SYSTEM_SCALE_CONVERSION 0.02f
+#define LEAP_POINTER_SIZE 0.2f
+#define COORDINATE_SYSTEM_SCALE_CONVERSION 0.005f
 
 class LeapmotionPointer
 {

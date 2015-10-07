@@ -54,7 +54,7 @@ void Resize(int w, int h)
 
 void RenderScene()
 {
-	glm::mat4 VP = rift.glmViewProjMatrix();// *_worldMatrix;
+	glm::mat4 VP = rift.glmViewProjMatrix()*_worldMatrix;
 
 	scene.Render(VP);
 

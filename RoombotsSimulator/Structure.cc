@@ -16,7 +16,7 @@ void Structure::Drag(const glm::vec3& position)
 		this->_position = position;
 		this->_model.SetModelMatrix(glm::translate(mat4(1.0f), this->_position)*glm::scale(mat4(1.0f), vec3(MODULE_SIZE)));
 
-		this->_shadow.SetModelMatrix(glm::translate(mat4(1.0f), glm::vec3(this->_position.x, -0.499f, this->_position.z))*glm::scale(mat4(1.0f), vec3(MODULE_SIZE)));
+		this->_shadow.SetModelMatrix(glm::translate(mat4(1.0f), glm::vec3(this->_position.x, -1.199f, this->_position.z))*glm::scale(mat4(1.0f), vec3(MODULE_SIZE)));
 	}
 }
 
@@ -42,7 +42,7 @@ void Structure::Init(const glm::vec3& initPosition)
 		this->_model.SetModelMatrix(glm::translate(mat4(1.0f), _position)*glm::scale(mat4(1.0f), vec3(MODULE_SIZE)));
 
 		this->_shadow.Init("Shaders/shadow_vshader.glsl", "Shaders/shadow_fshader.glsl", "");
-		this->_shadow.SetModelMatrix(glm::translate(mat4(1.0f), glm::vec3(_position.x, -0.499f, _position.z))*glm::scale(mat4(1.0f), vec3(MODULE_SIZE)));
+		this->_shadow.SetModelMatrix(glm::translate(mat4(1.0f), glm::vec3(_position.x, -1.199f, _position.z))*glm::scale(mat4(1.0f), vec3(MODULE_SIZE)));
 	}
 }
 
