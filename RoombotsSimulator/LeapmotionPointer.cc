@@ -26,7 +26,7 @@ void LeapmotionPointer::Draw(const glm::mat4& VP) const
 {
 	glEnable(GL_BLEND);
 	_pointerModel.Draw(VP);
-	_shadow.Draw(VP);
+	//_shadow.Draw(VP);
 	glDisable(GL_BLEND);
 }
 
@@ -45,24 +45,26 @@ void LeapmotionPointer::Init()
 
 bool LeapmotionPointer::Pinching() const
 {
+	bool pinching = false;
 	if (_controller.isConnected())
 	{
 		if (!_controller.frame().hands().isEmpty())
 		{
 			if (_controller.frame().hands().rightmost().pinchStrength() > 0.9)
 			{
-				return true;
+				pinching = true;
 			}
 			else if (_controller.frame().hands().rightmost().pinchStrength() > 0.5)
 			{
-				return false;
+				pinching = false;
 			}
 			else
 			{
-				return false;
+				pinching = false;
 			}
 		}
 	}
+	return pinching;
 }
 
 

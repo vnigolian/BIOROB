@@ -5,13 +5,13 @@ void GUI::Init()
 {
 	_pointer.Init();
 	AddButton();
-	//AddButton();
-	//AddButton();
+	AddButton();
+	AddButton();
 }
 
 void GUI::AddButton()
 {
-	glm::vec3 position = glm::vec3(BUTTON_LEFT_OFFSET, BUTTON_UP_START - (this->nButtons)*(1.1f), BUTTON_DEPTH_OFFSET);
+	glm::vec3 position = glm::vec3(BUTTON_LEFT_OFFSET, BUTTON_UP_START - (this->nButtons)*(BUTTON_SIZE+BUTTON_SEPARATION), BUTTON_DEPTH_OFFSET);
 
 	Button newButton(position, (int) this->nButtons);
 	buttons.push_back(newButton);
@@ -55,9 +55,13 @@ void GUI::CheckForPinchedStructure()
 {
 	for (size_t i(0); i < this->nStructures; i++)
 	{
-		if (glm::distance(structures[i].Position(), _pointer.Position()) < BUTTON_RADIUS && _pointer.Pinching())
+		if (glm::distance(structures[i].Position(), _pointer.Position()) < DRAG_RADIUS && _pointer.Pinching())
 		{
 			structures[i].Drag(_pointer.Position());
+		}
+		else if (structures[i].Moving())
+		{
+			structures[i].Drop();
 		}
 	}
 }

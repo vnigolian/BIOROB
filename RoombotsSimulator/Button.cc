@@ -30,7 +30,7 @@ void Button::Draw(const glm::mat4& VP) const
 {
 	glEnable(GL_BLEND);
 	_model.Draw(VP);
-	_shadow.Draw(VP);
+	//_shadow.Draw(VP);
 	glDisable(GL_BLEND);
 }
 

@@ -21,5 +21,4 @@ public:
 	void Init();
 	bool Pinching()const;
 	glm::vec3 Position() const;
-
 };

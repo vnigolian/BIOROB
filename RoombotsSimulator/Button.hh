@@ -6,7 +6,6 @@
 
 
 #define BUTTON_SIZE 0.15f
-#define BUTTON_RADIUS 0.3f
 
 class Button
 {
