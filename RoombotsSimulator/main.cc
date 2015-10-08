@@ -142,7 +142,7 @@ void MainLoop()
 	{
 		glutMainLoopEvent();//executes one iteration of the OpenGL main loop
 		Display();//we call display at every iteration so that we update the view matrix depending on the Oculus' position
-		_GUI.UpdatePointer();// update the pointer's position by getting data from the LeapMotion sensor
+		_GUI.Update();// update the pointer's position by getting data from the LeapMotion sensor
 	}
 }
 

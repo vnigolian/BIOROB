@@ -2,7 +2,7 @@
 
 #include "common.hh"
 #include "Scene\Cube.hh"
-#include "Structure.hh"
+#include "Scene\Quad.hh"
 
 
 #define BUTTON_SIZE 0.15f
@@ -14,13 +14,10 @@ class Button
 	glm::vec3 _position;
 	int _ID;
 
-	Structure _structure;
-
 	Quad _shadow;
 
 public:
 	Button(const Button& sourceButton);
-	
 	Button(vec3 position, int ID);
 
 	void Draw(const glm::mat4& VP) const;

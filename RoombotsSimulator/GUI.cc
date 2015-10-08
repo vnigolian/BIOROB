@@ -15,16 +15,26 @@ void GUI::AddButton()
 
 	Button newButton(position, (int) this->nButtons);
 	buttons.push_back(newButton);
-	this->nButtons += 1;
+	this->nButtons++;
 	std::cout << "nb of buttons : " << buttons.size() << std::endl;
+
+	Structure newStructure(position, (int) this->nStructures, &newButton);
+	structures.push_back(newStructure);
+	this->nStructures++;
 }
 
 void const GUI::Render(const glm::mat4& VP)
 {
+	for (size_t i(0); i < this->nStructures; i++)
+	{
+		structures[i].Draw(VP);
+	}
+
 	for (size_t i(0); i < this->nButtons; i++)
 	{
 		buttons[i].Draw(VP);
 	}
+
 	_pointer.Draw(VP);
 }
 
@@ -41,6 +51,17 @@ void GUI::CleanUp()
 	}
 }
 
+void GUI::CheckForPinchedStructure()
+{
+	for (size_t i(0); i < this->nStructures; i++)
+	{
+		if (glm::distance(structures[i].Position(), _pointer.Position()) < BUTTON_RADIUS && _pointer.Pinching())
+		{
+			structures[i].Drag(_pointer.Position());
+		}
+	}
+}
+
 void GUI::UpdatePointer()
 {
 	_pointer.update();
@@ -49,4 +70,10 @@ void GUI::UpdatePointer()
 	{
 		buttons[i].CheckIfClicked(_pointer.Position(), _pointer.Pinching());
 	}
+}
+
+void GUI::Update()
+{
+	UpdatePointer();
+	CheckForPinchedStructure();
 }
