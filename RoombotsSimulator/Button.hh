@@ -9,12 +9,14 @@
 
 class Button
 {
+	Cube _model;
 	glm::vec3 _position;
 	int _ID;
-	Cube _model;
+
+	Quad _shadow;
 
 public:
-	//Button(const Button& sourceButton);
+	Button(const Button& sourceButton);
 	Button(vec3 position, int ID);
 
 	void Draw(const glm::mat4& VP) const;

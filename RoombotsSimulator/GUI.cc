@@ -1,16 +1,9 @@
 #include "GUI.hh"
 
 
-GUI::GUI()
-{
-	AddButton();
-	AddButton();
-	AddButton();
-}
-
 void GUI::Init()
 {
-	//_pointer.Init();
+	_pointer.Init();
 	AddButton();
 	AddButton();
 	AddButton();

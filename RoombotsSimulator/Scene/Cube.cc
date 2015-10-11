@@ -1,13 +1,23 @@
 #include "Cube.hh"
 
-Cube::Cube(char* vShaderFileName,
-	char* fShaderFileName,
-	char* textureFileName) : Model(vShaderFileName, fShaderFileName, textureFileName) {}
-
-
 Cube* Cube::copy() const
 {
-	return new Cube(_vShader,_fShader,_texture);
+	Cube* p_newCube = NULL;
+	Cube newCube;
+
+	if (_initialized)
+	{
+		newCube.Init(_vShader, _fShader, _texture);
+		newCube.SetModelMatrix(_M);
+		p_newCube = (Cube*)malloc(sizeof(Cube));
+		
+		if (p_newCube != NULL)
+		{
+			*p_newCube = newCube;
+		}
+	}
+
+	return p_newCube;
 }
 
 	void Cube::SetVertices(std::vector<vec3> *vertices)

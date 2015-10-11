@@ -24,8 +24,6 @@ class GUI
 	void UpdatePointer();
 
 public:
-
-	GUI();
 	void Init();
 	void Update();
 	void const Render(const glm::mat4& VP);

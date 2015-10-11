@@ -1,16 +1,9 @@
-﻿Build started 11.10.2015 19:35:30.
+﻿Build started 11.10.2015 20:53:46.
      1>Project "C:\data\BIOROB\RoombotsSimulator\RoombotsSimulator.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\data\BIOROB\packages\glm.0.9.6.3\build\native\../..//build/native/include/ /ILeapSDK\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Button.cc GUI.cc LeapmotionPointer.cc Scene\Cube.cc Scene\Model.cc Scene\Quad.cc Scene\Scene.cpp Structure.cc main.cc
-         Button.cc
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\data\BIOROB\packages\glm.0.9.6.3\build\native\../..//build/native/include/ /ILeapSDK\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GUI.cc LeapmotionPointer.cc Structure.cc main.cc
          GUI.cc
          LeapmotionPointer.cc
-         Cube.cc
-     1>Scene\Cube.cc(10): warning C4316: 'Cube' : object allocated on the heap may not be aligned 16
-         Model.cc
-         Quad.cc
-     1>Scene\Quad.cc(10): warning C4316: 'Quad' : object allocated on the heap may not be aligned 16
-         Scene.cpp
          Structure.cc
          main.cc
        Link:
@@ -38,4 +31,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:08.80
+Time Elapsed 00:00:05.23

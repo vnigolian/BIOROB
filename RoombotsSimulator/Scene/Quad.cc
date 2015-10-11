@@ -1,13 +1,23 @@
 #include "Quad.hh"
 
-Quad::Quad(char* vShaderFileName,
-	char* fShaderFileName,
-	char* textureFileName) : Model(vShaderFileName, fShaderFileName, textureFileName) {}
-
-
 Quad* Quad::copy() const
 {
-	return new Quad(_vShader, _fShader, _texture);
+	Quad* p_newQuad = NULL;
+	Quad newQuad;
+
+	if (_initialized)
+	{
+		newQuad.Init(_vShader, _fShader, _texture);
+		newQuad.SetModelMatrix(_M);
+		p_newQuad = (Quad*)malloc(sizeof(Quad));
+
+		if (p_newQuad != NULL)
+		{
+			*p_newQuad = newQuad;
+		}
+	}
+
+	return p_newQuad;
 }
 
 

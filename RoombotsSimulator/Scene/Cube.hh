@@ -26,10 +26,6 @@ class Cube : public Model {
 	  rr the right face and ll the left face
 	  */
 public:
-	Cube(char* vShaderFileName,
-		char* fShaderFileName,
-		char* textureFileName);
-
 	Cube* copy() const;
 	void print() const {
 
