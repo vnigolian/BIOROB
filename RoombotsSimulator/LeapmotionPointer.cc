@@ -3,6 +3,7 @@
 
 void LeapmotionPointer::update()
 {
+	//updating the controller's position
 	if (_controller.isConnected())
 	{
 		if (!_controller.frame().hands().isEmpty())
@@ -18,6 +19,21 @@ void LeapmotionPointer::update()
 			_pointerModel.SetModelMatrix(glm::translate(mat4(1.0f), _position)*glm::scale(mat4(1.0f), vec3(pinchingValue*LEAP_POINTER_SIZE)));
 
 			_shadow.SetModelMatrix(glm::translate(mat4(1.0f), glm::vec3(_position.x, -1.199f, _position.z))*glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE)));
+		}
+	}
+
+	//handling the assignedStructure
+	if (_p_structure != NULL)
+	{
+		if (Pinching())
+		{
+			_p_structure->Drag(_position);
+		}
+		else
+		{
+			std::cout << "pinching strength :" << _controller.frame().hands().rightmost().pinchStrength() << std::endl;
+			_p_structure->Drop();
+			_p_structure = NULL;
 		}
 	}
 }
@@ -36,10 +52,12 @@ void LeapmotionPointer::Init()
 	_pointerModel.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
 	_pointerModel.SetModelMatrix(glm::translate(mat4(1.0f), glm::vec3(0.5f, 0.0f, -1.0f))*glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE)));
 	
-	this->_offset = Leap::Vector(0.0f, -2.0f, -2.0f);
+	this->_offset = Leap::Vector(0.0f, -2.5f, -2.0f);
 
 	this->_shadow.Init("Shaders/shadow_vshader.glsl", "Shaders/shadow_fshader.glsl", "");
 	this->_shadow.SetModelMatrix(glm::translate(mat4(1.0f), glm::vec3(_position.x, -1.199f, _position.z))*glm::scale(mat4(1.0f), vec3(LEAP_POINTER_SIZE)));
+
+	_p_structure = NULL;
 }
 
 
@@ -50,13 +68,9 @@ bool LeapmotionPointer::Pinching() const
 	{
 		if (!_controller.frame().hands().isEmpty())
 		{
-			if (_controller.frame().hands().rightmost().pinchStrength() > 0.9)
+			if (_controller.frame().hands().rightmost().pinchStrength() > 0.80)
 			{
 				pinching = true;
-			}
-			else if (_controller.frame().hands().rightmost().pinchStrength() > 0.5)
-			{
-				pinching = false;
 			}
 			else
 			{
@@ -71,4 +85,14 @@ bool LeapmotionPointer::Pinching() const
 glm::vec3 LeapmotionPointer::Position() const
 {
 	return _position;
+}
+
+void LeapmotionPointer::AssignStructure(Structure* p_structure)
+{
+	_p_structure = p_structure;
+}
+
+Structure* LeapmotionPointer::AssignedStructure() const
+{
+	return _p_structure;
 }

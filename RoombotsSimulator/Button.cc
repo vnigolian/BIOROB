@@ -14,18 +14,6 @@ Button::Button(glm::vec3 position, int ID) : _position(position), _ID(ID)
 	_model.SetModelMatrix(glm::translate(mat4(1.0f), _position)*glm::scale(mat4(1.0f), vec3(BUTTON_SIZE)));
 }
 
-/*
-void Button::Init(glm::vec3 position, int ID)
-{
-	_position = position;
-	_ID = ID;
-
-	_model.Init("Shaders/button_vshader.glsl", "Shaders/button_fshader.glsl", "");
-	_model.SetModelMatrix(glm::scale(mat4(1.0f), vec3(BUTTON_SIZE))*glm::translate(mat4(1.0f), _position));
-
-	_structure.Init(glm::vec3(1.0f, 2.0f, -2.0f));
-}*/
-
 void Button::Draw(const glm::mat4& VP) const
 {
 	glEnable(GL_BLEND);

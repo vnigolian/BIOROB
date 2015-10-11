@@ -5,5 +5,5 @@ out vec4 color;
 
 void main(){
     //color = texture(tex, uv).rgb;
-	color = vec4(0.7,0.0,0.0,0.5);
+	color = vec4(0.7,0.0,0.0,0.3);
 }

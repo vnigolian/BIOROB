@@ -7,7 +7,7 @@
 #define BUTTON_SEPARATION 0.1f
 #define BUTTON_UP_START 0.1f
 #define BUTTON_DEPTH_OFFSET -1.6f
-#define BUTTON_LEFT_OFFSET 1.0f
+#define BUTTON_LEFT_OFFSET 0.8f
 
 class GUI
 {

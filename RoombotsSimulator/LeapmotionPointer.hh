@@ -3,6 +3,7 @@
 #include "common.hh"
 #include "Scene\Cube.hh"
 #include "Scene\Quad.hh"
+#include "Structure.hh"
 
 #define LEAP_POINTER_SIZE 0.2f
 #define COORDINATE_SYSTEM_SCALE_CONVERSION 0.005f
@@ -14,6 +15,7 @@ class LeapmotionPointer
 	Cube _pointerModel;
 	glm::vec3 _position;
 	Quad _shadow;
+	Structure* _p_structure;
 	
 public:
 	void update();
@@ -21,4 +23,6 @@ public:
 	void Init();
 	bool Pinching()const;
 	glm::vec3 Position() const;
+	void AssignStructure(Structure* p_structure);
+	Structure* AssignedStructure() const;
 };

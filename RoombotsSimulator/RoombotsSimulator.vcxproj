@@ -83,6 +83,7 @@
     <None Include="Shaders\module_vshader.glsl" />
     <None Include="Shaders\pointer_fshader.glsl" />
     <None Include="Shaders\pointer_vshader.glsl" />
+    <None Include="Shaders\quad2_fshader.glsl" />
     <None Include="Shaders\quad_fshader.glsl" />
     <None Include="Shaders\quad_vshader.glsl" />
     <None Include="Shaders\shadow_fshader.glsl" />

@@ -16,7 +16,6 @@ void GUI::AddButton()
 	Button newButton(position, (int) this->nButtons);
 	buttons.push_back(newButton);
 	this->nButtons++;
-	std::cout << "nb of buttons : " << buttons.size() << std::endl;
 
 	Structure newStructure(position, (int) this->nStructures, &newButton);
 	structures.push_back(newStructure);
@@ -57,11 +56,7 @@ void GUI::CheckForPinchedStructure()
 	{
 		if (glm::distance(structures[i].Position(), _pointer.Position()) < DRAG_RADIUS && _pointer.Pinching())
 		{
-			structures[i].Drag(_pointer.Position());
-		}
-		else if (structures[i].Moving())
-		{
-			structures[i].Drop();
+			_pointer.AssignStructure(&(structures[i]));
 		}
 	}
 }
