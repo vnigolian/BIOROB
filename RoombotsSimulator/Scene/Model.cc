@@ -1,5 +1,98 @@
 #include "Model.hh"
 
+Model::Model(char* vShaderFileName,
+	         char* fShaderFileName,
+	         char* textureFileName)
+{
+	std::vector<vec3> vertices;
+	SetVertices(&vertices);
+	_nVertices = vertices.size();
+
+	std::vector<vec2> uvs;
+	SetUVs(&uvs);
+	_nUVs = uvs.size();
+
+	//this loop flips the uvs as SOIL loads the image inverted for some reason...
+	for (int i(0); i < _nUVs; i++)
+	{
+		uvs[i] = (vec2(1.0 - uvs[i].x, uvs[i].y));
+	}
+
+	//if there are a different number of vertices than UVs, the OpenGL renderer will crash so we
+	//dont let it load the model and simply tell the user the present model can't be loaded
+	if (_nVertices != _nUVs)
+	{
+		std::cerr << "ERROR - INVALID MODEL CLASS DEFINITION \n Every inherited Model class should have as much UV coordinates as vertices\n";
+	}
+	else
+	{
+		///--- Compile the shaders
+		Core::ShaderLoader shaderLoader;
+		_pid = shaderLoader.CreateProgram(vShaderFileName, fShaderFileName);
+
+		if (!_pid) exit(EXIT_FAILURE);
+
+		glUseProgram(_pid);
+
+		///--- Vertex one vertex Array
+		glGenVertexArrays(1, &_vao);
+		glBindVertexArray(_vao);
+
+
+		///--- Vertex coordinates
+		{
+			///--- Buffer
+			glGenBuffers(1, &_vbo);
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+			glBufferData(GL_ARRAY_BUFFER, _nVertices * sizeof(vec3), &vertices[0], GL_STATIC_DRAW);
+
+			///--- Attribute
+			GLuint vpoint_id = glGetAttribLocation(_pid, "vpoint");
+			glEnableVertexAttribArray(vpoint_id);
+			glVertexAttribPointer(vpoint_id, 3, GL_FLOAT, GL_FALSE, 0, 0);
+		}
+
+		//Texture coordinates
+		{
+			//Buffer
+			glGenBuffers(1, &_vbo);
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+			glBufferData(GL_ARRAY_BUFFER, _nUVs * sizeof(vec2), &uvs[0], GL_STATIC_DRAW);
+
+			//Attribute
+			GLuint vtexcoord_id = glGetAttribLocation(_pid, "vtexcoord");
+			glEnableVertexAttribArray(vtexcoord_id);
+			glVertexAttribPointer(vtexcoord_id, 2, GL_FLOAT, GL_FALSE, 0, 0);
+		}
+
+		//Load texture
+		glGenTextures(1, &_tex);
+		glBindTexture(GL_TEXTURE_2D, _tex);
+
+		int width = 0; //IMPORTANT ! HOW THE HELL ARE THOSE USED ?!
+		int height = 0;
+		unsigned char* image = SOIL_load_image(textureFileName, &width, &height, 0, SOIL_LOAD_RGB);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+		SOIL_free_image_data(image);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		GLuint tex_id = glGetUniformLocation(_pid, "tex");
+		glUniform1i(tex_id, GL_TEXTURE0);
+
+		//to terminate the bindings
+		glBindVertexArray(0);
+		glUseProgram(0);
+
+		_initialized = true;
+		_vShader = vShaderFileName;
+		_fShader = fShaderFileName;
+		_texture = textureFileName;
+
+	}
+}
+
 void Model::SetModelMatrix(const mat4& M)
 {
 	this->_M = M;

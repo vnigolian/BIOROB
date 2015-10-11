@@ -13,6 +13,11 @@
 	GLsizei _nUVs;         // number of uvs
 
 public:
+	
+	Model(char* vShaderFileName,
+		  char* fShaderFileName,
+		  char* textureFileName);
+
 	char* Texture()  const { return _texture; } 
 
 	virtual Model* copy() const = 0;
