@@ -4,13 +4,15 @@
 #include "LeapmotionPointer.hh"
 #include "Structure.hh"
 
+
+
+class GUI
+{
 #define BUTTON_SEPARATION 0.1f
 #define BUTTON_UP_START 0.1f
 #define BUTTON_DEPTH_OFFSET -1.6f
 #define BUTTON_LEFT_OFFSET 0.8f
 
-class GUI
-{
 	std::vector<const Button> buttons;//The Models contained in the scene
 	size_t nButtons = 0;//The number of Models in the scene
 	std::vector<const Structure> structures;//The Structures contained in the scene
@@ -29,12 +31,17 @@ class GUI
 	/*Updates the LeapmotionPointer's position depending on the Leapmotion Controller's data*/
 	void UpdatePointer();
 
+	void AddStructure(int buttonID);
+
 public:
+
 	/*Initializes the Graphic User Interface by initializing the LeapmotionPointer and adding Buttons*/
 	void Init();
 
 	/*Updates the positions of the Structures and the LeapmotionPointer*/
 	void Update();
+
+	void UpdateWorldMatrix(const glm::mat4& worldMatrix);
 
 	/*Renders (draws) the Buttons, the Structures and the LeapmotionPointer*/
 	void const Render(const glm::mat4& VP);

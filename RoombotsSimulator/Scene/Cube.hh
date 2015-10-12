@@ -33,7 +33,7 @@ public:
 	}
 
 protected:
-	virtual void SetVertices(std::vector<vec3> *vertices);
-	virtual void SetUVs(std::vector<vec2> *uvs);
+	virtual void SetVertices(std::vector<glm::vec3> *vertices);
+	virtual void SetUVs(std::vector<glm::vec2> *uvs);
 
 };

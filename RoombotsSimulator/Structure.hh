@@ -37,6 +37,8 @@ public:
 	/*Returns the Structure's position*/
 	glm::vec3 Position() const;
 
+	Button* LinkedButton() const;
+
 	/*Cleans up the Models (_model and _shadow)*/
 	void CleanUp();
 };

@@ -29,7 +29,7 @@ public:
 	  The model matrix defines the scale, rotation and translation of the model
 	  It doesn't change its vertices or definition but how and where it will appear 
 	  in the scene*/
-	void SetModelMatrix(const mat4& M);
+	void SetModelMatrix(const glm::mat4& M);
 
 	/*Draws the model into the scene.
 	  The Projection-View matrix passed in argument is required by the shaders*/
@@ -50,7 +50,7 @@ public:
 	            the elements of those vectors*/
 protected:
 
-	mat4      _M;            // model matrix
+	glm::mat4      _M;            // model matrix
 	GLboolean _initialized= false;     // set on 'true' once initialized
 	char*     _vShader;
 	char*     _fShader;
@@ -59,12 +59,12 @@ protected:
 	/*Defines the vertices of the model.
 	  Each series of 3 vertices (each stored as a vec3) will compose a new triangle to be rendered.
 	  If the number of vertices isn't a multiple of three, the exceeding vertices will simply be ignored.*/
-	virtual void SetVertices(std::vector<vec3> *vertices) = 0;
+	virtual void SetVertices(std::vector<glm::vec3> *vertices) = 0;
 
 	/*Defines the texture coordinates (also called 'UVs') of the model
 	  UVs are used to make a correspondance between a vertex and a position in the texture
 	  in order to determine the color of every vertex and interpolate between them to set the
 	  color of every pixel*/
-	virtual void SetUVs(std::vector<vec2> *uvs) = 0;
+	virtual void SetUVs(std::vector<glm::vec2> *uvs) = 0;
 
 };

@@ -1,30 +1,30 @@
 #include "Model.hh"
 
-void Model::SetModelMatrix(const mat4& M)
+void Model::SetModelMatrix(const glm::mat4& M)
 {
 	this->_M = M;
 }
 
-void Model::SetVertices(std::vector<vec3> *vertices){}
-void Model::SetUVs(std::vector<vec2> *uvs){}
+void Model::SetVertices(std::vector<glm::vec3> *vertices){}
+void Model::SetUVs(std::vector<glm::vec2> *uvs){}
 
 void Model::Init(char* vShaderFileName, 
 	             char* fShaderFileName, 
 				 char* textureFileName)
 {
 	
-	std::vector<vec3> vertices;
+	std::vector<glm::vec3> vertices;
 	SetVertices(&vertices);
 	_nVertices = vertices.size();
 
-	std::vector<vec2> uvs;
+	std::vector<glm::vec2> uvs;
 	SetUVs(&uvs);
 	_nUVs = uvs.size();
 
 	//this loop flips the uvs as SOIL loads the image inverted for some reason...
 	for (int i(0); i < _nUVs; i++)
 	{
-		uvs[i] = (vec2(1.0 - uvs[i].x, uvs[i].y));
+		uvs[i] = (glm::vec2(1.0 - uvs[i].x, uvs[i].y));
 	}
 
 	//if there are a different number of vertices than UVs, the OpenGL renderer will crash so we
@@ -53,7 +53,7 @@ void Model::Init(char* vShaderFileName,
 			///--- Buffer
 			glGenBuffers(1, &_vbo);
 			glBindBuffer(GL_ARRAY_BUFFER, _vbo);
-			glBufferData(GL_ARRAY_BUFFER, _nVertices * sizeof(vec3), &vertices[0], GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, _nVertices * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
 
 			///--- Attribute
 			GLuint vpoint_id = glGetAttribLocation(_pid, "vpoint");
@@ -66,7 +66,7 @@ void Model::Init(char* vShaderFileName,
 			//Buffer
 			glGenBuffers(1, &_vbo);
 			glBindBuffer(GL_ARRAY_BUFFER, _vbo);
-			glBufferData(GL_ARRAY_BUFFER, _nUVs * sizeof(vec2), &uvs[0], GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, _nUVs * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
 
 			//Attribute
 			GLuint vtexcoord_id = glGetAttribLocation(_pid, "vtexcoord");
@@ -122,7 +122,7 @@ void Model::Draw(const glm::mat4& VP) const
 		glBindTexture(GL_TEXTURE_2D, _tex);
 
 		//setup MVP from the VP passed in argument and the model's model matrix
-		mat4 MVP = VP * _M;
+		glm::mat4 MVP = VP * _M;
 		GLuint MVP_id = glGetUniformLocation(_pid, "MVP");
 		glUniformMatrix4fv(MVP_id, 1, GL_FALSE, &MVP[0][0]);
 

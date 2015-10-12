@@ -5,7 +5,7 @@
 #include "Scene\Quad.hh"
 
 
-#define BUTTON_SIZE 0.15f
+
 
 class Button
 {
@@ -16,14 +16,19 @@ class Button
 	Quad _shadow;
 
 public:
+	
+#define BUTTON_SIZE 0.15f
+
 	Button(const Button& sourceButton);
-	Button(vec3 position, int ID);
+	Button(glm::vec3 position, int ID);
 
 	void Draw(const glm::mat4& VP) const;
 
 	void CheckIfClicked(glm::vec3 position, bool pinching);
 
 	void CleanUp() const;
+
+	glm::vec3 Position() const;
 
 private:
 	void Click() const;

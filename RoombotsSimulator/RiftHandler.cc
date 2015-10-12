@@ -2,7 +2,7 @@
 
 glm::mat4 OVR_Mat4_to_GLM_mat4(OVR::Matrix4f sourceMatrix)
 {
-	glm::mat4 newMatrix = mat4(0.0f);
+	glm::mat4 newMatrix = glm::mat4(0.0f);
 	for (unsigned int i(0); i < 4; i++)
 	{
 		for (unsigned int j(0); j < 4; j++)

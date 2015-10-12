@@ -20,8 +20,10 @@ Cube* Cube::copy() const
 	return p_newCube;
 }
 
-	void Cube::SetVertices(std::vector<vec3> *vertices)
+	void Cube::SetVertices(std::vector<glm::vec3> *vertices)
 	{
+		typedef glm::vec3 vec3;//just for readability purpose
+
 		vertices->push_back(vec3(-0.5, -0.5, -0.5));
 		vertices->push_back(vec3(-0.5, 0.5, -0.5));
 		vertices->push_back(vec3(0.5, -0.5, -0.5));
@@ -60,8 +62,9 @@ Cube* Cube::copy() const
 		vertices->push_back(vec3(-0.5, 0.5, 0.5));
 	}
 
-	void Cube::SetUVs(std::vector<vec2> *uvs)
+	void Cube::SetUVs(std::vector<glm::vec2> *uvs)
 	{
+		typedef glm::vec2 vec2;//just for readability purpose
 		uvs->push_back(vec2(0.333, 0.75));
 		uvs->push_back(vec2(0.666, 0.75));
 		uvs->push_back(vec2(0.333, 0.5));

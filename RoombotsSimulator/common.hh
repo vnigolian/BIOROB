@@ -29,10 +29,3 @@
 
 
 
-//those typedefs simplify further code writing
-//NOTE : See if doesn't make any problem regarding name conflicts
-typedef glm::mat4 mat4;
-typedef glm::vec3 vec3;
-typedef glm::vec2 vec2;
-
-

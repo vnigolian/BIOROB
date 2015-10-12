@@ -23,7 +23,18 @@ void GUI::AddButton()
 		this->nButtons++;
 
 		//and add a structure linked to this button at the same position
+		//AddStructure(newButton.ID());
 		Structure newStructure(position, (int) this->nStructures, &newButton);
+		structures.push_back(newStructure);
+		this->nStructures++;
+	}
+}
+
+void GUI::AddStructure(int buttonID)
+{
+	if (buttonID < this->nButtons)
+	{
+		Structure newStructure(buttons[buttonID].Position(), (int) this->nStructures, &buttons[buttonID]);
 		structures.push_back(newStructure);
 		this->nStructures++;
 	}
@@ -89,4 +100,9 @@ void GUI::Update()
 		UpdatePointer();
 		CheckForPinchedStructure();
 	}
+}
+
+void GUI::UpdateWorldMatrix(const glm::mat4& worldMatrix)
+{
+	_pointer.UpdateWorldMatrix(worldMatrix);
 }

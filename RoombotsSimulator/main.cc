@@ -26,22 +26,22 @@ glm::mat4 _worldMatrix = glm::mat4();
 
 void Forward()
 {
-	_worldMatrix *= glm::translate(mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.2f));
+	_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.2f));
 }
 
 void Left()
 {
-	_worldMatrix *= glm::translate(mat4(1.0f), glm::vec3(0.2f, 0.0f, 0.0f));
+	_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.2f, 0.0f, 0.0f));
 }
 
 void Backwards()
 {
-	_worldMatrix *= glm::translate(mat4(1.0f), glm::vec3(0.0f, 0.0f, -0.2f));
+	_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -0.2f));
 }
 
 void Right()
 {
-	_worldMatrix *= glm::translate(mat4(1.0f), glm::vec3(-0.2f, 0.0f, 0.0f));
+	_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(-0.2f, 0.0f, 0.0f));
 }
 
 // Gets called when the windows is resized.
@@ -89,6 +89,7 @@ void HandleKeyboard(unsigned char key, int x, int y)
 		Right();
 		break;
 	}
+	_GUI.UpdateWorldMatrix(rift.glmViewProjMatrix()*_worldMatrix);
 }
 
 void Init()
@@ -101,64 +102,65 @@ void Init()
 
 	Quad floor_quad;
 	floor_quad.Init("Shaders/quad_vshader.glsl", "Shaders/quad_fshader.glsl", "Textures/wood2.jpg");
-	floor_quad.SetModelMatrix(glm::translate(mat4(1.0f), vec3(0.0f, -eyesPosition, -roomSize / 2.0))*glm::scale(mat4(1.0f), vec3(roomSize)));
+	floor_quad.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -eyesPosition, -roomSize / 2.0))
+		                     *glm::scale(glm::mat4(1.0f), glm::vec3(roomSize)));
 
 	Quad left_wall1;
 	left_wall1.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	left_wall1.SetModelMatrix(glm::translate(mat4(1.0f), vec3(-roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0))
+	left_wall1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
-		*glm::scale(mat4(1.0f), vec3(roomSize/3)));
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad left_wall2;
 	left_wall2.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	left_wall2.SetModelMatrix(glm::translate(mat4(1.0f), vec3(-roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - roomSize / 3.0))
+	left_wall2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - roomSize / 3.0))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
-		*glm::scale(mat4(1.0f), vec3(roomSize / 3)));
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad left_wall3;
 	left_wall3.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	left_wall3.SetModelMatrix(glm::translate(mat4(1.0f), vec3(-roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - 2.0 * (roomSize / 3.0)))
+	left_wall3.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - 2.0 * (roomSize / 3.0)))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
-		*glm::scale(mat4(1.0f), vec3(roomSize / 3)));
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 
 	Quad right_wall1;
 	right_wall1.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	right_wall1.SetModelMatrix(glm::translate(mat4(1.0f), vec3(roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0))
+	right_wall1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
-		*glm::scale(mat4(1.0f), vec3(roomSize / 3)));
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad right_wall2;
 	right_wall2.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	right_wall2.SetModelMatrix(glm::translate(mat4(1.0f), vec3(roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - roomSize / 3.0))
+	right_wall2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - roomSize / 3.0))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
-		*glm::scale(mat4(1.0f), vec3(roomSize / 3)));
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad right_wall3;
 	right_wall3.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	right_wall3.SetModelMatrix(glm::translate(mat4(1.0f), vec3(roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - 2.0 * (roomSize / 3.0)))
+	right_wall3.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - 2.0 * (roomSize / 3.0)))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
-		*glm::scale(mat4(1.0f), vec3(roomSize / 3)));
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 
 
 	Quad back_wall1;
 	back_wall1.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	back_wall1.SetModelMatrix(glm::translate(mat4(1.0f), vec3(-roomSize/2 + roomSize/6, -eyesPosition + roomSize / 6.0, -roomSize))
+	back_wall1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2 + roomSize / 6, -eyesPosition + roomSize / 6.0, -roomSize))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
-		*glm::scale(mat4(1.0f), vec3(roomSize / 3)));
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad back_wall2;
 	back_wall2.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	back_wall2.SetModelMatrix(glm::translate(mat4(1.0f), vec3(0.0f, -eyesPosition + roomSize / 6.0, -roomSize))
+	back_wall2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -eyesPosition + roomSize / 6.0, -roomSize))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
-		*glm::scale(mat4(1.0f), vec3(roomSize / 3)));
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad back_wall3;
 	back_wall3.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	back_wall3.SetModelMatrix(glm::translate(mat4(1.0f), vec3(roomSize/2 - roomSize/6, -eyesPosition + roomSize / 6.0, -roomSize))
+	back_wall3.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2 - roomSize / 6, -eyesPosition + roomSize / 6.0, -roomSize))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
-		*glm::scale(mat4(1.0f), vec3(roomSize/3)));
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 
 
 	Cube skybox;
 	skybox.Init("Shaders/sky_vshader.glsl", "Shaders/sky_fshader.glsl", "Textures/skybox_texture.jpg");
-	skybox.SetModelMatrix(glm::scale(mat4(1.0f), vec3(50.0f)));
+	skybox.SetModelMatrix(glm::scale(glm::mat4(1.0f), glm::vec3(50.0f)));
 
 	scene.AddModel(floor_quad);
 	scene.AddModel(skybox);
@@ -210,6 +212,7 @@ void MainLoop()
 		glutMainLoopEvent();//executes one iteration of the OpenGL main loop
 		Display();//we call display at every iteration so that we update the view matrix depending on the Oculus' position
 		_GUI.Update();// update the pointer's position by getting data from the LeapMotion sensor
+		_GUI.UpdateWorldMatrix(_worldMatrix);
 	}
 }
 
