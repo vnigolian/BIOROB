@@ -7,7 +7,7 @@ void LeapmotionPointer::Init()
 	_pointerModel.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
 	_pointerModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.5f, 0.0f, -1.0f))*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
 
-	this->_offset = Leap::Vector(0.0f, -1.7f, -2.0f);
+	this->_offset = Leap::Vector(0.0f, -2.0f, -2.0f);
 
 	_p_structure = NULL;
 

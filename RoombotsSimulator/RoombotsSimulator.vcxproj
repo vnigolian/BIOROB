@@ -101,6 +101,7 @@
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\Cube.cc" />
     <ClCompile Include="ShaderLoader.cc" />
+    <ClCompile Include="Simulator.cc" />
     <ClCompile Include="Structure.cc" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +117,7 @@
     <ClInclude Include="Scene\Cube.hh" />
     <ClInclude Include="ShaderLoader.hh" />
     <ClInclude Include="Shaders\shadow_vshader.glsl" />
+    <ClInclude Include="Simulator.hh" />
     <ClInclude Include="Structure.hh" />
     <ClInclude Include="TextureBuffer.hh" />
   </ItemGroup>

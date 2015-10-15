@@ -89,7 +89,7 @@ void HandleKeyboard(unsigned char key, int x, int y)
 		Right();
 		break;
 	}
-	_GUI.UpdateWorldMatrix(rift.glmViewProjMatrix()*_worldMatrix);
+	//_GUI.UpdateWorldMatrix(rift.glmViewProjMatrix()*_worldMatrix);
 }
 
 void Init()
@@ -209,10 +209,10 @@ void MainLoop()
 {
 	while (true)
 	{
-		glutMainLoopEvent();//executes one iteration of the OpenGL main loop
-		Display();//we call display at every iteration so that we update the view matrix depending on the Oculus' position
-		_GUI.Update();// update the pointer's position by getting data from the LeapMotion sensor
 		_GUI.UpdateWorldMatrix(_worldMatrix);
+		_GUI.Update();// update the pointer's position by getting data from the LeapMotion sensor
+		Display();//we call display at every iteration so that we update the view matrix depending on the Oculus' position
+		glutMainLoopEvent();//executes one iteration of the OpenGL main loop
 	}
 }
 

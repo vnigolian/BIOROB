@@ -97,6 +97,9 @@
     <ClCompile Include="Structure.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Simulator.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.hh">
@@ -140,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="Shaders\shadow_vshader.glsl">
       <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulator.hh">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
