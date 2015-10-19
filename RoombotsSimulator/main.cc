@@ -6,6 +6,8 @@
 #include "RiftHandler.hh"
 #include "Scene\Scene.hh"
 #include "GUI.hh"
+#include "Scene\OBJModel.hh"
+#include "Simulator.hh"
 
 using namespace Core;
 //using namespace OVR;
@@ -58,7 +60,7 @@ void RenderScene()
 
 	scene.Render(VP);
 
-	_GUI.Render(VP);
+	//_GUI.Render(VP);
 }
 
 void Display()
@@ -176,6 +178,15 @@ void Init()
 	scene.AddModel(back_wall1);
 	scene.AddModel(back_wall2);
 	scene.AddModel(back_wall3);
+	
+	OBJModel objModel;
+	objModel.setOBJfile("Hunter1.obj");
+	objModel.Init("Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "");
+	objModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -1.0f))
+		*glm::scale(glm::mat4(1.0f), glm::vec3(0.1f))
+		*glm::rotate(1.57f, glm::vec3(0.0f, 1.0f, 0.0f))
+		*glm::rotate(-1.57f, glm::vec3(1.0f, 0.0f, 0.0f)));
+	scene.AddModel(objModel);
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//<------- LINE MODE
 
@@ -244,3 +255,32 @@ int main(int argc, char **argv)
 	CleanUp();//cleans up everything
 	return 0;
 }
+
+/*Simulator _simulator;
+
+void Display2()
+{
+	_simulator.Display();
+}
+void Resize2(int w, int h)
+{
+	_simulator.Resize(w,h);
+}
+void HandleKeyboard2(unsigned char key, int x, int y)
+{
+	_simulator.HandleKeyboard(key, x, y);
+}
+void RenderScene2()
+{
+	_simulator.RenderScene();
+}
+
+int main(int argc, char **argv)
+{
+	_simulator.Init(argc, argv, Display2, Resize2, HandleKeyboard2, RenderScene2);
+	_simulator.Start();
+
+	return 0;
+}*/
+
+

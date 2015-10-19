@@ -20,6 +20,7 @@
 #include "Libraries\wgl\wglext.h"
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <fstream>
 #include <vector>

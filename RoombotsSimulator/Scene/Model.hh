@@ -21,7 +21,7 @@ public:
 	  After this method has been called, the model matrix has yet to be set.
 	  NOTE : we must be able to set the model matrix separately in order to modify the
 	         model after it has been initialized */
-	void Init(char* vShaderFileName, 
+	virtual void Init(char* vShaderFileName, 
 		      char* fShaderFileName, 
 			  char* textureFileName);
 
@@ -55,6 +55,8 @@ protected:
 	char*     _vShader;
 	char*     _fShader;
 	char*     _texture;
+
+	void SetVerticesAndUVs(std::vector<glm::vec3> *vertices, std::vector<glm::vec2> *uvs);
 
 	/*Defines the vertices of the model.
 	  Each series of 3 vertices (each stored as a vec3) will compose a new triangle to be rendered.

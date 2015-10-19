@@ -97,6 +97,7 @@
     <ClCompile Include="main.cc" />
     <ClCompile Include="RiftHandler.cc" />
     <ClCompile Include="Scene\Model.cc" />
+    <ClCompile Include="Scene\OBJModel.cc" />
     <ClCompile Include="Scene\Quad.cc" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\Cube.cc" />
@@ -112,6 +113,7 @@
     <ClInclude Include="LeapmotionPointer.hh" />
     <ClInclude Include="RiftHandler.hh" />
     <ClInclude Include="Scene\Model.hh" />
+    <ClInclude Include="Scene\OBJModel.hh" />
     <ClInclude Include="Scene\Quad.hh" />
     <ClInclude Include="Scene\Scene.hh" />
     <ClInclude Include="Scene\Cube.hh" />

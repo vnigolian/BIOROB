@@ -30,22 +30,28 @@ class Simulator
 
 	void Right();
 
-	void Resize(int w, int h);
 
 
-	void RenderScene();
-
-	void Display();
 
 
-	void HandleKeyboard(unsigned char key, int x, int y);
+
+
+
 
 	void CleanUp();
 
 	void MainLoop();
 
+	
+
 public:
-	void Init();
+	void RenderScene();
+	void Display();
+	void HandleKeyboard(unsigned char key, int x, int y);
+	void Resize(int w, int h);
+
+	//void SetCallbacks(void(*display)(void), void(*resize)(int, int), void(*keyboard)(unsigned char, int, int), void(*riftDisplay)(void));
+	void Init(int argc, char** argv, void(*display)(void), void(*resize)(int, int), void(*keyboard)(unsigned char, int, int), void(*riftDisplay)(void));
 	void Start();
 
 };

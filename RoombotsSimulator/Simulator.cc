@@ -1,5 +1,5 @@
-/*
-#include "Simulator.h"
+
+#include "Simulator.hh"
 
 void Simulator::Forward()
 {
@@ -29,7 +29,7 @@ void Simulator::Right()
 void Simulator::Resize(int w, int h)
 {
 	//We want the window to be fixed-size (adapted to the Rift's display)
-	glutReshapeWindow(width, height);
+	glutReshapeWindow(_width, _height);
 }
 
 
@@ -155,14 +155,20 @@ _scene.AddModel(back_wall2);
 _scene.AddModel(back_wall3);
 }
 
-void Simulator::Init(int argc, char** argv)
+void Simulator::Init(int argc, char** argv, void(*display)(void), void(*resize)(int, int), void(*keyboard)(unsigned char, int, int), void(*riftDisplay)(void))
 {
+	glutKeyboardFunc(keyboard);
+	_rift.Init(riftDisplay);
+	glutDisplayFunc(display);
+	glutReshapeFunc(resize);
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);//allows to use depth, color and double buffering
 	glutInitWindowPosition(500, 200);
 	glutInitWindowSize(0, 0); //it will be resized in Init();
 	glutCreateWindow("RoomBots Simulator");
-	glutKeyboardFunc(this->HandleKeyboard);
+
+	//glutKeyboardFunc(&(this->HandleKeyboard)); <----------------------------------------------------------
 
 	GLenum err = glewInit();
 	if (!err)
@@ -180,25 +186,25 @@ void Simulator::Init(int argc, char** argv)
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//<------- LINE MODE
 
-	_rift.Init(RenderScene);
+	//_rift.Init(this->RenderScene);<----------------------------------------------------------
 
 	//This sets the mirror window's size
 	//The mirror window is the one that mirrors the Rift's display on the regular screen
-	width = rift.ResolutionWidth() / 2;
-	height = rift.ResolutionHeight() / 2;
-	glutReshapeWindow(width, height);
+	_width = _rift.ResolutionWidth() / 2;
+	_height = _rift.ResolutionHeight() / 2;
+	glutReshapeWindow(_width, _height);
 
 
 	//GUI INIT
 	_GUI.Init();
 
 	// register callbacks
-	glutDisplayFunc(this->Display);//sets 'Display' as the function to call when displaying
-	glutReshapeFunc(this->Resize);//sets 'Resize' as the function to cass when resizing
+	//glutDisplayFunc(this->Display);//sets 'Display' as the function to call when displaying<----------------------------------------------------------
+	//glutReshapeFunc(this->Resize);//sets 'Resize' as the function to cass when resizing<----------------------------------------------------------
 }
 
 
-void CleanUp()
+void Simulator::CleanUp()
 {
 	_scene.CleanUp();
 	_rift.CleanUp();
@@ -207,8 +213,8 @@ void CleanUp()
 
 /*this method allows us to have control over the main OpenGL context loop.
 we call one iteration of the loop ourself*/
-/*
-void MainLoop()
+
+void Simulator::MainLoop()
 {
 	while (true)
 	{
@@ -225,6 +231,16 @@ void Simulator::Start()
 	CleanUp();
 }
 
+
+/*void Simulator::SetCallbacks(void(*display)(void), void(*resize)(int, int), void(*keyboard)(unsigned char, int, int), void(*riftDisplay)(void))
+{
+	glutKeyboardFunc(keyboard);
+	_rift.Init(riftDisplay);
+	glutDisplayFunc(display);
+	glutReshapeFunc(resize);
+}*/
+
+/*
 int main(int argc, char **argv)
 {
 

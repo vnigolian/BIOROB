@@ -5,6 +5,23 @@ void Model::SetModelMatrix(const glm::mat4& M)
 	this->_M = M;
 }
 
+
+void Model::SetVerticesAndUVs(std::vector<glm::vec3> *vertices, std::vector<glm::vec2> *uvs)
+{
+	SetVertices(vertices);
+	SetUVs(uvs);
+	
+	while (uvs->size() < vertices->size())
+	{
+		uvs->push_back(glm::vec2(0.0f, 0.0f));
+	}
+	while (uvs->size() > vertices->size())
+	{
+		uvs->pop_back();
+	}
+
+}
+
 void Model::SetVertices(std::vector<glm::vec3> *vertices){}
 void Model::SetUVs(std::vector<glm::vec2> *uvs){}
 
@@ -14,11 +31,10 @@ void Model::Init(char* vShaderFileName,
 {
 	
 	std::vector<glm::vec3> vertices;
-	SetVertices(&vertices);
-	_nVertices = vertices.size();
-
 	std::vector<glm::vec2> uvs;
-	SetUVs(&uvs);
+	SetVerticesAndUVs(&vertices, &uvs);
+
+	_nVertices = vertices.size();
 	_nUVs = uvs.size();
 
 	//this loop flips the uvs as SOIL loads the image inverted for some reason...
