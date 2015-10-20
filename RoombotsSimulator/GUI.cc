@@ -30,7 +30,7 @@ void GUI::AddButton()
 	}
 }
 
-void GUI::AddStructure(int buttonID)
+void GUI::AddStructure(unsigned int buttonID)
 {
 	if (buttonID < this->nButtons)
 	{

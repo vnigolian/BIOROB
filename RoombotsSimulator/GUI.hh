@@ -31,7 +31,7 @@ class GUI
 	/*Updates the LeapmotionPointer's position depending on the Leapmotion Controller's data*/
 	void UpdatePointer();
 
-	void AddStructure(int buttonID);
+	void AddStructure(unsigned int buttonID);
 
 public:
 

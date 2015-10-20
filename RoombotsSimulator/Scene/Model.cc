@@ -1,5 +1,7 @@
 #include "Model.hh"
 
+Model::Model(){}
+
 void Model::SetModelMatrix(const glm::mat4& M)
 {
 	this->_M = M;
@@ -121,10 +123,13 @@ void Model::Init(char* vShaderFileName,
 
 void Model::CleanUp() const
 {
-	glDeleteBuffers(1, &_vbo);
-	glDeleteVertexArrays(1, &_vao);
-	glDeleteProgram(_pid);
-	glDeleteTextures(1, &_tex);
+	if (_initialized)
+	{
+		glDeleteBuffers(1, &_vbo);
+		glDeleteVertexArrays(1, &_vao);
+		glDeleteProgram(_pid);
+		glDeleteTextures(1, &_tex);
+	}
 }
 
 void Model::Draw(const glm::mat4& VP) const
@@ -146,7 +151,6 @@ void Model::Draw(const glm::mat4& VP) const
 		glDrawArrays(GL_TRIANGLES, 0, _nVertices);
 		glBindVertexArray(0);
 		glUseProgram(0);
-	//std::cout << "object's texture : " << _texture << "\n";
 	}
 }
 

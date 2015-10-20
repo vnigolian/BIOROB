@@ -28,5 +28,10 @@
 
 #include "Libraries\Leap\Leap.h"
 
+namespace Core
+{
+#define EYES_POSITION 1.2f
+}
+
 
 

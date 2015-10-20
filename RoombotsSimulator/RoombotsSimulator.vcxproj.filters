@@ -105,9 +105,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="common.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderLoader.hh">
       <Filter>Core</Filter>
     </ClInclude>
@@ -152,6 +149,9 @@
     </ClInclude>
     <ClInclude Include="Scene\OBJModel.hh">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common.hh">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

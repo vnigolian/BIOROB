@@ -26,8 +26,11 @@ class LeapmotionPointer
 	bool _init = false;//Set to true once initialized
 
 	Cube _pointerModel;//the Model representing the LeapmotionPointer (for now a Cube)
+	Quad _shadow;
 	
 public:
+	LeapmotionPointer();
+
 	/*Updates the the LeapmotionPointer's position and drags the pinched Structure if there is one*/
 	void update();
 

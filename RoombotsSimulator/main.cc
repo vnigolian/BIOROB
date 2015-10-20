@@ -60,7 +60,7 @@ void RenderScene()
 
 	scene.Render(VP);
 
-	//_GUI.Render(VP);
+	_GUI.Render(VP);
 }
 
 void Display()
@@ -100,61 +100,60 @@ void Init()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	const float roomSize = 10.0f;
-	const float eyesPosition = 1.2f;
 
 	Quad floor_quad;
 	floor_quad.Init("Shaders/quad_vshader.glsl", "Shaders/quad_fshader.glsl", "Textures/wood2.jpg");
-	floor_quad.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -eyesPosition, -roomSize / 2.0))
+	floor_quad.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, - EYES_POSITION, -roomSize / 2.0))
 		                     *glm::scale(glm::mat4(1.0f), glm::vec3(roomSize)));
 
 	Quad left_wall1;
 	left_wall1.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	left_wall1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0))
+	left_wall1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2.0, -EYES_POSITION + roomSize / 6.0, -roomSize / 6.0))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad left_wall2;
 	left_wall2.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	left_wall2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - roomSize / 3.0))
+	left_wall2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2.0, -EYES_POSITION + roomSize / 6.0, -roomSize / 6.0 - roomSize / 3.0))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad left_wall3;
 	left_wall3.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	left_wall3.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - 2.0 * (roomSize / 3.0)))
+	left_wall3.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2.0, -EYES_POSITION + roomSize / 6.0, -roomSize / 6.0 - 2.0 * (roomSize / 3.0)))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 
 	Quad right_wall1;
 	right_wall1.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	right_wall1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0))
+	right_wall1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0, -EYES_POSITION + roomSize / 6.0, -roomSize / 6.0))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad right_wall2;
 	right_wall2.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	right_wall2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - roomSize / 3.0))
+	right_wall2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0, -EYES_POSITION + roomSize / 6.0, -roomSize / 6.0 - roomSize / 3.0))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad right_wall3;
 	right_wall3.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	right_wall3.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0, -eyesPosition + roomSize / 6.0, -roomSize / 6.0 - 2.0 * (roomSize / 3.0)))
+	right_wall3.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0, -EYES_POSITION + roomSize / 6.0, -roomSize / 6.0 - 2.0 * (roomSize / 3.0)))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 
 
 	Quad back_wall1;
 	back_wall1.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	back_wall1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2 + roomSize / 6, -eyesPosition + roomSize / 6.0, -roomSize))
+	back_wall1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2 + roomSize / 6, -EYES_POSITION + roomSize / 6.0, -roomSize))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad back_wall2;
 	back_wall2.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	back_wall2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -eyesPosition + roomSize / 6.0, -roomSize))
+	back_wall2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -EYES_POSITION + roomSize / 6.0, -roomSize))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 	Quad back_wall3;
 	back_wall3.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
-	back_wall3.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2 - roomSize / 6, -eyesPosition + roomSize / 6.0, -roomSize))
+	back_wall3.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2 - roomSize / 6, -EYES_POSITION + roomSize / 6.0, -roomSize))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
 		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
@@ -180,13 +179,13 @@ void Init()
 	scene.AddModel(back_wall3);
 	
 	OBJModel objModel;
-	objModel.setOBJfile("Hunter1.obj");
+	objModel.setOBJfile("Models/hemisphere.obj");
 	objModel.Init("Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "");
-	objModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -1.0f))
-		*glm::scale(glm::mat4(1.0f), glm::vec3(0.1f))
+	objModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(1.5f, 0.0f, -1.0f))
+		*glm::scale(glm::mat4(1.0f), glm::vec3(0.01f))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 1.0f, 0.0f))
 		*glm::rotate(-1.57f, glm::vec3(1.0f, 0.0f, 0.0f)));
-	scene.AddModel(objModel);
+	//scene.AddModel(objModel);
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//<------- LINE MODE
 
@@ -210,6 +209,7 @@ void CleanUp()
 {
 	scene.CleanUp();
 	rift.CleanUp();
+	_GUI.CleanUp();
 }
 
 /*

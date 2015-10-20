@@ -8,7 +8,7 @@ Structure::Structure(glm::vec3 position, int ID, Button* p_button) : _position(p
 			                       *glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
 
 		this->_shadow.Init("Shaders/shadow_vshader.glsl", "Shaders/shadow_fshader.glsl", "");
-		this->_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(_position.x, -1.199f, _position.z))
+		this->_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(_position.x, -EYES_POSITION + 0.011f, _position.z))
 			                        *glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
 }
 
@@ -16,7 +16,7 @@ void Structure::Drop()
 {
 	//When the Structure is dropped, we simply set the y-coordinate to the ground's y-coordinate 
 	_moving = false;
-	_position = glm::vec3(_position.x, -1.199f + MODULE_SIZE * 0.5f, _position.z);
+	_position = glm::vec3(_position.x, -EYES_POSITION + 0.01f + MODULE_SIZE * 0.5f, _position.z);
 	this->_model.SetModelMatrix(glm::translate(glm::mat4(1.0f), this->_position)
 		                       *glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
 	//_p_button->AddStructure();
@@ -30,7 +30,7 @@ void Structure::Drag(const glm::vec3& position)
 	this->_model.SetModelMatrix(glm::translate(glm::mat4(1.0f), this->_position)
 		                       *glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
 
-	this->_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(this->_position.x, -1.199f, this->_position.z))
+	this->_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(this->_position.x, -EYES_POSITION + 0.011f, this->_position.z))
 		                        *glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
 }
 

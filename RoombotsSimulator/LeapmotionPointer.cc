@@ -1,17 +1,27 @@
 #include "LeapmotionPointer.hh"
 
+LeapmotionPointer::LeapmotionPointer(){}
+
 
 void LeapmotionPointer::Init()
 {
-	std::cout << "LeapMotion connected !" << std::endl;
-	_pointerModel.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
-	_pointerModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.5f, 0.0f, -1.0f))*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
+	if (!_init)
+	{
+		std::cout << "LeapMotion connected !" << std::endl;
+		_pointerModel.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
+		_pointerModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.5f, 0.0f, -1.0f))
+			*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
 
-	this->_offset = Leap::Vector(0.0f, -2.0f, -2.0f);
+		_shadow.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
+		_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(_position.x, -EYES_POSITION + 0.01f, _position.z))
+			*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
 
-	_p_structure = NULL;
+		this->_offset = Leap::Vector(0.0f, -EYES_POSITION -0.6f, -2.0f);
 
-	_init = true;
+		_p_structure = NULL;
+
+		_init = true;
+	}
 }
 
 void LeapmotionPointer::update()
@@ -36,7 +46,10 @@ void LeapmotionPointer::update()
 				//by scaling the LeapmotionPointer's Model depending on this value
 				float pinchingValue(1.0f - 0.5f*_controller.frame().hands().rightmost().pinchStrength());
 
-				_pointerModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), _position)*glm::scale(glm::mat4(1.0f), glm::vec3(pinchingValue*LEAP_POINTER_SIZE)));
+				_pointerModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), _position)
+					*glm::scale(glm::mat4(1.0f), glm::vec3(pinchingValue*LEAP_POINTER_SIZE)));
+				_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(_position.x, -EYES_POSITION + 0.01f, _position.z))
+					*glm::scale(glm::mat4(1.0f), glm::vec3(pinchingValue*LEAP_POINTER_SIZE)));
 			}
 		}
 
@@ -70,6 +83,7 @@ void LeapmotionPointer::Draw(const glm::mat4& VP) const
 	{
 		glEnable(GL_BLEND);
 		_pointerModel.Draw(VP);
+		_shadow.Draw(VP);
 		glDisable(GL_BLEND);
 	}
 }

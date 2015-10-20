@@ -31,16 +31,9 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 
 		while (!in.eof())
 		{
-			std::string c;
-			const char* p(&c[0]);
-			std::string i;
+			std::string c = "";
+			std::string i = "";
 			double x, y, z;
-			std::string objectname;
-			std::string curligne;
-
-			while (c != "o"){ in >> c; }
-			in >> objectname;
-			std::cout << objectname << std::endl;
 
 			while (c != "f")
 			{
@@ -51,20 +44,23 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 					in >> z;
 					newVertices.push_back(glm::vec3(x, z, y));
 				}
-
-				//std::cout << "v = " << x << " " << y << " " << z << std::endl;
-
 				in >> c;
 			}
 			while (c == "f")
 			{
 				in >> c;
-				int index;
+				//int index;
 				std::vector<unsigned int> faceIndices;
 				while (c != "f"&& !in.eof())
 				{
-					p = &c[0];
-					faceIndices.push_back(atoi(p));
+					std::string acc = "";
+					size_t i = 0;
+					while (c[i] != '/' && i < c.length())
+					{
+						acc += c[i];
+						i++;
+					}
+					faceIndices.push_back(stoi(acc));
 					in >> c;
 				}
 				//we add the triangle's vertices to the model's vertices
