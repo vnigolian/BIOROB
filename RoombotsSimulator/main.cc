@@ -15,16 +15,20 @@ using namespace Core;
 //using namespace glm;
 
 
-Scene scene;
+Scene _scene;
 
 unsigned int width = 0;
 unsigned int height = 0;
 
-RiftHandler rift;
+RiftHandler _rift;
 
 GUI _GUI;
 
 glm::mat4 _worldMatrix = glm::mat4();
+
+
+OBJModel objModel;
+
 
 void Forward()
 {
@@ -56,9 +60,11 @@ void Resize(int w, int h)
 
 void RenderScene()
 {
-	glm::mat4 VP = rift.glmViewProjMatrix()*_worldMatrix;
+	glm::mat4 VP = _rift.glmViewProjMatrix()*_worldMatrix;
 
-	scene.Render(VP);
+	_scene.Render(VP);
+
+	objModel.DrawWithLines(VP);
 
 	_GUI.Render(VP);
 }
@@ -67,7 +73,7 @@ void Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	rift.DisplayOnRift();
+	_rift.DisplayOnRift();
 
 	glutSwapBuffers();//switch between the two buffers
 
@@ -163,38 +169,38 @@ void Init()
 	skybox.Init("Shaders/sky_vshader.glsl", "Shaders/sky_fshader.glsl", "Textures/skybox_texture.jpg");
 	skybox.SetModelMatrix(glm::scale(glm::mat4(1.0f), glm::vec3(50.0f)));
 
-	scene.AddModel(floor_quad);
-	scene.AddModel(skybox);
+	_scene.AddModel(floor_quad);
+	_scene.AddModel(skybox);
 
-	scene.AddModel(left_wall1);
-	scene.AddModel(left_wall2);
-	scene.AddModel(left_wall3);
+	_scene.AddModel(left_wall1);
+	_scene.AddModel(left_wall2);
+	_scene.AddModel(left_wall3);
 
-	scene.AddModel(right_wall1);
-	scene.AddModel(right_wall2);
-	scene.AddModel(right_wall3);
+	_scene.AddModel(right_wall1);
+	_scene.AddModel(right_wall2);
+	_scene.AddModel(right_wall3);
 
-	scene.AddModel(back_wall1);
-	scene.AddModel(back_wall2);
-	scene.AddModel(back_wall3);
+	_scene.AddModel(back_wall1);
+	_scene.AddModel(back_wall2);
+	_scene.AddModel(back_wall3);
 	
-	OBJModel objModel;
+
 	objModel.setOBJfile("Models/hemisphere.obj");
 	objModel.Init("Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "");
 	objModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(1.5f, 0.0f, -1.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(0.01f))
 		*glm::rotate(1.57f, glm::vec3(0.0f, 1.0f, 0.0f))
 		*glm::rotate(-1.57f, glm::vec3(1.0f, 0.0f, 0.0f)));
-	//scene.AddModel(objModel);
+	//_scene.AddModel(objModel);
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//<------- LINE MODE
 
-	rift.Init(RenderScene);
+	_rift.Init(RenderScene);
 
 	//This sets the mirror window's size
 	//The mirror window is the one that mirrors the Rift's display on the regular screen
-	width = rift.ResolutionWidth() / 2;
-	height = rift.ResolutionHeight() / 2;
+	width = _rift.ResolutionWidth() / 2;
+	height = _rift.ResolutionHeight() / 2;
 	glutReshapeWindow(width, height);
 
 	//Structure newStruct(vec3(0.0f), 0, NULL);
@@ -207,8 +213,8 @@ void Init()
 
 void CleanUp()
 {
-	scene.CleanUp();
-	rift.CleanUp();
+	_scene.CleanUp();
+	_rift.CleanUp();
 	_GUI.CleanUp();
 }
 

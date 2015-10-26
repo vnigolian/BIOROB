@@ -147,10 +147,44 @@ void Model::Draw(const glm::mat4& VP) const
 		GLuint MVP_id = glGetUniformLocation(_pid, "MVP");
 		glUniformMatrix4fv(MVP_id, 1, GL_FALSE, &MVP[0][0]);
 
+		GLuint color_id = glGetUniformLocation(_pid, "colorVec");
+		glUniform4f(color_id, 0.0f, 1.0f, 0.0f,0.8f);
+
 		//actual draw
 		glDrawArrays(GL_TRIANGLES, 0, _nVertices);
 		glBindVertexArray(0);
 		glUseProgram(0);
 	}
+}
+
+void Model::DrawWithLines(const glm::mat4& VP) const
+{
+	Draw(VP);
+
+	if (_initialized)
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glLineWidth(2.0f);
+		glUseProgram(_pid);
+		glBindVertexArray(_vao);
+		//Activate and bind textures
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, _tex);
+
+		//setup MVP from the VP passed in argument and the model's model matrix
+		glm::mat4 MVP = VP * _M;
+		GLuint MVP_id = glGetUniformLocation(_pid, "MVP");
+		glUniformMatrix4fv(MVP_id, 1, GL_FALSE, &MVP[0][0]);
+
+		GLuint color_id = glGetUniformLocation(_pid, "colorVec");
+		glUniform4f(color_id, 0.0f,0.0f,0.0f,1.0f);
+
+		//actual draw
+		glDrawArrays(GL_TRIANGLES, 0, _nVertices);
+		glBindVertexArray(0);
+		glUseProgram(0);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
+
 }
 

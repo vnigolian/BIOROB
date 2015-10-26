@@ -30,14 +30,6 @@ class Simulator
 
 	void Right();
 
-
-
-
-
-
-
-
-
 	void CleanUp();
 
 	void MainLoop();

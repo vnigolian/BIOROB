@@ -103,6 +103,9 @@
     <ClCompile Include="Scene\OBJModel.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\RoomBot.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShaderLoader.hh">
@@ -152,6 +155,9 @@
     </ClInclude>
     <ClInclude Include="common.hh">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\RoomBot.hh">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

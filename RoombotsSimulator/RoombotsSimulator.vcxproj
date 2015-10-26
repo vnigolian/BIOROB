@@ -99,6 +99,7 @@
     <ClCompile Include="Scene\Model.cc" />
     <ClCompile Include="Scene\OBJModel.cc" />
     <ClCompile Include="Scene\Quad.cc" />
+    <ClCompile Include="Scene\RoomBot.cc" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\Cube.cc" />
     <ClCompile Include="ShaderLoader.cc" />
@@ -115,6 +116,7 @@
     <ClInclude Include="Scene\Model.hh" />
     <ClInclude Include="Scene\OBJModel.hh" />
     <ClInclude Include="Scene\Quad.hh" />
+    <ClInclude Include="Scene\RoomBot.hh" />
     <ClInclude Include="Scene\Scene.hh" />
     <ClInclude Include="Scene\Cube.hh" />
     <ClInclude Include="ShaderLoader.hh" />

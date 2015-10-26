@@ -37,6 +37,9 @@ public:
 	  The Projection-View matrix passed in argument is required by the shaders*/
 	void Draw(const glm::mat4& VP) const;
 
+
+	void DrawWithLines(const glm::mat4& VP) const;
+
 	/*Cleans up everything that has been set up during initialization :
 		- the VBO
 		- the VAO
