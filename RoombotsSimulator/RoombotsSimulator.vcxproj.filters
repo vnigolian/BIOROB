@@ -106,6 +106,9 @@
     <ClCompile Include="Scene\RoomBot.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\HalfModule.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShaderLoader.hh">
@@ -157,6 +160,9 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Scene\RoomBot.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\HalfModule.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

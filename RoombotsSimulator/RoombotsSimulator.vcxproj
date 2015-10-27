@@ -96,6 +96,7 @@
     <ClCompile Include="LeapmotionPointer.cc" />
     <ClCompile Include="main.cc" />
     <ClCompile Include="RiftHandler.cc" />
+    <ClCompile Include="Scene\HalfModule.cc" />
     <ClCompile Include="Scene\Model.cc" />
     <ClCompile Include="Scene\OBJModel.cc" />
     <ClCompile Include="Scene\Quad.cc" />
@@ -113,6 +114,7 @@
     <ClInclude Include="GUI.hh" />
     <ClInclude Include="LeapmotionPointer.hh" />
     <ClInclude Include="RiftHandler.hh" />
+    <ClInclude Include="Scene\HalfModule.hh" />
     <ClInclude Include="Scene\Model.hh" />
     <ClInclude Include="Scene\OBJModel.hh" />
     <ClInclude Include="Scene\Quad.hh" />

@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Button.hh"
+#include "Scene\HalfModule.hh"
 
-#define MODULE_SIZE 0.1f //the size of the Model representing the Structure
+//#define MODULE_SIZE 0.1f //the size of the Model representing the Structure
 #define DRAG_RADIUS 0.07f //The minimum distance to grab a Structure
 
 class Structure

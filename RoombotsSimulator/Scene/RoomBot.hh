@@ -1,23 +1,18 @@
 #pragma once
 
-#include "OBJModel.hh"
+#include "HalfModule.hh"
 
-
-#define MODULE_SIZE 0.12f
 
 class RoomBot
 {
 private:
-	OBJModel _cubeA;
-	OBJModel _cubeB;
-	int _x;
-	int _y;
-	int _z;
+	HalfModule _halfModuleA;
+	HalfModule _halfModuleB;
 
 public:
 	glm::vec3 Position()
 	{
-		return glm::vec3(_x, _y, _z);
+		return (_halfModuleA.Position() + _halfModuleB.Position()) / 2.0f;
 	}
 
 };
