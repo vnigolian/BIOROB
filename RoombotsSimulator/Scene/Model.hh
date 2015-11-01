@@ -27,6 +27,13 @@ public:
 		      char* fShaderFileName, 
 			  char* textureFileName);
 
+	/*Same as above but also with a color*/
+	virtual void Init(char* vShaderFileName,
+		              char* fShaderFileName,
+		              char* textureFileName,
+		              glm::vec4& color);
+
+
 	/*Sets the model matrix as the one passed in argument
 	  The model matrix defines the scale, rotation and translation of the model
 	  It doesn't change its vertices or definition but how and where it will appear 
@@ -55,11 +62,12 @@ public:
 	            the elements of those vectors*/
 protected:
 
-	glm::mat4      _M;            // model matrix
+	glm::mat4 _M;            // model matrix
 	GLboolean _initialized= false;     // set on 'true' once initialized
 	char*     _vShader;
 	char*     _fShader;
 	char*     _texture;
+	glm::vec4 _color = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f); //The color of the Model (black by default)
 
 	void SetVerticesAndUVs(std::vector<glm::vec3> *vertices, std::vector<glm::vec2> *uvs);
 

@@ -120,6 +120,14 @@ void Model::Init(char* vShaderFileName,
 	}
 }
 
+void Model::Init(char* vShaderFileName,
+	             char* fShaderFileName,
+	             char* textureFileName,
+	             glm::vec4& color)
+{
+	Init(vShaderFileName, fShaderFileName, textureFileName);
+	_color = color;
+}
 
 void Model::CleanUp() const
 {
@@ -148,7 +156,7 @@ void Model::Draw(const glm::mat4& VP) const
 		glUniformMatrix4fv(MVP_id, 1, GL_FALSE, &MVP[0][0]);
 
 		GLuint color_id = glGetUniformLocation(_pid, "colorVec");
-		glUniform4f(color_id, 0.0f, 1.0f, 0.0f,0.8f);
+		glUniform4f(color_id, _color.x, _color.y, _color.z,_color.w);
 
 		//actual draw
 		//glDrawArrays(GL_TRIANGLES, 0, _nVertices);

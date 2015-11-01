@@ -1,6 +1,7 @@
 #version 330 core
 uniform sampler2D tex;
 uniform vec4 colorVec;
+uniform int colorSel;
 
 in vec2 uv;
 out vec4 color;
