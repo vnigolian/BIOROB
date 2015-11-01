@@ -5,8 +5,8 @@ void GUI::Init()
 {
 	_pointer.Init();
 	AddButton();
-	AddButton();
-	AddButton();
+	//AddButton();
+	//AddButton();
 	_init = true;
 }
 

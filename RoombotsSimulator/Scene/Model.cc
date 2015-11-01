@@ -151,6 +151,7 @@ void Model::Draw(const glm::mat4& VP) const
 		glUniform4f(color_id, 0.0f, 1.0f, 0.0f,0.8f);
 
 		//actual draw
+		//glDrawArrays(GL_TRIANGLES, 0, _nVertices);
 		glDrawArrays(GL_TRIANGLES, 0, _nVertices);
 		glBindVertexArray(0);
 		glUseProgram(0);

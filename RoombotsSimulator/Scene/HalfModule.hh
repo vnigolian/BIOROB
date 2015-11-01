@@ -18,7 +18,7 @@ public:
 	//HalfModule();
 	//HalfModule(int x, int y, int z);
 	void Init(int, int, int);
-	void Draw(const glm::mat4& VP);
+	void Draw(const glm::mat4& VP) const;
 
 	glm::vec3 Position(); 
 
