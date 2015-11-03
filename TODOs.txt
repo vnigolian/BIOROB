@@ -3,3 +3,5 @@
 - Implement view-switching
 - Implement HMD-mounted LeapMotion
 - Use exceptions !
+- Load Structures from files
+- Implement grid

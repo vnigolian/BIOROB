@@ -25,11 +25,10 @@ RiftHandler _rift;
 
 GUI _GUI;
 
+//viewing mode. false for "in-room" view, true for "box" view
+bool _mode = false;
+
 glm::mat4 _worldMatrix = glm::mat4();
-
-RoomBot roomBot;
-//OBJModel objModel;
-
 
 void Forward()
 {
@@ -58,14 +57,22 @@ void Resize(int w, int h)
 	glutReshapeWindow(width,height);
 }
 
+glm::mat4 WorldViewMatrix()
+{
+	glm::mat4 worldViewMatrix = glm::mat4(1.0f);
+	if (_mode)
+	{
+		worldViewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -0.2f, -0.2f))
+			*glm::scale(glm::mat4(1.0f), glm::vec3(1 / 20.0f));
+	}
+	return worldViewMatrix;
+}
 
 void RenderScene()
 {
-	glm::mat4 VP = _rift.glmViewProjMatrix()*_worldMatrix;
+	glm::mat4 VP = _rift.glmViewProjMatrix()*_worldMatrix*WorldViewMatrix();
 
 	_scene.Render(VP);
-
-	//roomBot.Draw(VP);
 
 	_GUI.Render(VP);
 }
@@ -80,6 +87,12 @@ void Display()
 
 }
 
+
+
+void SwitchViewMode()
+{
+	_mode = _mode ^ true;
+}
 
 void HandleKeyboard(unsigned char key, int x, int y)
 {
@@ -96,6 +109,9 @@ void HandleKeyboard(unsigned char key, int x, int y)
 		break;
 	case 'd' :
 		Right();
+		break;
+	case ' ' :
+		SwitchViewMode();
 		break;
 	}
 }
@@ -233,7 +249,7 @@ int main(int argc, char **argv)
 	glutInitWindowSize(0, 0); //it will be resized in Init();
 	glutCreateWindow("RoomBots Simulator");
 	glutKeyboardFunc(HandleKeyboard);
-
+	
 	GLenum err = glewInit();
 	if (!err)
 	{

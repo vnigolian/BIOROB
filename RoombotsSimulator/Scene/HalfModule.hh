@@ -7,6 +7,7 @@
 class HalfModule
 {
 private:
+	//Those are the relative coordinates within the Structure
 	int _x;
 	int _y;
 	int _z;
@@ -19,7 +20,9 @@ public:
 	//HalfModule(int x, int y, int z);
 	void Init(int, int, int);
 	void Draw(const glm::mat4& VP) const;
+	//void Move(int x, int y, int z);
 
-	glm::vec3 Position(); 
+	glm::vec3 Position() const;
+
 
 };

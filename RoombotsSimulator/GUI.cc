@@ -81,7 +81,8 @@ void GUI::CheckForPinchedStructure()
 {
 	for (size_t i(0); i < this->nStructures; i++)
 	{
-		if (glm::distance(structures[i].Position(), _pointer.Position()) < DRAG_RADIUS && _pointer.Pinching())
+		//if (glm::distance(structures[i].Position(), _pointer.Position()) < DRAG_RADIUS && _pointer.Pinching())
+		if (structures[i].CloseEnough(_pointer.Position()) && _pointer.Pinching())
 		{
 			_pointer.AssignStructure(&(structures[i]));
 		}
