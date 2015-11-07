@@ -47,6 +47,7 @@ void Structure::Drop()
 bool Structure::CloseEnough(glm::vec3 position)
 {
 	return glm::distance(CenterPosition(), position) < DRAG_RADIUS;
+	//return glm::distance(_position, position) < DRAG_RADIUS;
 }
 
 void Structure::Drag(const glm::vec3& position)
@@ -63,8 +64,8 @@ void Structure::Draw(const glm::mat4& VP) const
 {
 	glEnable(GL_BLEND);
 
-	glm::vec3 scaledPosition = (1/MODULE_SIZE) * _position;
-	glm::vec3 discrete_position = glm::vec3(floor(scaledPosition.x), floor(scaledPosition.y), floor(scaledPosition.z));
+	glm::vec3 scaledPosition = (1 / MODULE_SIZE) * _position;// CenterPosition();
+	glm::vec3 discrete_position = glm::vec3(floor(scaledPosition.x), scaledPosition.y, floor(scaledPosition.z));
 	discrete_position = MODULE_SIZE * discrete_position;
 	//std::cout << "discrete_position : "<< discrete_position.x << " " << discrete_position.y << " " << discrete_position.z << " " << std::endl;
 
