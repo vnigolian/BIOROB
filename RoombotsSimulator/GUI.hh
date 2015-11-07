@@ -29,7 +29,7 @@ class GUI
 	void CheckForPinchedStructure();
 
 	/*Updates the LeapmotionPointer's position depending on the Leapmotion Controller's data*/
-	void UpdatePointer();
+	void UpdatePointer(bool mode);
 
 	void AddStructure(unsigned int buttonID);
 
@@ -39,7 +39,7 @@ public:
 	void Init();
 
 	/*Updates the positions of the Structures and the LeapmotionPointer*/
-	void Update();
+	void Update(bool mode);
 
 	void UpdateWorldMatrix(const glm::mat4& worldMatrix);
 

@@ -32,22 +32,34 @@ glm::mat4 _worldMatrix = glm::mat4();
 
 void Forward()
 {
-	_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.2f));
+	if (!_mode)
+	{
+		_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.2f));
+	}
 }
 
 void Left()
 {
-	_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.2f, 0.0f, 0.0f));
+	if (!_mode)
+	{
+		_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.2f, 0.0f, 0.0f));
+	}
 }
 
 void Backwards()
 {
-	_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -0.2f));
+	if (!_mode)
+	{
+		_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -0.2f));
+	}
 }
 
 void Right()
 {
-	_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(-0.2f, 0.0f, 0.0f));
+	if (!_mode)
+	{
+		_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(-0.2f, 0.0f, 0.0f));
+	}
 }
 
 // Gets called when the windows is resized.
@@ -63,14 +75,22 @@ glm::mat4 WorldViewMatrix()
 	if (_mode)
 	{
 		worldViewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -0.2f, -0.2f))
-			*glm::scale(glm::mat4(1.0f), glm::vec3(1 / 20.0f));
+			*glm::scale(glm::mat4(1.0f), glm::vec3(1 / 25.0f));
 	}
 	return worldViewMatrix;
 }
 
 void RenderScene()
 {
-	glm::mat4 VP = _rift.glmViewProjMatrix()*_worldMatrix*WorldViewMatrix();
+	glm::mat4 VP = glm::mat4(1.0f);
+	if (_mode)
+	{
+		VP = _rift.glmViewProjMatrix() * WorldViewMatrix();
+	}
+	else
+	{
+		VP = _rift.glmViewProjMatrix() * _worldMatrix ;
+	}
 
 	_scene.Render(VP);
 
@@ -92,6 +112,14 @@ void Display()
 void SwitchViewMode()
 {
 	_mode = _mode ^ true;
+	if (_mode)
+	{
+		std::cout << "Box View" << std::endl;
+	}
+	else
+	{
+		std::cout << "Room View" << std::endl;
+	}
 }
 
 void HandleKeyboard(unsigned char key, int x, int y)
@@ -234,7 +262,7 @@ void MainLoop()
 	while (true)
 	{
 		_GUI.UpdateWorldMatrix(_worldMatrix);
-		_GUI.Update();// update the pointer's position by getting data from the LeapMotion sensor
+		_GUI.Update(_mode);// update the pointer's position by getting data from the LeapMotion sensor
 		Display();//we call display at every iteration so that we update the view matrix depending on the Oculus' position
 		glutMainLoopEvent();//executes one iteration of the OpenGL main loop
 	}

@@ -89,16 +89,16 @@ void GUI::CheckForPinchedStructure()
 	}
 }
 
-void GUI::UpdatePointer()
+void GUI::UpdatePointer(bool mode)
 {
-	_pointer.update();
+	_pointer.update(mode);
 }
 
-void GUI::Update()
+void GUI::Update(bool mode)
 {
 	if (_init)
 	{
-		UpdatePointer();
+		UpdatePointer(mode);
 		CheckForPinchedStructure();
 	}
 }

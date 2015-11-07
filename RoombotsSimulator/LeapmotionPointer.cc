@@ -16,7 +16,7 @@ void LeapmotionPointer::Init()
 		_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(_position.x, -EYES_POSITION + 0.01f, _position.z))
 			*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
 
-		this->_offset = Leap::Vector(0.0f, -EYES_POSITION -0.6f, -2.0f);
+		//this->_offset = Leap::Vector(0.0f, -EYES_POSITION -0.6f, -2.0f);
 
 		_p_structure = NULL;
 
@@ -24,7 +24,24 @@ void LeapmotionPointer::Init()
 	}
 }
 
-void LeapmotionPointer::update()
+
+Leap::Vector LeapmotionPointer::adaptToMode(Leap::Vector right_hand_pos, bool mode)
+{
+	Leap::Vector adapted = right_hand_pos;
+	if (mode)
+	{
+		adapted *= BOX_COORDINATE_SYSTEM_SCALE_CONVERSION;
+		adapted += Leap::Vector(0.0f, -EYES_POSITION - 5.0f, -4.5f);
+	}
+	else
+	{
+		adapted *= COORDINATE_SYSTEM_SCALE_CONVERSION;
+		adapted += Leap::Vector(0.0f, -EYES_POSITION - 0.6f, -2.0f);
+	}
+	return adapted;
+}
+
+void LeapmotionPointer::update(bool mode)
 {
 	//updating the controller's position
 	if (_init)
@@ -34,8 +51,7 @@ void LeapmotionPointer::update()
 			if (!_controller.frame().hands().isEmpty())
 			{
 				Leap::Vector rm_hand_pos = _controller.frame().hands().rightmost().palmPosition();
-				rm_hand_pos *= COORDINATE_SYSTEM_SCALE_CONVERSION;
-				rm_hand_pos += this->_offset;
+				rm_hand_pos = adaptToMode(rm_hand_pos, mode);
 
 				_position = glm::vec3(rm_hand_pos.x, rm_hand_pos.y, rm_hand_pos.z);
 

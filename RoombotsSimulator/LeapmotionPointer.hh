@@ -9,11 +9,12 @@
 
 class LeapmotionPointer
 {
-#define LEAP_POINTER_SIZE 0.21f
+#define LEAP_POINTER_SIZE 1.0f
 #define COORDINATE_SYSTEM_SCALE_CONVERSION 0.005f
+#define BOX_COORDINATE_SYSTEM_SCALE_CONVERSION 0.027f
 #define PINCHING_LIMIT 0.75f
 
-	Leap::Vector _offset;//The offset adapting the Leapmotion's coordinate system to the Scene's
+	//Leap::Vector _offset;//The offset adapting the Leapmotion's coordinate system to the Scene's
 	Leap::Controller _controller;//The object allowing us to get data from the Leapmotion device
 	glm::vec3 _position;//The position of the LeapmotionPointer
 	Structure* _p_structure = NULL;//A pointer to the Structure being dragged 
@@ -27,12 +28,14 @@ class LeapmotionPointer
 
 	Cube _pointerModel;//the Model representing the LeapmotionPointer (for now a Cube)
 	Quad _shadow;
+
+	Leap::Vector adaptToMode(Leap::Vector right_hand_pos, bool mode);
 	
 public:
 	LeapmotionPointer();
 
 	/*Updates the the LeapmotionPointer's position and drags the pinched Structure if there is one*/
-	void update();
+	void update(bool mode);
 
 	/*Updates the _invertedWorldMatrix with the one from the main*/
 	void UpdateWorldMatrix(const glm::mat4& worldMatrix);
