@@ -11,3 +11,14 @@ void RoomBot::Draw(const glm::mat4& VP) const
 	_halfModuleA.Draw(VP);
 	_halfModuleB.Draw(VP);
 }
+
+
+glm::vec3 RoomBot::PositionA()const
+{
+	return _halfModuleA.Position();
+}
+
+glm::vec3 RoomBot::PositionB()const
+{
+	return _halfModuleB.Position();
+}

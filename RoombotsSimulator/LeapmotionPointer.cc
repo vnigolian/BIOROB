@@ -1,9 +1,7 @@
 #include "LeapmotionPointer.hh"
+#include "GUI.hh"
 
-LeapmotionPointer::LeapmotionPointer(){}
-
-
-void LeapmotionPointer::Init()
+void LeapmotionPointer::Init(GUI* p_gui)
 {
 	if (!_init)
 	{
@@ -21,6 +19,7 @@ void LeapmotionPointer::Init()
 		_p_structure = NULL;
 
 		_init = true;
+		_p_gui = p_gui;
 	}
 }
 
@@ -80,8 +79,9 @@ void LeapmotionPointer::update(bool mode)
 			else//Otherwise it means that the user's hand has been open again and we can drop the Structure
 			{
 				std::cout << "pinching strength :" << _controller.frame().hands().rightmost().pinchStrength() << std::endl;
+				Button* p_button = _p_structure->LinkedButton();
 				_p_structure->Drop();
-
+				_p_gui->DroppedStructure(p_button);
 				_p_structure = NULL;
 			}
 		}
@@ -140,12 +140,12 @@ glm::vec3 LeapmotionPointer::Position() const
 	}
 }
 
-void LeapmotionPointer::AssignStructure(Structure* p_structure)
+void LeapmotionPointer::AssignStructure(MovableStructure* p_structure)
 {
 	_p_structure = p_structure;
 }
 
-Structure* LeapmotionPointer::AssignedStructure() const
+MovableStructure* LeapmotionPointer::AssignedStructure() const
 {
 	return _p_structure;
 }

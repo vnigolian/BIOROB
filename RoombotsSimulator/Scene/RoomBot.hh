@@ -17,5 +17,7 @@ public:
 
 	void Init(int Ax, int Ay, int Az, int Bx, int By, int Bz);
 	void Draw(const glm::mat4& VP) const;
-	//void Move(int x)
+	glm::vec3 PositionA()const;
+	glm::vec3 PositionB()const;
+
 };

@@ -5,7 +5,6 @@
 #include "Structure.hh"
 
 
-
 class GUI
 {
 #define BUTTON_SEPARATION 0.1f
@@ -15,7 +14,7 @@ class GUI
 
 	std::vector<const Button> buttons;//The Models contained in the scene
 	size_t nButtons = 0;//The number of Models in the scene
-	std::vector<const Structure> structures;//The Structures contained in the scene
+	std::vector<const MovableStructure> structures;//The Structures contained in the scene
 	size_t nStructures = 0;//The number of Structures in the scene
 
 	LeapmotionPointer _pointer;//The pointer using the Leapmotion device
@@ -23,7 +22,7 @@ class GUI
 	bool _init = false;//Set to true once initialized
 
 	/*Adds a button to the interface (max 3 for now)*/
-	void AddButton();
+	void AddButton(Structure structure);
 	
 	/*Checks for every structure if it is being pinched by the LeapmotionPointer*/
 	void CheckForPinchedStructure();
@@ -31,7 +30,7 @@ class GUI
 	/*Updates the LeapmotionPointer's position depending on the Leapmotion Controller's data*/
 	void UpdatePointer(bool mode);
 
-	void AddStructure(unsigned int buttonID);
+	void PopStructure(unsigned int buttonID);
 
 public:
 
@@ -48,6 +47,11 @@ public:
 
 	/*Returns the number of Buttons in the GUI*/
 	size_t NButtons();
+
+
+	void DroppedStructure(Button* p_button);
+
+	void hello(){ std::cout << "hello" << std::endl; }
 
 	/*Cleans up everything*/
 	void CleanUp();

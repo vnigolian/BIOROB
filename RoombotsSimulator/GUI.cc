@@ -3,14 +3,15 @@
 
 void GUI::Init()
 {
-	_pointer.Init();
-	AddButton();
-	//AddButton();
-	//AddButton();
+	_pointer.Init(this);
+	Structure newStructure("");
+
+	AddButton(newStructure);
+	std::cout << "GUI initialized" << std::endl;
 	_init = true;
 }
 
-void GUI::AddButton()
+void GUI::AddButton(Structure structure)
 {
 	if (nButtons <= 3)//we want max 3 buttons for now
 	{
@@ -18,25 +19,35 @@ void GUI::AddButton()
 		glm::vec3 position = glm::vec3(BUTTON_LEFT_OFFSET, BUTTON_UP_START - (this->nButtons)*(BUTTON_SIZE + BUTTON_SEPARATION), BUTTON_DEPTH_OFFSET);
 
 		//we create the new Button with the position
-		Button newButton(position, (int) this->nButtons);
+		Button newButton(position, (int) this->nButtons,structure);
 		buttons.push_back(newButton);
 		this->nButtons++;
+		//MovableStructure::MovableStructure(Structure structure, glm::vec3 position, int ID, Button* p_button) :
 
 		//and add a structure linked to this button at the same position
-		//AddStructure(newButton.ID());
-		Structure newStructure(position, (int) this->nStructures, &newButton);
+		PopStructure(newButton.ID());
+	}
+}
+//MovableStructure::MovableStructure(Structure structure, glm::vec3 position, int ID, Button* p_button)
+void GUI::PopStructure(unsigned int buttonID)
+{
+	if (buttonID < this->nButtons)
+	{
+		MovableStructure newStructure(buttons[buttonID].AssignedStructure(),
+			buttons[buttonID].Position(), 
+			(int) this->nStructures, 
+			&buttons[buttonID]);
+
 		structures.push_back(newStructure);
 		this->nStructures++;
 	}
 }
 
-void GUI::AddStructure(unsigned int buttonID)
+void GUI::DroppedStructure(Button* p_button)
 {
-	if (buttonID < this->nButtons)
+	if (p_button != NULL)
 	{
-		Structure newStructure(buttons[buttonID].Position(), (int) this->nStructures, &buttons[buttonID]);
-		structures.push_back(newStructure);
-		this->nStructures++;
+		PopStructure(p_button->ID());
 	}
 }
 

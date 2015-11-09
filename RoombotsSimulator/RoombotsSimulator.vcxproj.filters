@@ -109,6 +109,9 @@
     <ClCompile Include="Scene\HalfModule.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MovableStructure.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShaderLoader.hh">
@@ -163,6 +166,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scene\HalfModule.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MovableStructure.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

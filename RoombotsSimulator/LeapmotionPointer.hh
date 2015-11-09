@@ -3,9 +3,9 @@
 #include "common.hh"
 #include "Scene\Cube.hh"
 #include "Scene\Quad.hh"
-#include "Structure.hh"
+#include "MovableStructure.hh"
 
-
+class GUI;
 
 class LeapmotionPointer
 {
@@ -17,7 +17,7 @@ class LeapmotionPointer
 	//Leap::Vector _offset;//The offset adapting the Leapmotion's coordinate system to the Scene's
 	Leap::Controller _controller;//The object allowing us to get data from the Leapmotion device
 	glm::vec3 _position;//The position of the LeapmotionPointer
-	Structure* _p_structure = NULL;//A pointer to the Structure being dragged 
+	MovableStructure* _p_structure = NULL;//A pointer to the Structure being dragged 
 	                               //(NULL if no Structure is being dragged)
 
 	glm::mat4 _invertedWorldMatrix = glm::mat4();//This matrix is the inverse from the Scene's WorldMatrix.
@@ -29,10 +29,15 @@ class LeapmotionPointer
 	Cube _pointerModel;//the Model representing the LeapmotionPointer (for now a Cube)
 	Quad _shadow;
 
+	GUI* _p_gui;//A pointer to the GUI so it can tell it to add a new Structure to a button once it's dropped
+
 	Leap::Vector adaptToMode(Leap::Vector right_hand_pos, bool mode);
 	
 public:
-	LeapmotionPointer();
+
+	/*Initializes the LeapmotionPointer
+	Its offset, its position (set to (0,0,0)) and its Model*/
+	void Init(GUI* p_gui);
 
 	/*Updates the the LeapmotionPointer's position and drags the pinched Structure if there is one*/
 	void update(bool mode);
@@ -43,9 +48,6 @@ public:
 	/*Draws the LeapmotionPointer's Model */
 	void Draw(const glm::mat4& VP) const;
 
-	/*Initializes the LeapmotionPointer
-	Its offset, its position (set to (0,0,0)) and its Model*/
-	void Init();
 
 	/*returns whether or not the user's rightmost hand is pinching*/
 	bool Pinching()const;
@@ -56,8 +58,8 @@ public:
 
 	/*Returns a pointer to the Structure being dragged
 	Used to keep the pointer to grab another Structure while dragging one*/
-	void AssignStructure(Structure* p_structure);
+	void AssignStructure(MovableStructure* p_structure);
 
 	/*Assigns a Structure to the LeapmotionPointer for dragging*/
-	Structure* AssignedStructure() const;
+	MovableStructure* AssignedStructure() const;
 };

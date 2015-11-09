@@ -1,18 +1,22 @@
 #include "Button.hh"
-
+#include "Structure.hh"
 //copy constructor
-Button::Button(const Button& sourceButton) : _model(*(sourceButton._model.copy())), _position(sourceButton._position)
+/*Button::Button(const Button& sourceButton) : _model(*(sourceButton._model.copy())), _position(sourceButton._position)
 {	
 	this->_shadow.Init("Shaders/shadow_vshader.glsl", "Shaders/shadow_fshader.glsl", "");
 	this->_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(_position.x, -EYES_POSITION + 0.01f, _position.z))*glm::scale(glm::mat4(1.0f), glm::vec3(BUTTON_SIZE)));
-}
+}*/
 
 //this constructo just takes a position and sets up the button's graphical representation based on it
-Button::Button(glm::vec3 position, int ID) : _position(position), _ID(ID)
+Button::Button(glm::vec3 position, int ID, Structure structure) : _position(position), _ID(ID), _structure(structure)
 {
 	_model.Init("Shaders/button_vshader.glsl", "Shaders/button_fshader.glsl", "");
 	_model.SetModelMatrix(glm::translate(glm::mat4(1.0f), _position)*glm::scale(glm::mat4(1.0f), glm::vec3(BUTTON_SIZE)));
 }
+
+
+//Button::Button(glm::vec3 position, int ID, Structure structure);
+
 
 void Button::Draw(const glm::mat4& VP) const
 {
@@ -37,4 +41,9 @@ void Button::CleanUp() const
 glm::vec3 Button::Position() const
 {
 	return this->_position;
+}
+
+Structure Button::AssignedStructure() const
+{
+	return _structure;
 }
