@@ -26,7 +26,7 @@ RiftHandler _rift;
 GUI _GUI;
 
 //viewing mode. false for "in-room" view, true for "box" view
-bool _mode = false;
+bool _mode = true;
 
 glm::mat4 _worldMatrix = glm::mat4();
 

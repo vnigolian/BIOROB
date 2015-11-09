@@ -79,9 +79,10 @@ void LeapmotionPointer::update(bool mode)
 			else//Otherwise it means that the user's hand has been open again and we can drop the Structure
 			{
 				std::cout << "pinching strength :" << _controller.frame().hands().rightmost().pinchStrength() << std::endl;
-				Button* p_button = _p_structure->LinkedButton();
+				unsigned int buttonID = _p_structure->LinkedButtonID();
+				
 				_p_structure->Drop();
-				_p_gui->DroppedStructure(p_button);
+				_p_gui->DroppedStructure(buttonID);
 				_p_structure = NULL;
 			}
 		}

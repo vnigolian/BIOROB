@@ -7,15 +7,15 @@
 
 class GUI
 {
-#define BUTTON_SEPARATION 0.1f
-#define BUTTON_UP_START 0.1f
-#define BUTTON_DEPTH_OFFSET -1.6f
-#define BUTTON_LEFT_OFFSET 0.8f
+#define BUTTON_SEPARATION 0.3f
+#define BUTTON_UP_START 4.0f
+#define BUTTON_DEPTH_OFFSET -2.0f
+#define BUTTON_LEFT_START 4.0f
 
-	std::vector<const Button> buttons;//The Models contained in the scene
-	size_t nButtons = 0;//The number of Models in the scene
-	std::vector<const MovableStructure> structures;//The Structures contained in the scene
-	size_t nStructures = 0;//The number of Structures in the scene
+	std::vector<const Button> _buttons;//The Models contained in the scene
+	size_t _nButtons = 0;//The number of Models in the scene
+	std::vector<const MovableStructure> _structures;//The Structures contained in the scene
+	size_t _nStructures = 0;//The number of Structures in the scene
 
 	LeapmotionPointer _pointer;//The pointer using the Leapmotion device
 
@@ -49,7 +49,7 @@ public:
 	size_t NButtons();
 
 
-	void DroppedStructure(Button* p_button);
+	void DroppedStructure(unsigned int buttonID);
 
 	void hello(){ std::cout << "hello" << std::endl; }
 

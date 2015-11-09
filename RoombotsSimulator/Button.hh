@@ -12,17 +12,17 @@ class Button
 {
 	Cube _model;
 	glm::vec3 _position;
-	int _ID;
+	const unsigned int _ID;
 
 	Quad _shadow;
 	Structure _structure;
 
 public:
 	
-#define BUTTON_SIZE 0.15f
+#define BUTTON_SIZE 1.0f
 
 	//Button(const Button& sourceButton);
-	Button(glm::vec3 position, int ID, Structure structure);
+	Button(glm::vec3 position, unsigned int ID, Structure structure);
 
 	void Draw(const glm::mat4& VP) const;
 
@@ -32,7 +32,7 @@ public:
 
 	glm::vec3 Position() const;
 
-	int ID(){ return _ID; }
+	unsigned int ID(){ return _ID; }
 
 	Structure AssignedStructure() const;
 

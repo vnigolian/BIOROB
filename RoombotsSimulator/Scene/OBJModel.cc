@@ -23,7 +23,7 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 	in.open(_objfilename.c_str());
 	if (in.fail())
 	{
-		std::cout << "ERROR specified file not found" << std::endl;
+		std::cerr << "ERROR - Couldn't open OBJ Model file" << std::endl;
 	}
 	else
 	{

@@ -12,7 +12,7 @@ class MovableStructure
 	Structure _structure;
 	glm::vec3 _position;//The structure's position
 	int _ID;//Its ID
-	Button* _p_button = NULL;//A pointer to the button from which the Structure was created
+	unsigned int _buttonID;//Button* _p_button = NULL;//A pointer to the button from which the Structure was created
 	//Set to NULL once it has been dropped
 
 	bool _moving = false;//Whether the Structure is moving or not. (used in Drop())
@@ -21,9 +21,9 @@ class MovableStructure
 	void SetCenterOffset();
 
 public:
-	MovableStructure(Structure structure, glm::vec3 position, int ID, Button* p_putton);
+	MovableStructure(Structure structure, glm::vec3 position, int ID, unsigned int buttonID);
 
-	void SetLinkedButton(Button* p_button);
+	//void SetLinkedButton(Button* p_button);
 
 	/*Returns true if the position passed in argument is close enough from the Structure's center*/
 	bool CloseEnough(glm::vec3 position);
@@ -44,7 +44,7 @@ public:
 	/*Returns the Structure's center position which is an average of the roombots' positions*/
 	glm::vec3 CenterPosition() const;
 
-	Button* LinkedButton() const;
+	unsigned int LinkedButtonID() const;
 
 	/*Cleans up the RoomBots*/
 	void CleanUp();

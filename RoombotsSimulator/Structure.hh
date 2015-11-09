@@ -1,7 +1,5 @@
 #pragma once
-#pragma once
 
-#include "Scene\HalfModule.hh"
 #include "Scene\RoomBot.hh"
 
 class Structure
@@ -12,7 +10,9 @@ class Structure
 
 public:
 	Structure(std::string sourceFilename);
-	//void Init(std::string sourceFilename);
+
+	Structure(Structure* other);
+
 	/*Draws the Structure*/
 	void Draw(const glm::mat4& VP) const;
 

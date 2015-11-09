@@ -8,10 +8,11 @@
 }*/
 
 //this constructo just takes a position and sets up the button's graphical representation based on it
-Button::Button(glm::vec3 position, int ID, Structure structure) : _position(position), _ID(ID), _structure(structure)
+Button::Button(glm::vec3 position, unsigned int ID, Structure structure) : _position(position), _ID(ID), _structure(structure)
 {
 	_model.Init("Shaders/button_vshader.glsl", "Shaders/button_fshader.glsl", "");
 	_model.SetModelMatrix(glm::translate(glm::mat4(1.0f), _position)*glm::scale(glm::mat4(1.0f), glm::vec3(BUTTON_SIZE)));
+	std::cout << "New button created with ID " << ID << std::endl;
 }
 
 
