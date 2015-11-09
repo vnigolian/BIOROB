@@ -19,6 +19,7 @@ class MovableStructure
 	Quad _shadow; //The Structure's shadow. Helps to see where things are
 
 	void SetCenterOffset();
+	void setPosition(glm::vec3 position);
 
 public:
 	MovableStructure(Structure structure, glm::vec3 position, int ID, unsigned int buttonID);
@@ -42,7 +43,7 @@ public:
 	glm::vec3 Position() const;
 
 	/*Returns the Structure's center position which is an average of the roombots' positions*/
-	glm::vec3 CenterPosition() const;
+	//glm::vec3 CenterPosition() const;
 
 	unsigned int LinkedButtonID() const;
 

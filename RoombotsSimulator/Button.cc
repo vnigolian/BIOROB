@@ -22,7 +22,7 @@ Button::Button(glm::vec3 position, unsigned int ID, Structure structure) : _posi
 void Button::Draw(const glm::mat4& VP) const
 {
 	glEnable(GL_BLEND);
-	_model.Draw(VP);
+	//_model.Draw(VP);
 	//_shadow.Draw(VP);
 	glDisable(GL_BLEND);
 }

@@ -78,14 +78,14 @@ Structure::Structure(Structure* other)
 
 void Structure::SetCenterOffset()
 {
-	glm::vec3 centerOffset;
+	glm::vec3 centerOffset(0.0f);
 	size_t size = roomBots.size();
 	for (size_t i = 0; i < size; i++)
 	{
 		glm::vec3 roomBotPosition = roomBots[i].Position();
-		centerOffset += (1 / (float)size) * glm::vec3(roomBotPosition.x, roomBotPosition.y, -roomBotPosition.z);
+		centerOffset += (1 / (float)size) * glm::vec3(roomBotPosition.x, roomBotPosition.y, roomBotPosition.z);
 	}
-	_centerOffset = MODULE_SIZE * centerOffset - glm::vec3(MODULE_SIZE / 2, MODULE_SIZE / 2, -MODULE_SIZE / 2);
+	_centerOffset = MODULE_SIZE * centerOffset;// -glm::vec3(MODULE_SIZE / 2, MODULE_SIZE / 2, -MODULE_SIZE / 2);
 }
 
 void Structure::Draw(const glm::mat4& VP) const
