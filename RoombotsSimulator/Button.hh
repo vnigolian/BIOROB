@@ -19,7 +19,7 @@ class Button
 
 public:
 	
-#define BUTTON_SIZE 1.0f
+#define BUTTON_SIZE 0.5f
 
 	//Button(const Button& sourceButton);
 	Button(glm::vec3 position, unsigned int ID, Structure structure);

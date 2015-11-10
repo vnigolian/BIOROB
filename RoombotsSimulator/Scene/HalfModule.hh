@@ -14,6 +14,12 @@ private:
 
 	OBJModel _hemisphere1;
 	OBJModel _hemisphere2;
+	OBJModel _circle1;
+	OBJModel _circle2;
+	OBJModel _circle3;
+	OBJModel _circle4;
+	OBJModel _circle5;
+	OBJModel _circle6;
 
 public:
 	//HalfModule();

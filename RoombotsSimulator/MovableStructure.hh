@@ -4,7 +4,7 @@
 #include "Structure.hh"
 
 //#define MODULE_SIZE 0.1f //the size of the Model representing the Structure
-#define DRAG_RADIUS 0.2f //The minimum distance to grab a Structure
+#define DRAG_RADIUS 0.3f //The minimum distance to grab a Structure
 #define SHADOW_SIZE 0.3f
 
 class MovableStructure

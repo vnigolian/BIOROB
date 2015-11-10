@@ -10,7 +10,7 @@ class GUI
 #define BUTTON_SEPARATION 0.3f
 #define BUTTON_UP_START 4.0f
 #define BUTTON_DEPTH_OFFSET -2.0f
-#define BUTTON_LEFT_START 4.0f
+#define BUTTON_LEFT_START 2.0f
 
 	std::vector<const Button> _buttons;//The Models contained in the scene
 	size_t _nButtons = 0;//The number of Models in the scene
