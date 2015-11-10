@@ -8,24 +8,24 @@ void GUI::Init()
 	Structure stool("Structures/stool.rbs");
 	Structure chair("Structures/chair.rbs");
 	Structure table("Structures/table.rbs");
-
-	//Structure custom1("Structures/RB.rbs");
-	//Structure custom2("Structures/RB2.rbs");
-	//Structure custom3("Structures/RB3.rbs");
-	//Structure custom4("Structures/RB4.rbs");
-	//Structure custom5("Structures/RB8.rbs");
-
+	
+	/*Structure custom1("Structures/RB.rbs");
+	Structure custom2("Structures/RB2.rbs");
+	Structure custom3("Structures/RB3.rbs");
+	Structure custom4("Structures/RB4.rbs");
+	Structure custom5("Structures/RB8.rbs");
+	*/
 
 	AddButton(table);
 	AddButton(stool);
 	AddButton(chair);
-
-	//AddButton(custom1);
-	//AddButton(custom2);
-	//AddButton(custom3);
-	//AddButton(custom4);
-	//AddButton(custom5);
-
+	
+	/*AddButton(custom1);
+	AddButton(custom2);
+	AddButton(custom3);
+	AddButton(custom4);
+	AddButton(custom5);
+	*/
 	std::cout << "GUI initialized" << std::endl;
 	_init = true;
 }

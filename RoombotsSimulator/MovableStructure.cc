@@ -61,7 +61,7 @@ void MovableStructure::Draw(const glm::mat4& VP) const
 	_structure.Draw(VP*glm::translate(glm::mat4(1.0f), discrete_position));
 	if (_moving)
 	{
-		_shadow.Draw(VP*glm::translate(glm::mat4(1.0f), discrete_position));
+		//_shadow.Draw(VP*glm::translate(glm::mat4(1.0f), discrete_position));
 	}
 }
 

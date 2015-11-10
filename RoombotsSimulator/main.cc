@@ -91,7 +91,6 @@ void RenderScene()
 	{
 		VP = _rift.glmViewProjMatrix() * _worldMatrix ;
 	}
-
 	_scene.Render(VP);
 
 	_GUI.Render(VP);
@@ -238,8 +237,7 @@ void Init()
 	height = _rift.ResolutionHeight() / 2;
 	glutReshapeWindow(width, height);
 
-	//Structure newStruct(vec3(0.0f), 0, NULL);
-	
+
 	//GUI INIT
 	_GUI.Init();
 
