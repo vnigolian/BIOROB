@@ -37,7 +37,6 @@
     <None Include="Shaders\sky_vshader.glsl">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="ClassDiagram.cd" />
     <None Include="Shaders\pointer_fshader.glsl">
       <Filter>Shaders</Filter>
     </None>

@@ -11,8 +11,8 @@ class LeapmotionPointer
 {
 #define LEAP_POINTER_SIZE 1.0f
 #define COORDINATE_SYSTEM_SCALE_CONVERSION 0.005f
-#define BOX_COORDINATE_SYSTEM_SCALE_CONVERSION 0.027f
-#define PINCHING_LIMIT 0.75f
+#define BOX_COORDINATE_SYSTEM_SCALE_CONVERSION 0.016f
+#define PINCHING_LIMIT 0.7f
 
 	//Leap::Vector _offset;//The offset adapting the Leapmotion's coordinate system to the Scene's
 	Leap::Controller _controller;//The object allowing us to get data from the Leapmotion device

@@ -30,7 +30,7 @@ Leap::Vector LeapmotionPointer::adaptToMode(Leap::Vector right_hand_pos, bool mo
 	if (mode)
 	{
 		adapted *= BOX_COORDINATE_SYSTEM_SCALE_CONVERSION;
-		adapted += Leap::Vector(0.0f, -EYES_POSITION - 5.0f, -4.5f);
+		adapted += Leap::Vector(0.0f, -EYES_POSITION - 2.5f, -3.0f);
 	}
 	else
 	{
@@ -110,6 +110,7 @@ void LeapmotionPointer::Draw(const glm::mat4& VP) const
 
 bool LeapmotionPointer::Pinching() const
 {
+
 	bool pinching = false;
 	if (_controller.isConnected())
 	{

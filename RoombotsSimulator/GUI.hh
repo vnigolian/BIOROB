@@ -7,9 +7,9 @@
 
 class GUI
 {
-#define BUTTON_SEPARATION 0.3f
-#define BUTTON_UP_START 4.0f
-#define BUTTON_DEPTH_OFFSET -2.0f
+#define BUTTON_SEPARATION 1.0f
+#define BUTTON_UP_START 1.8f
+#define BUTTON_DEPTH_OFFSET -4.5f
 #define BUTTON_LEFT_START 2.0f
 
 	std::vector<const Button> _buttons;//The Models contained in the scene
@@ -25,7 +25,7 @@ class GUI
 	void AddButton(Structure structure);
 	
 	/*Checks for every structure if it is being pinched by the LeapmotionPointer*/
-	void CheckForPinchedStructure();
+	void CheckForPinchedStructure(); 
 
 	/*Updates the LeapmotionPointer's position depending on the Leapmotion Controller's data*/
 	void UpdatePointer(bool mode);

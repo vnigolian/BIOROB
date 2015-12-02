@@ -1,5 +1,6 @@
 #include "OBJModel.hh"
 
+int trolcount = 0;
 
 OBJModel* OBJModel::copy() const
 {
@@ -78,8 +79,9 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 			}
 		}
 	}
-	//std::cout << "finished loading" << std::endl;
-	//std::cout << " with " << vertices->size() << std::endl;
+	trolcount += vertices->size()/3;
+	//std::cout << "finished loading  with " << vertices->size() << std::endl;
+	std::cout << "count at : " << trolcount << std::endl;
 	in.close();
 }
 

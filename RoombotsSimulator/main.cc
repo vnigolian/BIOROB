@@ -75,7 +75,7 @@ glm::mat4 WorldViewMatrix()
 	if (_mode)
 	{
 		worldViewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -0.2f, -0.2f))
-			*glm::scale(glm::mat4(1.0f), glm::vec3(1 / 25.0f));
+			*glm::scale(glm::mat4(1.0f), glm::vec3(1 / 12.0f));
 	}
 	return worldViewMatrix;
 }
@@ -148,7 +148,7 @@ void Init()
 	glEnable(GL_DEPTH_TEST);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	const float roomSize = 10.0f;
+	const float roomSize = 5.0f;
 
 	Quad floor_quad;
 	floor_quad.Init("Shaders/quad_vshader.glsl", "Shaders/quad_fshader.glsl", "Textures/wood2.jpg");
@@ -207,7 +207,40 @@ void Init()
 		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 
+	Quad right_window1;
+	right_window1.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/window.jpg");
+	right_window1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0 - 0.01, -EYES_POSITION + roomSize / 6.0, -roomSize / 3.0))
+		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
+		*glm::rotate(1.57f, glm::vec3(0.0f, 1.0f, 0.0f))
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 6)));
 
+	Quad right_window2;
+	right_window2.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/window.jpg");
+	right_window2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0 - 0.01, -EYES_POSITION + roomSize / 6.0, - 2 * roomSize / 3.0))
+		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
+		*glm::rotate(1.57f, glm::vec3(0.0f, 1.0f, 0.0f))
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 6)));
+
+	Quad back_window1;
+	back_window1.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/window.jpg");
+	back_window1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2 + roomSize / 6, -EYES_POSITION + roomSize / 6.0, -roomSize + 0.015))
+		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 6)));
+
+	Quad back_window2;
+	back_window2.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/window.jpg");
+	back_window2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2 - roomSize / 6, -EYES_POSITION + roomSize / 6.0, -roomSize + 0.015))
+
+		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 6)));
+	
+	Quad door;
+	door.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/wooden_door.jpg");
+	door.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2.0 + 0.01, -EYES_POSITION + roomSize / 6.4, -roomSize / 3.0))
+		*glm::rotate(1.57f, glm::vec3(0.0f, 1.0f, 0.0f))
+		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 6.4,roomSize / 6.4, 2* roomSize/6.4)));
+	
 	Cube skybox;
 	skybox.Init("Shaders/sky_vshader.glsl", "Shaders/sky_fshader.glsl", "Textures/skybox_texture.jpg");
 	skybox.SetModelMatrix(glm::scale(glm::mat4(1.0f), glm::vec3(50.0f)));
@@ -226,6 +259,13 @@ void Init()
 	_scene.AddModel(back_wall1);
 	_scene.AddModel(back_wall2);
 	_scene.AddModel(back_wall3);
+
+	_scene.AddModel(right_window1);
+	_scene.AddModel(right_window2);
+	_scene.AddModel(back_window1);
+	_scene.AddModel(back_window2);
+	_scene.AddModel(door);
+
 	
 	//roomBot.Init(0, 0, -1, 0, 1, -1);
 
