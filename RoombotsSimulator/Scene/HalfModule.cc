@@ -37,7 +37,7 @@
 
 }*/
 
-void HalfModule::Init(int x, int y, int z)
+void HalfModule::Init(int x, int y, int z, OBJModel* p_h1, OBJModel* p_h2)
 {
 	_x = x;
 	_y = y;
@@ -46,7 +46,10 @@ void HalfModule::Init(int x, int y, int z)
 	glm::vec3 position(_x, _y, _z);
 	position *= MODULE_SIZE;
 
-	_hemisphere1.setOBJfile("Models/hemisphere_with_holes.obj");
+	_hemisphere1 = p_h1;
+	_hemisphere2 = p_h2;
+
+	/*_hemisphere1.setOBJfile("Models/hemisphere_with_holes.obj");
 	_hemisphere2.setOBJfile("Models/hemisphere_with_holes.obj");
 
 	_hemisphere1.Init("Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "",glm::vec4(0.2f,0.2f,0.2f,1.0f));
@@ -58,7 +61,7 @@ void HalfModule::Init(int x, int y, int z)
 		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
 		*glm::rotate(3.14f, glm::vec3(.0f, 0.0f, 1.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
-
+*/
 	glm::vec4 pale_green(0.66f, 0.66f, 0.18f, 1.0f);
 
 	_circle1.setOBJfile("Models/circle.obj");
@@ -102,11 +105,14 @@ void HalfModule::Init(int x, int y, int z)
 
 void HalfModule::Draw(const glm::mat4& VP) const
 {
-	//_hemisphere1.DrawWithLines(VP);
-	//_hemisphere2.DrawWithLines(VP);
+	glm::vec3 position(_x, _y, _z);
+	position *= MODULE_SIZE;
+	glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), position);
+	glm::mat4 VPWithTranslate = VP*translationMatrix;
+	
 
-	_hemisphere1.Draw(VP);
-	_hemisphere2.Draw(VP);
+	_hemisphere1->Draw(VPWithTranslate);
+	_hemisphere2->Draw(VPWithTranslate);
 	_circle1.Draw(VP);
 	_circle2.Draw(VP);
 	_circle3.Draw(VP);

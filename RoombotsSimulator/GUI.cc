@@ -5,9 +5,26 @@ void GUI::Init()
 {
 	_pointer.Init(this);
 
-	Structure stool("Structures/stool.rbs");
-	Structure chair("Structures/chair.rbs");
-	Structure table("Structures/table.rbs");
+	OBJModel* hemisphere1 = new OBJModel();
+	OBJModel* hemisphere2 = new OBJModel();
+
+	hemisphere1->setOBJfile("Models/hemisphere_with_holes.obj");
+	hemisphere2->setOBJfile("Models/hemisphere_with_holes.obj");
+
+	hemisphere1->Init("Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", glm::vec4(0.2f, 0.2f, 0.2f, 1.0f));
+	hemisphere2->Init("Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", glm::vec4(0.8f, 0.8f, 0.8f, 1.0f));
+	
+	hemisphere1->SetModelMatrix(glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
+	hemisphere2->SetModelMatrix(glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
+	*glm::rotate(3.14f, glm::vec3(.0f, 0.0f, 1.0f))
+	*glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
+
+
+	
+
+	Structure stool("Structures/stool.rbs", hemisphere1,hemisphere2);
+	Structure chair("Structures/chair.rbs", hemisphere1, hemisphere2);
+	Structure table("Structures/table.rbs", hemisphere1, hemisphere2);
 	
 	/*Structure custom1("Structures/RB.rbs");
 	Structure custom2("Structures/RB2.rbs");

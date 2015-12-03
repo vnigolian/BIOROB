@@ -12,8 +12,8 @@ private:
 	int _y;
 	int _z;
 
-	OBJModel _hemisphere1;
-	OBJModel _hemisphere2;
+	OBJModel* _hemisphere1;
+	OBJModel* _hemisphere2;
 	OBJModel _circle1;
 	OBJModel _circle2;
 	OBJModel _circle3;
@@ -24,7 +24,7 @@ private:
 public:
 	//HalfModule();
 	//HalfModule(int x, int y, int z);
-	void Init(int, int, int);
+	void Init(int, int, int, OBJModel* p_h1, OBJModel* p_h2);
 	void Draw(const glm::mat4& VP) const;
 	//void Move(int x, int y, int z);
 

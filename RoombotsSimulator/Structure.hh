@@ -9,7 +9,7 @@ class Structure
 	void SetCenterOffset();
 
 public:
-	Structure(std::string sourceFilename);
+	Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2);
 
 	Structure(Structure* other);
 
