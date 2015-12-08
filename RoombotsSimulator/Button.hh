@@ -15,14 +15,14 @@ class Button
 	const unsigned int _ID;
 
 	Quad _shadow;
-	Structure _structure;
+	Structure* _p_structure;
 
 public:
 	
 #define BUTTON_SIZE 0.5f
 
 	//Button(const Button& sourceButton);
-	Button(glm::vec3 position, unsigned int ID, Structure structure);
+	Button(glm::vec3 position, unsigned int ID, Structure* p_structure);
 
 	void Draw(const glm::mat4& VP) const;
 
@@ -34,7 +34,7 @@ public:
 
 	unsigned int ID(){ return _ID; }
 
-	Structure AssignedStructure() const;
+	Structure* AssignedStructure() const;
 
 private:
 	void Click() const;

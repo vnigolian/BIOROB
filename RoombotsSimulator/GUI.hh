@@ -22,7 +22,7 @@ class GUI
 	bool _init = false;//Set to true once initialized
 
 	/*Adds a button to the interface (max 3 for now)*/
-	void AddButton(Structure structure);
+	void AddButton(Structure* p_structure);
 	
 	/*Checks for every structure if it is being pinched by the LeapmotionPointer*/
 	void CheckForPinchedStructure(); 

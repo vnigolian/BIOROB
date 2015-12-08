@@ -13,7 +13,6 @@ void const Scene::Render(const glm::mat4& VP)
 	for (size_t i(0); i < this->nModels; i++)
 	{
 		models[i]->Draw(VP);
-		models[i]->Draw(VP);
 	}
 }
 

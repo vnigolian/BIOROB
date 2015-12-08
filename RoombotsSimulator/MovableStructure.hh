@@ -9,7 +9,7 @@
 
 class MovableStructure
 {
-	Structure _structure;
+	Structure* const _p_structure;
 	glm::vec3 _position;//The structure's position
 	int _ID;//Its ID
 	unsigned int _buttonID;//Button* _p_button = NULL;//A pointer to the button from which the Structure was created
@@ -22,7 +22,7 @@ class MovableStructure
 	void setPosition(glm::vec3 position);
 
 public:
-	MovableStructure(Structure structure, glm::vec3 position, int ID, unsigned int buttonID);
+	MovableStructure(Structure* p_structure, glm::vec3 position, int ID, unsigned int buttonID);
 
 	//void SetLinkedButton(Button* p_button);
 

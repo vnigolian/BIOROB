@@ -23,7 +23,7 @@ typedef struct
 	int z;
 } Triplet;
 
-Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2)
+Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2) : _filename(sourceFilename)
 {
 	std::fstream in(sourceFilename);
 	if (in.is_open())
@@ -67,15 +67,14 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2)
 	SetCenterOffset();
 }
 
-Structure::Structure(Structure* other)
+/*Structure::Structure(Structure* other) : _filename(other->_filename), _centerOffset(other->_centerOffset)
 {
 	for (size_t i = 0; i < other->roomBots.size(); i++)
 	{
 		roomBots.push_back(other->roomBots[i]);
 	}
-	_centerOffset = other->CenterOffset();
 	std::cout << "copied a Structure" << std::endl;
-}
+}*/
 
 void Structure::SetCenterOffset()
 {

@@ -6,8 +6,8 @@ std::ostream& operator<<(std::ostream& os, glm::vec3 vec)
 	return os;
 }
 
-MovableStructure::MovableStructure(Structure structure, glm::vec3 position, int ID, unsigned int buttonID) : 
-_structure(structure), _ID(ID), _buttonID(buttonID)
+MovableStructure::MovableStructure(Structure* p_structure, glm::vec3 position, int ID, unsigned int buttonID) : 
+_p_structure(p_structure), _ID(ID), _buttonID(buttonID)
 {
 	setPosition(position);
 	_shadow.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
@@ -18,7 +18,7 @@ _structure(structure), _ID(ID), _buttonID(buttonID)
 
 void MovableStructure::setPosition(glm::vec3 position)
 {
-	_position = position - _structure.CenterOffset() + glm::vec3(MODULE_SIZE/2);
+	_position = position - _p_structure->CenterOffset() + glm::vec3(MODULE_SIZE/2);
 }
 
 void MovableStructure::Drag(const glm::vec3& position)
@@ -36,7 +36,7 @@ void MovableStructure::Drop()
 	//When the Structure is dropped, we simply set the y-coordinate to the ground's y-coordinate 
 	_moving = false;
 	setPosition(glm::vec3(_position.x, -EYES_POSITION + 0.01f, _position.z) 
-		+ _structure.CenterOffset() 
+		+ _p_structure->CenterOffset() 
 		- glm::vec3(MODULE_SIZE / 2, 0.0f, MODULE_SIZE / 2));
 
 	//_p_button = NULL;
@@ -58,7 +58,10 @@ void MovableStructure::Draw(const glm::mat4& VP) const
 	discrete_position = MODULE_SIZE * discrete_position;
 	//std::cout << "discrete_position : "<< discrete_position.x << " " << discrete_position.y << " " << discrete_position.z << " " << std::endl;
 
-	_structure.Draw(VP*glm::translate(glm::mat4(1.0f), discrete_position));
+	if (_p_structure != NULL)
+	{
+		_p_structure->Draw(VP*glm::translate(glm::mat4(1.0f), discrete_position));
+	}
 	if (_moving)
 	{
 		//_shadow.Draw(VP*glm::translate(glm::mat4(1.0f), discrete_position));

@@ -22,9 +22,9 @@ void GUI::Init()
 
 	
 
-	Structure stool("Structures/stool.rbs", hemisphere1,hemisphere2);
-	Structure chair("Structures/chair.rbs", hemisphere1, hemisphere2);
-	Structure table("Structures/table.rbs", hemisphere1, hemisphere2);
+	Structure* stool = new Structure("Structures/stool.rbs", hemisphere1,hemisphere2);
+	Structure* chair = new Structure("Structures/chair.rbs", hemisphere1, hemisphere2);
+	Structure* table = new Structure("Structures/table.rbs", hemisphere1, hemisphere2);
 	
 	/*Structure custom1("Structures/RB.rbs");
 	Structure custom2("Structures/RB2.rbs");
@@ -47,7 +47,7 @@ void GUI::Init()
 	_init = true;
 }
 
-void GUI::AddButton(Structure structure)
+void GUI::AddButton(Structure* p_structure)
 {
 	if (_nButtons <= 5)//we want max 5 buttons for now
 	{
@@ -55,7 +55,7 @@ void GUI::AddButton(Structure structure)
 		glm::vec3 position = glm::vec3(BUTTON_LEFT_START - (this->_nButtons)*(BUTTON_SIZE + BUTTON_SEPARATION), BUTTON_UP_START, BUTTON_DEPTH_OFFSET);
 
 		//we create the new Button with the position
-		Button newButton(position, _nButtons,structure);
+		Button newButton(position, _nButtons, p_structure);
 		_buttons.push_back(newButton);
 		_nButtons++;
 		//MovableStructure::MovableStructure(Structure structure, glm::vec3 position, int ID, Button* p_button) :
