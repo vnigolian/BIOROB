@@ -33,7 +33,7 @@ void GUI::Init()
 	Structure custom5("Structures/RB8.rbs");
 	*/
 
-	AddButton(table);
+	//AddButton(table);
 	AddButton(stool);
 	AddButton(chair);
 	

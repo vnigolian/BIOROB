@@ -1,5 +1,7 @@
 #include "MovableStructure.hh"
 
+int count = 0;
+
 std::ostream& operator<<(std::ostream& os, glm::vec3 vec)
 {
 	os << "(" << vec.x << "," << vec.y << "," << vec.z << ")";
@@ -14,6 +16,9 @@ _p_structure(p_structure), _ID(ID), _buttonID(buttonID)
 	_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(_position.x, -EYES_POSITION + 0.01f, _position.z))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
 	//std::cout << "New MovableStructure created with linked button with ID " << _buttonID <<" and center offset at " << _structure.CenterOffset()<< std::endl;
+
+	count++;
+	std::cout << "count at : " << count << std::endl;
 }
 
 void MovableStructure::setPosition(glm::vec3 position)
@@ -57,7 +62,6 @@ void MovableStructure::Draw(const glm::mat4& VP) const
 	glm::vec3 discrete_position = glm::vec3(floor(scaledPosition.x), scaledPosition.y, floor(scaledPosition.z));
 	discrete_position = MODULE_SIZE * discrete_position;
 	//std::cout << "discrete_position : "<< discrete_position.x << " " << discrete_position.y << " " << discrete_position.z << " " << std::endl;
-
 	if (_p_structure != NULL)
 	{
 		_p_structure->Draw(VP*glm::translate(glm::mat4(1.0f), discrete_position));

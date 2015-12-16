@@ -27,6 +27,8 @@ class LeapmotionPointer
 	bool _init = false;//Set to true once initialized
 
 	Cube _pointerModel;//the Model representing the LeapmotionPointer (for now a Cube)
+	Cube _referencePointerModel;
+
 	Quad _shadow;
 
 	GUI* _p_gui;//A pointer to the GUI so it can tell it to add a new Structure to a button once it's dropped

@@ -1,5 +1,11 @@
 #include "Scene.hh"
 
+void Scene::initRoof(double roomSize){
+	_roof.Init("Shaders/quad_vshader.glsl", "Shaders/quad_fshader.glsl", "Textures/wood2.jpg");
+	_roof.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -EYES_POSITION + roomSize / 3.0, -roomSize / 2.0))
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize)));
+}
+
 
 void Scene::AddModel(const Model& sourceModel)
 {	
@@ -8,11 +14,14 @@ void Scene::AddModel(const Model& sourceModel)
 	//std::cout << "model's texture : " << models[nModels-1]->Texture() << "\n";
 }
 
-void const Scene::Render(const glm::mat4& VP)
+void const Scene::Render(const glm::mat4& VP, bool drawRoof)
 {
 	for (size_t i(0); i < this->nModels; i++)
 	{
 		models[i]->Draw(VP);
+	}
+	if (drawRoof){
+		_roof.Draw(VP);
 	}
 }
 

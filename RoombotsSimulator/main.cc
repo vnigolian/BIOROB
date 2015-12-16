@@ -91,7 +91,7 @@ void RenderScene()
 	{
 		VP = _rift.glmViewProjMatrix() * _worldMatrix ;
 	}
-	_scene.Render(VP);
+	_scene.Render(VP,!_mode);
 
 	_GUI.Render(VP);
 }
@@ -207,6 +207,26 @@ void Init()
 		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
 
+	Quad front_wall1;
+	front_wall1.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
+	front_wall1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(-roomSize / 2 + roomSize / 6, -EYES_POSITION + roomSize / 6.0, -0.0))
+		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
+		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
+	Quad front_wall2;
+	front_wall2.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
+	front_wall2.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -EYES_POSITION + roomSize / 6.0, -0.0))
+		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
+		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
+	Quad front_wall3;
+	front_wall3.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/brick1.jpg");
+	front_wall3.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2 - roomSize / 6, -EYES_POSITION + roomSize / 6.0, 0.0))
+		*glm::rotate(1.57f, glm::vec3(0.0f, 0.0f, 1.0f))
+		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
+		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize / 3)));
+
+
 	Quad right_window1;
 	right_window1.Init("Shaders/quad_vshader.glsl", "Shaders/quad2_fshader.glsl", "Textures/window.jpg");
 	right_window1.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(roomSize / 2.0 - 0.01, -EYES_POSITION + roomSize / 6.0, -roomSize / 3.0))
@@ -260,13 +280,18 @@ void Init()
 	_scene.AddModel(back_wall2);
 	_scene.AddModel(back_wall3);
 
+	_scene.AddModel(front_wall1);
+	_scene.AddModel(front_wall2);
+	_scene.AddModel(front_wall3);
+
 	_scene.AddModel(right_window1);
 	_scene.AddModel(right_window2);
 	_scene.AddModel(back_window1);
 	_scene.AddModel(back_window2);
 	_scene.AddModel(door);
 
-	
+	_scene.initRoof(roomSize);
+
 	//roomBot.Init(0, 0, -1, 0, 1, -1);
 
 	_rift.Init(RenderScene);

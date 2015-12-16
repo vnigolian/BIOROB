@@ -10,6 +10,11 @@ void LeapmotionPointer::Init(GUI* p_gui)
 		_pointerModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.5f, 0.0f, -1.0f))
 			*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
 
+		_referencePointerModel.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
+		_referencePointerModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.5f, 0.0f, -1.0f))
+			*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
+
+
 		_shadow.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
 		_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(_position.x, -EYES_POSITION + 0.01f, _position.z))
 			*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
@@ -63,6 +68,10 @@ void LeapmotionPointer::update(bool mode)
 
 				_pointerModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), _position)
 					*glm::scale(glm::mat4(1.0f), glm::vec3(pinchingValue*LEAP_POINTER_SIZE)));
+				
+				_referencePointerModel.SetModelMatrix(glm::translate(glm::mat4(1.0f), _position)
+					*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
+
 				_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(_position.x, -EYES_POSITION + 0.01f, _position.z))
 					*glm::scale(glm::mat4(1.0f), glm::vec3(pinchingValue*LEAP_POINTER_SIZE)));
 			}
@@ -100,6 +109,7 @@ void LeapmotionPointer::Draw(const glm::mat4& VP) const
 	{
 		glEnable(GL_BLEND);
 		_pointerModel.Draw(VP);
+		_referencePointerModel.DrawWithLines(VP);
 		_shadow.Draw(VP);
 		glDisable(GL_BLEND);
 	}
@@ -119,7 +129,7 @@ bool LeapmotionPointer::Pinching() const
 			//The pinching value goes from 0.0 for a fully open hand 
 			//to 1.0 for a hand where the thumb is in direct contact with another finger
 			//0.8 has been chosen for a minimum pinching value because the Leapmotion device
-			//return values smaller than 1.0 for a truly pinching hand
+			//return values smaller than 1.0 for an actually pinching hand
 			if (_controller.frame().hands().rightmost().pinchStrength() > PINCHING_LIMIT)
 			{
 				pinching = true;

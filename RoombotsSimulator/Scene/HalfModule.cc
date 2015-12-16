@@ -113,6 +113,8 @@ void HalfModule::Draw(const glm::mat4& VP) const
 
 	_hemisphere1->Draw(VPWithTranslate);
 	_hemisphere2->Draw(VPWithTranslate);
+	
+
 	_circle1.Draw(VP);
 	_circle2.Draw(VP);
 	_circle3.Draw(VP);

@@ -37,7 +37,7 @@ void Simulator::RenderScene()
 {
 	glm::mat4 VP = _rift.glmViewProjMatrix()*_worldMatrix;
 
-	_scene.Render(VP);
+	_scene.Render(VP,false);
 
 	_GUI.Render(VP);
 }
