@@ -1,20 +1,24 @@
 #include "OBJModel.hh"
 
+OBJModel::OBJModel(const std::string OBJFilename,
+	const char* vShaderFileName,
+	const char* fShaderFileName,
+	const char* textureFileName,
+	const glm::vec4& color) :  _objfilename(OBJFilename), Model(vShaderFileName, fShaderFileName, textureFileName, color) {}
+
+
 OBJModel* OBJModel::copy() const
 {
-	OBJModel* p_newOBJModel =  new OBJModel;
-
-	p_newOBJModel->setOBJfile(_objfilename);
-	p_newOBJModel->Init(_vShader, _fShader, _texture);
+	OBJModel* p_newOBJModel = new OBJModel(_objfilename,_vShader, _fShader, _texture, _color);
 	p_newOBJModel->SetModelMatrix(_M);
 	return p_newOBJModel;
 }
 
 
-void OBJModel::setOBJfile(std::string filename)
+/*void OBJModel::setOBJfile(std::string filename)
 {
 	_objfilename = filename;
-}
+}*/
 
 void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 {

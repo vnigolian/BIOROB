@@ -21,7 +21,7 @@ using namespace Core;
 ShaderLoader::ShaderLoader(void){}
 ShaderLoader::~ShaderLoader(void){}
 
-std::string ShaderLoader::ReadShader(char *filename)
+std::string ShaderLoader::ReadShader(const char *filename)
 {
 	
 	std::string shaderCode;//this string that will contain the glsl program
@@ -75,8 +75,8 @@ GLuint ShaderLoader::CreateShader(GLenum shaderType,
 	return shader;
 }
 
-GLuint ShaderLoader::CreateProgram(char* vShaderFilename,
-	                               char* fShaderFilename)
+GLuint ShaderLoader::CreateProgram(const char* vShaderFilename,
+	                               const char* fShaderFilename)
 {
 
 	//use our previously defined method to read the shader files and save the code

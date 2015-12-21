@@ -74,7 +74,7 @@ void Simulator::HandleKeyboard(unsigned char key, int x, int y)
 
 void Simulator::InitScene()
 {
-const float roomSize = 10.0f;
+/*const float roomSize = 10.0f;
 const float eyesPosition = 1.2f;
 
 Quad floor_quad;
@@ -152,7 +152,7 @@ _scene.AddModel(right_wall3);
 
 _scene.AddModel(back_wall1);
 _scene.AddModel(back_wall2);
-_scene.AddModel(back_wall3);
+_scene.AddModel(back_wall3);*/
 }
 
 void Simulator::Init(int argc, char** argv, void(*display)(void), void(*resize)(int, int), void(*keyboard)(unsigned char, int, int), void(*riftDisplay)(void))

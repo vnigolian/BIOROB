@@ -1,6 +1,18 @@
 #include "Model.hh"
 
-Model::Model(){}
+//Model::Model(){}
+
+Model::Model(const char* vShaderFileName,
+	const char* fShaderFileName,
+	const char* textureFileName,
+	const glm::vec4& color) 
+	: _M(glm::mat4(1.0f)), 
+	_vShader(vShaderFileName), 
+	_fShader(fShaderFileName), 
+	_texture(textureFileName), 
+	_color(color) {
+	Init();
+}
 
 void Model::SetModelMatrix(const glm::mat4& M)
 {
@@ -27,9 +39,7 @@ void Model::SetVerticesAndUVs(std::vector<glm::vec3> *vertices, std::vector<glm:
 void Model::SetVertices(std::vector<glm::vec3> *vertices){}
 void Model::SetUVs(std::vector<glm::vec2> *uvs){}
 
-void Model::Init(char* vShaderFileName, 
-	             char* fShaderFileName, 
-				 char* textureFileName)
+void Model::Init()
 {
 	
 	std::vector<glm::vec3> vertices;
@@ -55,7 +65,7 @@ void Model::Init(char* vShaderFileName,
 	{
 		///--- Compile the shaders
 		Core::ShaderLoader shaderLoader;
-		_pid = shaderLoader.CreateProgram(vShaderFileName, fShaderFileName);
+		_pid = shaderLoader.CreateProgram(_vShader, _fShader);
 		
 		if (!_pid) exit(EXIT_FAILURE);
 
@@ -98,7 +108,7 @@ void Model::Init(char* vShaderFileName,
 
 		int width = 0; //IMPORTANT ! HOW THE HELL ARE THOSE USED ?!
 		int height = 0;
-		unsigned char* image = SOIL_load_image(textureFileName, &width, &height, 0, SOIL_LOAD_RGB);
+		unsigned char* image = SOIL_load_image(_texture, &width, &height, 0, SOIL_LOAD_RGB);
 
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 		SOIL_free_image_data(image);
@@ -113,21 +123,9 @@ void Model::Init(char* vShaderFileName,
 		glUseProgram(0);
 
 		_initialized = true;
-		_vShader = vShaderFileName;
-		_fShader = fShaderFileName;
-		_texture = textureFileName;
-
 	}
 }
 
-void Model::Init(char* vShaderFileName,
-	             char* fShaderFileName,
-	             char* textureFileName,
-	             glm::vec4& color)
-{
-	Init(vShaderFileName, fShaderFileName, textureFileName);
-	_color = color;
-}
 
 void Model::CleanUp() const
 {

@@ -4,7 +4,7 @@
 #include "..\ShaderLoader.hh"
 
 
-/*__declspec(align(16)) */class Model{
+__declspec(align(16)) class Model{
 	GLuint  _vao;          // vertex array object
 	GLuint  _pid;          // GLSL shader program ID 
 	GLuint  _vbo;          // positions buffer
@@ -13,25 +13,30 @@
 	GLsizei _nUVs;         // number of uvs
 
 public:
-	Model();
+	Model(const std::string vShaderFileName,
+		const std::string fShaderFileName,
+		const std::string textureFileName,
+		const glm::vec4& color) : 
+		Model(vShaderFileName.c_str(), fShaderFileName.c_str(), textureFileName.c_str(), color){}
 
-	char* Texture()  const { return _texture; } 
+	Model(const char* vShaderFileName,
+		const char* fShaderFileName,
+		const char* textureFileName,
+		const glm::vec4& color);
+
+	void* operator new(size_t i)
+	{
+		return _mm_malloc(i, 16);
+	}
+
+		void operator delete(void* p)
+	{
+		_mm_free(p);
+	}
+
+	const char* Texture(){ return _texture; }  
 
 	virtual Model* copy() const = 0;
-
-	/*Initializes the Model with a vertex shader, a fragment shader and a texture
-	  After this method has been called, the model matrix has yet to be set.
-	  NOTE : we must be able to set the model matrix separately in order to modify the
-	         model after it has been initialized */
-	virtual void Init(char* vShaderFileName, 
-		      char* fShaderFileName, 
-			  char* textureFileName);
-
-	/*Same as above but also with a color*/
-	virtual void Init(char* vShaderFileName,
-		              char* fShaderFileName,
-		              char* textureFileName,
-		              glm::vec4& color);
 
 
 	/*Sets the model matrix as the one passed in argument
@@ -62,11 +67,11 @@ public:
 	            the elements of those vectors*/
 protected:
 
-	glm::mat4 _M;            // model matrix
+	glm::mat4 _M = glm::mat4(1.0f);            // model matrix
 	GLboolean _initialized= false;     // set on 'true' once initialized
-	char*     _vShader;
-	char*     _fShader;
-	char*     _texture;
+	const char*     _vShader = "";
+	const char*     _fShader = "";
+	const char*     _texture = "";
 	glm::vec4 _color = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f); //The color of the Model (black by default)
 
 	void SetVerticesAndUVs(std::vector<glm::vec3> *vertices, std::vector<glm::vec2> *uvs);
@@ -82,4 +87,6 @@ protected:
 	  color of every pixel*/
 	virtual void SetUVs(std::vector<glm::vec2> *uvs) = 0;
 
+	
+	virtual void Init();
 };

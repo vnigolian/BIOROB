@@ -11,7 +11,7 @@ namespace Core
 
 		/*reads the file indicated by 'filename' and returns the whole glsl program
 		*/
-		std::string ReadShader(char *filename);
+		std::string ReadShader(const char *filename);
 
 		/*creates a new shader based on the arguments
 		*/
@@ -27,8 +27,8 @@ namespace Core
 		/*creates a new program using the two shaders indicated by the names 
 		passed in arguments and returns its ID
 		*/
-		GLuint CreateProgram(char* VertexShaderFilename,
-			                 char* FragmentShaderFilename);
+		GLuint CreateProgram(const char* VertexShaderFilename,
+			                 const char* FragmentShaderFilename);
 
 	};
 }

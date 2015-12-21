@@ -26,6 +26,16 @@ class Cube : public Model {
 	  rr the right face and ll the left face
 	  */
 public:
+	Cube(const std::string vShaderFileName,
+		const std::string fShaderFileName,
+		const std::string textureFileName,
+		const glm::vec4& color) : Model(vShaderFileName, fShaderFileName, textureFileName, color){}
+
+	Cube(const char* vShaderFileName,
+		const char* fShaderFileName,
+		const char* textureFileName,
+		const glm::vec4& color) : Model(vShaderFileName, fShaderFileName, textureFileName, color) {}
+	
 	Cube* copy() const;
 	void print() const {
 

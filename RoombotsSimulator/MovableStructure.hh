@@ -16,7 +16,7 @@ class MovableStructure
 	//Set to NULL once it has been dropped
 
 	bool _moving = false;//Whether the Structure is moving or not. (used in Drop())
-	Quad _shadow; //The Structure's shadow. Helps to see where things are
+	Quad* _shadow; //The Structure's shadow. Helps to see where things are
 
 	void SetCenterOffset();
 	void setPosition(glm::vec3 position);

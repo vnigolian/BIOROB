@@ -1,22 +1,9 @@
 #include "Cube.hh"
-
+ 
 Cube* Cube::copy() const
 {
-	Cube* p_newCube = NULL;
-	Cube newCube;
-
-	if (_initialized)
-	{
-		newCube.Init(_vShader, _fShader, _texture);
-		newCube.SetModelMatrix(_M);
-		p_newCube = (Cube*)malloc(sizeof(Cube));
-		
-		if (p_newCube != NULL)
-		{
-			*p_newCube = newCube;
-		}
-	}
-
+	Cube* p_newCube = new Cube(_vShader, _fShader, _texture, _color);
+	p_newCube->SetModelMatrix(_M);
 	return p_newCube;
 }
 

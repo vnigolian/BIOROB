@@ -52,8 +52,7 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2)
 		}
 		for (size_t i = 0; i < positions.size(); i+=2)
 		{
-			RoomBot roomBot;
-			roomBot.Init(positions[i].x - minX, positions[i].y - minY, positions[i].z - minZ,
+			RoomBot roomBot(positions[i].x - minX, positions[i].y - minY, positions[i].z - minZ,
 				         positions[i+1].x - minX, positions[i+1].y - minY, positions[i+1].z - minZ,
 						 p_h1, p_h2);
 			roomBots.push_back(roomBot);

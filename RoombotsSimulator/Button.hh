@@ -10,11 +10,11 @@
 
 class Button
 {
-	Cube _model;
+	Cube* _model;
 	glm::vec3 _position;
 	const unsigned int _ID;
 
-	Quad _shadow;
+	Quad* _shadow;
 	Structure* _p_structure;
 
 public:

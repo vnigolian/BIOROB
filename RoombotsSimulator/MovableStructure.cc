@@ -12,8 +12,8 @@ MovableStructure::MovableStructure(Structure* p_structure, glm::vec3 position, i
 _p_structure(p_structure), _ID(ID), _buttonID(buttonID)
 {
 	setPosition(position);
-	_shadow.Init("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "");
-	_shadow.SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(_position.x, -EYES_POSITION + 0.01f, _position.z))
+	_shadow = new Quad("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "", glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+	_shadow->SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(_position.x, -EYES_POSITION + 0.01f, _position.z))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
 	//std::cout << "New MovableStructure created with linked button with ID " << _buttonID <<" and center offset at " << _structure.CenterOffset()<< std::endl;
 
@@ -84,7 +84,7 @@ glm::vec3 MovableStructure::Position() const
 
 void MovableStructure::CleanUp()
 {
-	_shadow.CleanUp();
+	_shadow->CleanUp();
 }
 
 unsigned int MovableStructure::LinkedButtonID() const

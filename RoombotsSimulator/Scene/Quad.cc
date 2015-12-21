@@ -2,21 +2,8 @@
 
 Quad* Quad::copy() const
 {
-	Quad* p_newQuad = NULL;
-	Quad newQuad;
-
-	if (_initialized)
-	{
-		newQuad.Init(_vShader, _fShader, _texture);
-		newQuad.SetModelMatrix(_M);
-		p_newQuad = (Quad*)malloc(sizeof(Quad));
-
-		if (p_newQuad != NULL)
-		{
-			*p_newQuad = newQuad;
-		}
-	}
-
+	Quad* p_newQuad = new Quad(_vShader, _fShader, _texture, _color);
+	p_newQuad->SetModelMatrix(_M);
 	return p_newQuad;
 }
 

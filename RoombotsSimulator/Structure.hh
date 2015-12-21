@@ -4,7 +4,7 @@
 
 class Structure
 {
-	const std::string _filename;
+	const std::string _filename = "";
 	glm::vec3 _centerOffset;//The difference between the Structure's position and its center
 	std::vector<RoomBot> roomBots; //The RoomBot modules of the Structure
 	void SetCenterOffset();
