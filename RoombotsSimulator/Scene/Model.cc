@@ -11,7 +11,7 @@ Model::Model(const char* vShaderFileName,
 	_fShader(fShaderFileName), 
 	_texture(textureFileName), 
 	_color(color) {
-	Init();
+
 }
 
 void Model::SetModelMatrix(const glm::mat4& M)

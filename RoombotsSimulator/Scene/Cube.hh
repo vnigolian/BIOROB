@@ -3,7 +3,7 @@
 #include "Model.hh"
 
 
-class Cube : public Model {
+__declspec(align(16)) class Cube : public Model {
 
 
 	/*The vertices of this class define a cube and the
@@ -29,12 +29,16 @@ public:
 	Cube(const std::string vShaderFileName,
 		const std::string fShaderFileName,
 		const std::string textureFileName,
-		const glm::vec4& color) : Model(vShaderFileName, fShaderFileName, textureFileName, color){}
+		const glm::vec4& color) : Model(vShaderFileName, fShaderFileName, textureFileName, color){
+		Init();
+	}
 
 	Cube(const char* vShaderFileName,
 		const char* fShaderFileName,
 		const char* textureFileName,
-		const glm::vec4& color) : Model(vShaderFileName, fShaderFileName, textureFileName, color) {}
+		const glm::vec4& color) : Model(vShaderFileName, fShaderFileName, textureFileName, color) {
+		Init();
+	}
 	
 	Cube* copy() const;
 	void print() const {

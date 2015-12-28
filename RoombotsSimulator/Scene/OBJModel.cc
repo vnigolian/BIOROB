@@ -4,7 +4,9 @@ OBJModel::OBJModel(const std::string OBJFilename,
 	const char* vShaderFileName,
 	const char* fShaderFileName,
 	const char* textureFileName,
-	const glm::vec4& color) :  _objfilename(OBJFilename), Model(vShaderFileName, fShaderFileName, textureFileName, color) {}
+	const glm::vec4& color) : _objfilename(OBJFilename), Model(vShaderFileName, fShaderFileName, textureFileName, color) {
+	Init();
+}
 
 
 OBJModel* OBJModel::copy() const
@@ -26,7 +28,7 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 	in.open(_objfilename.c_str());
 	if (in.fail())
 	{
-		std::cerr << "ERROR - Couldn't open OBJ Model file" << std::endl;
+		std::cerr << "ERROR - Couldn't open "<<_objfilename<<" Model file " << std::endl;
 	}
 	else
 	{

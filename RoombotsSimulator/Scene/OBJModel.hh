@@ -3,7 +3,7 @@
 #include "Model.hh"
 #include <string>
 
-class OBJModel : public Model
+__declspec(align(16)) class OBJModel : public Model
 {
 public :
 	OBJModel(const std::string OBJFilename,
