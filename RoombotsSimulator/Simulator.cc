@@ -20,6 +20,9 @@ Simulator& Simulator::Instance()
 	return _instance;
 }
 
+Simulator::~Simulator(){
+	CleanUp();
+}
 
 void Simulator::Init(int argc, char **argv, DisplayFunction display, DisplayFunction renderScene, void(*handleKeyboard)(unsigned char, int, int), void(*resize)(int, int))
 {

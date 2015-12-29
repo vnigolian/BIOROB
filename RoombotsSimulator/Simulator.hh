@@ -38,6 +38,7 @@ public:
 private:
 	static Simulator _instance;
 	Simulator();
+	~Simulator();
 
 	Scene _scene;
 	RiftHandler _rift;

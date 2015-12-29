@@ -1,14 +1,5 @@
 
-#include "common.hh"
-#include "ShaderLoader.hh"
-#include "Scene\Quad.hh"
-#include "Scene\Cube.hh"
-#include "RiftHandler.hh"
-#include "Scene\Scene.hh"
-#include "GUI.hh"
-#include "Scene\OBJModel.hh"
 #include "Simulator.hh"
-#include "Scene\RoomBot.hh"
 
 void display()
 {
