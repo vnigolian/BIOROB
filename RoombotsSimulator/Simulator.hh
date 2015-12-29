@@ -1,3 +1,5 @@
+#pragma once
+
 #include "common.hh"
 #include "ShaderLoader.hh"
 #include "Scene\Quad.hh"
@@ -5,22 +7,49 @@
 #include "RiftHandler.hh"
 #include "Scene\Scene.hh"
 #include "GUI.hh"
+#include "Scene\OBJModel.hh"
+#include "Scene\RoomBot.hh"
 
-class Simulator
-{
+
+class Simulator {
+public:
+	static Simulator& Instance();
+
+	void Init(int argc, 
+		char **argv,
+		DisplayFunction display,
+		DisplayFunction renderScene, 
+		void (*keyboardFunc)(unsigned char, int,int), 
+		void (*resizeFunc)(int,int));
+
+	void start();
+
+	void CleanUp();
+
+	// Gets called when the windows is resized.
+	void Resize(int w, int h);
+
+	void RenderScene();
+
+	void Display();
+
+	void HandleKeyboard(unsigned char key, int x, int y);
+
+private:
+	static Simulator _instance;
+	Simulator();
 
 	Scene _scene;
-
-	unsigned int _width = 0;
-	unsigned int _height = 0;
-
 	RiftHandler _rift;
-
 	GUI _GUI;
 
+	unsigned int width = 0;
+	unsigned int height = 0;
 	glm::mat4 _worldMatrix = glm::mat4();
+	glm::mat4 WorldViewMatrix();
 
-	void InitScene();
+	bool _mode = true;	//viewing mode. false for "in-room" view, true for "box" view
+
 
 	void Forward();
 
@@ -30,20 +59,21 @@ class Simulator
 
 	void Right();
 
-	void CleanUp();
+	void SwitchViewMode();
 
+	void InitScene();
+
+	void InitRift(DisplayFunction function);
+
+	/*
+	this method allows us to have control over the main OpenGL context loop.
+	we call one iteration of the loop ourself
+	*/
 	void MainLoop();
 
 	
-
-public:
-	void RenderScene();
-	void Display();
-	void HandleKeyboard(unsigned char key, int x, int y);
-	void Resize(int w, int h);
-
-	//void SetCallbacks(void(*display)(void), void(*resize)(int, int), void(*keyboard)(unsigned char, int, int), void(*riftDisplay)(void));
-	void Init(int argc, char** argv, void(*display)(void), void(*resize)(int, int), void(*keyboard)(unsigned char, int, int), void(*riftDisplay)(void));
-	void Start();
-
 };
+
+
+
+

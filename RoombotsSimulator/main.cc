@@ -10,12 +10,43 @@
 #include "Simulator.hh"
 #include "Scene\RoomBot.hh"
 
-using namespace Core;
+void display()
+{
+	(Simulator::Instance()).Display();
+}
+
+void renderScene()
+{
+	(Simulator::Instance()).RenderScene();
+}
+
+void handleKeyboard(unsigned char key, int x, int y)
+{
+	(Simulator::Instance()).HandleKeyboard(key, x, y);
+}
+
+void resize(int w, int h)
+{
+	(Simulator::Instance()).Resize(w, h);
+}
+
+int main(int argc, char **argv)
+{
+	//1er appel de Instance: on alloue le pointeur SoundManager::m_instance
+	Simulator& p_simulator = Simulator::Instance();
+	p_simulator.Init(argc, argv, display, renderScene, handleKeyboard, resize);
+	p_simulator.start();
+	p_simulator.CleanUp();
+
+	return 0;
+}
+
+
 //using namespace OVR;
 //using namespace std;
 //using namespace glm;
 
-
+/*
 Scene _scene;
 
 unsigned int width = 0;
@@ -297,10 +328,10 @@ void CleanUp()
 	_GUI.CleanUp();
 }
 
-/*
-this method allows us to have control over the main OpenGL context loop.
-we call one iteration of the loop ourself
-*/
+
+//this method allows us to have control over the main OpenGL context loop.
+//we call one iteration of the loop ourself
+
 void MainLoop()
 {
 	while (true)
@@ -339,33 +370,8 @@ int main(int argc, char **argv)
 
 	CleanUp();//cleans up everything
 	return 0;
-}
-
-/*Simulator _simulator;
-
-void Display2()
-{
-	_simulator.Display();
-}
-void Resize2(int w, int h)
-{
-	_simulator.Resize(w,h);
-}
-void HandleKeyboard2(unsigned char key, int x, int y)
-{
-	_simulator.HandleKeyboard(key, x, y);
-}
-void RenderScene2()
-{
-	_simulator.RenderScene();
-}
-
-int main(int argc, char **argv)
-{
-	_simulator.Init(argc, argv, Display2, Resize2, HandleKeyboard2, RenderScene2);
-	_simulator.Start();
-
-	return 0;
 }*/
+
+
 
 

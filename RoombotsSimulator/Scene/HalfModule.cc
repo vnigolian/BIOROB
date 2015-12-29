@@ -51,7 +51,7 @@ HalfModule::HalfModule(int x, int y, int z, OBJModel* p_h1, OBJModel* p_h2) : _x
 
 	glm::vec4 pale_green(0.66f, 0.66f, 0.18f, 1.0f);
 
-	_circle = new OBJModel("Models.circle.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", pale_green);
+	_circle = new OBJModel("Models/circle.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", pale_green);
 	
 }
 
