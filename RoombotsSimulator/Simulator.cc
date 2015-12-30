@@ -93,11 +93,10 @@ void Simulator::RenderScene()
 
 	if (_simulation.isOver())
 	{
+		_GUI.Render(VP);
 	}
 	else
 	{
-		_GUI.Render(VP);
-
 		_simulation.draw(VP);
 	}
 }
@@ -371,8 +370,7 @@ void Simulator::launchSimulation()
 
 	for (size_t i(0); i < roombotsFinalPositions.size()/2; i++)
 	{
-		Position roombotInitialPosition = Position(glm::vec3(ceil(-ROOM_SIZE / 2 + MODULE_SIZE*i), -EYES_POSITION + MODULE_SIZE, 0.0f));
-		roombotInitialPosition.print();
+		Position roombotInitialPosition = Position(glm::vec3(-ROOM_SIZE/2 + MODULE_SIZE*i, -EYES_POSITION + MODULE_SIZE, 0.0f));
 		paths.push_back(Path());
 		BrutePathFinder::run(paths[i], roombotInitialPosition, roombotsFinalPositions[i * 2]);
 		paths[i].push_back(roombotsFinalPositions[i * 2 + 1]);

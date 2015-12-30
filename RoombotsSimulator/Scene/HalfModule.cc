@@ -20,6 +20,7 @@ void HalfModule::Draw(const glm::mat4& VP) const
 {
 	glm::vec3 position(_position.x(), _position.y(), _position.z());
 	position *= MODULE_SIZE;
+	position += glm::vec3(MODULE_SIZE / 2);
 	glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), position);
 	glm::mat4 VPWithTranslate = VP*translationMatrix;
 	

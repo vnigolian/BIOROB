@@ -9,7 +9,7 @@ Position::Position(Position* other): _x(other->_x),_y(other->_y), _z(other->_z) 
 
 //Position::Position(glm::vec3 other) : _x(floor(other.x)), _y(floor(other.y)), _z(floor(other.z )) {}
 
-Position::Position(glm::vec3 other) : _x(floor(other.x / MODULE_SIZE)), _y(floor(other.y / MODULE_SIZE)), _z(floor(other.z / MODULE_SIZE)) {}
+Position::Position(glm::vec3 other) : _x((int)(other.x / MODULE_SIZE)), _y((int)(other.y / MODULE_SIZE)), _z((int)(other.z / MODULE_SIZE)) {}
 
 Position Position::operator+(Position other) const
 {

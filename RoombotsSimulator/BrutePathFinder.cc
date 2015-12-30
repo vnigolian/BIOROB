@@ -2,8 +2,6 @@
 
 void BrutePathFinder::run(Path& path, const Position& start, const Position& finish)
 {
-	std::cout << "computing brute path" << std::endl;
-
 	path.clear();
 
 	Position curPos = start;

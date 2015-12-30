@@ -10,13 +10,12 @@
 class MovableStructure
 {
 	Structure* const _p_structure;
-	glm::vec3 _position;//The structure's position
+	Position _position;//The structure's position
 	int _ID;//Its ID
 	unsigned int _buttonID;//Button* _p_button = NULL;//A pointer to the button from which the Structure was created
 	//Set to NULL once it has been dropped
 
 	bool _moving = false;//Whether the Structure is moving or not. (used in Drop())
-	Quad* _shadow; //The Structure's shadow. Helps to see where things are
 
 	void SetCenterOffset();
 	void setPosition(glm::vec3 position);
@@ -40,7 +39,7 @@ public:
 	void Draw(const glm::mat4& VP) const;
 
 	/*Returns the reference position of the Structure*/
-	glm::vec3 getPosition() const;
+	Position getPosition() const;
 
 	/*Returns the Structure's center position which is an average of the roombots' positions*/
 	//glm::vec3 CenterPosition() const;

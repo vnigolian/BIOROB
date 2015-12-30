@@ -38,17 +38,17 @@ void GUI::Init()
 	std::cout << "GUI initialized" << std::endl;
 	_init = true;
 
-	MovableStructure testStructure(stool,_buttons[0].Position(),_nStructures,0);
+	MovableStructure testStructure(stool,_buttons[1].Position(),_nStructures,1);
 	testStructure.Drop();
 	_structures.push_back(testStructure);
 	_nStructures++;
 
-	MovableStructure testStructure2(chair, _buttons[1].Position(), _nStructures, 1);
+	MovableStructure testStructure2(chair, _buttons[2].Position(), _nStructures, 2);
 	testStructure2.Drop();
 	_structures.push_back(testStructure2);
 	_nStructures++;
 
-	MovableStructure testStructure3(table, _buttons[2].Position(), _nStructures, 2);
+	MovableStructure testStructure3(table, _buttons[0].Position(), _nStructures, 0);
 	testStructure3.Drop();
 	_structures.push_back(testStructure3);
 	_nStructures++;
