@@ -1,6 +1,6 @@
 #include "Scene.hh"
 
-void Scene::initRoof(double roomSize){
+void Scene::initRoof(float roomSize){
 	_roof = new Quad("Shaders/quad_vshader.glsl", "Shaders/quad_fshader.glsl", "Textures/wood2.jpg", glm::vec4(0.0f, 0.0f, 0.0f, 0.0f));
 	_roof->SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -EYES_POSITION + roomSize / 3.0f, -roomSize / 2.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(roomSize)));

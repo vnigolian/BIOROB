@@ -25,6 +25,7 @@ void LeapmotionPointer::Init(GUI* p_gui)
 
 		_init = true;
 		_p_gui = p_gui;
+		_enabled = true;
 	}
 }
 
@@ -48,7 +49,7 @@ Leap::Vector LeapmotionPointer::adaptToMode(Leap::Vector right_hand_pos, bool mo
 void LeapmotionPointer::update(bool mode)
 {
 	//updating the controller's position
-	if (_init)
+	if (_init && _enabled)
 	{
 		if (_controller.isConnected())
 		{
@@ -105,7 +106,7 @@ void LeapmotionPointer::UpdateWorldMatrix(const glm::mat4& worldMatrix)
 
 void LeapmotionPointer::Draw(const glm::mat4& VP) const
 {
-	if (_init)
+	if (_init && _enabled)
 	{
 		glEnable(GL_BLEND);
 		_pointerModel->Draw(VP);
@@ -122,7 +123,7 @@ bool LeapmotionPointer::Pinching() const
 {
 
 	bool pinching = false;
-	if (_controller.isConnected())
+	if (_controller.isConnected() && _enabled)
 	{
 		if (!_controller.frame().hands().isEmpty())
 		{
@@ -146,10 +147,7 @@ bool LeapmotionPointer::Pinching() const
 
 glm::vec3 LeapmotionPointer::Position() const
 {
-	if (_init)
-	{
-		return _position;
-	}
+	return _position;
 }
 
 void LeapmotionPointer::AssignStructure(MovableStructure* p_structure)
@@ -160,4 +158,14 @@ void LeapmotionPointer::AssignStructure(MovableStructure* p_structure)
 MovableStructure* LeapmotionPointer::AssignedStructure() const
 {
 	return _p_structure;
+}
+
+void LeapmotionPointer::Disable()
+{
+	_enabled = false;
+}
+
+void LeapmotionPointer::Enable()
+{
+	_enabled = true;
 }

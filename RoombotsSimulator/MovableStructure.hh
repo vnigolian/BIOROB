@@ -40,12 +40,14 @@ public:
 	void Draw(const glm::mat4& VP) const;
 
 	/*Returns the reference position of the Structure*/
-	glm::vec3 Position() const;
+	glm::vec3 getPosition() const;
 
 	/*Returns the Structure's center position which is an average of the roombots' positions*/
 	//glm::vec3 CenterPosition() const;
 
 	unsigned int LinkedButtonID() const;
+
+	std::vector<Position> RoombotsPositions() const;
 
 	/*Cleans up the RoomBots*/
 	void CleanUp();

@@ -20,6 +20,10 @@ public:
 	/*Returns the Structure's center position which is an average of the roombots' positions*/
 	glm::vec3 CenterOffset() const;
 
+	//RE-WRITE THIS !!!
+	/*Returns a vector of all the RoomBots' half-module's positions as pairs A-B*/
+	std::vector<Position> RoombotsPositions() const;
+
 	/*Cleans up the RoomBots*/
 	void CleanUp();
 };

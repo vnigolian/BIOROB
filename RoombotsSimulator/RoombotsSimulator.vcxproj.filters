@@ -111,6 +111,15 @@
     <ClCompile Include="MovableStructure.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DirectPathFinder.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Position.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BrutePathFinder.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShaderLoader.hh">
@@ -168,6 +177,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MovableStructure.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PathFinder.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectPathFinder.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BrutePathFinder.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

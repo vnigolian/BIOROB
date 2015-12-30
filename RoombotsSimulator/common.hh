@@ -28,10 +28,10 @@
 
 #include "Libraries\Leap\Leap.h"
 
-namespace Core
-{
 #define EYES_POSITION 1.2f
-}
+#define MODULE_SIZE 0.12f
+#define ROOM_SIZE 5.0f
+
 
 
 

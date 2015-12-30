@@ -3,6 +3,7 @@
 #include "Button.hh"
 #include "LeapmotionPointer.hh"
 #include "Structure.hh"
+#include "Position.hh"
 
 
 class GUI
@@ -48,10 +49,13 @@ public:
 	/*Returns the number of Buttons in the GUI*/
 	size_t NButtons();
 
+	void disablePointer();
+
+	void enablePointer();
 
 	void DroppedStructure(unsigned int buttonID);
 
-	void hello(){ std::cout << "hello" << std::endl; }
+	std::vector<Position> GetAllRoombotsPositions();
 
 	/*Cleans up everything*/
 	void CleanUp();

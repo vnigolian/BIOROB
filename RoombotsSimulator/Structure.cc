@@ -66,14 +66,6 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2)
 	SetCenterOffset();
 }
 
-/*Structure::Structure(Structure* other) : _filename(other->_filename), _centerOffset(other->_centerOffset)
-{
-	for (size_t i = 0; i < other->roomBots.size(); i++)
-	{
-		roomBots.push_back(other->roomBots[i]);
-	}
-	std::cout << "copied a Structure" << std::endl;
-}*/
 
 void Structure::SetCenterOffset()
 {
@@ -81,7 +73,7 @@ void Structure::SetCenterOffset()
 	size_t size = roomBots.size();
 	for (size_t i = 0; i < size; i++)
 	{
-		glm::vec3 roomBotPosition = roomBots[i].Position();
+		glm::vec3 roomBotPosition = roomBots[i].MiddlePosition();
 		centerOffset += (1 / (float)size) * glm::vec3(roomBotPosition.x, roomBotPosition.y, roomBotPosition.z);
 	}
 	_centerOffset = MODULE_SIZE * centerOffset;// -glm::vec3(MODULE_SIZE / 2, MODULE_SIZE / 2, -MODULE_SIZE / 2);
@@ -104,6 +96,19 @@ glm::vec3 Structure::CenterOffset() const
 {
 	return _centerOffset;
 }
+
+std::vector<Position> Structure::RoombotsPositions() const
+{
+	std::vector<Position> positions;
+	for (size_t i(0); i < roomBots.size(); i++)
+	{
+		positions.push_back(roomBots[i].PositionA());
+		positions.push_back(roomBots[i].PositionB());
+	}
+
+	return positions;
+}
+
 
 void Structure::CleanUp()
 {

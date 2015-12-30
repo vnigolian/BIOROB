@@ -44,7 +44,6 @@ void MovableStructure::Drop()
 		+ _p_structure->CenterOffset() 
 		- glm::vec3(MODULE_SIZE / 2, 0.0f, MODULE_SIZE / 2));
 
-	//_p_button = NULL;
 	_buttonID = -1;
 	//std::cout << "dropped the Structure and now the ID is " << _buttonID << std::endl;
 }
@@ -72,7 +71,7 @@ void MovableStructure::Draw(const glm::mat4& VP) const
 	}
 }
 
-glm::vec3 MovableStructure::Position() const
+glm::vec3 MovableStructure::getPosition() const
 {
 	return _position;
 }
@@ -90,4 +89,17 @@ void MovableStructure::CleanUp()
 unsigned int MovableStructure::LinkedButtonID() const
 {
 	return _buttonID;
+}
+
+std::vector<Position> MovableStructure::RoombotsPositions() const
+{
+	std::vector<Position> positions = _p_structure->RoombotsPositions();
+	Position position = Position(_position- _p_structure->CenterOffset());
+
+	for (size_t i(0); i < positions.size(); i++)
+	{
+		positions[i] += position;
+	}
+
+	return positions;
 }

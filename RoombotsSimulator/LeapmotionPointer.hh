@@ -14,6 +14,7 @@ class LeapmotionPointer
 #define BOX_COORDINATE_SYSTEM_SCALE_CONVERSION 0.016f
 #define PINCHING_LIMIT 0.7f
 
+	bool _enabled = true;
 	//Leap::Vector _offset;//The offset adapting the Leapmotion's coordinate system to the Scene's
 	Leap::Controller _controller;//The object allowing us to get data from the Leapmotion device
 	glm::vec3 _position;//The position of the LeapmotionPointer
@@ -64,4 +65,8 @@ public:
 
 	/*Assigns a Structure to the LeapmotionPointer for dragging*/
 	MovableStructure* AssignedStructure() const;
+
+	void Disable();
+
+	void Enable();
 };

@@ -9,6 +9,7 @@
 #include "GUI.hh"
 #include "Scene\OBJModel.hh"
 #include "Scene\RoomBot.hh"
+#include "BrutePathFinder.hh"
 
 
 class Simulator {
@@ -65,6 +66,8 @@ private:
 	void InitScene();
 
 	void InitRift(DisplayFunction function);
+
+	void launchSimulation();
 
 	/*
 	this method allows us to have control over the main OpenGL context loop.

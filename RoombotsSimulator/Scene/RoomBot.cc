@@ -11,12 +11,12 @@ void RoomBot::Draw(const glm::mat4& VP) const
 }
 
 
-glm::vec3 RoomBot::PositionA()const
+Position RoomBot::PositionA()const
 {
-	return _halfModuleA.Position();
+	return _halfModuleA.getPosition();
 }
 
-glm::vec3 RoomBot::PositionB()const
+Position RoomBot::PositionB()const
 {
-	return _halfModuleB.Position();
+	return _halfModuleB.getPosition();
 }

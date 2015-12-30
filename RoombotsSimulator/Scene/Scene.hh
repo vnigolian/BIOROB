@@ -11,7 +11,7 @@ class Scene
 	Quad* _roof;
 
 public:
-	void initRoof(double roomSize);
+	void initRoof(float roomSize);
 	void AddModel(Model* sourceModel);
 	void const Render(const glm::mat4& VP, bool drawRoof);
 	size_t NModels();

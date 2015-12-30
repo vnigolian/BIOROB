@@ -90,11 +90,14 @@
     <None Include="Shaders\sky_vshader.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BrutePathFinder.cc" />
     <ClCompile Include="Button.cc" />
+    <ClCompile Include="DirectPathFinder.cc" />
     <ClCompile Include="GUI.cc" />
     <ClCompile Include="LeapmotionPointer.cc" />
     <ClCompile Include="main.cc" />
     <ClCompile Include="MovableStructure.cc" />
+    <ClCompile Include="Position.cc" />
     <ClCompile Include="RiftHandler.cc" />
     <ClCompile Include="Scene\HalfModule.cc" />
     <ClCompile Include="Scene\Model.cc" />
@@ -108,12 +111,16 @@
     <ClCompile Include="Structure.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BrutePathFinder.hh" />
     <ClInclude Include="Button.hh" />
     <ClInclude Include="common.hh" />
     <ClInclude Include="DepthBuffer.hh" />
+    <ClInclude Include="DirectPathFinder.hh" />
     <ClInclude Include="GUI.hh" />
     <ClInclude Include="LeapmotionPointer.hh" />
     <ClInclude Include="MovableStructure.hh" />
+    <ClInclude Include="PathFinder.hh" />
+    <ClInclude Include="Position.hh" />
     <ClInclude Include="RiftHandler.hh" />
     <ClInclude Include="Scene\HalfModule.hh" />
     <ClInclude Include="Scene\Model.hh" />

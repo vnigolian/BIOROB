@@ -37,6 +37,11 @@ void GUI::Init()
 	*/
 	std::cout << "GUI initialized" << std::endl;
 	_init = true;
+
+	MovableStructure testStructure(stool,_buttons[0].Position(),_nStructures,0);
+	testStructure.Drop();
+	_structures.push_back(testStructure);
+	_nStructures++;
 }
 
 void GUI::AddButton(Structure* p_structure)
@@ -149,3 +154,27 @@ void GUI::UpdateWorldMatrix(const glm::mat4& worldMatrix)
 {
 	_pointer.UpdateWorldMatrix(worldMatrix);
 }
+
+void GUI::disablePointer()
+{
+	_pointer.Disable();
+}
+
+void GUI::enablePointer()
+{
+	_pointer.Enable();
+}
+
+std::vector<Position> GUI::GetAllRoombotsPositions()
+{
+	std::vector<Position> positions;
+
+	for (size_t i(_nButtons); i < _nStructures; i++)
+	{
+		std::vector<Position> structureRoombotsPositions = _structures[i].RoombotsPositions();
+		positions.insert(positions.end(), structureRoombotsPositions.begin(), structureRoombotsPositions.end());
+	}
+
+	return positions;
+}
+

@@ -50,6 +50,7 @@ void Simulator::Init(int argc, char **argv, DisplayFunction display, DisplayFunc
 	// register callbacks
 	glutDisplayFunc(display);//sets 'Display' as the function to call when displaying
 	glutReshapeFunc(resize);//sets 'Resize' as the function to cass when resizing
+
 }
 
 void Simulator::start()
@@ -336,7 +337,36 @@ void Simulator::HandleKeyboard(unsigned char key, int x, int y)
 	case ' ':
 		SwitchViewMode();
 		break;
+	case 13:
+		launchSimulation();
+		break;
+	default :
+		std::cout << "you pressed : " << (int)key << std::endl;
 	}
+}
+
+void Simulator::launchSimulation()
+{
+	std::cout << "launching simulation" << std::endl;
+	_GUI.disablePointer();
+
+	std::vector<Position> roombotsFinalPositions = _GUI.GetAllRoombotsPositions();
+
+	std::vector<Path> paths;
+
+
+	for (size_t i(0); i < roombotsFinalPositions.size()/2; i++)
+	{
+		Position roombotInitialPosition = Position(glm::vec3(((int)floor(-ROOM_SIZE / 2 + 2 * MODULE_SIZE*i)) % (int)floor(ROOM_SIZE / 2), -EYES_POSITION, 0.0f));
+		roombotInitialPosition.print();
+		paths.push_back(Path());
+		BrutePathFinder::run(paths[i], roombotInitialPosition, roombotsFinalPositions[i * 2]);
+		paths[i].push_back(roombotsFinalPositions[i * 2 + 1]);
+	}
+
+	
+
+	_GUI.enablePointer();
 }
 
 
