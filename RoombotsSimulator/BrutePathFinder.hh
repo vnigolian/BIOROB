@@ -5,6 +5,8 @@ class BrutePathFinder :
 {
 public:
 	static void run(Path& path, const Position& start, const Position& finish);
+	static std::string name();
+
 
 };
 

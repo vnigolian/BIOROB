@@ -11,6 +11,7 @@
 #include "Scene\RoomBot.hh"
 #include "BrutePathFinder.hh"
 #include "Simulation.hh"
+#include <thread>
 
 
 class Simulator {

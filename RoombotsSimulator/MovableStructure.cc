@@ -19,7 +19,6 @@ _p_structure(p_structure), _ID(ID), _buttonID(buttonID)
 void MovableStructure::setPosition(glm::vec3 position)
 {
 	_position = Position(position - _p_structure->CenterOffset() + glm::vec3(MODULE_SIZE/2));
-	std::cout << "structure positionned at " << position.x << " " << position.y << " " << position.z << " is now at "; _position.print();
 }
 
 void MovableStructure::Drag(const glm::vec3& position)

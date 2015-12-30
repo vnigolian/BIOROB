@@ -48,9 +48,45 @@ void GUI::Init()
 	_structures.push_back(testStructure2);
 	_nStructures++;
 
+
 	MovableStructure testStructure3(table, _buttons[0].Position(), _nStructures, 0);
 	testStructure3.Drop();
 	_structures.push_back(testStructure3);
+	_nStructures++;
+
+	MovableStructure testStructure4(chair, glm::vec3(-ROOM_SIZE/3,0.0f,-2.0f), _nStructures, 2);
+	testStructure4.Drop();
+	_structures.push_back(testStructure4);
+	_nStructures++;
+
+	MovableStructure testStructure5(chair, glm::vec3(ROOM_SIZE / 3, 0.0f, -2.0f), _nStructures, 2);
+	testStructure5.Drop();
+	_structures.push_back(testStructure5);
+	_nStructures++;
+
+	MovableStructure testStructure6(chair, glm::vec3(-ROOM_SIZE / 4, 0.0f, -3.0f), _nStructures, 2);
+	testStructure6.Drop();
+	_structures.push_back(testStructure6);
+	_nStructures++;
+
+	MovableStructure testStructure7(table, glm::vec3(ROOM_SIZE / 5, 0.0f, -2.5f), _nStructures, 0);
+	testStructure7.Drop();
+	_structures.push_back(testStructure7);
+	_nStructures++;
+
+	MovableStructure testStructure8(chair, glm::vec3(-ROOM_SIZE / 3, 0.0f, -4.0f), _nStructures, 2);
+	testStructure8.Drop();
+	_structures.push_back(testStructure8);
+	_nStructures++;
+
+	MovableStructure testStructure9(chair, glm::vec3(ROOM_SIZE / 5, 0.0f, -2.5f), _nStructures, 2);
+	testStructure9.Drop();
+	_structures.push_back(testStructure9);
+	_nStructures++;
+
+	MovableStructure testStructure0(chair, glm::vec3(-ROOM_SIZE / 6, 0.0f, -1.0f), _nStructures, 2);
+	testStructure0.Drop();
+	_structures.push_back(testStructure0);
 	_nStructures++;
 }
 

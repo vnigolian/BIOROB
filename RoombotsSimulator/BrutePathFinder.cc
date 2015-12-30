@@ -29,3 +29,8 @@ void BrutePathFinder::run(Path& path, const Position& start, const Position& fin
 	}
 }
 
+std::string name()
+{
+	return "BrutePathFinder";
+}
+

@@ -23,6 +23,8 @@ void Simulation::Initialize(const std::vector<Path>& paths)
 
 	_init = true;
 	_over = false;
+
+	std::cout << "Simulation initialized. Ready to run !" << std::endl;
 }
 
 bool Simulation::nextStep()
@@ -33,8 +35,7 @@ bool Simulation::nextStep()
 	{
 		std::cout << "processing step " << _currentStep << std::endl;
 		for (size_t i(0); i < _paths.size(); i++)
-		{
-			if (_currentStep < _paths[i].size())
+		{			if (_currentStep < _paths[i].size())
 			{
 				notOver = true;
 				_halfModules[2 * i + _currentStep % 2].setPosition(_paths[i][_currentStep] );
@@ -69,7 +70,10 @@ Simulation::~Simulation()
 
 void Simulation::Reset()
 {
-	std::cout << "Resetting simulation" << std::endl;
+	if (_init)
+	{
+		std::cout << "Resetting simulation" << std::endl;
+	}
 	_paths.clear();
 	_halfModules.clear();
 	_currentStep = 0;

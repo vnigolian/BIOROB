@@ -1,6 +1,6 @@
 #include "DirectPathFinder.hh"
 
-Path DirectPathFinder::run(Position initPos, Position finalPos) const
+Path DirectPathFinder::run(Position initPos, Position finalPos)
 {
 	Position curPos = initPos;
 	Path path;

@@ -365,20 +365,27 @@ void Simulator::launchSimulation()
 
 	std::vector<Position> roombotsFinalPositions = _GUI.GetAllRoombotsPositions();
 
+	std::cout << "All Roombots positions acquired" << std::endl;
 	std::vector<Path> paths;
 
+	int modulesPerLine = (int) (ROOM_SIZE / MODULE_SIZE);
 
 	for (size_t i(0); i < roombotsFinalPositions.size()/2; i++)
 	{
-		Position roombotInitialPosition = Position(glm::vec3(-ROOM_SIZE/2 + MODULE_SIZE*i, -EYES_POSITION + MODULE_SIZE, 0.0f));
+		Position roombotInitialPosition = Position(glm::vec3(-ROOM_SIZE / 2 + MODULE_SIZE*(i % modulesPerLine), 
+			-EYES_POSITION + MODULE_SIZE, 
+			MODULE_SIZE * 2 * (i / modulesPerLine)));
+
 		paths.push_back(Path());
 		BrutePathFinder::run(paths[i], roombotInitialPosition, roombotsFinalPositions[i * 2]);
 		paths[i].push_back(roombotsFinalPositions[i * 2 + 1]);
 	}
+	std::cout << "Paths for " << paths.size() << " Roombots have been computed with the path-finding algorithm called " << std::endl;
 
 	_simulation.Initialize(paths);
 
 }
+
 
 
 

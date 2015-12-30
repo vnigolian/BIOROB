@@ -1,6 +1,8 @@
 #pragma once
 #include "Scene\RoomBot.hh"
 #include "BrutePathFinder.hh"
+#include <ctime>
+#include <thread>
 
 class Simulation
 {
@@ -20,6 +22,10 @@ public:
 
 	bool isOver(){ return _over; }
 	bool isInitialized(){ return _init; }
+
+	void run();
+
+	void runStep();
 
 	~Simulation();
 };

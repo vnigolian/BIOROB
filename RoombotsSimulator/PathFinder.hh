@@ -8,5 +8,6 @@ class PathFinder
 {
 public:
 	virtual void run(Path& path, const Position& start, const Position& finish) const = 0;
+	virtual std::string name() const = 0;
 };
 
