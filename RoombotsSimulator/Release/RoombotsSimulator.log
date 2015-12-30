@@ -1,4 +1,4 @@
-﻿Build started 30.12.2015 13:56:47.
+﻿Build started 30.12.2015 17:12:09.
      1>Project "C:\Users\Val\Desktop\Projet\BIOROB\RoombotsSimulator\RoombotsSimulator.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\CL.exe /c /IC:\Users\Val\Desktop\Projet\BIOROB\packages\glm.0.9.6.3\build\native\../..//build/native/include/ /ILeapSDK\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Simulator.cc
@@ -21,6 +21,7 @@
          Release\Scene.obj
          Release\Cube.obj
          Release\ShaderLoader.obj
+         Release\Simulation.obj
          Release\Simulator.obj
          Release\Structure.obj
      1>SOIL.lib(SOIL.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
@@ -32,4 +33,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.06
+Time Elapsed 00:00:02.13

@@ -120,6 +120,9 @@
     <ClCompile Include="BrutePathFinder.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Simulation.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShaderLoader.hh">
@@ -189,6 +192,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BrutePathFinder.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulation.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

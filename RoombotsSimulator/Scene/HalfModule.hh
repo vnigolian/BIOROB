@@ -25,5 +25,6 @@ public:
 
 	Position getPosition() const;
 
+	void setPosition(const Position& position);
 
 };

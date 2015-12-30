@@ -10,6 +10,7 @@
 #include "Scene\OBJModel.hh"
 #include "Scene\RoomBot.hh"
 #include "BrutePathFinder.hh"
+#include "Simulation.hh"
 
 
 class Simulator {
@@ -40,6 +41,8 @@ private:
 	static Simulator _instance;
 	Simulator();
 	~Simulator();
+
+	Simulation _simulation;
 
 	Scene _scene;
 	RiftHandler _rift;

@@ -59,3 +59,9 @@ Position HalfModule::getPosition() const
 {
 	return _position;
 }
+
+void HalfModule::setPosition(const Position& position)
+{
+	_position = position;
+}
+

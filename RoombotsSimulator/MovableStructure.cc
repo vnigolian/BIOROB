@@ -94,7 +94,7 @@ unsigned int MovableStructure::LinkedButtonID() const
 std::vector<Position> MovableStructure::RoombotsPositions() const
 {
 	std::vector<Position> positions = _p_structure->RoombotsPositions();
-	Position position = Position(_position- _p_structure->CenterOffset());
+	Position position = Position(_position);
 
 	for (size_t i(0); i < positions.size(); i++)
 	{

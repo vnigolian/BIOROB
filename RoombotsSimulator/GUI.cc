@@ -25,7 +25,7 @@ void GUI::Init()
 	Structure custom5("Structures/RB8.rbs");
 	*/
 
-	//AddButton(table);
+	AddButton(table);
 	AddButton(stool);
 	AddButton(chair);
 	
@@ -41,6 +41,16 @@ void GUI::Init()
 	MovableStructure testStructure(stool,_buttons[0].Position(),_nStructures,0);
 	testStructure.Drop();
 	_structures.push_back(testStructure);
+	_nStructures++;
+
+	MovableStructure testStructure2(chair, _buttons[1].Position(), _nStructures, 1);
+	testStructure2.Drop();
+	_structures.push_back(testStructure2);
+	_nStructures++;
+
+	MovableStructure testStructure3(table, _buttons[2].Position(), _nStructures, 2);
+	testStructure3.Drop();
+	_structures.push_back(testStructure3);
 	_nStructures++;
 }
 

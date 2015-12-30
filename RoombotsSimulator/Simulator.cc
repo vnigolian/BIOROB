@@ -91,7 +91,15 @@ void Simulator::RenderScene()
 	}
 	_scene.Render(VP, !_mode);
 
-	_GUI.Render(VP);
+	if (_simulation.isOver())
+	{
+	}
+	else
+	{
+		_GUI.Render(VP);
+
+		_simulation.draw(VP);
+	}
 }
 
 void Simulator::Display()
@@ -340,6 +348,12 @@ void Simulator::HandleKeyboard(unsigned char key, int x, int y)
 	case 13:
 		launchSimulation();
 		break;
+	case 'n':
+		if (_simulation.nextStep())
+		{
+			_GUI.enablePointer();
+		}
+		break;
 	default :
 		std::cout << "you pressed : " << (int)key << std::endl;
 	}
@@ -357,16 +371,15 @@ void Simulator::launchSimulation()
 
 	for (size_t i(0); i < roombotsFinalPositions.size()/2; i++)
 	{
-		Position roombotInitialPosition = Position(glm::vec3(((int)floor(-ROOM_SIZE / 2 + 2 * MODULE_SIZE*i)) % (int)floor(ROOM_SIZE / 2), -EYES_POSITION, 0.0f));
+		Position roombotInitialPosition = Position(glm::vec3(ceil(-ROOM_SIZE / 2 + MODULE_SIZE*i), -EYES_POSITION + MODULE_SIZE, 0.0f));
 		roombotInitialPosition.print();
 		paths.push_back(Path());
 		BrutePathFinder::run(paths[i], roombotInitialPosition, roombotsFinalPositions[i * 2]);
 		paths[i].push_back(roombotsFinalPositions[i * 2 + 1]);
 	}
 
-	
+	_simulation.Initialize(paths);
 
-	_GUI.enablePointer();
 }
 
 
