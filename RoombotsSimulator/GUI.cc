@@ -18,8 +18,9 @@ void GUI::Init()
 	glm::vec4 pale_green(0.66f, 0.66f, 0.18f, 1.0f);
 	OBJModel* p_circle = new OBJModel("Models/circle_5.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", pale_green);
 
-
-	std::cout << "paaaaale greeeeen ciiiirclllllle !" << std::endl;
+	d_p_hemi1 = hemisphere1;
+	d_p_hemi2 = hemisphere2;
+	d_p_circle = p_circle;
 
 	//then we create new Structure based on .rbs files
 	Structure* stool = new Structure("Structures/stool.rbs", hemisphere1,hemisphere2, p_circle);
@@ -158,11 +159,18 @@ size_t GUI::NButtons()
 void GUI::CleanUp()
 {
 	//we clean up all the buttons
-	//NOTE : the structures are cleaned up through the buttons' clean-up
 	for (size_t i(0); i < this->d_nButtons; i++)
 	{
 		d_buttons[i].CleanUp();
 	}
+	//the three Models used for the RoomBots
+	d_p_hemi1->CleanUp();
+	delete d_p_hemi1;
+	d_p_hemi2->CleanUp();
+	delete d_p_hemi2;
+	d_p_circle->CleanUp();
+	delete d_p_circle;
+
 	//and the pointer
 	d_pointer.CleanUp();
 }

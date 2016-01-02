@@ -45,9 +45,6 @@ public:
 	/*Returns a vector of all the RoomBots' half-module's positions as pairs A-B*/
 	std::vector<Position> RoombotsPositions() const;
 
-	/*Cleans up the RoomBots*/
-	void CleanUp();
-
 private:
 	void SetCenterOffset();
 };

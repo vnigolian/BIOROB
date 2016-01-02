@@ -27,7 +27,6 @@ void Button::CleanUp() const
 {
 	d_model->CleanUp();
 	d_shadow->CleanUp();
-	d_p_structure->CleanUp();
 	delete d_p_structure;
 }
 

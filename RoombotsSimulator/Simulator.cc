@@ -37,7 +37,9 @@ void Simulator::Init(int argc,
 	glutInitWindowPosition(500, 200);
 	glutInitWindowSize(0, 0); //it will be resized in Init();
 	d_windowID = glutCreateWindow("RoomBots Simulator");
-	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
+	std::cout << "Created GLUT window with ID : " << d_windowID << std::endl;
+
+	//glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
 	
 	glutKeyboardFunc(handleKeyboard);
 	glutDisplayFunc(display);//sets 'Display' as the function to call when displaying
@@ -62,8 +64,11 @@ void Simulator::Init(int argc,
 
 void Simulator::Close()
 {
+	std::cout << "Closing application..." << std::endl;
 	glutLeaveMainLoop();
+	std::cout << "Left GLUT main loop" << std::endl;
 	glutDestroyWindow(d_windowID);
+	std::cout << "Destroyed the window with ID : "<<d_windowID << std::endl;
 	d_running = false;
 
 	exit(EXIT_SUCCESS);

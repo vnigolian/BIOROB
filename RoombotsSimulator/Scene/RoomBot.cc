@@ -24,10 +24,3 @@ Position RoomBot::PositionB()const
 {
 	return d_halfModuleB.GetPosition();
 }
-
-
-void RoomBot::CleanUp()
-{
-	d_halfModuleA.CleanUp();
-	d_halfModuleB.CleanUp();
-}

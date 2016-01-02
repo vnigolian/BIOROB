@@ -1,8 +1,5 @@
 #include "Model.hh"
 
-int count = 0;
-int destroy = 0;
-
 Model::Model(const char* vShaderFileName,
 	const char* fShaderFileName,
 	const char* textureFileName,
@@ -11,10 +8,7 @@ Model::Model(const char* vShaderFileName,
 	d_vShaderFilename(vShaderFileName), 
 	d_fShaderFilename(fShaderFileName), 
 	d_textureFilename(textureFileName), 
-	d_color(color) {
-	count++;
-	std::cout << "models created so far : " << count << std::endl;
-}
+	d_color(color) {}
 
 void Model::SetModelMatrix(const glm::mat4& M)
 {
@@ -138,8 +132,6 @@ void Model::CleanUp() const
 		glDeleteProgram(d_pid);
 		glDeleteTextures(1, &d_tex);
 
-		destroy++;
-		std::cout << "models destroyed so far : " <<destroy<< std::endl;
 	}
 }
 

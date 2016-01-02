@@ -111,13 +111,3 @@ std::vector<Position> Structure::RoombotsPositions() const
 	return positions;
 }
 
-
-void Structure::CleanUp()
-{
-	//since all Roombots use the same three models, we only need to clean up the first one
-	if (!d_roomBots.empty())
-	{
-		d_roomBots[0].CleanUp();
-	}
-}
-

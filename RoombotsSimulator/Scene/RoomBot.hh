@@ -42,5 +42,4 @@ public:
 	Position PositionA()const;
 	Position PositionB()const;
 
-	void CleanUp();
 };

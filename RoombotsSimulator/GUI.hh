@@ -19,6 +19,9 @@ class GUI
 	size_t                              d_nStructures = 0;//The number of Structures in the scene
 	LeapmotionPointer                   d_pointer;        //The pointer using the Leapmotion device
 	bool                                d_init = false;   //Set to true once initialized
+	OBJModel*                           d_p_hemi1;        //The pointer to the first hemisphere Model
+	OBJModel*                           d_p_hemi2;        //The pointer to the second hemisphere Model
+	OBJModel*                           d_p_circle;       //The pointer to the circle Model
 
 public:
 
