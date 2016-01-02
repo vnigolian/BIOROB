@@ -1,6 +1,6 @@
 #include "BrutePathFinder.hh"
 
-void BrutePathFinder::run(Path& path, const Position& start, const Position& finish) const
+void BrutePathFinder::Run(Path& path, const Position& start, const Position& finish) const
 {
 	path.clear();
 
@@ -29,7 +29,7 @@ void BrutePathFinder::run(Path& path, const Position& start, const Position& fin
 	}
 }
 
-std::string BrutePathFinder::name() const
+std::string BrutePathFinder::Name() const
 {
 	return "BrutePathFinder";
 }

@@ -12,12 +12,12 @@
 	to initialize them properly
 */
 __declspec(align(16)) class Model{
-	GLuint  _vao;          // vertex array object
-	GLuint  _pid;          // GLSL shader program ID 
-	GLuint  _vbo;          // positions buffer
-	GLuint  _tex;          // Texture ID
-	GLsizei _nVertices;    // number of vertices
-	GLsizei _nUVs;         // number of uvs
+	GLuint  d_vao;          // vertex array object
+	GLuint  d_pid;          // GLSL shader program ID 
+	GLuint  d_vbo;          // positions buffer
+	GLuint  d_tex;          // Texture ID
+	GLsizei d_nVertices;    // number of vertices
+	GLsizei d_nUVs;         // number of uvs
 
 public:
 
@@ -47,7 +47,7 @@ public:
 	}
 
 
-	const char* Texture(){ return _texture; }  
+	const char* Texture(){ return d_textureFilename; }  
 
 
 	/*Sets the model matrix as the one passed in argument
@@ -78,12 +78,13 @@ public:
 	            the elements of those vectors*/
 protected:
 
-	glm::mat4 _M = glm::mat4(1.0f);//The model matrix
-	GLboolean _initialized= false; // set on 'true' once initialized
-	const char*     _vShader = ""; // the vertex shader's file name
-	const char*     _fShader = ""; // the fragment shader's file name
-	const char*     _texture = ""; // the texture's file name
-	glm::vec4 _color = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f); //The color of the Model (black by default)
+	glm::mat4       d_M = glm::mat4(1.0f);   //The model matrix
+	GLboolean       d_initialized= false;    // set on 'true' once initialized
+	const char*     d_vShaderFilename = "";  // the vertex shader's file name
+	const char*     d_fShaderFilename = "";  // the fragment shader's file name
+	const char*     d_textureFilename = "";  // the texture's file name
+	glm::vec4       d_color 
+		= glm::vec4(0.0f, 0.0f, 0.0f, 1.0f); //The color of the Model (black by default)
 
 	/*Calls 'SetVertices' and 'SetUVs' and makes sure both have the same size */
 	void SetVerticesAndUVs(std::vector<glm::vec3> *vertices, std::vector<glm::vec2> *uvs);

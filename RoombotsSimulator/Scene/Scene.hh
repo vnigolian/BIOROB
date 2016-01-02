@@ -13,13 +13,13 @@
 */
 class Scene
 {
-	std::vector<const Model*> models;//The models contained in the scene
-	size_t nModels;//The number of models in the scene
-	Quad* _roof;//the roof
+	std::vector<const Model*> d_models; //The models contained in the scene
+	size_t                    d_nModels;//The number of models in the scene
+	Quad*                     d_roof;   //the roof
 
 public:
 	/*Initializes the Quad that represents the roof*/
-	void initRoof(float roomSize);
+	void InitRoof(float roomSize);
 
 	/*Adds a Model to the list of elements of the Scene*/
 	void AddModel(Model* sourceModel);

@@ -15,18 +15,14 @@
 */
 class MovableStructure
 {
-	Structure* const _p_structure; //The pointer to the Structure to be moved
-	Position _position;//The structure's position
-	int _ID;//Its ID
-	unsigned int _buttonID;//The ID of the button from which the Structure was created
-	                       //Once dropped, it is set to -1 to "unlink" it from the button
+	Structure* const d_p_structure;   //The pointer to the Structure to be moved
+	Position         d_position;      //The structure's position
+	int              d_ID;            //Its ID
+	unsigned int     d_buttonID;      //The ID of the button from which the Structure was created
+	                                  //Once dropped, it is set to -1 to "unlink" it from the button
 
-	bool _moving = false;//Whether the Structure is moving or not. (used in Drop())
+	bool             d_moving = false;//Whether the Structure is moving or not. (used in Drop())
 
-	/*Computes the center's offset from the lower left corner*/
-	void SetCenterOffset();
-
-	void setPosition(glm::vec3 position);
 
 public:
 
@@ -49,11 +45,17 @@ public:
 	void Draw(const glm::mat4& VP) const;
 
 	/*Returns the reference position of the Structure*/
-	Position getPosition() const;
+	Position GetPosition() const;
 
 	/*Returns the ID of the button from which the MovableStructure comes*/
 	unsigned int LinkedButtonID() const;
 
 	/*Returns the positions of all the Roombots of its Structure*/
 	std::vector<Position> RoombotsPositions() const;
+
+private:
+	/*Computes the center's offset from the lower left corner*/
+	void SetCenterOffset();
+
+	void SetPosition(glm::vec3 position);
 };

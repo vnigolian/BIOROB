@@ -3,7 +3,7 @@
 #include "Model.hh"
 
 
-__declspec(align(16)) class Quad : public Model {
+class Quad : public Model {
 
 public:
 	Quad(const std::string vShaderFileName,

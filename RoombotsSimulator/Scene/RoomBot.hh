@@ -11,14 +11,14 @@
 class RoomBot
 {
 private:
-	HalfModule _halfModuleA;
-	HalfModule _halfModuleB;
+	HalfModule d_halfModuleA;
+	HalfModule d_halfModuleB;
 
 public:
 	/*Returns the position of the middle between the two HalfModules*/
 	glm::vec3 MiddlePosition() const
 	{
-		return (_halfModuleA.getPosition().toGLM() + _halfModuleB.getPosition().toGLM()) / 2.0f;
+		return (d_halfModuleA.GetPosition().ToGLM() + d_halfModuleB.GetPosition().ToGLM()) / 2.0f;
 	}
 
 	RoomBot(int Ax, int Ay, int Az, int Bx, int By, int Bz, OBJModel* p_h1, OBJModel* p_h2);

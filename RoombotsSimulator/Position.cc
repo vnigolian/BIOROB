@@ -1,54 +1,54 @@
 #include "Position.hh"
 
 
-Position::Position() : _x(0),_y(0),_z(0) {}
+Position::Position() : d_x(0),d_y(0),d_z(0) {}
 
-Position::Position(int x, int y, int z): _x(x), _y(y), _z(z) {}
+Position::Position(int x, int y, int z): d_x(x), d_y(y), d_z(z) {}
 
-Position::Position(Position* other): _x(other->_x),_y(other->_y), _z(other->_z) {}
+Position::Position(Position* other): d_x(other->d_x),d_y(other->d_y), d_z(other->d_z) {}
 
-Position::Position(glm::vec3 other) : _x((int)(other.x / MODULE_SIZE)), _y((int)(other.y / MODULE_SIZE)), _z((int)(other.z / MODULE_SIZE)) {}
+Position::Position(glm::vec3 other) : d_x((int)(other.x / MODULE_SIZE)), d_y((int)(other.y / MODULE_SIZE)), d_z((int)(other.z / MODULE_SIZE)) {}
 
 Position Position::operator+(Position other) const
 {
-	return Position(this->_x + other._x, this->_y + other._y, this->_z + other._z);
+	return Position(this->d_x + other.d_x, this->d_y + other.d_y, this->d_z + other.d_z);
 }
 
 Position Position::operator-(Position other) const
 {
-	return new Position(this->_x - other._x, this->_y - other._y, this->_z - other._z);
+	return new Position(this->d_x - other.d_x, this->d_y - other.d_y, this->d_z - other.d_z);
 }
 
 
 Position Position::operator*(int factor) const
 {
-	return Position(this->_x * factor, this->_y * factor, this->_z * factor);
+	return Position(this->d_x * factor, this->d_y * factor, this->d_z * factor);
 }
 
 void Position::operator+=(Position other)
 {
-	_x += other._x;
-	_y += other._y;
-	_z += other._z;
+	d_x += other.d_x;
+	d_y += other.d_y;
+	d_z += other.d_z;
 }
 
 void Position::operator-=(Position other)
 {
-	_x -= other._x;
-	_y -= other._y;
-	_z -= other._z;
+	d_x -= other.d_x;
+	d_y -= other.d_y;
+	d_z -= other.d_z;
 }
 
 void Position::operator*=(int factor)
 {
-	_x *= factor;
-	_y *= factor;
-	_z *= factor;
+	d_x *= factor;
+	d_y *= factor;
+	d_z *= factor;
 }
 
 bool Position::operator==(Position other) const
 {
-	return (this->_x == other._x) && (this->_y && other._y) && (this->_z == other._z);
+	return (this->d_x == other.d_x) && (this->d_y && other.d_y) && (this->d_z == other.d_z);
 }
 
 bool Position::operator!=(Position other) const 
@@ -59,31 +59,31 @@ bool Position::operator!=(Position other) const
 
 int Position::distanceTo(Position other) const
 {
-	return (int)(abs(this->_x - other._x) + abs(this->_y - other._y) + abs(this->_z - other._z));
+	return (int)(abs(this->d_x - other.d_x) + abs(this->d_y - other.d_y) + abs(this->d_z - other.d_z));
 }
 
-void Position::print() const
+void Position::Print() const
 {
-	std::cout << "(" << _x << "," << _y << "," << _z << ")" << std::endl;
+	std::cout << "(" << d_x << "," << d_y << "," << d_z << ")" << std::endl;
 }
 
-glm::vec3 Position::toGLM() const
+glm::vec3 Position::ToGLM() const
 {
-	return glm::vec3(_x, _y, _z);
+	return glm::vec3(d_x, d_y, d_z);
 }
 
 
 int Position::x() const
 {
-	return _x;
+	return d_x;
 }
 
 int Position::y() const
 {
-	return _y;
+	return d_y;
 }
 
 int Position::z() const
 {
-	return _z;
+	return d_z;
 }

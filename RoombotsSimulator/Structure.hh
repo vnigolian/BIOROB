@@ -23,10 +23,9 @@
 */
 class Structure
 {
-	const std::string _filename = ""; //The .rbs file name from which the Structure is loaded
-	glm::vec3 _centerOffset;//The difference between the Structure's position and its center
-	std::vector<RoomBot> roomBots; //The RoomBot modules of the Structure
-	void SetCenterOffset();
+	const std::string    d_filename = ""; //The .rbs file name from which the Structure is loaded
+	glm::vec3            d_centerOffset;  //The difference between the Structure's position and its center
+	std::vector<RoomBot> d_roomBots;      //The RoomBot modules of the Structure
 
 public:
 	/*The constructor takes the .rbs file name to import it and create the corresponding 
@@ -45,4 +44,7 @@ public:
 
 	/*Cleans up the RoomBots*/
 	void CleanUp();
+
+private:
+	void SetCenterOffset();
 };

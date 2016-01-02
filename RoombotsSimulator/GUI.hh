@@ -13,26 +13,12 @@ class GUI
 #define BUTTON_DEPTH_OFFSET -4.5f
 #define BUTTON_LEFT_START 2.0f
 
-	std::vector<const Button> _buttons;//The Buttons contained in the scene
-	size_t _nButtons = 0;//The number of Buttons in the scene
-	std::vector<const MovableStructure> _structures;//The Structures contained in the scene
-	size_t _nStructures = 0;//The number of Structures in the scene
-
-	LeapmotionPointer _pointer;//The pointer using the Leapmotion device
-
-	bool _init = false;//Set to true once initialized
-
-	/*Adds a button to the interface (max 3 for now)*/
-	void AddButton(Structure* p_structure);
-	
-	/*Checks for every structure if it is being pinched by the LeapmotionPointer*/
-	void CheckForPinchedStructure(); 
-
-	/*Updates the LeapmotionPointer's position depending on the Leapmotion Controller's data*/
-	void UpdatePointer(bool mode);
-
-	/*Pops a new structure in the Button whose ID is passed in argument*/
-	void PopStructure(unsigned int buttonID);
+	std::vector<const Button>           d_buttons;        //The Buttons contained in the scene
+	size_t                              d_nButtons = 0;   //The number of Buttons in the scene
+	std::vector<const MovableStructure> d_structures;     //The Structures contained in the scene
+	size_t                              d_nStructures = 0;//The number of Structures in the scene
+	LeapmotionPointer                   d_pointer;        //The pointer using the Leapmotion device
+	bool                                d_init = false;   //Set to true once initialized
 
 public:
 
@@ -61,4 +47,18 @@ public:
 
 	/*Cleans up everything*/
 	void CleanUp();
+
+private:
+
+	/*Adds a button to the interface (max 3 for now)*/
+	void AddButton(Structure* p_structure);
+
+	/*Checks for every structure if it is being pinched by the LeapmotionPointer*/
+	void CheckForPinchedStructure();
+
+	/*Updates the LeapmotionPointer's position depending on the Leapmotion Controller's data*/
+	void UpdatePointer(bool mode);
+
+	/*Pops a new structure in the Button whose ID is passed in argument*/
+	void PopStructure(unsigned int buttonID);
 };

@@ -9,9 +9,10 @@
 */
 class Position
 {
-	int _x;
-	int _y;
-	int _z;
+	//Those are pretty self-explanatory
+	int d_x;
+	int d_y;
+	int d_z;
 
 public:
 	/*This constructor creates a new Position at (0,0,0)*/
@@ -40,10 +41,10 @@ public:
 	int distanceTo(Position other) const;
 
 	/*Prints out the Position as (x,y,z)*/
-	void print() const;
+	void Print() const;
 
 	/*Returns a 'glm::vec3' equivalent to the Position*/
-	glm::vec3 toGLM() const;
+	glm::vec3 ToGLM() const;
 
 	int x() const;
 	int y() const;

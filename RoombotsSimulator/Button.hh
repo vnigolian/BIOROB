@@ -9,13 +9,12 @@
 class Button
 {
 	#define BUTTON_SIZE 0.5f
-	Cube* _model; //the cube model used to represent the button
-	Quad* _shadow; //a shadow of the cube projected on the floor
 
-	const glm::vec3 _position; //its position within the scene
-	const unsigned int _ID; //its unique ID. Used to pop new Structures on the button
-
-	Structure* _p_structure; //a pointer to the Structure that pops from the button
+	Cube*                 d_model;       //the cube model used to represent the button
+	Quad*                 d_shadow;      //a shadow of the cube projected on the floor
+	const glm::vec3       d_position;    //its position within the scene
+	const unsigned int    d_ID;          //its unique ID. Used to pop new Structures on the button
+	Structure*            d_p_structure; //a pointer to the Structure that pops from the button
 
 public:
 	
@@ -31,10 +30,10 @@ public:
 	void CleanUp() const;
 
 	/*Returns the button's position */
-	glm::vec3 Position() const { return _position; }
+	glm::vec3 Position() const { return d_position; }
 
 	/*Returns the button's ID */
-	unsigned int ID() const { return _ID; }
+	unsigned int ID() const { return d_ID; }
 
 	/*Returns a pointer to the assigned Structure*/
 	Structure* AssignedStructure() const;

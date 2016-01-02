@@ -23,7 +23,7 @@ typedef struct
 	int z;
 } Triplet;
 
-Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2) : _filename(sourceFilename)
+Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2) : d_filename(sourceFilename)
 {
 	std::fstream in(sourceFilename);
 	if (in.is_open())
@@ -55,7 +55,7 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2)
 			RoomBot roomBot(positions[i].x - minX, positions[i].y - minY, positions[i].z - minZ,
 				         positions[i+1].x - minX, positions[i+1].y - minY, positions[i+1].z - minZ,
 						 p_h1, p_h2);
-			roomBots.push_back(roomBot);
+			d_roomBots.push_back(roomBot);
 		}
 		
 	}
@@ -70,25 +70,25 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2)
 void Structure::SetCenterOffset()
 {
 	glm::vec3 centerOffset(0.0f);
-	size_t size = roomBots.size();
+	size_t size = d_roomBots.size();
 
 	//The center's offset is simply an average of all the Roombots relative Position
 	for (size_t i = 0; i < size; i++)
 	{
-		glm::vec3 roomBotPosition = roomBots[i].MiddlePosition();
+		glm::vec3 roomBotPosition = d_roomBots[i].MiddlePosition();
 		centerOffset += (1 / (float)size) * glm::vec3(roomBotPosition.x, roomBotPosition.y, roomBotPosition.z);
 	}
-	_centerOffset = MODULE_SIZE * centerOffset;// -glm::vec3(MODULE_SIZE / 2, MODULE_SIZE / 2, -MODULE_SIZE / 2);
+	d_centerOffset = MODULE_SIZE * centerOffset;// -glm::vec3(MODULE_SIZE / 2, MODULE_SIZE / 2, -MODULE_SIZE / 2);
 }
 
 void Structure::Draw(const glm::mat4& VP) const
 {
 	glEnable(GL_BLEND);
 
-	for (size_t i = 0; i < roomBots.size(); i++)
+	for (size_t i = 0; i < d_roomBots.size(); i++)
 	{
 		//we multiply the VP matrix by a translation to draw the modules at the right place
-		roomBots[i].Draw(VP);
+		d_roomBots[i].Draw(VP);
 	}
 	glDisable(GL_BLEND);
 }
@@ -96,16 +96,16 @@ void Structure::Draw(const glm::mat4& VP) const
 
 glm::vec3 Structure::CenterOffset() const
 {
-	return _centerOffset;
+	return d_centerOffset;
 }
 
 std::vector<Position> Structure::RoombotsPositions() const
 {
 	std::vector<Position> positions;
-	for (size_t i(0); i < roomBots.size(); i++)
+	for (size_t i(0); i < d_roomBots.size(); i++)
 	{
-		positions.push_back(roomBots[i].PositionA());
-		positions.push_back(roomBots[i].PositionB());
+		positions.push_back(d_roomBots[i].PositionA());
+		positions.push_back(d_roomBots[i].PositionB());
 	}
 
 	return positions;

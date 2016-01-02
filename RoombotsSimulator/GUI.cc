@@ -4,7 +4,7 @@
 void GUI::Init()
 {
 	//first, the LeapmotionPointer is initialized
-	_pointer.Init(this);
+	d_pointer.Init(this);
 
 	//then we set up the hemisphere models used by the Roombot modules
 	OBJModel* hemisphere1 = new OBJModel("Models/hemis_with_holes_0.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", glm::vec4(0.2f, 0.2f, 0.2f, 1.0f));
@@ -27,72 +27,72 @@ void GUI::Init()
 	
 
 	std::cout << "GUI initialized" << std::endl;
-	_init = true;
+	d_init = true;
 
 	//<-------------------------------REMOVE THIS AT THE END
-	MovableStructure testStructure(stool,_buttons[1].Position(),_nStructures,1);
+	MovableStructure testStructure(stool,d_buttons[1].Position(),d_nStructures,1);
 	testStructure.Drop();
-	_structures.push_back(testStructure);
-	_nStructures++;
+	d_structures.push_back(testStructure);
+	d_nStructures++;
 
-	MovableStructure testStructure2(chair, _buttons[2].Position(), _nStructures, 2);
+	MovableStructure testStructure2(chair, d_buttons[2].Position(), d_nStructures, 2);
 	testStructure2.Drop();
-	_structures.push_back(testStructure2);
-	_nStructures++;
+	d_structures.push_back(testStructure2);
+	d_nStructures++;
 
 
-	MovableStructure testStructure3(table, _buttons[0].Position(), _nStructures, 0);
+	MovableStructure testStructure3(table, d_buttons[0].Position(), d_nStructures, 0);
 	testStructure3.Drop();
-	_structures.push_back(testStructure3);
-	_nStructures++;
+	d_structures.push_back(testStructure3);
+	d_nStructures++;
 
-	MovableStructure testStructure4(chair, glm::vec3(-ROOM_SIZE/3,0.0f,-2.0f), _nStructures, 2);
+	MovableStructure testStructure4(chair, glm::vec3(-ROOM_SIZE/3,0.0f,-2.0f), d_nStructures, 2);
 	testStructure4.Drop();
-	_structures.push_back(testStructure4);
-	_nStructures++;
+	d_structures.push_back(testStructure4);
+	d_nStructures++;
 
-	MovableStructure testStructure5(chair, glm::vec3(ROOM_SIZE / 3, 0.0f, -2.0f), _nStructures, 2);
+	MovableStructure testStructure5(chair, glm::vec3(ROOM_SIZE / 3, 0.0f, -2.0f), d_nStructures, 2);
 	testStructure5.Drop();
-	_structures.push_back(testStructure5);
-	_nStructures++;
+	d_structures.push_back(testStructure5);
+	d_nStructures++;
 
-	MovableStructure testStructure6(chair, glm::vec3(-ROOM_SIZE / 4, 0.0f, -3.0f), _nStructures, 2);
+	MovableStructure testStructure6(chair, glm::vec3(-ROOM_SIZE / 4, 0.0f, -3.0f), d_nStructures, 2);
 	testStructure6.Drop();
-	_structures.push_back(testStructure6);
-	_nStructures++;
+	d_structures.push_back(testStructure6);
+	d_nStructures++;
 
-	MovableStructure testStructure7(table, glm::vec3(ROOM_SIZE / 5, 0.0f, -2.5f), _nStructures, 0);
+	MovableStructure testStructure7(table, glm::vec3(ROOM_SIZE / 5, 0.0f, -2.5f), d_nStructures, 0);
 	testStructure7.Drop();
-	_structures.push_back(testStructure7);
-	_nStructures++;
+	d_structures.push_back(testStructure7);
+	d_nStructures++;
 
-	MovableStructure testStructure8(chair, glm::vec3(-ROOM_SIZE / 3, 0.0f, -4.0f), _nStructures, 2);
+	MovableStructure testStructure8(chair, glm::vec3(-ROOM_SIZE / 3, 0.0f, -4.0f), d_nStructures, 2);
 	testStructure8.Drop();
-	_structures.push_back(testStructure8);
-	_nStructures++;
+	d_structures.push_back(testStructure8);
+	d_nStructures++;
 
-	MovableStructure testStructure9(chair, glm::vec3(ROOM_SIZE / 5, 0.0f, -2.5f), _nStructures, 2);
+	MovableStructure testStructure9(chair, glm::vec3(ROOM_SIZE / 5, 0.0f, -2.5f), d_nStructures, 2);
 	testStructure9.Drop();
-	_structures.push_back(testStructure9);
-	_nStructures++;
+	d_structures.push_back(testStructure9);
+	d_nStructures++;
 
-	MovableStructure testStructure0(chair, glm::vec3(-ROOM_SIZE / 6, 0.0f, -1.0f), _nStructures, 2);
+	MovableStructure testStructure0(chair, glm::vec3(-ROOM_SIZE / 6, 0.0f, -1.0f), d_nStructures, 2);
 	testStructure0.Drop();
-	_structures.push_back(testStructure0);
-	_nStructures++;
+	d_structures.push_back(testStructure0);
+	d_nStructures++;
 }
 
 void GUI::AddButton(Structure* p_structure)
 {
-	if (_nButtons <= 5)//we want max 5 buttons for now
+	if (d_nButtons <= 5)//we want max 5 buttons for now
 	{
 		//we make the position of the buttons vary to get a line of buttons
-		glm::vec3 position = glm::vec3(BUTTON_LEFT_START - (this->_nButtons)*(BUTTON_SIZE + BUTTON_SEPARATION), BUTTON_UP_START, BUTTON_DEPTH_OFFSET);
+		glm::vec3 position = glm::vec3(BUTTON_LEFT_START - (this->d_nButtons)*(BUTTON_SIZE + BUTTON_SEPARATION), BUTTON_UP_START, BUTTON_DEPTH_OFFSET);
 
 		//we create the new Button with the position
-		Button newButton(position, _nButtons, p_structure);
-		_buttons.push_back(newButton);
-		_nButtons++;
+		Button newButton(position, d_nButtons, p_structure);
+		d_buttons.push_back(newButton);
+		d_nButtons++;
 		//MovableStructure::MovableStructure(Structure structure, glm::vec3 position, int ID, Button* p_button) :
 
 		//and add a structure linked to this button at the same position
@@ -102,19 +102,19 @@ void GUI::AddButton(Structure* p_structure)
 
 void GUI::PopStructure(unsigned int buttonID)
 {
-	if (buttonID < _nButtons)
+	if (buttonID < d_nButtons)
 	{
 		std::cout << "Popping Structure on button with ID " << buttonID << std::endl;
 
 		//What is actually created when popping a new Structure is a MovableStructure 
 		//holding the corresponding Structure
-		MovableStructure newStructure(_buttons[buttonID].AssignedStructure(),
-			_buttons[buttonID].Position(),
-			_nStructures,
+		MovableStructure newStructure(d_buttons[buttonID].AssignedStructure(),
+			d_buttons[buttonID].Position(),
+			d_nStructures,
 			buttonID);
 
-		_structures.push_back(newStructure);
-		_nStructures++;
+		d_structures.push_back(newStructure);
+		d_nStructures++;
 	}
 }
 
@@ -126,61 +126,61 @@ void GUI::DroppedStructure(unsigned int buttonID)
 
 void const GUI::Render(const glm::mat4& VP)
 {
-	if (_init)
+	if (d_init)
 	{
 		//we draw all the structures
-		for (size_t i(0); i < this->_nStructures; i++)
+		for (size_t i(0); i < this->d_nStructures; i++)
 		{
-			_structures[i].Draw(VP);
+			d_structures[i].Draw(VP);
 		}
 
 		//all the buttons
-		for (size_t i(0); i < this->_nButtons; i++)
+		for (size_t i(0); i < this->d_nButtons; i++)
 		{
-			_buttons[i].Draw(VP);
+			d_buttons[i].Draw(VP);
 		}
 		//and finally the LeapmotionPointer
-		_pointer.Draw(VP);
+		d_pointer.Draw(VP);
 	}
 }
 
 size_t GUI::NButtons()
 {
-	return this->_nButtons;
+	return this->d_nButtons;
 }
 
 void GUI::CleanUp()
 {
 	//we clean up all the buttons
 	//NOTE : the structures are cleaned up through the buttons' clean-up
-	for (size_t i(0); i < this->_nButtons; i++)
+	for (size_t i(0); i < this->d_nButtons; i++)
 	{
-		_buttons[i].CleanUp();
+		d_buttons[i].CleanUp();
 	}
 	//and the pointer
-	_pointer.CleanUp();
+	d_pointer.CleanUp();
 }
 
 void GUI::CheckForPinchedStructure()
 {
 	//we look for the first MovableStructure in pinching range from the LeapmotionPointer while it is pinching
-	for (size_t i(0); i < this->_nStructures; i++)
+	for (size_t i(0); i < this->d_nStructures; i++)
 	{
-		if (_structures[i].CloseEnough(_pointer.Position()) && _pointer.Pinching())
+		if (d_structures[i].CloseEnough(d_pointer.Position()) && d_pointer.Pinching())
 		{
-			_pointer.AssignStructure(&(_structures[i]));
+			d_pointer.AssignStructure(&(d_structures[i]));
 		}
 	}
 }
 
 void GUI::UpdatePointer(bool mode)
 {
-	_pointer.update(mode);
+	d_pointer.update(mode);
 }
 
 void GUI::Update(bool mode)
 {
-	if (_init)
+	if (d_init)
 	{
 		UpdatePointer(mode);
 		CheckForPinchedStructure();
@@ -189,7 +189,7 @@ void GUI::Update(bool mode)
 
 void GUI::UpdateWorldMatrix(const glm::mat4& worldMatrix)
 {
-	_pointer.UpdateWorldMatrix(worldMatrix);
+	d_pointer.UpdateWorldMatrix(worldMatrix);
 }
 
 std::vector<Position> GUI::GetAllRoombotsPositions()
@@ -198,9 +198,9 @@ std::vector<Position> GUI::GetAllRoombotsPositions()
 
 	//we start at '_nButtons' be cause we don't want to simulate the construction of
 	//the Structures contained in the button, which are the first in '_structures'
-	for (size_t i(_nButtons); i < _nStructures; i++)
+	for (size_t i(d_nButtons); i < d_nStructures; i++)
 	{
-		std::vector<Position> structureRoombotsPositions = _structures[i].RoombotsPositions();
+		std::vector<Position> structureRoombotsPositions = d_structures[i].RoombotsPositions();
 		positions.insert(positions.end(), structureRoombotsPositions.begin(), structureRoombotsPositions.end());
 	}
 

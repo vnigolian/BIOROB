@@ -12,7 +12,7 @@
 
 	This class allows to use complex models pretty easily.
 */
-__declspec(align(16)) class OBJModel : public Model
+class OBJModel : public Model
 {
 public :
 	/*Same constructor as the Model class but with the .obj filename added to it*/

@@ -31,29 +31,18 @@
 
 class Simulator {
 
-	static Simulator _instance;//The static instance of the Simulator, making it a singleton
-
-	BrutePathFinder _pathFinder;//The pathFinder used to create all the paths before Simulation
-
-	Simulation _simulation;//The Simulation that will run once the scene is set up
-
-	Scene _scene;//The scene containing all the static elements of the environment
-	
-	RiftHandler _rift;//The object allowing easy use of the Oculus Rift
-	
-	GUI _GUI;//The Graphic User Interface allowing interaction with the environment
-
-	unsigned int width = 0;//The window's width
-
-	unsigned int height = 0;//The window's height
-
-	glm::mat4 _worldMatrix = glm::mat4();//The worldMatrix that changes depending on the current mode
-
-	bool _mode = true;	//viewing mode. false for "in-room" view, true for "box" view
-
-	bool _running = true;
-
-	int _windowID;
+	static Simulator d_instance;                 //The static instance of the Simulator, making it a singleton
+	BrutePathFinder  d_pathFinder;               //The pathFinder used to create all the paths before Simulation
+	Simulation       d_simulation;               //The Simulation that will run once the scene is set up
+	Scene            d_scene;                    //The scene containing all the static elements of the environment	
+	RiftHandler      d_rift;                     //The object allowing easy use of the Oculus Rift	
+	GUI              d_GUI;                      //The Graphic User Interface allowing interaction with the environment
+	unsigned int     d_width = 0;                //The window's width
+	unsigned int     d_height = 0;               //The window's height
+	glm::mat4        d_worldMatrix = glm::mat4();//The worldMatrix that changes depending on the current mode
+	bool             d_mode = true;	             //viewing mode. false for "in-room" view, true for "box" view
+	bool             d_running = true;           //Whether or not the Simulator is running
+	int              d_windowID;                 //The OpenGL context window's ID
 
 public:
 	
@@ -79,7 +68,7 @@ public:
 		void (*closeFunc)());
 
 	/*Starts the Simulator*/
-	void start();
+	void Start();
 
 	/*Cleans up everything*/
 	void CleanUp();

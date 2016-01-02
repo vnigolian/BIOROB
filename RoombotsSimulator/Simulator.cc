@@ -7,7 +7,7 @@ using namespace std;
 
 
 
-Simulator Simulator::_instance = Simulator();
+Simulator Simulator::d_instance = Simulator();
 
 Simulator::Simulator()
 {
@@ -17,7 +17,7 @@ Simulator::Simulator()
 
 Simulator& Simulator::Instance()
 {
-	return _instance;
+	return d_instance;
 }
 
 Simulator::~Simulator(){
@@ -36,7 +36,7 @@ void Simulator::Init(int argc,
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);//allows to use depth, color and double buffering
 	glutInitWindowPosition(500, 200);
 	glutInitWindowSize(0, 0); //it will be resized in Init();
-	_windowID = glutCreateWindow("RoomBots Simulator");
+	d_windowID = glutCreateWindow("RoomBots Simulator");
 	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
 	
 	glutKeyboardFunc(handleKeyboard);
@@ -56,20 +56,20 @@ void Simulator::Init(int argc,
 
 	InitRift(renderScene);
 
-	_GUI.Init();
+	d_GUI.Init();
 
 }
 
 void Simulator::Close()
 {
 	glutLeaveMainLoop();
-	glutDestroyWindow(_windowID);
-	_running = false;
+	glutDestroyWindow(d_windowID);
+	d_running = false;
 
 	exit(EXIT_SUCCESS);
 }
 
-void Simulator::start()
+void Simulator::Start()
 {
 	MainLoop();
 }
@@ -80,13 +80,13 @@ void Simulator::start()
 void Simulator::Resize(int w, int h)
 {
 	//We want the window to be fixed-size (adapted to the Rift's display)
-	glutReshapeWindow(width, height);
+	glutReshapeWindow(d_width, d_height);
 }
 
 glm::mat4 Simulator::WorldViewMatrix()
 {
 	glm::mat4 worldViewMatrix = glm::mat4(1.0f);
-	if (_mode)
+	if (d_mode)
 	{
 		worldViewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -0.2f, -0.2f))
 			*glm::scale(glm::mat4(1.0f), glm::vec3(1 / 12.0f));
@@ -97,23 +97,23 @@ glm::mat4 Simulator::WorldViewMatrix()
 void Simulator::RenderScene()
 {
 	glm::mat4 VP = glm::mat4(1.0f);
-	if (_mode)
+	if (d_mode)
 	{
-		VP = _rift.glmViewProjMatrix() * WorldViewMatrix();
+		VP = d_rift.glmViewProjMatrix() * WorldViewMatrix();
 	}
 	else
 	{
-		VP = _rift.glmViewProjMatrix() * _worldMatrix;
+		VP = d_rift.glmViewProjMatrix() * d_worldMatrix;
 	}
-	_scene.Render(VP, !_mode);
+	d_scene.Render(VP, !d_mode);
 
-	if (_simulation.isOver())
+	if (d_simulation.IsOver())
 	{
-		_GUI.Render(VP);
+		d_GUI.Render(VP);
 	}
 	else
 	{
-		_simulation.draw(VP);
+		d_simulation.Draw(VP);
 	}
 }
 
@@ -121,7 +121,7 @@ void Simulator::Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	_rift.DisplayOnRift();
+	d_rift.DisplayOnRift();
 
 	glutSwapBuffers();//switch between the two buffers
 
@@ -232,68 +232,68 @@ void Simulator::InitScene()
 	Cube* skybox = new Cube("Shaders/sky_vshader.glsl", "Shaders/sky_fshader.glsl", "Textures/skybox_texture.jpg", glm::vec4(0.0f, 0.0f, 0.0f, 0.0f));
 	skybox->SetModelMatrix(glm::scale(glm::mat4(1.0f), glm::vec3(50.0f)));
 
-	_scene.AddModel(floor_quad);
-	_scene.AddModel(skybox);
+	d_scene.AddModel(floor_quad);
+	d_scene.AddModel(skybox);
 
-	_scene.AddModel(left_wall1);
-	_scene.AddModel(left_wall2);
-	_scene.AddModel(left_wall3);
+	d_scene.AddModel(left_wall1);
+	d_scene.AddModel(left_wall2);
+	d_scene.AddModel(left_wall3);
 
-	_scene.AddModel(right_wall1);
-	_scene.AddModel(right_wall2);
-	_scene.AddModel(right_wall3);
+	d_scene.AddModel(right_wall1);
+	d_scene.AddModel(right_wall2);
+	d_scene.AddModel(right_wall3);
 
-	_scene.AddModel(back_wall1);
-	_scene.AddModel(back_wall2);
-	_scene.AddModel(back_wall3);
+	d_scene.AddModel(back_wall1);
+	d_scene.AddModel(back_wall2);
+	d_scene.AddModel(back_wall3);
 
-	_scene.AddModel(front_wall1);
-	_scene.AddModel(front_wall2);
-	_scene.AddModel(front_wall3);
+	d_scene.AddModel(front_wall1);
+	d_scene.AddModel(front_wall2);
+	d_scene.AddModel(front_wall3);
 
-	_scene.AddModel(right_window1);
-	_scene.AddModel(right_window2);
-	_scene.AddModel(back_window1);
-	_scene.AddModel(back_window2);
-	_scene.AddModel(door);
+	d_scene.AddModel(right_window1);
+	d_scene.AddModel(right_window2);
+	d_scene.AddModel(back_window1);
+	d_scene.AddModel(back_window2);
+	d_scene.AddModel(door);
 
-	_scene.initRoof(roomSize);
+	d_scene.InitRoof(roomSize);
 
 }
 
 void Simulator::InitRift(DisplayFunction function){
-	_rift.Init(function);//<<---------------------- must be done in main
+	d_rift.Init(function);//<<---------------------- must be done in main
 	//_rift.Init(RenderScene);
 
 	//This sets the mirror window's size
 	//The mirror window is the one that mirrors the Rift's display on the regular screen
-	width = _rift.ResolutionWidth() / 2;
-	height = _rift.ResolutionHeight() / 2;
-	glutReshapeWindow(width, height);
+	d_width = d_rift.ResolutionWidth() / 2;
+	d_height = d_rift.ResolutionHeight() / 2;
+	glutReshapeWindow(d_width, d_height);
 }
 
 
 
 void Simulator::CleanUp()
 {
-	_scene.CleanUp();
-	_rift.CleanUp();
-	_GUI.CleanUp();
+	d_scene.CleanUp();
+	d_rift.CleanUp();
+	d_GUI.CleanUp();
 }
 
 
 void Simulator::MainLoop()
 {
 	
-	while (_running)
+	while (d_running)
 	{
-		_GUI.UpdateWorldMatrix(_worldMatrix);
-		_GUI.Update(_mode);// update the pointer's position by getting data from the LeapMotion sensor
+		d_GUI.UpdateWorldMatrix(d_worldMatrix);
+		d_GUI.Update(d_mode);// update the pointer's position by getting data from the LeapMotion sensor
 		Display();//we call display at every iteration so that we update the view matrix depending on the Oculus' position
 		
-		_simulation.run();//The simulation step is actually executed only if it's already initialized
+		d_simulation.Run();//The simulation step is actually executed only if it's already initialized
 
-		if (_running)
+		if (d_running)
 		{
 			glutMainLoopEvent();//executes one iteration of the OpenGL main loop
 		}
@@ -305,40 +305,40 @@ void Simulator::MainLoop()
 
 void Simulator::Forward()
 {
-	if (!_mode)
+	if (!d_mode)
 	{
-		_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.2f));
+		d_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.2f));
 	}
 }
 
 void Simulator::Left()
 {
-	if (!_mode)
+	if (!d_mode)
 	{
-		_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.2f, 0.0f, 0.0f));
+		d_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.2f, 0.0f, 0.0f));
 	}
 }
 
 void Simulator::Backwards()
 {
-	if (!_mode)
+	if (!d_mode)
 	{
-		_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -0.2f));
+		d_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -0.2f));
 	}
 }
 
 void Simulator::Right()
 {
-	if (!_mode)
+	if (!d_mode)
 	{
-		_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(-0.2f, 0.0f, 0.0f));
+		d_worldMatrix *= glm::translate(glm::mat4(1.0f), glm::vec3(-0.2f, 0.0f, 0.0f));
 	}
 }
 
 void Simulator::SwitchViewMode()
 {
-	_mode = _mode ^ true;
-	if (_mode)
+	d_mode = d_mode ^ true;
+	if (d_mode)
 	{
 		std::cout << "Box View" << std::endl;
 	}
@@ -386,7 +386,7 @@ void Simulator::InitSimulation()
 {
 	std::cout << "launching simulation" << std::endl;
 
-	std::vector<Position> roombotsFinalPositions = _GUI.GetAllRoombotsPositions();
+	std::vector<Position> roombotsFinalPositions = d_GUI.GetAllRoombotsPositions();
 
 	std::cout << "All Roombots positions acquired" << std::endl;
 	std::vector<Path> paths;
@@ -400,12 +400,12 @@ void Simulator::InitSimulation()
 			MODULE_SIZE * 2 * (i / modulesPerLine)));
 
 		paths.push_back(Path());
-		_pathFinder.run(paths[i], roombotInitialPosition, roombotsFinalPositions[i * 2]);
+		d_pathFinder.Run(paths[i], roombotInitialPosition, roombotsFinalPositions[i * 2]);
 		paths[i].push_back(roombotsFinalPositions[i * 2 + 1]);
 	}
-	std::cout << "Paths for " << paths.size() << " Roombots have been computed with the path-finding algorithm called " << _pathFinder.name() << std::endl;
+	std::cout << "Paths for " << paths.size() << " Roombots have been computed with the path-finding algorithm called " << d_pathFinder.Name() << std::endl;
 
-	_simulation.Initialize(paths);
+	d_simulation.Initialize(paths);
 }
 
 

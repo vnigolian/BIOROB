@@ -17,17 +17,16 @@ typedef void(*DisplayFunction)();//a display function does not take any argument
 
 class RiftHandler
 {
-	OVR::Matrix4f viewProjMatrix;
-
-	ovrHmd hmd = nullptr;//The code object representing the Rift's HMD
-	ovrTrackingState trackingState;//The tracking state of the HMD
-	bool isVisible = false;//Keeps the rendering to be displayed while the Rift hasn't been initialized
-	ovrEyeRenderDesc EyeRenderDesc[2];//Store all the rendering information for both eyes
-	TextureBuffer * eyeRenderTexture[2];//The textures where the image from both eyes will be stored
-	DepthBuffer   * eyeDepthBuffer[2];//The buffer where the depth information from both eyes will be stored
-	GLuint mirrorFBO = 0; //The FBO for the mirror display
-	ovrGLTexture* mirrorTexture; //The texture for the mirror display
-	DisplayFunction displayFunction;//the function that draws what will be displayed on the Rift's screen
+	OVR::Matrix4f    d_viewProjMatrix;     //THE viewProj matrix representing the orientation of the HMD
+	ovrHmd           d_hmd = nullptr;      //The code object representing the Rift's HMD
+	ovrTrackingState d_trackingState;      //The tracking state of the HMD
+	bool             d_isVisible = false;  //Keeps the rendering to be displayed while the Rift hasn't been initialized
+	ovrEyeRenderDesc d_EyeRenderDesc[2];   //Store all the rendering information for both eyes
+	TextureBuffer*   d_eyeRenderTexture[2];//The textures where the image from both eyes will be stored
+	DepthBuffer*     d_eyeDepthBuffer[2];  //The buffer where the depth information from both eyes will be stored
+	GLuint           d_mirrorFBO = 0;      //The FBO for the mirror display
+	ovrGLTexture*    d_mirrorTexture;      //The texture for the mirror display
+	DisplayFunction  d_displayFunction;    //the function that draws what will be displayed on the Rift's screen
 
 public:
 	/*displays the rendering done in 'displayFunction' on the Rift's screen*/

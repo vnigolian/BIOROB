@@ -7,9 +7,9 @@
 struct TextureBuffer
 {
 	ovrSwapTextureSet* TextureSet;
-	GLuint        texId;
-	GLuint        fboId;
-	OVR::Sizei          texSize;
+	GLuint                  texId;
+	GLuint                  fboId;
+	OVR::Sizei            texSize;
 
 	TextureBuffer(ovrHmd hmd, 
 		bool rendertarget, 

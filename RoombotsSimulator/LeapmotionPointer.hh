@@ -14,30 +14,22 @@ class LeapmotionPointer
 #define BOX_COORDINATE_SYSTEM_SCALE_CONVERSION 0.016f
 #define PINCHING_LIMIT 0.7f
 
-	Leap::Controller _controller;//The object allowing us to get data from the Leapmotion device
-	glm::vec3 _position;//The position of the LeapmotionPointer
+	Leap::Controller  d_controller;                       //The object allowing us to get data from the Leapmotion device
+	glm::vec3         d_position;                         //The position of the LeapmotionPointer
+	MovableStructure* d_p_structure = NULL;               //A pointer to the Structure being dragged 
+	                                                      //(NULL if no Structure is being dragged)
+	glm::mat4         d_invertedWorldMatrix = glm::mat4();//This matrix is the inverse from the Scene's WorldMatrix.
+	                                                      //It allows the user to move around in the room and move 
+	                                                      //Structures more easily
+	bool              d_init = false;                     //Set to true once initialized
+	Cube*             d_p_pointerModel;                   //the Cube representing the LeapmotionPointer and 
+	                                                      //changing size depending on its pinching value
+	Cube*             d_p_referencePointerModel;          //the reference Cube that doesn't change size
+	Quad*             d_p_shadow;                         //the Quad projected on the floor, helping perceive depth
+	GUI*              d_p_gui;                            //A pointer to the GUI so it can tell it to add a new Structure 
+	                                                      //to a button once it's dropped
 
-	MovableStructure* _p_structure = NULL;//A pointer to the Structure being dragged 
-	                                      //(NULL if no Structure is being dragged)
 
-	glm::mat4 _invertedWorldMatrix = glm::mat4();//This matrix is the inverse from the Scene's WorldMatrix.
-	                                             //It allows the user to move around in the room and move 
-	                                             //Structures more easily
-
-	bool _init = false;//Set to true once initialized
-
-	Cube* _pointerModel;//the Cube representing the LeapmotionPointer and 
-	                    //changing size depending on its pinching value
-
-	Cube* _referencePointerModel;//the reference Cube that doesn't change size
-
-	Quad* _shadow;//the Quad projected on the floor, helping perceive depth
-
-	GUI* _p_gui;//A pointer to the GUI so it can tell it to add a new Structure 
-	            //to a button once it's dropped
-
-	/*Adapts the offset, the limits and the sensitivity of the pointer depending on the current mode*/
-	Leap::Vector adaptToMode(Leap::Vector right_hand_pos, bool mode);
 	
 public:
 
@@ -69,6 +61,9 @@ public:
 	/*Assigns a Structure to the LeapmotionPointer for dragging*/
 	MovableStructure* AssignedStructure() const;
 
-	
 	void CleanUp();
+
+private:
+	/*Adapts the offset, the limits and the sensitivity of the pointer depending on the current mode*/
+	Leap::Vector adaptToMode(Leap::Vector right_hand_pos, bool mode);
 };

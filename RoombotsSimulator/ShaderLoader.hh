@@ -21,12 +21,11 @@ namespace Core
 
 	public:
 
-		ShaderLoader(void);
-		~ShaderLoader(void);
+		ShaderLoader();
+		~ShaderLoader();
 
 		/*creates a new program using the two shaders indicated by the names 
-		passed in arguments and returns its ID
-		*/
+		passed in arguments and returns its ID*/
 		GLuint CreateProgram(const char* VertexShaderFilename,
 			                 const char* FragmentShaderFilename);
 

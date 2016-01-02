@@ -7,11 +7,11 @@
 class HalfModule
 {
 private:
-	Position _position;//The relative coordinates within the Structure
+	Position       d_position;     //The relative coordinates within the Structure
 
-	OBJModel* _hemisphere1;//A pointer to a up-oriented hemisphere Model
-	OBJModel* _hemisphere2;//A pointer to a down-oriented hemisphere Model
-	OBJModel* _circle;//A pointer to a circle model
+	OBJModel*      d_p_hemisphere1;//A pointer to a up-oriented hemisphere Model
+	OBJModel*      d_p_hemisphere2;//A pointer to a down-oriented hemisphere Model
+	OBJModel*      d_p_circle;     //A pointer to a circle model
 
 public:
 
@@ -22,10 +22,10 @@ public:
 	void Draw(const glm::mat4& VP) const;
 
 	/*Returns the relative Position of the halfModule within its Structure*/
-	Position getPosition() const;
+	Position GetPosition() const;
 
 	/*Directly sets the position of the Module.
 	This should only be used when running the simulation or when the Module is free from any Structure*/
-	void setPosition(const Position& position);
+	void SetPosition(const Position& position);
 
 };
