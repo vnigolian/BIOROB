@@ -2,17 +2,17 @@
 #include "../Position.hh"
 
 
-HalfModule::HalfModule(int x, int y, int z, OBJModel* p_h1, OBJModel* p_h2): HalfModule(Position(x,y,z),p_h1,p_h2) {}
+HalfModule::HalfModule(int x, 
+	                   int y, 
+					   int z, 
+					   OBJModel* p_h1, 
+					   OBJModel* p_h2, 
+					   OBJModel* p_circle) : HalfModule(Position(x, y, z), p_h1, p_h2, p_circle) {}
 
-HalfModule::HalfModule(Position position, OBJModel* p_h1, OBJModel* p_h2) : d_position(position)
-{
-	d_p_hemisphere1 = p_h1;
-	d_p_hemisphere2 = p_h2;
-
-	glm::vec4 pale_green(0.66f, 0.66f, 0.18f, 1.0f);
-
-	d_p_circle = new OBJModel("Models/circle_5.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", pale_green);
-}
+HalfModule::HalfModule(Position position, 
+	                   OBJModel* p_h1, 
+					   OBJModel* p_h2, 
+					   OBJModel* p_circle) : d_position(position), d_p_hemisphere1(p_h1), d_p_hemisphere2(p_h2), d_p_circle(p_circle){}
 
 
 
@@ -67,5 +67,18 @@ Position HalfModule::GetPosition() const
 void HalfModule::SetPosition(const Position& position)
 {
 	d_position = position;
+}
+
+
+void HalfModule::CleanUp()
+{
+	d_p_circle->CleanUp();
+	delete d_p_circle;
+
+	d_p_hemisphere1->CleanUp();
+	delete d_p_hemisphere1;
+
+	d_p_hemisphere2->CleanUp();
+	delete d_p_hemisphere2;
 }
 

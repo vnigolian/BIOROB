@@ -19,7 +19,9 @@ public:
 	Position();
 
 	/*This constructor creates a new Position at (x,y,z)*/
-	Position(int x, int y, int z);
+	Position(int x, 
+		     int y, 
+			 int z);
 
 	/*Copy constructor*/
 	Position(Position*);

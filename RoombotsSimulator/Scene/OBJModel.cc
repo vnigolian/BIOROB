@@ -70,7 +70,7 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 			}
 		}
 	}
-	//std::cout << "finished loading OBJModel from " << _objfilename << " with " << vertices->size() << " vertices."<< std::endl;
+	std::cout << "finished loading OBJModel from " << _objfilename << " with " << vertices->size() << " vertices."<< std::endl;
 	in.close();
 }
 

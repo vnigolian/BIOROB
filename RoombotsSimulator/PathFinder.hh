@@ -19,7 +19,9 @@ public:
 		This method takes a Path, a starting position and a finish position as arguments 
 		and fills the path with a series of Positions going from start to finish
 	*/
-	virtual void Run(Path& path, const Position& start, const Position& finish) const = 0;
+	virtual void Run(Path& path, 
+		             const Position& start, 
+					 const Position& finish) const = 0;
 
 	/**
 		This method simply returns the name of the path-finding algorithm 

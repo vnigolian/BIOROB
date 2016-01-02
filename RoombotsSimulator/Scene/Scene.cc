@@ -36,4 +36,5 @@ void Scene::CleanUp()
 	{
 		d_models[i]->CleanUp();
 	}
+	d_roof->CleanUp();
 }

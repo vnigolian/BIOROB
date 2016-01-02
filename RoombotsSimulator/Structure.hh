@@ -19,7 +19,7 @@
    left-most, lowest, closest Roombot module.
 
    IMPORTANT NOTE : There is no verification of the validity of the .rbs file.
-                    A wrongly-written file would create an impossible Structure.
+                    A wrongly-written file would create a physicaly impossible Structure.
 */
 class Structure
 {
@@ -30,7 +30,10 @@ class Structure
 public:
 	/*The constructor takes the .rbs file name to import it and create the corresponding 
 	Structure and a pointer to both hemisphere.*/
-	Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2);
+	Structure(std::string sourceFilename, 
+		      OBJModel* p_h1, 
+			  OBJModel* p_h2, 
+			  OBJModel* p_circle);
 
 	/*Draws the Structure*/
 	void Draw(const glm::mat4& VP) const;

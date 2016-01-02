@@ -65,5 +65,6 @@ public:
 
 private:
 	/*Adapts the offset, the limits and the sensitivity of the pointer depending on the current mode*/
-	Leap::Vector adaptToMode(Leap::Vector right_hand_pos, bool mode);
+	Leap::Vector adaptToMode(Leap::Vector right_hand_pos, 
+		                     bool mode);
 };

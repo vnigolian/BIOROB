@@ -15,8 +15,17 @@ private:
 
 public:
 
-	HalfModule(int, int, int, OBJModel* p_h1, OBJModel* p_h2);
-	HalfModule(Position position, OBJModel* p_h1, OBJModel* p_h2);
+	HalfModule(int, 
+		       int, 
+		       int, 
+		       OBJModel* p_h1, 
+		       OBJModel* p_h2, 
+		       OBJModel* p_circle);
+
+	HalfModule(Position position, 
+		       OBJModel* p_h1, 
+		       OBJModel* p_h2, 
+		       OBJModel* p_circle);
 
 	/*Draws the two hemispheres and the circle six times in different positions and orientations.*/
 	void Draw(const glm::mat4& VP) const;
@@ -28,4 +37,6 @@ public:
 	This should only be used when running the simulation or when the Module is free from any Structure*/
 	void SetPosition(const Position& position);
 
+	/*Cleans up the three Models used in the HalfModule*/
+	void CleanUp();
 };

@@ -28,7 +28,10 @@ public:
 
 	#define DRAG_RADIUS 0.4f //The minimum distance to grab a Structure
 
-	MovableStructure(Structure* p_structure, glm::vec3 position, int ID, unsigned int buttonID);
+	MovableStructure(Structure* p_structure, 
+		             glm::vec3 position, 
+					 int ID, 
+					 unsigned int buttonID);
 
 
 	/*Returns true if the position passed in argument is close enough from the Structure's center*/

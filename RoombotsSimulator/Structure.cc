@@ -23,7 +23,7 @@ typedef struct
 	int z;
 } Triplet;
 
-Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2) : d_filename(sourceFilename)
+Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2, OBJModel* p_circle) : d_filename(sourceFilename)
 {
 	std::fstream in(sourceFilename);
 	if (in.is_open())
@@ -54,7 +54,7 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2)
 		{
 			RoomBot roomBot(positions[i].x - minX, positions[i].y - minY, positions[i].z - minZ,
 				         positions[i+1].x - minX, positions[i+1].y - minY, positions[i+1].z - minZ,
-						 p_h1, p_h2);
+						 p_h1, p_h2, p_circle);
 			d_roomBots.push_back(roomBot);
 		}
 		
@@ -114,6 +114,10 @@ std::vector<Position> Structure::RoombotsPositions() const
 
 void Structure::CleanUp()
 {
-
+	//since all Roombots use the same three models, we only need to clean up the first one
+	if (!d_roomBots.empty())
+	{
+		d_roomBots[0].CleanUp();
+	}
 }
 

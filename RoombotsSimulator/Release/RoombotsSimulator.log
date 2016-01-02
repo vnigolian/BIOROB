@@ -1,8 +1,27 @@
-﻿Build started 02.01.2016 18:00:30.
+﻿Build started 02.01.2016 20:30:49.
      1>Project "C:\Users\Val\Desktop\Projet\BIOROB\RoombotsSimulator\RoombotsSimulator.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\CL.exe /c /IC:\Users\Val\Desktop\Projet\BIOROB\packages\glm.0.9.6.3\build\native\../..//build/native/include/ /ILeapSDK\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Simulator.cc
+         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\CL.exe /c /IC:\Users\Val\Desktop\Projet\BIOROB\packages\glm.0.9.6.3\build\native\../..//build/native/include/ /ILeapSDK\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BrutePathFinder.cc Button.cc GUI.cc LeapmotionPointer.cc MovableStructure.cc Position.cc RiftHandler.cc Scene\Cube.cc Scene\HalfModule.cc Scene\Model.cc Scene\OBJModel.cc Scene\Quad.cc Scene\RoomBot.cc Scene\Scene.cc ShaderLoader.cc Simulation.cc Simulator.cc Structure.cc main.cc
+         BrutePathFinder.cc
+         Button.cc
+         GUI.cc
+         LeapmotionPointer.cc
+         MovableStructure.cc
+     1>MovableStructure.cc(43): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+         Position.cc
+         RiftHandler.cc
+         Cube.cc
+         HalfModule.cc
+         Model.cc
+         OBJModel.cc
+         Quad.cc
+         RoomBot.cc
+         Scene.cc
+         ShaderLoader.cc
+         Simulation.cc
          Simulator.cc
+         Structure.cc
+         main.cc
        Link:
          E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Val\Desktop\Projet\BIOROB\Release\RoombotsSimulator.exe" /NOLOGO /LIBPATH:Libraries\freeglut /LIBPATH:Libraries\glew /LIBPATH:Libraries\soil /LIBPATH:Libraries\OVR /LIBPATH:Libraries\Leap Leap.lib LibOVR.lib opengl32.lib SOIL.lib freeglut.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Val\Desktop\Projet\BIOROB\Release\RoombotsSimulator.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Val\Desktop\Projet\BIOROB\Release\RoombotsSimulator.lib" /MACHINE:X86 /SAFESEH Release\BrutePathFinder.obj
          Release\Button.obj
@@ -32,4 +51,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.62
+Time Elapsed 00:00:15.40

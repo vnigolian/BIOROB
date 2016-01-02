@@ -1,9 +1,9 @@
-﻿Build started 02.01.2016 19:39:28.
+﻿Build started 02.01.2016 20:29:53.
      1>Project "C:\Users\Val\Desktop\Projet\BIOROB\RoombotsSimulator\RoombotsSimulator.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\CL.exe /c /IC:\Users\Val\Desktop\Projet\BIOROB\packages\glm.0.9.6.3\build\native\../..//build/native/include/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt Simulator.cc main.cc
-         main.cc
-         Simulator.cc
+         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\CL.exe /c /IC:\Users\Val\Desktop\Projet\BIOROB\packages\glm.0.9.6.3\build\native\../..//build/native/include/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt GUI.cc Scene\HalfModule.cc
+         HalfModule.cc
+         GUI.cc
          Generating Code...
        Link:
          E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.exe" /INCREMENTAL /NOLOGO /LIBPATH:Libraries\Leap /LIBPATH:Libraries\freeglut /LIBPATH:Libraries\glew /LIBPATH:Libraries\soil /LIBPATH:Libraries\OVR Leap.lib LibOVR.lib opengl32.lib SOIL.lib freeglut.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.lib" /MACHINE:X86 Debug\BrutePathFinder.obj
@@ -32,4 +32,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.30
+Time Elapsed 00:00:05.78

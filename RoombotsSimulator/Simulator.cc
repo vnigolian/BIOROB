@@ -262,8 +262,7 @@ void Simulator::InitScene()
 }
 
 void Simulator::InitRift(DisplayFunction function){
-	d_rift.Init(function);//<<---------------------- must be done in main
-	//_rift.Init(RenderScene);
+	d_rift.Init(function);
 
 	//This sets the mirror window's size
 	//The mirror window is the one that mirrors the Rift's display on the regular screen
@@ -292,11 +291,7 @@ void Simulator::MainLoop()
 		Display();//we call display at every iteration so that we update the view matrix depending on the Oculus' position
 		
 		d_simulation.Run();//The simulation step is actually executed only if it's already initialized
-
-		if (d_running)
-		{
-			glutMainLoopEvent();//executes one iteration of the OpenGL main loop
-		}
+		glutMainLoopEvent();//executes one iteration of the OpenGL main loop
 	}
 }
 
@@ -371,12 +366,6 @@ void Simulator::HandleKeyboard(unsigned char key, int x, int y)
 		InitSimulation();
 		break;
 
-	/*case 'n':
-		if (_simulation.nextStep())
-		{
-			_GUI.enablePointer();
-		}
-		break;*/
 	default :
 		std::cout << "you pressed : " << (int)key << std::endl;
 	}

@@ -19,7 +19,9 @@ class Button
 public:
 	
 	/*Creates a new button containing the structure passed as argument*/
-	Button(glm::vec3 position, unsigned int ID, Structure* p_structure);
+	Button(glm::vec3 position, 
+		   unsigned int ID, 
+		   Structure* p_structure);
 
 	/*Draws the button and its shadow*/
 	void Draw(const glm::mat4& VP) const;

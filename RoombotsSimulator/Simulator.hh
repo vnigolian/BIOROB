@@ -84,7 +84,9 @@ public:
 
 	/*Handles the keystrokes. 
 	IMPORTANT NOTE : This is based on the value of the pressed key on a QWERTZ keyboard.*/
-	void HandleKeyboard(unsigned char key, int x, int y);
+	void HandleKeyboard(unsigned char key, 
+		                int x, 
+						int y);
 
 	void Close();
 

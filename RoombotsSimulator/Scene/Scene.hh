@@ -24,7 +24,8 @@ public:
 	/*Adds a Model to the list of elements of the Scene*/
 	void AddModel(Model* sourceModel);
 	/*Drawns all the elements of the Scene and the roof if the current mode is RoomView*/
-	void const Render(const glm::mat4& VP, bool drawRoof);
+	void const Render(const glm::mat4& VP, 
+		              bool drawRoof);
 
 	/*Returns the number of Models contained in the Scene*/
 	size_t NModels();

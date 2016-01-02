@@ -15,12 +15,16 @@ void Simulation::Initialize(const std::vector<Path>& paths)
 		*glm::rotate(3.14f, glm::vec3(.0f, 0.0f, 1.0f))
 		*glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
 
+	glm::vec4 pale_green(0.66f, 0.66f, 0.18f, 1.0f);
+	OBJModel* p_circle = new OBJModel("Models/circle_5.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", pale_green);
+
+
 	//for every path, we create and add two separate HalfModules. 
 	//Every successive pair of HalfModules represents a Roombot
 	for (size_t i(0); i < paths.size(); i++)
 	{
-		d_halfModules.push_back(HalfModule(paths[i][0], hemisphere1, hemisphere2));
-		d_halfModules.push_back(HalfModule(paths[i][1], hemisphere1, hemisphere2));
+		d_halfModules.push_back(HalfModule(paths[i][0], hemisphere1, hemisphere2, p_circle));
+		d_halfModules.push_back(HalfModule(paths[i][1], hemisphere1, hemisphere2, p_circle));
 	}
 
 	d_init = true;
@@ -100,6 +104,13 @@ void Simulation::Reset()
 	if (d_init)
 	{
 		std::cout << "Resetting simulation" << std::endl;
+	}
+
+	//Since all Halfmodules use the same three Models to be drawn,
+	//we only need to call 'CleanUp()' once
+	if (!d_halfModules.empty())
+	{
+		d_halfModules[0].CleanUp();
 	}
 	d_paths.clear();
 	d_halfModules.clear();

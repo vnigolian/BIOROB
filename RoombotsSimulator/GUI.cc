@@ -15,10 +15,16 @@ void GUI::Init()
 	*glm::rotate(3.14f, glm::vec3(.0f, 0.0f, 1.0f))
 	*glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
 	
+	glm::vec4 pale_green(0.66f, 0.66f, 0.18f, 1.0f);
+	OBJModel* p_circle = new OBJModel("Models/circle_5.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", pale_green);
+
+
+	std::cout << "paaaaale greeeeen ciiiirclllllle !" << std::endl;
+
 	//then we create new Structure based on .rbs files
-	Structure* stool = new Structure("Structures/stool.rbs", hemisphere1,hemisphere2);
-	Structure* chair = new Structure("Structures/chair.rbs", hemisphere1, hemisphere2);
-	Structure* table = new Structure("Structures/table.rbs", hemisphere1, hemisphere2);
+	Structure* stool = new Structure("Structures/stool.rbs", hemisphere1,hemisphere2, p_circle);
+	Structure* chair = new Structure("Structures/chair.rbs", hemisphere1, hemisphere2, p_circle);
+	Structure* table = new Structure("Structures/table.rbs", hemisphere1, hemisphere2, p_circle);
 
 	//then we add buttons holding the Structures to the GUI
 	AddButton(table);
