@@ -3,6 +3,7 @@
 #include "BrutePathFinder.hh"
 #include <ctime>
 #include <thread>
+#include <future>
 
 class Simulation
 {
@@ -12,6 +13,8 @@ private:
 	unsigned int _currentStep = 0;
 	bool _init = false;
 	bool _over = true;
+
+	std::clock_t _refClock;
 
 	void Reset();
 

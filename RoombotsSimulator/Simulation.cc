@@ -24,6 +24,8 @@ void Simulation::Initialize(const std::vector<Path>& paths)
 	_init = true;
 	_over = false;
 
+	_refClock = clock();
+
 	std::cout << "Simulation initialized. Ready to run !" << std::endl;
 }
 
@@ -41,7 +43,6 @@ bool Simulation::nextStep()
 				_halfModules[2 * i + _currentStep % 2].setPosition(_paths[i][_currentStep] );
 			}
 		}
-
 		_currentStep++;
 
 		if (!notOver){
@@ -60,6 +61,22 @@ void Simulation::draw(const glm::mat4& VP)
 		for (size_t i(0); i < _halfModules.size(); i++)
 		{
 			_halfModules[i].Draw(VP);
+		}
+		run();
+	}
+}
+
+void Simulation::run()
+{
+	if (!_over)
+	{
+		std::clock_t curTime = clock();
+		
+		double diff = ((float)(curTime - _refClock))/CLOCKS_PER_SEC;
+		if (diff > 0.3)
+		{
+			nextStep();
+			_refClock = curTime;
 		}
 	}
 }

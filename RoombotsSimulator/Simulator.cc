@@ -347,12 +347,13 @@ void Simulator::HandleKeyboard(unsigned char key, int x, int y)
 	case 13:
 		launchSimulation();
 		break;
-	case 'n':
+
+	/*case 'n':
 		if (_simulation.nextStep())
 		{
 			_GUI.enablePointer();
 		}
-		break;
+		break;*/
 	default :
 		std::cout << "you pressed : " << (int)key << std::endl;
 	}
@@ -361,7 +362,6 @@ void Simulator::HandleKeyboard(unsigned char key, int x, int y)
 void Simulator::launchSimulation()
 {
 	std::cout << "launching simulation" << std::endl;
-	_GUI.disablePointer();
 
 	std::vector<Position> roombotsFinalPositions = _GUI.GetAllRoombotsPositions();
 
@@ -383,7 +383,6 @@ void Simulator::launchSimulation()
 	std::cout << "Paths for " << paths.size() << " Roombots have been computed with the path-finding algorithm called " << std::endl;
 
 	_simulation.Initialize(paths);
-
 }
 
 

@@ -1,7 +1,8 @@
-﻿Build started 30.12.2015 20:36:31.
+﻿Build started 02.01.2016 13:39:34.
      1>Project "C:\Users\Val\Desktop\Projet\BIOROB\RoombotsSimulator\RoombotsSimulator.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\CL.exe /c /IC:\Users\Val\Desktop\Projet\BIOROB\packages\glm.0.9.6.3\build\native\../..//build/native/include/ /ILeapSDK\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Simulator.cc
+         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\CL.exe /c /IC:\Users\Val\Desktop\Projet\BIOROB\packages\glm.0.9.6.3\build\native\../..//build/native/include/ /ILeapSDK\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Simulation.cc Simulator.cc
+         Simulation.cc
          Simulator.cc
        Link:
          E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Val\Desktop\Projet\BIOROB\Release\RoombotsSimulator.exe" /NOLOGO /LIBPATH:Libraries\freeglut /LIBPATH:Libraries\glew /LIBPATH:Libraries\soil /LIBPATH:Libraries\OVR /LIBPATH:Libraries\Leap Leap.lib LibOVR.lib opengl32.lib SOIL.lib freeglut.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Val\Desktop\Projet\BIOROB\Release\RoombotsSimulator.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Val\Desktop\Projet\BIOROB\Release\RoombotsSimulator.lib" /MACHINE:X86 /SAFESEH Release\BrutePathFinder.obj
@@ -33,4 +34,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.21
+Time Elapsed 00:00:04.71

@@ -96,3 +96,4 @@ std::vector<Position> MovableStructure::RoombotsPositions() const
 
 	return positions;
 }
+
