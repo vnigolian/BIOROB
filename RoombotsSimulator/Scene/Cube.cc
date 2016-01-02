@@ -1,11 +1,5 @@
 #include "Cube.hh"
  
-Cube* Cube::copy() const
-{
-	Cube* p_newCube = new Cube(_vShader, _fShader, _texture, _color);
-	p_newCube->SetModelMatrix(_M);
-	return p_newCube;
-}
 
 	void Cube::SetVertices(std::vector<glm::vec3> *vertices)
 	{

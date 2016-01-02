@@ -20,8 +20,6 @@ public:
 		Init();
 	}
 
-	Quad* copy() const;
-
 protected:
 	virtual void SetVertices(std::vector<glm::vec3> *vertices);
 	virtual void SetUVs(std::vector<glm::vec2> *uvs);

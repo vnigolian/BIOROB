@@ -11,7 +11,13 @@ struct TextureBuffer
 	GLuint        fboId;
 	OVR::Sizei          texSize;
 
-	TextureBuffer(ovrHmd hmd, bool rendertarget, bool displayableOnHmd, OVR::Sizei size, int mipLevels, unsigned char * data, int sampleCount)
+	TextureBuffer(ovrHmd hmd, 
+		bool rendertarget, 
+		bool displayableOnHmd, 
+		OVR::Sizei size, 
+		int mipLevels, 
+		unsigned char * data, 
+		int sampleCount)
 	{
 		texSize = size;
 

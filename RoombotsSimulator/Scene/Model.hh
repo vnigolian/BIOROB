@@ -3,7 +3,14 @@
 #include "..\common.hh"
 #include "..\ShaderLoader.hh"
 
+/**
+	This class represents an object that can be drawn in an OpenGL context.
+	All objects in this software that must be drawn must have at least one Model.
+	It uses '__declspec(align(16))' to be aligned on the heap
 
+	IMPORTANT NOTE : all derived classes MUST call 'Init()' in their constructor in order 
+	to initialize them properly
+*/
 __declspec(align(16)) class Model{
 	GLuint  _vao;          // vertex array object
 	GLuint  _pid;          // GLSL shader program ID 
@@ -13,30 +20,34 @@ __declspec(align(16)) class Model{
 	GLsizei _nUVs;         // number of uvs
 
 public:
+
+	/*This constructor initializes all the parts of the Model*/
+	Model(const char* vShaderFileName,
+		const char* fShaderFileName,
+		const char* textureFileName,
+		const glm::vec4& color);
+
+	/*This constructor is an alias of the first one that uses 'std::string' instead of 'const char*' */
 	Model(const std::string vShaderFileName,
 		const std::string fShaderFileName,
 		const std::string textureFileName,
 		const glm::vec4& color) : 
 		Model(vShaderFileName.c_str(), fShaderFileName.c_str(), textureFileName.c_str(), color){}
 
-	Model(const char* vShaderFileName,
-		const char* fShaderFileName,
-		const char* textureFileName,
-		const glm::vec4& color);
-
+	/*This is necessary when using '__declspec'*/
 	void* operator new(size_t i)
 	{
 		return _mm_malloc(i, 16);
 	}
 
-		void operator delete(void* p)
+	/*Same as above*/
+	void operator delete(void* p)
 	{
 		_mm_free(p);
 	}
 
-	const char* Texture(){ return _texture; }  
 
-	virtual Model* copy() const = 0;
+	const char* Texture(){ return _texture; }  
 
 
 	/*Sets the model matrix as the one passed in argument
@@ -49,7 +60,7 @@ public:
 	  The Projection-View matrix passed in argument is required by the shaders*/
 	void Draw(const glm::mat4& VP) const;
 
-
+	/*Draws the Model twice. Once normaly and once only with the lines*/
 	void DrawWithLines(const glm::mat4& VP) const;
 
 	/*Cleans up everything that has been set up during initialization :
@@ -67,13 +78,14 @@ public:
 	            the elements of those vectors*/
 protected:
 
-	glm::mat4 _M = glm::mat4(1.0f);            // model matrix
-	GLboolean _initialized= false;     // set on 'true' once initialized
-	const char*     _vShader = "";
-	const char*     _fShader = "";
-	const char*     _texture = "";
+	glm::mat4 _M = glm::mat4(1.0f);//The model matrix
+	GLboolean _initialized= false; // set on 'true' once initialized
+	const char*     _vShader = ""; // the vertex shader's file name
+	const char*     _fShader = ""; // the fragment shader's file name
+	const char*     _texture = ""; // the texture's file name
 	glm::vec4 _color = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f); //The color of the Model (black by default)
 
+	/*Calls 'SetVertices' and 'SetUVs' and makes sure both have the same size */
 	void SetVerticesAndUVs(std::vector<glm::vec3> *vertices, std::vector<glm::vec2> *uvs);
 
 	/*Defines the vertices of the model.
@@ -87,6 +99,6 @@ protected:
 	  color of every pixel*/
 	virtual void SetUVs(std::vector<glm::vec2> *uvs) = 0;
 
-	
+	/*Initializes everything. (called from the construtor)*/
 	virtual void Init();
 };

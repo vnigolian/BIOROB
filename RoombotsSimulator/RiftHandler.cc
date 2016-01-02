@@ -55,12 +55,12 @@ void RiftHandler::Init(DisplayFunction disFunc)
 		result = ovrHmd_CreateDebug(ovrHmd_DK2, &hmd);
 	}
 	//If even a virtual HMD cannot be created, there's probably 
-	//something wrong with the Oculus runtime
+	//something wrong with the Oculus runtime and the program will stop
 	if (!OVR_SUCCESS(result))
 	{
 		std::cerr << "Oculus Rift not detected. You might want to install it\n";
+		exit(EXIT_FAILURE);
 	}
-
 
 
 	//Since the Rift's display is based on stereo view, we have to render the scene twice,
@@ -98,7 +98,7 @@ void RiftHandler::Init(DisplayFunction disFunc)
 	//Since this is related to the system on which the program is running, the function to use differs
 	//between Windows and OSX. ubuntu does not fully work on Ubuntu so there is no need to worry about that yet
 	wglSwapIntervalEXT(0); // WARNING !! THIS ONLY WORKS WITH WINDOWS 
-	//glxSwapIntervalEXT(0); //this might be the right call for OS X --> it will be tested
+	//glxSwapIntervalEXT(0); //this might be the right call for OS X...
 
 	//now that everything is set up, we can start rendering
 	isVisible = true;

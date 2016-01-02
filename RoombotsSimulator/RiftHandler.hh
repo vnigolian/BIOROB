@@ -8,9 +8,9 @@
   is the function that draws what we want to display on the Rift and then call 'DisplayOnRift' when we want 
   to display something on the Rift.
   To take its orientation into account when drawing the scene (in the DisplayFunction passed in argument in 'Init()'), 
-  one must can use the 'ovrViewProjMatrix()' and 'glmViewProjMatrix()' methods to get the view-projection matrix 
+  one must can use the 'ovrViewProjMatrix()' or 'glmViewProjMatrix()' methods to get the view-projection matrix 
   in the form of a OVR::Matrix4f or a glm::mat4 matrix.
-  The OVR::Matrix4f is how it is created by the Rift's SDK but the glm::mat4 one is easier to use
+  The OVR::Matrix4f is how it is created by the Rift's SDK but the glm::mat4 one is easier to use with OpenGL
 */
 
 typedef void(*DisplayFunction)();//a display function does not take any argument and returns nothing
@@ -33,7 +33,7 @@ public:
 	/*displays the rendering done in 'displayFunction' on the Rift's screen*/
 	void DisplayOnRift();
 
-	/*Initialise the Rift
+	/*Initializes the Rift
 	  The argument should be the function that will do the actual rendering and will draw what
 	  is to be displayed on the Rift's screen*/
 	void Init(DisplayFunction);
@@ -44,13 +44,13 @@ public:
 	/*Same as 'ovrProjViewMatrix()' but returns a glm::mat4 instead*/
 	glm::mat4 glmViewProjMatrix();
 
-
 	/*Returns the width of the Rift's resolution*/
 	unsigned int ResolutionWidth();
 
 	/*Returns the height of the Rift's resolution*/
 	unsigned int ResolutionHeight();
 
+	/*Destroys and shuts the Rift virtual object down*/
 	void CleanUp();
 };
 

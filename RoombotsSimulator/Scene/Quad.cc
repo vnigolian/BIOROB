@@ -1,13 +1,5 @@
 #include "Quad.hh"
 
-Quad* Quad::copy() const
-{
-	Quad* p_newQuad = new Quad(_vShader, _fShader, _texture, _color);
-	p_newQuad->SetModelMatrix(_M);
-	return p_newQuad;
-}
-
-
 void Quad::SetVertices(std::vector<glm::vec3> *vertices)
 {
 vertices->push_back(glm::vec3(-0.5f, 0.0f, -0.5f));

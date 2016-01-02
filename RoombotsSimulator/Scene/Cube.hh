@@ -40,13 +40,8 @@ public:
 		Init();
 	}
 	
-	Cube* copy() const;
-	void print() const {
-
-		std::cout << "hello I'm a cube " << std::endl;
-	}
-
 protected:
+	/*Creates and adds vertices to the Model to create a one-meter cube*/
 	virtual void SetVertices(std::vector<glm::vec3> *vertices);
 	virtual void SetUVs(std::vector<glm::vec2> *uvs);
 

@@ -2,6 +2,11 @@
 
 #include "HalfModule.hh"
 
+/**
+   The Roombot class is a simple class that encapsulates two halfModules.
+   It is mainly an interface class between the HalfModules and other parts
+   of the software
+*/
 
 class RoomBot
 {
@@ -10,6 +15,7 @@ private:
 	HalfModule _halfModuleB;
 
 public:
+	/*Returns the position of the middle between the two HalfModules*/
 	glm::vec3 MiddlePosition() const
 	{
 		return (_halfModuleA.getPosition().toGLM() + _halfModuleB.getPosition().toGLM()) / 2.0f;
@@ -19,6 +25,7 @@ public:
 	RoomBot(Position A, Position B, OBJModel* p_h1, OBJModel* p_h2);
 
 	void Draw(const glm::mat4& VP) const;
+
 	Position PositionA()const;
 	Position PositionB()const;
 

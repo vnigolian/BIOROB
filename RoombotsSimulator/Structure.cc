@@ -71,6 +71,8 @@ void Structure::SetCenterOffset()
 {
 	glm::vec3 centerOffset(0.0f);
 	size_t size = roomBots.size();
+
+	//The center's offset is simply an average of all the Roombots relative Position
 	for (size_t i = 0; i < size; i++)
 	{
 		glm::vec3 roomBotPosition = roomBots[i].MiddlePosition();

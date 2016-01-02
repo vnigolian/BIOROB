@@ -11,13 +11,15 @@ HalfModule::HalfModule(Position position, OBJModel* p_h1, OBJModel* p_h2) : _pos
 
 	glm::vec4 pale_green(0.66f, 0.66f, 0.18f, 1.0f);
 
-	_circle = new OBJModel("Models/circle.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", pale_green);
+	_circle = new OBJModel("Models/circle_5.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", pale_green);
 }
 
 
 
 void HalfModule::Draw(const glm::mat4& VP) const
 {
+	//Here, we compute the translation matrix representing the translation to the Module's position 
+	//within the Structure that contains it
 	glm::vec3 position(_position.x(), _position.y(), _position.z());
 	position *= MODULE_SIZE;
 	position += glm::vec3(MODULE_SIZE / 2);
@@ -31,6 +33,7 @@ void HalfModule::Draw(const glm::mat4& VP) const
 	
 	glm::mat4 scale_matrix = glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE*0.65f));
 
+	//Here, the same circle is drawn 6 times in different positions and orientations in order to draw all 6 faces
 	_circle->Draw(VP*glm::translate(glm::mat4(1.0f), glm::vec3(position.x, position.y - MODULE_SIZE / 2, position.z - 0.005f))
 		*glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
 		*scale_matrix);

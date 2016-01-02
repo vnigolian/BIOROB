@@ -1,14 +1,16 @@
-﻿Build started 28.12.2015 15:03:21.
+﻿Build started 02.01.2016 18:23:35.
      1>Project "C:\Users\Val\Desktop\Projet\BIOROB\RoombotsSimulator\RoombotsSimulator.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\CL.exe /c /IC:\Users\Val\Desktop\Projet\BIOROB\packages\glm.0.9.6.3\build\native\../..//build/native/include/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt Scene\Model.cc
-         Model.cc
+         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\CL.exe /c /IC:\Users\Val\Desktop\Projet\BIOROB\packages\glm.0.9.6.3\build\native\../..//build/native/include/ /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /FR"Debug\\" /Gd /TP /analyze- /errorReport:prompt Simulator.cc
+         Simulator.cc
        Link:
-         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.exe" /INCREMENTAL /NOLOGO /LIBPATH:Libraries\Leap /LIBPATH:Libraries\freeglut /LIBPATH:Libraries\glew /LIBPATH:Libraries\soil /LIBPATH:Libraries\OVR Leap.lib LibOVR.lib opengl32.lib SOIL.lib freeglut.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.lib" /MACHINE:X86 Debug\Button.obj
+         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.exe" /INCREMENTAL /NOLOGO /LIBPATH:Libraries\Leap /LIBPATH:Libraries\freeglut /LIBPATH:Libraries\glew /LIBPATH:Libraries\soil /LIBPATH:Libraries\OVR Leap.lib LibOVR.lib opengl32.lib SOIL.lib freeglut.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.lib" /MACHINE:X86 Debug\BrutePathFinder.obj
+         Debug\Button.obj
          Debug\GUI.obj
          Debug\LeapmotionPointer.obj
          Debug\main.obj
          Debug\MovableStructure.obj
+         Debug\Position.obj
          Debug\RiftHandler.obj
          Debug\HalfModule.obj
          Debug\Model.obj
@@ -18,13 +20,14 @@
          Debug\Scene.obj
          Debug\Cube.obj
          Debug\ShaderLoader.obj
+         Debug\Simulation.obj
          Debug\Simulator.obj
          Debug\Structure.obj
          RoombotsSimulator.vcxproj -> C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.exe
        BscMake:
-         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\bscmake.exe /nologo /o"C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.bsc" /n Debug\Button.sbr Debug\GUI.sbr Debug\LeapmotionPointer.sbr Debug\main.sbr Debug\MovableStructure.sbr Debug\RiftHandler.sbr Debug\HalfModule.sbr Debug\Model.sbr Debug\OBJModel.sbr Debug\Quad.sbr Debug\RoomBot.sbr Debug\Scene.sbr Debug\Cube.sbr Debug\ShaderLoader.sbr Debug\Simulator.sbr Debug\Structure.sbr
+         E:\Program Files (x86)\VisualStudioUltimate2013\VC\bin\bscmake.exe /nologo /o"C:\Users\Val\Desktop\Projet\BIOROB\Debug\RoombotsSimulator.bsc" /n Debug\BrutePathFinder.sbr Debug\Button.sbr Debug\GUI.sbr Debug\LeapmotionPointer.sbr Debug\main.sbr Debug\MovableStructure.sbr Debug\Position.sbr Debug\RiftHandler.sbr Debug\HalfModule.sbr Debug\Model.sbr Debug\OBJModel.sbr Debug\Quad.sbr Debug\RoomBot.sbr Debug\Scene.sbr Debug\Cube.sbr Debug\ShaderLoader.sbr Debug\Simulation.sbr Debug\Simulator.sbr Debug\Structure.sbr
      1>Done Building Project "C:\Users\Val\Desktop\Projet\BIOROB\RoombotsSimulator\RoombotsSimulator.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.24
+Time Elapsed 00:00:05.80

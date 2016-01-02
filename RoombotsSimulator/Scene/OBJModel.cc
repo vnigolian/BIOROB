@@ -9,19 +9,6 @@ OBJModel::OBJModel(const std::string OBJFilename,
 }
 
 
-OBJModel* OBJModel::copy() const
-{
-	OBJModel* p_newOBJModel = new OBJModel(_objfilename,_vShader, _fShader, _texture, _color);
-	p_newOBJModel->SetModelMatrix(_M);
-	return p_newOBJModel;
-}
-
-
-/*void OBJModel::setOBJfile(std::string filename)
-{
-	_objfilename = filename;
-}*/
-
 void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 {
 	std::ifstream in;
@@ -40,6 +27,7 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 			std::string i = "";
 			double x, y, z;
 
+			//first, we look for the beginning of the declaration of faces
 			while (c != "f")
 			{
 				if (c == "v")
@@ -54,7 +42,6 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 			while (c == "f")
 			{
 				in >> c;
-				//int index;
 				std::vector<unsigned int> faceIndices;
 				while (c != "f"&& !in.eof())
 				{
@@ -83,7 +70,7 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 			}
 		}
 	}
-	//std::cout << "finished loading  with " << vertices->size() << std::endl;
+	//std::cout << "finished loading OBJModel from " << _objfilename << " with " << vertices->size() << " vertices."<< std::endl;
 	in.close();
 }
 

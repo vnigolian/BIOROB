@@ -92,7 +92,6 @@
   <ItemGroup>
     <ClCompile Include="BrutePathFinder.cc" />
     <ClCompile Include="Button.cc" />
-    <ClCompile Include="DirectPathFinder.cc" />
     <ClCompile Include="GUI.cc" />
     <ClCompile Include="LeapmotionPointer.cc" />
     <ClCompile Include="main.cc" />
@@ -104,7 +103,7 @@
     <ClCompile Include="Scene\OBJModel.cc" />
     <ClCompile Include="Scene\Quad.cc" />
     <ClCompile Include="Scene\RoomBot.cc" />
-    <ClCompile Include="Scene\Scene.cpp" />
+    <ClCompile Include="Scene\Scene.cc" />
     <ClCompile Include="Scene\Cube.cc" />
     <ClCompile Include="ShaderLoader.cc" />
     <ClCompile Include="Simulation.cc" />
@@ -116,7 +115,6 @@
     <ClInclude Include="Button.hh" />
     <ClInclude Include="common.hh" />
     <ClInclude Include="DepthBuffer.hh" />
-    <ClInclude Include="DirectPathFinder.hh" />
     <ClInclude Include="GUI.hh" />
     <ClInclude Include="LeapmotionPointer.hh" />
     <ClInclude Include="MovableStructure.hh" />

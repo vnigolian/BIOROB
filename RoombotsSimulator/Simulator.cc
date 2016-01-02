@@ -24,14 +24,25 @@ Simulator::~Simulator(){
 	CleanUp();
 }
 
-void Simulator::Init(int argc, char **argv, DisplayFunction display, DisplayFunction renderScene, void(*handleKeyboard)(unsigned char, int, int), void(*resize)(int, int))
+void Simulator::Init(int argc, 
+	char **argv, 
+	DisplayFunction display, 
+	DisplayFunction renderScene, 
+	void(*handleKeyboard)(unsigned char, int, int), 
+	void(*resize)(int, int),
+	void(*closeFunc)())
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);//allows to use depth, color and double buffering
 	glutInitWindowPosition(500, 200);
 	glutInitWindowSize(0, 0); //it will be resized in Init();
-	glutCreateWindow("RoomBots Simulator");
+	_windowID = glutCreateWindow("RoomBots Simulator");
+	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
+	
 	glutKeyboardFunc(handleKeyboard);
+	glutDisplayFunc(display);//sets 'Display' as the function to call when displaying
+	glutReshapeFunc(resize);//sets 'Resize' as the function to call when resizing
+	glutCloseFunc(closeFunc);//sets 'Close' as the function to call when the window is closed
 
 	GLenum err = glewInit();
 	if (!err)
@@ -47,10 +58,15 @@ void Simulator::Init(int argc, char **argv, DisplayFunction display, DisplayFunc
 
 	_GUI.Init();
 
-	// register callbacks
-	glutDisplayFunc(display);//sets 'Display' as the function to call when displaying
-	glutReshapeFunc(resize);//sets 'Resize' as the function to cass when resizing
+}
 
+void Simulator::Close()
+{
+	glutLeaveMainLoop();
+	glutDestroyWindow(_windowID);
+	_running = false;
+
+	exit(EXIT_SUCCESS);
 }
 
 void Simulator::start()
@@ -265,20 +281,27 @@ void Simulator::CleanUp()
 	_GUI.CleanUp();
 }
 
-/*
-this method allows us to have control over the main OpenGL context loop.
-we call one iteration of the loop ourself
-*/
+
 void Simulator::MainLoop()
 {
-	while (true)
+	
+	while (_running)
 	{
 		_GUI.UpdateWorldMatrix(_worldMatrix);
 		_GUI.Update(_mode);// update the pointer's position by getting data from the LeapMotion sensor
 		Display();//we call display at every iteration so that we update the view matrix depending on the Oculus' position
-		glutMainLoopEvent();//executes one iteration of the OpenGL main loop
+		
+		_simulation.run();//The simulation step is actually executed only if it's already initialized
+
+		if (_running)
+		{
+			glutMainLoopEvent();//executes one iteration of the OpenGL main loop
+		}
 	}
 }
+
+
+
 
 void Simulator::Forward()
 {
@@ -345,7 +368,7 @@ void Simulator::HandleKeyboard(unsigned char key, int x, int y)
 		SwitchViewMode();
 		break;
 	case 13:
-		launchSimulation();
+		InitSimulation();
 		break;
 
 	/*case 'n':
@@ -359,7 +382,7 @@ void Simulator::HandleKeyboard(unsigned char key, int x, int y)
 	}
 }
 
-void Simulator::launchSimulation()
+void Simulator::InitSimulation()
 {
 	std::cout << "launching simulation" << std::endl;
 
@@ -377,10 +400,10 @@ void Simulator::launchSimulation()
 			MODULE_SIZE * 2 * (i / modulesPerLine)));
 
 		paths.push_back(Path());
-		BrutePathFinder::run(paths[i], roombotInitialPosition, roombotsFinalPositions[i * 2]);
+		_pathFinder.run(paths[i], roombotInitialPosition, roombotsFinalPositions[i * 2]);
 		paths[i].push_back(roombotsFinalPositions[i * 2 + 1]);
 	}
-	std::cout << "Paths for " << paths.size() << " Roombots have been computed with the path-finding algorithm called " << std::endl;
+	std::cout << "Paths for " << paths.size() << " Roombots have been computed with the path-finding algorithm called " << _pathFinder.name() << std::endl;
 
 	_simulation.Initialize(paths);
 }
