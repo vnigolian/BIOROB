@@ -90,7 +90,7 @@ void Simulation::Run()
 		
 		double diff = ((float)(curTime - d_refClock))/CLOCKS_PER_SEC;
 		//A step is executed only if 0.3 seconds have passed since the last step
-		if (diff > 0.3)
+		if (diff > 0.2)
 		{
 			NextStep();
 			d_refClock = curTime;

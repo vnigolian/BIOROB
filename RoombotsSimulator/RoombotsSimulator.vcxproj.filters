@@ -120,6 +120,9 @@
     <ClCompile Include="Scene\Scene.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TrashCan.cc">
+      <Filter>GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShaderLoader.hh">
@@ -190,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="Simulation.hh">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TrashCan.hh">
+      <Filter>GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

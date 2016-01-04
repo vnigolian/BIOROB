@@ -19,8 +19,6 @@ void GUI::Init()
 	OBJModel* p_circle = new OBJModel("Models/circle_5.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", pale_green);
 
 
-	std::cout << "paaaaale greeeeen ciiiirclllllle !" << std::endl;
-
 	//then we create new Structure based on .rbs files
 	Structure* stool = new Structure("Structures/stool.rbs", hemisphere1,hemisphere2, p_circle);
 	Structure* chair = new Structure("Structures/chair.rbs", hemisphere1, hemisphere2, p_circle);
@@ -31,61 +29,11 @@ void GUI::Init()
 	AddButton(stool);
 	AddButton(chair);
 	
+	d_trashCan = new TrashCan(TrashCanPosition());
 
 	std::cout << "GUI initialized" << std::endl;
 	d_init = true;
 
-	//<-------------------------------REMOVE THIS AT THE END
-	MovableStructure testStructure(stool,d_buttons[1].Position(),d_nStructures,1);
-	testStructure.Drop();
-	d_structures.push_back(testStructure);
-	d_nStructures++;
-
-	MovableStructure testStructure2(chair, d_buttons[2].Position(), d_nStructures, 2);
-	testStructure2.Drop();
-	d_structures.push_back(testStructure2);
-	d_nStructures++;
-
-
-	MovableStructure testStructure3(table, d_buttons[0].Position(), d_nStructures, 0);
-	testStructure3.Drop();
-	d_structures.push_back(testStructure3);
-	d_nStructures++;
-
-	MovableStructure testStructure4(chair, glm::vec3(-ROOM_SIZE/3,0.0f,-2.0f), d_nStructures, 2);
-	testStructure4.Drop();
-	d_structures.push_back(testStructure4);
-	d_nStructures++;
-
-	MovableStructure testStructure5(chair, glm::vec3(ROOM_SIZE / 3, 0.0f, -2.0f), d_nStructures, 2);
-	testStructure5.Drop();
-	d_structures.push_back(testStructure5);
-	d_nStructures++;
-
-	MovableStructure testStructure6(chair, glm::vec3(-ROOM_SIZE / 4, 0.0f, -3.0f), d_nStructures, 2);
-	testStructure6.Drop();
-	d_structures.push_back(testStructure6);
-	d_nStructures++;
-
-	MovableStructure testStructure7(table, glm::vec3(ROOM_SIZE / 5, 0.0f, -2.5f), d_nStructures, 0);
-	testStructure7.Drop();
-	d_structures.push_back(testStructure7);
-	d_nStructures++;
-
-	MovableStructure testStructure8(chair, glm::vec3(-ROOM_SIZE / 3, 0.0f, -4.0f), d_nStructures, 2);
-	testStructure8.Drop();
-	d_structures.push_back(testStructure8);
-	d_nStructures++;
-
-	MovableStructure testStructure9(chair, glm::vec3(ROOM_SIZE / 5, 0.0f, -2.5f), d_nStructures, 2);
-	testStructure9.Drop();
-	d_structures.push_back(testStructure9);
-	d_nStructures++;
-
-	MovableStructure testStructure0(chair, glm::vec3(-ROOM_SIZE / 6, 0.0f, -1.0f), d_nStructures, 2);
-	testStructure0.Drop();
-	d_structures.push_back(testStructure0);
-	d_nStructures++;
 }
 
 void GUI::AddButton(Structure* p_structure)
@@ -96,13 +44,12 @@ void GUI::AddButton(Structure* p_structure)
 		glm::vec3 position = glm::vec3(BUTTON_LEFT_START - (this->d_nButtons)*(BUTTON_SIZE + BUTTON_SEPARATION), BUTTON_UP_START, BUTTON_DEPTH_OFFSET);
 
 		//we create the new Button with the position
-		Button newButton(position, d_nButtons, p_structure);
+		Button* newButton = new Button(position, d_nButtons, p_structure);
 		d_buttons.push_back(newButton);
 		d_nButtons++;
-		//MovableStructure::MovableStructure(Structure structure, glm::vec3 position, int ID, Button* p_button) :
 
 		//and add a structure linked to this button at the same position
-		PopStructure(newButton.ID());
+		PopStructure(newButton->ID());
 	}
 }
 
@@ -114,8 +61,8 @@ void GUI::PopStructure(unsigned int buttonID)
 
 		//What is actually created when popping a new Structure is a MovableStructure 
 		//holding the corresponding Structure
-		MovableStructure newStructure(d_buttons[buttonID].AssignedStructure(),
-			d_buttons[buttonID].Position(),
+		MovableStructure* newStructure = new MovableStructure(d_buttons[buttonID]->AssignedStructure(),
+			d_buttons[buttonID]->Position(),
 			d_nStructures,
 			buttonID);
 
@@ -126,8 +73,18 @@ void GUI::PopStructure(unsigned int buttonID)
 
 void GUI::DroppedStructure(unsigned int buttonID)
 {
-	std::cout << "dropped structure with button ID " << buttonID << std::endl;
 	PopStructure(buttonID);
+	size_t i(0);
+	while( i<d_nStructures)
+	{
+		if (d_structures[i]->CloseEnough(d_trashCan->Position(), TRASH_CAN_SIZE))
+		{
+			delete d_structures[i];
+			d_structures.erase(d_structures.begin() + i);
+			d_nStructures--;
+		}
+		i++;
+	}
 }
 
 void const GUI::Render(const glm::mat4& VP)
@@ -137,14 +94,17 @@ void const GUI::Render(const glm::mat4& VP)
 		//we draw all the structures
 		for (size_t i(0); i < this->d_nStructures; i++)
 		{
-			d_structures[i].Draw(VP);
+			d_structures[i]->Draw(VP);
 		}
 
 		//all the buttons
 		for (size_t i(0); i < this->d_nButtons; i++)
 		{
-			d_buttons[i].Draw(VP);
+			d_buttons[i]->Draw(VP);
 		}
+		//the TrashCan
+		d_trashCan->Draw(VP);
+
 		//and finally the LeapmotionPointer
 		d_pointer.Draw(VP);
 	}
@@ -161,8 +121,20 @@ void GUI::CleanUp()
 	//NOTE : the structures are cleaned up through the buttons' clean-up
 	for (size_t i(0); i < this->d_nButtons; i++)
 	{
-		d_buttons[i].CleanUp();
+		d_buttons[i]->CleanUp();
+		delete d_buttons[i];
 	}
+
+	//and delete all structures
+	for (size_t i(0); i < d_nStructures; i++)
+	{
+		delete d_structures[i];
+	}
+
+	//and the trashCan
+	d_trashCan->CleanUp();
+	delete d_trashCan;
+
 	//and the pointer
 	d_pointer.CleanUp();
 }
@@ -172,9 +144,9 @@ void GUI::CheckForPinchedStructure()
 	//we look for the first MovableStructure in pinching range from the LeapmotionPointer while it is pinching
 	for (size_t i(0); i < this->d_nStructures; i++)
 	{
-		if (d_structures[i].CloseEnough(d_pointer.Position()) && d_pointer.Pinching())
+		if (d_structures[i]->CloseEnough(d_pointer.Position()) && d_pointer.Pinching())
 		{
-			d_pointer.AssignStructure(&(d_structures[i]));
+			d_pointer.AssignStructure((d_structures[i]));
 		}
 	}
 }
@@ -202,12 +174,15 @@ std::vector<Position> GUI::GetAllRoombotsPositions()
 {
 	std::vector<Position> positions;
 
-	//we start at '_nButtons' be cause we don't want to simulate the construction of
-	//the Structures contained in the button, which are the first in '_structures'
-	for (size_t i(d_nButtons); i < d_nStructures; i++)
+	for (size_t i(0); i < d_nStructures; i++)
 	{
-		std::vector<Position> structureRoombotsPositions = d_structures[i].RoombotsPositions();
-		positions.insert(positions.end(), structureRoombotsPositions.begin(), structureRoombotsPositions.end());
+		//We don't want to draw the Structures that are in the buttons, which are the ones
+		//that have a valid linkedButtonID
+		if (d_structures[i]->LinkedButtonID() >= d_nButtons)
+		{
+			std::vector<Position> structureRoombotsPositions = d_structures[i]->RoombotsPositions();
+			positions.insert(positions.end(), structureRoombotsPositions.begin(), structureRoombotsPositions.end());
+		}
 	}
 
 	return positions;

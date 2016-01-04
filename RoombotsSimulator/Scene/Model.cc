@@ -1,7 +1,5 @@
 #include "Model.hh"
 
-int count = 0;
-int destroy = 0;
 
 Model::Model(const char* vShaderFileName,
 	const char* fShaderFileName,
@@ -11,10 +9,7 @@ Model::Model(const char* vShaderFileName,
 	d_vShaderFilename(vShaderFileName), 
 	d_fShaderFilename(fShaderFileName), 
 	d_textureFilename(textureFileName), 
-	d_color(color) {
-	count++;
-	std::cout << "models created so far : " << count << std::endl;
-}
+	d_color(color) {}
 
 void Model::SetModelMatrix(const glm::mat4& M)
 {
@@ -108,7 +103,7 @@ void Model::Init()
 		glGenTextures(1, &d_tex);
 		glBindTexture(GL_TEXTURE_2D, d_tex);
 
-		int width = 0; //IMPORTANT ! HOW THE HELL ARE THOSE USED ?!
+		int width = 0; 
 		int height = 0;
 		unsigned char* image = SOIL_load_image(d_textureFilename, &width, &height, 0, SOIL_LOAD_RGB);
 
@@ -137,9 +132,6 @@ void Model::CleanUp() const
 		glDeleteVertexArrays(1, &d_vao);
 		glDeleteProgram(d_pid);
 		glDeleteTextures(1, &d_tex);
-
-		destroy++;
-		std::cout << "models destroyed so far : " <<destroy<< std::endl;
 	}
 }
 

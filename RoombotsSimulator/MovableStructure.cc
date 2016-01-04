@@ -9,7 +9,7 @@ d_p_structure(p_structure), d_ID(ID), d_buttonID(buttonID)
 
 void MovableStructure::SetPosition(glm::vec3 position)
 {
-	d_position = Position(position - d_p_structure->CenterOffset() + glm::vec3(MODULE_SIZE/2));
+	d_position = Position(position - d_p_structure->CenterOffset());// +glm::vec3(MODULE_SIZE / 2, MODULE_SIZE / 2, -MODULE_SIZE / 2));
 }
 
 void MovableStructure::Drag(const glm::vec3& position)
@@ -32,9 +32,13 @@ void MovableStructure::Drop()
   
 bool MovableStructure::CloseEnough(glm::vec3 position)
 {
-	return glm::distance(d_position.ToGLM(), position) < DRAG_RADIUS;
+	return CloseEnough(position,DRAG_RADIUS);
 }
 
+bool MovableStructure::CloseEnough(glm::vec3 position, float distance)
+{
+	return glm::distance(MODULE_SIZE*(d_position.ToGLM()) + d_p_structure->CenterOffset() - glm::vec3(MODULE_SIZE / 2, MODULE_SIZE / 2, -MODULE_SIZE / 2), position) < distance;
+}
 
 
 void MovableStructure::Draw(const glm::mat4& VP) const
