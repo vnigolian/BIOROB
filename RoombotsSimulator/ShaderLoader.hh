@@ -29,5 +29,39 @@ namespace Core
 		GLuint CreateProgram(const char* VertexShaderFilename,
 			                 const char* FragmentShaderFilename);
 
+
+
+		/*Returns the following simple vertex shader : 
+			
+			#version 330 core
+			uniform mat4 MVP;
+			in vec3 vpoint;
+			in vec2 vtexcoord;
+			out vec2 uv;
+
+			void main(){
+				gl_Position =  MVP * vec4(vpoint,1.0); 
+				uv = vtexcoord;
+			}
+
+		It simply applies the MVP matrix to the vertex' position
+		*/
+		static std::string DefaultVertexShader();
+
+
+		/*Returns the following simple fragment shader :
+			
+			#version 330 core
+			uniform sampler2D tex;
+			in vec2 uv;
+			out vec4 color;
+			
+			void main(){
+				color = vec4(1.0,1.0,1.0,1.0);
+			}
+
+		It draws the whole model in plain opaque white
+		*/
+		static std::string DefaultFragmentShader();
 	};
 }

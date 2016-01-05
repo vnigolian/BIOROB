@@ -7,8 +7,8 @@ void Simulation::Initialize(const std::vector<Path>& paths)
 
 	d_paths = paths;
 
-	OBJModel* hemisphere1 = new OBJModel("Models/hemisphere_with_holes.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", glm::vec4(0.2f, 0.2f, 0.2f, 1.0f));
-	OBJModel* hemisphere2 = new OBJModel("Models/hemisphere_with_holes.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", glm::vec4(0.8f, 0.8f, 0.8f, 1.0f));
+	OBJModel* hemisphere1 = new OBJModel("Models/hemisphere_10.obj", "Shaders/simple_vshader.glsl", "Shaders/colorvec_fshader.glsl", "", glm::vec4(0.2f, 0.2f, 0.2f, 1.0f));
+	OBJModel* hemisphere2 = new OBJModel("Models/hemisphere_10.obj", "Shaders/simple_vshader.glsl", "Shaders/colorvec_fshader.glsl", "", glm::vec4(0.8f, 0.8f, 0.8f, 1.0f));
 
 	hemisphere1->SetModelMatrix(glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
 	hemisphere2->SetModelMatrix(glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
@@ -16,7 +16,7 @@ void Simulation::Initialize(const std::vector<Path>& paths)
 		*glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
 
 	glm::vec4 pale_green(0.66f, 0.66f, 0.18f, 1.0f);
-	OBJModel* p_circle = new OBJModel("Models/circle_5.obj", "Shaders/module_vshader.glsl", "Shaders/module_fshader.glsl", "", pale_green);
+	OBJModel* p_circle = new OBJModel("Models/circle_50.obj", "Shaders/simple_vshader.glsl", "Shaders/colorvec_fshader.glsl", "", pale_green);
 
 
 	//for every path, we create and add two separate HalfModules. 

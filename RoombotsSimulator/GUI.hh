@@ -14,20 +14,18 @@ class GUI
 #define BUTTON_DEPTH_OFFSET -4.5f
 #define BUTTON_LEFT_START 2.0f
 
-	std::vector<const Button*>           d_buttons;        //The Buttons contained in the scene
+	std::vector<const Button*>          d_buttons;        //The Buttons contained in the scene
 	size_t                              d_nButtons = 0;   //The number of Buttons in the scene
-	std::vector<MovableStructure*> d_structures;     //The Structures contained in the scene
+	std::vector<MovableStructure*>      d_structures;     //The Structures contained in the scene
 	size_t                              d_nStructures = 0;//The number of Structures in the scene
 	LeapmotionPointer                   d_pointer;        //The pointer using the Leapmotion device
 	bool                                d_init = false;   //Set to true once initialized
 	OBJModel*                           d_p_hemi1;        //The pointer to the first hemisphere Model
 	OBJModel*                           d_p_hemi2;        //The pointer to the second hemisphere Model
 	OBJModel*                           d_p_circle;       //The pointer to the circle Model
-	TrashCan*                            d_trashCan;
+	TrashCan*                           d_trashCan;
 
 public:
-
-	static glm::vec3 TrashCanPosition(){ return glm::vec3(ROOM_SIZE / 2 + TRASH_CAN_SIZE / 2 + 0.01f, 0.0f, -ROOM_SIZE + TRASH_CAN_SIZE); }
 
 	/*Initializes the Graphic User Interface by initializing the LeapmotionPointer and adding Buttons*/
 	void Init();

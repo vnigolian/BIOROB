@@ -44,7 +44,7 @@ bool MovableStructure::CloseEnough(glm::vec3 position, float distance) const
 void MovableStructure::Draw(const glm::mat4& VP) const
 {
 	//We want MovableStructures to be bound to a Roombot-sized grid and thus discretize their actual position
-	glm::vec3 scaledPosition = (d_position *((float)( 1.0f / MODULE_SIZE))).ToGLM();
+	glm::vec3 scaledPosition = d_position.ToGLM() / MODULE_SIZE;
 	glm::vec3 discrete_position = glm::vec3(floor(scaledPosition.x), scaledPosition.y, floor(scaledPosition.z));
 	discrete_position = MODULE_SIZE * discrete_position;
 

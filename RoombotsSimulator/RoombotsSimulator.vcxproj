@@ -76,18 +76,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Shaders\button_fshader.glsl" />
-    <None Include="Shaders\button_vshader.glsl" />
-    <None Include="Shaders\module_fshader.glsl" />
-    <None Include="Shaders\module_vshader.glsl" />
-    <None Include="Shaders\pointer_fshader.glsl" />
-    <None Include="Shaders\pointer_vshader.glsl" />
-    <None Include="Shaders\quad2_fshader.glsl" />
-    <None Include="Shaders\quad_fshader.glsl" />
-    <None Include="Shaders\quad_vshader.glsl" />
-    <None Include="Shaders\shadow_fshader.glsl" />
-    <None Include="Shaders\sky_fshader.glsl" />
-    <None Include="Shaders\sky_vshader.glsl" />
+    <None Include="Shaders\simple_vshader.glsl" />
+    <None Include="Shaders\colorvec_fshader.glsl" />
+    <None Include="Shaders\tex_fshader.glsl" />
+    <None Include="Shaders\tex5_fshader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BrutePathFinder.cc" />
@@ -130,7 +122,6 @@
     <ClInclude Include="Scene\Scene.hh" />
     <ClInclude Include="Scene\Cube.hh" />
     <ClInclude Include="ShaderLoader.hh" />
-    <ClInclude Include="Shaders\shadow_vshader.glsl" />
     <ClInclude Include="Simulation.hh" />
     <ClInclude Include="Simulator.hh" />
     <ClInclude Include="Structure.hh" />

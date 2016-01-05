@@ -5,17 +5,25 @@ void LeapmotionPointer::Init(GUI* p_gui)
 {
 	if (!d_init)
 	{
-		std::cout << "LeapMotion connected !" << std::endl;
-		d_p_pointerModel = new Cube("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "",glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+		if (d_controller.isConnected())
+		{
+			std::cout << "LeapMotion connected !" << std::endl;
+		}
+		else
+		{
+			std::cout << "LeapMotion not connected..." << std::endl;
+		}
+
+		d_p_pointerModel = new Cube("Shaders/simple_vshader.glsl", "Shaders/colorvec_fshader.glsl", "", glm::vec4(1.0f, 0.0f, 0.0f, 0.3f));
 		d_p_pointerModel->SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.5f, 0.0f, -1.0f))
 			*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
 
-		d_p_referencePointerModel = new Cube("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+		d_p_referencePointerModel = new Cube("Shaders/simple_vshader.glsl", "Shaders/colorvec_fshader.glsl", "", glm::vec4(1.0f, 0.0f, 0.0f, 0.3f));
 		d_p_referencePointerModel->SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(0.5f, 0.0f, -1.0f))
 			*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
 
 
-		d_p_shadow = new Quad("Shaders/pointer_vshader.glsl", "Shaders/pointer_fshader.glsl", "", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+		d_p_shadow = new Quad("Shaders/simple_vshader.glsl", "Shaders/colorvec_fshader.glsl", "", glm::vec4(1.0f, 0.0f, 0.0f, 0.3f));
 		d_p_shadow->SetModelMatrix(glm::translate(glm::mat4(1.0f), glm::vec3(d_position.x, -EYES_POSITION + 0.01f, d_position.z))
 			*glm::scale(glm::mat4(1.0f), glm::vec3(LEAP_POINTER_SIZE)));
 

@@ -31,7 +31,7 @@ std::string ShaderLoader::ReadShader(const char *filename)
 	if (!file.good())
 	{
 		std::cout << "Can't read glsl file " << filename << std::endl;
-		std::terminate();
+		return "invalidShader";
 	}
 	//actual reading of the file
 	file.seekg(0, std::ios::end);//puts the pointer at the end of the file
@@ -81,8 +81,18 @@ GLuint ShaderLoader::CreateProgram(const char* vShaderFilename,
 
 	//use our previously defined method to read the shader files and save the code
 	std::string vShaderCode = ReadShader(vShaderFilename);
-	std::string fShaderCode = ReadShader(fShaderFilename);
+	if (vShaderCode == "invalidShader")
+	{
+		std::cout << "invalid vertex shader, using the default one" << std::endl;
+		vShaderCode = DefaultVertexShader();
+	}
 
+	std::string fShaderCode = ReadShader(fShaderFilename);
+	if (fShaderCode == "invalidShader")
+	{
+		std::cout << "invalid fragment shader, using the default one" << std::endl;
+		fShaderCode = DefaultFragmentShader();
+	}
 	//use our previously defined method to create the two shaders
 	GLuint vShader = CreateShader(GL_VERTEX_SHADER, vShaderCode, "vertex shader");
 	GLuint fShader = CreateShader(GL_FRAGMENT_SHADER, fShaderCode, "fragment shader");
@@ -112,4 +122,14 @@ GLuint ShaderLoader::CreateProgram(const char* vShaderFilename,
 		return 0;
 	}
 	return program;
+}
+
+std::string ShaderLoader::DefaultVertexShader()
+{
+	return "#version 330 core \n uniform mat4 MVP; \n in vec3 vpoint; \n in vec2 vtexcoord; \n out vec2 uv; \n void main(){ \n gl_Position = MVP * vec4(vpoint, 1); \n uv = vtexcoord; \n }";
+}
+
+std::string ShaderLoader::DefaultFragmentShader()
+{
+	return "#version 330 core \n uniform sampler2D tex; \n in vec2 uv; \n out vec4 color; \n void main(){ \n color = vec4(1.0, 1.0, 1.0, 1.0); \n}";
 }
