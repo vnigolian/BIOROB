@@ -1,5 +1,6 @@
 #include "Model.hh"
 
+
 Model::Model(const char* vShaderFileName,
 	const char* fShaderFileName,
 	const char* textureFileName,
@@ -102,7 +103,7 @@ void Model::Init()
 		glGenTextures(1, &d_tex);
 		glBindTexture(GL_TEXTURE_2D, d_tex);
 
-		int width = 0; //IMPORTANT ! HOW THE HELL ARE THOSE USED ?!
+		int width = 0; 
 		int height = 0;
 		unsigned char* image = SOIL_load_image(d_textureFilename, &width, &height, 0, SOIL_LOAD_RGB);
 
@@ -131,7 +132,6 @@ void Model::CleanUp() const
 		glDeleteVertexArrays(1, &d_vao);
 		glDeleteProgram(d_pid);
 		glDeleteTextures(1, &d_tex);
-
 	}
 }
 

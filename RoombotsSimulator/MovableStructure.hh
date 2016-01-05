@@ -35,7 +35,10 @@ public:
 
 
 	/*Returns true if the position passed in argument is close enough from the Structure's center*/
-	bool CloseEnough(glm::vec3 position);
+	bool CloseEnough(glm::vec3 position) const;
+
+	/*Returns true if the position passed in argument is at most at 'distance' from the Structure's center */
+	bool CloseEnough(glm::vec3 position, float distance) const;
 
 	/*Imidiately Drops the Structure where the shadow is drawn
 	There is no movement of the Model, it simply "teleports" on the ground*/
