@@ -23,6 +23,7 @@ c:\users\val\desktop\projet\biorob\roombotssimulator\debug\button.sbr
 c:\users\val\desktop\projet\biorob\roombotssimulator\debug\brutepathfinder.sbr
 c:\users\val\desktop\projet\biorob\roombotssimulator\debug\brutepathfinder.obj
 c:\users\val\desktop\projet\biorob\roombotssimulator\debug\button.obj
+c:\users\val\desktop\projet\biorob\roombotssimulator\debug\gui.obj
 c:\users\val\desktop\projet\biorob\roombotssimulator\debug\leapmotionpointer.obj
 c:\users\val\desktop\projet\biorob\roombotssimulator\debug\main.obj
 c:\users\val\desktop\projet\biorob\roombotssimulator\debug\movablestructure.obj
@@ -40,7 +41,6 @@ c:\users\val\desktop\projet\biorob\roombotssimulator\debug\simulation.obj
 c:\users\val\desktop\projet\biorob\roombotssimulator\debug\simulator.obj
 c:\users\val\desktop\projet\biorob\roombotssimulator\debug\structure.obj
 c:\users\val\desktop\projet\biorob\roombotssimulator\debug\trashcan.obj
-c:\users\val\desktop\projet\biorob\roombotssimulator\debug\gui.obj
 c:\users\val\desktop\projet\biorob\debug\roombotssimulator.ilk
 c:\users\val\desktop\projet\biorob\debug\roombotssimulator.exe
 c:\users\val\desktop\projet\biorob\debug\roombotssimulator.pdb

@@ -11,17 +11,21 @@ OBJModel::OBJModel(const std::string OBJFilename,
 
 void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 {
+	bool error = false;
+
 	std::ifstream in;
 	in.open(_objfilename.c_str());
+	
 	if (in.fail())
 	{
 		std::cerr << "ERROR - Couldn't open "<<_objfilename<<" Model file " << std::endl;
+		error = true;
 	}
 	else
 	{
 		std::vector<glm::vec3> newVertices;
 
-		while (!in.eof())
+		while (!in.eof() && ! error)
 		{
 			std::string c = "";
 			std::string i = "";
@@ -39,7 +43,7 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 				}
 				in >> c;
 			}
-			while (c == "f")
+			while (c == "f" && ! error)
 			{
 				in >> c;
 				std::vector<unsigned int> faceIndices;
@@ -52,7 +56,16 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 						acc += c[i];
 						i++;
 					}
-					faceIndices.push_back(stoi(acc));
+					try
+					{
+						faceIndices.push_back(stoi(acc));
+					}
+					catch (std::invalid_argument arg)
+					{
+						std::cerr << "Error when reading " << _objfilename << " : " << arg.what() << std::endl;
+						std::cerr << "This probably comes from a invalid-format .obj file. Check out the documentation for more information" << std::endl;
+						error = true;
+					}
 					in >> c;
 				}
 				//we add the triangle's vertices to the model's vertices
@@ -69,8 +82,16 @@ void OBJModel::SetVertices(std::vector<glm::vec3> *vertices)
 				}
 			}
 		}
+		if (error)
+		{
+			std::cout << "Loading from " << _objfilename << " is done but there has been an error and the model might not be complete" << std::endl;
+		}
+		else
+		{
+			std::cout << "Finished loading OBJModel from " << _objfilename << " with " << vertices->size() << " vertices.";
+		}
 	}
-	std::cout << "finished loading OBJModel from " << _objfilename << " with " << vertices->size() << " vertices."<< std::endl;
+
 	in.close();
 }
 
