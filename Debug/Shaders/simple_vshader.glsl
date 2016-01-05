@@ -6,8 +6,8 @@ in vec2 vtexcoord;
 out vec2 uv;
 
 
+/*This vertex shader simply applies the MVP matrix to the vertex*/
 void main(){
-    gl_Position =  MVP * vec4(vpoint,1); ///< still
-	//gl_Position = vec4(vpoint,0.0f);
+    gl_Position =  MVP * vec4(vpoint,1.0);
     uv = vtexcoord;
 }
