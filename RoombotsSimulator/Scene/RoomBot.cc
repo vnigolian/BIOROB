@@ -1,3 +1,8 @@
+/*
+@author Valentin NIGOLIAN
+valentin.nigolian@epfl.ch
+Fall 2015
+*/
 #include "RoomBot.hh"
 
 RoomBot::RoomBot(int Ax, int Ay, int Az, int Bx, int By, int Bz, OBJModel* p_h1, OBJModel* p_h2, OBJModel* p_circle) :

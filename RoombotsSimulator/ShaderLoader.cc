@@ -18,9 +18,6 @@ In order to use shaders, we must take a certain number of well-defined steps :
 */
 using namespace Core;
 
-ShaderLoader::ShaderLoader(void){}
-ShaderLoader::~ShaderLoader(void){}
-
 std::string ShaderLoader::ReadShader(const char *filename)
 {
 	

@@ -1,3 +1,8 @@
+/*
+@author Valentin NIGOLIAN
+valentin.nigolian@epfl.ch
+Fall 2015
+*/
 #include "Quad.hh"
 
 void Quad::SetVertices(std::vector<glm::vec3> *vertices)

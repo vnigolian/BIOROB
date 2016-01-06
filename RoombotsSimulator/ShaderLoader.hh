@@ -1,3 +1,9 @@
+/*
+@author Valentin NIGOLIAN
+valentin.nigolian@epfl.ch
+Fall 2015
+*/
+
 #pragma once
 
 #include "common.hh"
@@ -9,20 +15,15 @@ namespace Core
 	{
 	private:
 
-		/*reads the file indicated by 'filename' and returns the whole glsl program
-		*/
+		/*reads the file indicated by 'filename' and returns the whole glsl program*/
 		std::string ReadShader(const char *filename);
 
-		/*creates a new shader based on the arguments
-		*/
+		/*creates a new shader based on the arguments*/
 		GLuint CreateShader(GLenum shaderType,
 			                std::string source,
 			                char* shaderName);
 
 	public:
-
-		ShaderLoader();
-		~ShaderLoader();
 
 		/*creates a new program using the two shaders indicated by the names 
 		passed in arguments and returns its ID*/

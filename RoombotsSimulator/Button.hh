@@ -1,6 +1,11 @@
 #pragma once
 
 #include "common.hh"
+/*
+@author Valentin NIGOLIAN
+valentin.nigolian@epfl.ch
+Fall 2015
+*/
 #include "Scene\Cube.hh"
 #include "Scene\Quad.hh"
 #include "Structure.hh"

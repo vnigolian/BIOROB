@@ -1,3 +1,8 @@
+/*
+@author Valentin NIGOLIAN
+valentin.nigolian@epfl.ch
+Fall 2015
+*/
 #include "BrutePathFinder.hh"
 
 void BrutePathFinder::Run(Path& path, const Position& start, const Position& finish) const

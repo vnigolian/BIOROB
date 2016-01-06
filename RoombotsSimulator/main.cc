@@ -1,4 +1,8 @@
-
+/*
+@author Valentin NIGOLIAN
+valentin.nigolian@epfl.ch
+Fall 2015
+*/
 #include "Simulator.hh"
 
 void display()
