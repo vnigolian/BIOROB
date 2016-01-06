@@ -1,4 +1,4 @@
-/*
+/**
 @author Valentin NIGOLIAN
 valentin.nigolian@epfl.ch
 Fall 2015
@@ -20,53 +20,52 @@ Fall 2015
 */
 class MovableStructure
 {
-	Structure* const d_p_structure;   //The pointer to the Structure to be moved
-	Position         d_position;      //The structure's position
-	int              d_ID;            //Its ID
-	unsigned int     d_buttonID;      //The ID of the button from which the Structure was created
-	                                  //Once dropped, it is set to -1 to "unlink" it from the button
+	Structure* const d_p_structure;   ///<The pointer to the Structure to be moved
+	Position         d_position;      ///<The structure's position
+	int              d_ID;            ///<Its ID
+	unsigned int     d_buttonID;      ///<The ID of the button from which the Structure was created
+	                                  ///<Once dropped, it is set to -1 to "unlink" it from the button
 
-	bool             d_moving = false;//Whether the Structure is moving or not. (used in Drop())
+	bool             d_moving = false;///<Whether the Structure is moving or not. (used in Drop())
 
 
 public:
-
-	#define DRAG_RADIUS 0.4f //The minimum distance to grab a Structure
-
 	MovableStructure(Structure* p_structure, 
 		             glm::vec3 position, 
 					 int ID, 
 					 unsigned int buttonID);
 
 
-	/*Returns true if the position passed in argument is close enough from the Structure's center*/
+	/**Returns true if the position passed in argument is close enough from the Structure's center*/
 	bool CloseEnough(glm::vec3 position) const;
 
-	/*Returns true if the position passed in argument is at most at 'distance' from the Structure's center */
+	/**Returns true if the position passed in argument is at most at 'distance' from the Structure's center */
 	bool CloseEnough(glm::vec3 position, float distance) const;
 
-	/*Imidiately Drops the Structure where the shadow is drawn
+	/**Imidiately Drops the Structure where the shadow is drawn
 	There is no movement of the Model, it simply "teleports" on the ground*/
 	void Drop();
 
-	/*Moves the Structure to the position passed in argument*/
+	/**Moves the Structure to the position passed in argument*/
 	void Drag(const glm::vec3& position);
 
-	/*Draws the Structure*/
+	/**Draws the Structure*/
 	void Draw(const glm::mat4& VP) const;
 
-	/*Returns the reference position of the Structure*/
+	/**Returns the reference position of the Structure*/
 	Position GetPosition() const;
 
-	/*Returns the ID of the button from which the MovableStructure comes*/
+	/**Returns the ID of the button from which the MovableStructure comes*/
 	unsigned int LinkedButtonID() const;
 
-	/*Returns the positions of all the Roombots of its Structure*/
+	/**Returns the positions of all the Roombots of its Structure*/
 	std::vector<Position> RoombotsPositions() const;
 
 private:
-	/*Computes the center's offset from the lower left corner*/
+	/**Computes the center's offset from the lower left corner*/
 	void SetCenterOffset();
 
+	/**Sets the new position of the the MovableStructure and
+	ensures that it stays on the grid*/
 	void SetPosition(glm::vec3 position);
 };

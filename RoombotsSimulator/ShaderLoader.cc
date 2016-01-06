@@ -16,7 +16,6 @@ In order to use shaders, we must take a certain number of well-defined steps :
 	steps 1 to 3 are done in 'CreateShaders', steps 4 and 5 are done in 'CreateProgram'
 
 */
-using namespace Core;
 
 std::string ShaderLoader::ReadShader(const char *filename)
 {

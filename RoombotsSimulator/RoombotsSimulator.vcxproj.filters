@@ -5,14 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{1253c792-23e4-46a9-8ccd-2e1cc5e6f55e}</UniqueIdentifier>
     </Filter>
@@ -21,6 +13,12 @@
     </Filter>
     <Filter Include="GUI">
       <UniqueIdentifier>{16f73f5c-825d-443a-b848-3213eea2d93f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{4bdaeced-f549-45fa-83f8-591b9ccc50da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Simulation">
+      <UniqueIdentifier>{6f3474b3-593e-442f-9a38-d93c9dbc1674}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,20 +43,8 @@
     <ClCompile Include="ShaderLoader.cc">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="RiftHandler.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\Model.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\Quad.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GUI.cc">
       <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\Cube.cc">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Button.cc">
       <Filter>GUI</Filter>
@@ -66,38 +52,50 @@
     <ClCompile Include="LeapmotionPointer.cc">
       <Filter>GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Structure.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Simulator.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\OBJModel.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\RoomBot.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\HalfModule.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MovableStructure.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Position.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BrutePathFinder.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Simulation.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\Scene.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TrashCan.cc">
       <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MovableStructure.cc">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfModule.cc">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cc">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cc">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJModel.cc">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Quad.cc">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomBot.cc">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cc">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="RiftHandler.cc">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Position.cc">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="BrutePathFinder.cc">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="Simulation.cc">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="Simulator.cc">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure.cc">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,23 +108,8 @@
     <ClInclude Include="TextureBuffer.hh">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="RiftHandler.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\Scene.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\Model.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\Quad.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GUI.hh">
       <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\Cube.hh">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Button.hh">
       <Filter>GUI</Filter>
@@ -134,41 +117,56 @@
     <ClInclude Include="LeapmotionPointer.hh">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="Structure.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Simulator.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\OBJModel.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="common.hh">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\RoomBot.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\HalfModule.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MovableStructure.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PathFinder.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Position.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BrutePathFinder.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Simulation.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TrashCan.hh">
       <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MovableStructure.hh">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.hh">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomBot.hh">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Quad.hh">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJModel.hh">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.hh">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfModule.hh">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.hh">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="RiftHandler.hh">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.hh">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="BrutePathFinder.hh">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="PathFinder.hh">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulation.hh">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulator.hh">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="Structure.hh">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

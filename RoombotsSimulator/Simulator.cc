@@ -4,11 +4,6 @@ valentin.nigolian@epfl.ch
 Fall 2015
 */
 #include "Simulator.hh"
-using namespace Core;
-//using namespace OVR;
-using namespace std;
-//using namespace glm;
-
 
 
 Simulator Simulator::d_instance = Simulator();

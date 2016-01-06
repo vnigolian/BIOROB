@@ -1,4 +1,4 @@
-/*
+/**
 @author Valentin NIGOLIAN
 valentin.nigolian@epfl.ch
 Fall 2015
@@ -20,18 +20,18 @@ class Position
 	int d_z;
 
 public:
-	/*This constructor creates a new Position at (0,0,0)*/
+	/**This constructor creates a new Position at (0,0,0)*/
 	Position();
 
-	/*This constructor creates a new Position at (x,y,z)*/
+	/**This constructor creates a new Position at (x,y,z)*/
 	Position(int x, 
 		     int y, 
 			 int z);
 
-	/*Copy constructor*/
+	/**Copy constructor*/
 	Position(Position*);
 
-	/*This constructor converts a 'glm::vec3' into a Position that
+	/**This constructor converts a 'glm::vec3' into a Position that
 	is at the closest spot on the grid from the 'glm::vec3' passed as argument*/
 	Position(glm::vec3);
 	
@@ -44,13 +44,13 @@ public:
 	bool operator==(Position other) const;
 	bool operator!=(Position other) const;
 
-	/*Sums up the difference between all three coordinates of 'this' and 'other'*/
+	/**Sums up the difference between all three coordinates of 'this' and 'other'*/
 	int distanceTo(Position other) const;
 
-	/*Prints out the Position as (x,y,z)*/
+	/**Prints out the Position as (x,y,z)*/
 	void Print() const;
 
-	/*Returns a 'glm::vec3' equivalent to the Position*/
+	/**Returns a 'glm::vec3' equivalent to the Position*/
 	glm::vec3 ToGLM() const;
 
 	int x() const;

@@ -1,11 +1,11 @@
-/*
+/**
 @author Valentin NIGOLIAN
 valentin.nigolian@epfl.ch
 Fall 2015
 */
 #pragma once
 
-#include "Scene\RoomBot.hh"
+#include "RoomBot.hh"
 
 /**
    This class represents a set of Roombot Modules organized to form a particular structure.
@@ -28,28 +28,29 @@ Fall 2015
 */
 class Structure
 {
-	const std::string    d_filename = ""; //The .rbs file name from which the Structure is loaded
-	glm::vec3            d_centerOffset;  //The difference between the Structure's position and its center
-	std::vector<RoomBot> d_roomBots;      //The RoomBot modules of the Structure
+	const std::string    d_filename = ""; ///<The .rbs file name from which the Structure is loaded
+	glm::vec3            d_centerOffset;  ///<The difference between the Structure's position and its center
+	std::vector<RoomBot> d_roomBots;      ///<The RoomBot modules of the Structure
 
 public:
-	/*The constructor takes the .rbs file name to import it and create the corresponding 
+	/**The constructor takes the .rbs file name to import it and create the corresponding 
 	Structure and a pointer to both hemisphere.*/
 	Structure(std::string sourceFilename, 
 		      OBJModel* p_h1, 
 			  OBJModel* p_h2, 
 			  OBJModel* p_circle);
 
-	/*Draws the Structure*/
+	/**Draws the Structure*/
 	void Draw(const glm::mat4& VP) const;
 
-	/*Returns the Structure's center position which is an average of the roombots' positions*/
+	/**Returns the Structure's center position which is an average of the roombots' positions*/
 	glm::vec3 CenterOffset() const;
 
-	//RE-WRITE THIS !!!
-	/*Returns a vector of all the RoomBots' half-module's positions as pairs A-B*/
+	/**Returns a vector of all the RoomBots' half-module's positions as AB AB AB...*/
 	std::vector<Position> RoombotsPositions() const;
 
 private:
+	/**Computes the offset between the lower, closer left corner and the center of the Structure.
+	The center is calculated as the average of all of the Roombots' positions*/
 	void SetCenterOffset();
 };

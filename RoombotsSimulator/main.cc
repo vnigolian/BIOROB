@@ -1,4 +1,4 @@
-/*
+/**
 @author Valentin NIGOLIAN
 valentin.nigolian@epfl.ch
 Fall 2015

@@ -49,7 +49,7 @@ void GUI::AddButton(Structure* p_structure)
 	if (d_nButtons <= 5)//we want max 5 buttons for now
 	{
 		//we make the position of the buttons vary to get a line of buttons
-		glm::vec3 position = glm::vec3(BUTTON_LEFT_START - (this->d_nButtons)*(BUTTON_SIZE + BUTTON_SEPARATION), BUTTON_UP_START, BUTTON_DEPTH_OFFSET);
+		glm::vec3 position = glm::vec3(BUTTON_RIGHT_START - (this->d_nButtons)*(BUTTON_SIZE + BUTTON_SEPARATION), BUTTON_UP_START, BUTTON_DEPTH_OFFSET);
 
 		//we create the new Button with the position
 		Button* newButton = new Button(position, d_nButtons, p_structure);

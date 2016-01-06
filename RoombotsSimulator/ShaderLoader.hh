@@ -1,4 +1,4 @@
-/*
+/**
 @author Valentin NIGOLIAN
 valentin.nigolian@epfl.ch
 Fall 2015
@@ -8,31 +8,29 @@ Fall 2015
 
 #include "common.hh"
 
-namespace Core
-{
 
 	class ShaderLoader
 	{
 	private:
 
-		/*reads the file indicated by 'filename' and returns the whole glsl program*/
+		/**reads the file indicated by 'filename' and returns the whole glsl program*/
 		std::string ReadShader(const char *filename);
 
-		/*creates a new shader based on the arguments*/
+		/**creates a new shader based on the arguments*/
 		GLuint CreateShader(GLenum shaderType,
 			                std::string source,
 			                char* shaderName);
 
 	public:
 
-		/*creates a new program using the two shaders indicated by the names 
+		/**creates a new program using the two shaders indicated by the names 
 		passed in arguments and returns its ID*/
 		GLuint CreateProgram(const char* VertexShaderFilename,
 			                 const char* FragmentShaderFilename);
 
 
 
-		/*Returns the following simple vertex shader : 
+		/**Returns the following simple vertex shader : 
 			
 			#version 330 core
 			uniform mat4 MVP;
@@ -50,7 +48,7 @@ namespace Core
 		static std::string DefaultVertexShader();
 
 
-		/*Returns the following simple fragment shader :
+		/**Returns the following simple fragment shader :
 			
 			#version 330 core
 			uniform sampler2D tex;
@@ -65,4 +63,3 @@ namespace Core
 		*/
 		static std::string DefaultFragmentShader();
 	};
-}

@@ -14,7 +14,7 @@ d_p_structure(p_structure), d_ID(ID), d_buttonID(buttonID)
 
 void MovableStructure::SetPosition(glm::vec3 position)
 {
-	d_position = Position(position - d_p_structure->CenterOffset());// +glm::vec3(MODULE_SIZE / 2, MODULE_SIZE / 2, -MODULE_SIZE / 2));
+	d_position = Position(position - d_p_structure->CenterOffset());
 }
 
 void MovableStructure::Drag(const glm::vec3& position)
@@ -48,11 +48,6 @@ bool MovableStructure::CloseEnough(glm::vec3 position, float distance) const
 
 void MovableStructure::Draw(const glm::mat4& VP) const
 {
-	//We want MovableStructures to be bound to a Roombot-sized grid and thus discretize their actual position
-	glm::vec3 scaledPosition = d_position.ToGLM() / MODULE_SIZE;
-	glm::vec3 discrete_position = glm::vec3(floor(scaledPosition.x), scaledPosition.y, floor(scaledPosition.z));
-	discrete_position = MODULE_SIZE * discrete_position;
-
 	if (d_p_structure != NULL)
 	{
 		d_p_structure->Draw(VP*glm::translate(glm::mat4(1.0f), d_position.ToGLM()*MODULE_SIZE));

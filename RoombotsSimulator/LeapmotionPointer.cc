@@ -41,7 +41,7 @@ void LeapmotionPointer::Init(GUI* p_gui)
 }
 
 
-Leap::Vector LeapmotionPointer::adaptToMode(Leap::Vector right_hand_pos, bool mode)
+Leap::Vector LeapmotionPointer::AdaptToMode(Leap::Vector right_hand_pos, bool mode)
 {
 	//all values used in this method come from a longs fine-tuning sessions to figure out 
 	//what were the best parameters for a good use of the program
@@ -71,7 +71,7 @@ void LeapmotionPointer::update(bool mode)
 				//the right-most hand's position is gotten from the Leapmotion device.
 				//For more details about how the device work, see its SDK's documentation
 				Leap::Vector rm_hand_pos = d_controller.frame().hands().rightmost().palmPosition();
-				rm_hand_pos = adaptToMode(rm_hand_pos, mode);
+				rm_hand_pos = AdaptToMode(rm_hand_pos, mode);
 
 				//here we convert the Leap::Vector from the Leapmotion's SDK into a glm::vec3 from the GLM library
 				d_position = glm::vec3(rm_hand_pos.x, rm_hand_pos.y, rm_hand_pos.z);

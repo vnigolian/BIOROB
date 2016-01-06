@@ -1,14 +1,11 @@
-/*
+/**
 @author Valentin NIGOLIAN
 valentin.nigolian@epfl.ch
 Fall 2015
 */
 #pragma once
-#include "Scene\RoomBot.hh"
+#include "RoomBot.hh"
 #include "BrutePathFinder.hh"
-#include <ctime>
-#include <thread>
-#include <future>
 
 /**
    The Simulation encapsulates all that is needed to simulate the movements of the Roombot modules and
@@ -23,39 +20,39 @@ Fall 2015
 class Simulation
 {
 private:
-	std::vector<Path>       d_paths;          //The vector of all the Roombots' path
-	std::vector<HalfModule> d_halfModules;    //The vector of all halfModules that will move during Simulation
-	unsigned int            d_currentStep = 0;//The index of the current simulation step
-	bool                    d_init = false;   //Whether or not the Simulation has been initialized
-	bool                    d_over = true;    //Whether or not the Simulation is over. It is considered over when not initialized
+	std::vector<Path>       d_paths;          ///<The vector of all the Roombots' path
+	std::vector<HalfModule> d_halfModules;    ///<The vector of all halfModules that will move during Simulation
+	unsigned int            d_currentStep = 0;///<The index of the current simulation step
+	bool                    d_init = false;   ///<Whether or not the Simulation has been initialized
+	bool                    d_over = true;    ///<Whether or not the Simulation is over. It is considered over when not initialized
 
-	std::clock_t            d_refClock;       //The reference clock used to time the calls to 'nextStep()'
+	std::clock_t            d_refClock;       ///<The reference clock used to time the calls to 'nextStep()'
 
 
 
 public:
-	/*Initializes the Simulation by passing the paths for all Modules by argument*/
+	/**Initializes the Simulation by passing the paths for all Modules by argument*/
 	void Initialize(const std::vector<Path>& paths);
 
-	/*Executes a step of the Simulation.
+	/**Executes a step of the Simulation.
 	Returns false if the simulation is over and true otherwise*/
 	bool NextStep();
 
-	/*Draws all modules needed to perform the Simulation*/
+	/**Draws all modules needed to perform the Simulation*/
 	void Draw(const glm::mat4& VP);
 
-	/*Returns whether or not the simulation is over.*/
+	/**Returns whether or not the simulation is over.*/
 	bool IsOver(){ return d_over; }
 
-	/*Returns whether or not the Simulation has been initialized*/
+	/**Returns whether or not the Simulation has been initialized*/
 	bool IsInitialized(){ return d_init; }
 
-	/*Executes one steps of the Simulation if it's not over and
+	/**Executes one steps of the Simulation if it's not over and
 	ensures the execution of the successive steps is well-timed*/
 	void Run();
 
 private:
-	/*Resets the Simulation*/
+	/**Resets the Simulation*/
 	void Reset();
 };
 
