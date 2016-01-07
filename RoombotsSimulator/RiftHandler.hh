@@ -1,9 +1,4 @@
-/**
-@author Valentin NIGOLIAN
-valentin.nigolian@epfl.ch
-Fall 2015
-*/
-#pragma once
+/#pragma once
 #include "common.hh"
 #include "DepthBuffer.hh"
 #include "TextureBuffer.hh"

@@ -1,8 +1,3 @@
-/**
-@author Valentin NIGOLIAN
-valentin.nigolian@epfl.ch
-Fall 2015
-*/
 #pragma once
 #include "common.hh"
 #include "glm\glm.hpp" //for mathematical operations used in OpenGL

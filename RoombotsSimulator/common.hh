@@ -1,8 +1,3 @@
-/**
-	@author Valentin NIGOLIAN
-	valentin.nigolian@epfl.ch
-	Fall 2015
-*/
 
 ///This file simply regroups includes of external libraries used in most other files to leave said files clean 
 #pragma once

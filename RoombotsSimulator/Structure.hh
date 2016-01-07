@@ -1,8 +1,3 @@
-/**
-@author Valentin NIGOLIAN
-valentin.nigolian@epfl.ch
-Fall 2015
-*/
 #pragma once
 
 #include "RoomBot.hh"
