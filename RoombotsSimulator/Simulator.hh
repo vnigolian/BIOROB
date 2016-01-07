@@ -6,7 +6,6 @@ Fall 2015
 #pragma once
 
 #include "common.hh"
-#include "Cube.hh"
 #include "RiftHandler.hh"
 #include "Scene.hh"
 #include "GUI.hh"
@@ -112,7 +111,7 @@ private:
 	void SwitchViewMode();
 
 	/**Initializes the Scene*/
-	void InitScene();
+	//void InitScene();
 
 	/**Initializes the Oculus Rift*/
 	void InitRift(DisplayFunction function);

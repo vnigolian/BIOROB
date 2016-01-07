@@ -6,6 +6,7 @@ Fall 2015
 #include "LeapmotionPointer.hh"
 #include "GUI.hh"
 
+
 void LeapmotionPointer::Init(GUI* p_gui)
 {
 	if (!d_init)
@@ -126,14 +127,9 @@ void LeapmotionPointer::UpdateWorldMatrix(const glm::mat4& worldMatrix)
 
 void LeapmotionPointer::Draw(const glm::mat4& VP) const
 {
-	if (d_init)
-	{
-		glEnable(GL_BLEND);
-		d_p_pointerModel->Draw(VP);
-		d_p_referencePointerModel->Draw(VP);
-		d_p_shadow->Draw(VP);
-		glDisable(GL_BLEND);
-	}
+	d_p_pointerModel->Draw(VP);
+	d_p_referencePointerModel->Draw(VP);
+	d_p_shadow->Draw(VP);
 }
 
 

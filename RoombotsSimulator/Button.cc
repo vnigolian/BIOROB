@@ -34,10 +34,8 @@ Button::Button(glm::vec3 position,
 
 void Button::Draw(const glm::mat4& VP) const
 {
-	glEnable(GL_BLEND);
 	d_model->Draw(VP);
 	d_shadow->Draw(VP);
-	glDisable(GL_BLEND);
 }
 
 

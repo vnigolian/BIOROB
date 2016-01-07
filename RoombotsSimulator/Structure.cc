@@ -88,14 +88,11 @@ void Structure::SetCenterOffset()
 
 void Structure::Draw(const glm::mat4& VP) const
 {
-	glEnable(GL_BLEND);
 
 	for (size_t i = 0; i < d_roomBots.size(); i++)
 	{
-		//we multiply the VP matrix by a translation to draw the modules at the right place
 		d_roomBots[i].Draw(VP);
 	}
-	glDisable(GL_BLEND);
 }
 
 

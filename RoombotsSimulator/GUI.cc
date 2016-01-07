@@ -6,6 +6,7 @@ Fall 2015
 #include "GUI.hh"
 
 
+
 void GUI::Init()
 {
 	//first, the LeapmotionPointer is initialized
@@ -37,11 +38,9 @@ void GUI::Init()
 	AddButton(stool);
 	AddButton(chair);
 	
-	d_trashCan = new TrashCan(glm::vec3(ROOM_SIZE / 2 + TRASH_CAN_SIZE / 2 + 0.01f, 0.0f, ROOM_SIZE / 2));
+	d_trashCan = new TrashCan(glm::vec3(ROOM_SIZE / 2 + TRASH_CAN_SIZE / 2 + 0.01f, 0.0f, - ROOM_SIZE / 2));
 
 	std::cout << "GUI initialized" << std::endl;
-	d_init = true;
-
 }
 
 void GUI::AddButton(Structure* p_structure)
@@ -97,25 +96,24 @@ void GUI::DroppedStructure(unsigned int buttonID)
 
 void const GUI::Render(const glm::mat4& VP)
 {
-	if (d_init)
+
+	//we draw all the structures
+	for (size_t i(0); i < this->d_nStructures; i++)
 	{
-		//we draw all the structures
-		for (size_t i(0); i < this->d_nStructures; i++)
-		{
-			d_structures[i]->Draw(VP);
-		}
-
-		//all the buttons
-		for (size_t i(0); i < this->d_nButtons; i++)
-		{
-			d_buttons[i]->Draw(VP);
-		}
-		//the TrashCan
-		d_trashCan->Draw(VP);
-
-		//and finally the LeapmotionPointer
-		d_pointer.Draw(VP);
+		d_structures[i]->Draw(VP);
 	}
+	
+	//all the buttons
+	for (size_t i(0); i < this->d_nButtons; i++)
+	{
+		d_buttons[i]->Draw(VP);
+	}
+
+	//the TrashCan
+	d_trashCan->Draw(VP);
+	
+	//and finally the LeapmotionPointer
+	d_pointer.Draw(VP);
 }
 
 size_t GUI::NButtons()
@@ -173,11 +171,9 @@ void GUI::UpdatePointer(bool mode)
 
 void GUI::Update(bool mode)
 {
-	if (d_init)
-	{
-		UpdatePointer(mode);
-		CheckForPinchedStructure();
-	}
+
+	UpdatePointer(mode);
+	CheckForPinchedStructure();
 }
 
 void GUI::UpdateWorldMatrix(const glm::mat4& worldMatrix)
@@ -191,7 +187,7 @@ std::vector<Position> GUI::GetAllRoombotsPositions()
 
 	for (size_t i(0); i < d_nStructures; i++)
 	{
-		//We don't want to draw the Structures that are in the buttons, which are the ones
+		//We don't want to build the Structures that are in the buttons, which are the ones
 		//that have a valid linkedButtonID
 		if (d_structures[i]->LinkedButtonID() >= d_nButtons)
 		{
@@ -199,6 +195,8 @@ std::vector<Position> GUI::GetAllRoombotsPositions()
 			positions.insert(positions.end(), structureRoombotsPositions.begin(), structureRoombotsPositions.end());
 		}
 	}
+	
+	std::cout << "All Roombots positions acquired" << std::endl;
 
 	return positions;
 }

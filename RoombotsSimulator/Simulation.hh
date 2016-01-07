@@ -6,6 +6,7 @@ Fall 2015
 #pragma once
 #include "RoomBot.hh"
 #include "BrutePathFinder.hh"
+#include "PathFinder.hh"
 
 /**
    The Simulation encapsulates all that is needed to simulate the movements of the Roombot modules and
@@ -31,6 +32,8 @@ private:
 
 
 public:
+	void Initialize(const std::vector<Position> roombotsFinalPositions, PathFinder* pathFinder);
+
 	/**Initializes the Simulation by passing the paths for all Modules by argument*/
 	void Initialize(const std::vector<Path>& paths);
 

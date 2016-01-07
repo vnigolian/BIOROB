@@ -16,9 +16,7 @@ TrashCan::TrashCan(glm::vec3 position) : d_position(glm::vec3(position.x, -EYES_
 /*Draws the TrashCan*/
 void TrashCan::Draw(const glm::mat4& VP) const
 {
-	glEnable(GL_BLEND);
 	d_model->Draw(VP);
-	glDisable(GL_BLEND);
 }
 
 /*Cleans up the Model representing the TrashCan*/
