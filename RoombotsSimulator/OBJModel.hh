@@ -20,7 +20,8 @@ Fall 2015
 class OBJModel : public Model
 {
 public :
-	/**Same constructor as the Model class but with the .obj filename added to it*/
+	/**Same constructor as the Model class but with the .obj filename added to it
+	\arg \c OBJFilename The name of the .obj file containing the OBJModel*/
 	OBJModel(const std::string OBJFilename,
 		const char* vShaderFileName,
 		const char* fShaderFileName,

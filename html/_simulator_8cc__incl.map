@@ -1,0 +1,25 @@
+<map id="RoombotsSimulator/Simulator.cc" name="RoombotsSimulator/Simulator.cc">
+<area shape="rect" id="node2" href="$_simulator_8hh.html" title="Simulator.hh" alt="" coords="2045,80,2140,107"/>
+<area shape="rect" id="node3" href="$common_8hh.html" title="common.hh" alt="" coords="1419,901,1510,928"/>
+<area shape="rect" id="node25" href="$_rift_handler_8hh.html" title="RiftHandler.hh" alt="" coords="1277,677,1380,704"/>
+<area shape="rect" id="node28" href="$_scene_8hh.html" title="Scene.hh" alt="" coords="1502,379,1579,405"/>
+<area shape="rect" id="node33" href="$_g_u_i_8hh.html" title="GUI.hh" alt="" coords="1932,155,1995,181"/>
+<area shape="rect" id="node38" href="$_o_b_j_model_8hh.html" title="OBJModel.hh" alt="" coords="2100,677,2200,704"/>
+<area shape="rect" id="node43" href="$_brute_path_finder_8hh.html" title="BrutePathFinder.hh" alt="" coords="2300,528,2435,555"/>
+<area shape="rect" id="node45" href="$_simulation_8hh.html" title="Simulation.hh" alt="" coords="2302,453,2403,480"/>
+<area shape="rect" id="node26" href="$_depth_buffer_8hh.html" title="DepthBuffer.hh" alt="" coords="1321,827,1427,853"/>
+<area shape="rect" id="node27" href="$_texture_buffer_8hh.html" title="TextureBuffer.hh" alt="" coords="1260,752,1376,779"/>
+<area shape="rect" id="node29" href="$_model_8hh.html" title="Model.hh" alt="" coords="1602,752,1677,779"/>
+<area shape="rect" id="node31" href="$_quad_8hh.html" title="Quad.hh" alt="" coords="1604,453,1675,480"/>
+<area shape="rect" id="node32" href="$_cube_8hh.html" title="Cube.hh" alt="" coords="1699,453,1769,480"/>
+<area shape="rect" id="node30" href="$_shader_loader_8hh.html" title="ShaderLoader.hh" alt="" coords="1566,827,1686,853"/>
+<area shape="rect" id="node34" href="$_button_8hh.html" title="Button.hh" alt="" coords="1705,379,1784,405"/>
+<area shape="rect" id="node35" href="$_structure_8hh.html" title="Structure.hh" alt="" coords="1902,453,1995,480"/>
+<area shape="rect" id="node39" href="$_position_8hh.html" title="Position.hh" alt="" coords="2279,827,2365,853"/>
+<area shape="rect" id="node40" href="$_leapmotion_pointer_8hh.html" title="LeapmotionPointer.hh" alt="" coords="1593,229,1741,256"/>
+<area shape="rect" id="node42" href="$_trash_can_8hh.html" title="TrashCan.hh" alt="" coords="1808,379,1903,405"/>
+<area shape="rect" id="node36" href="$_room_bot_8hh.html" title="RoomBot.hh" alt="" coords="2181,528,2276,555"/>
+<area shape="rect" id="node37" href="$_half_module_8hh.html" title="HalfModule.hh" alt="" coords="2181,603,2285,629"/>
+<area shape="rect" id="node41" href="$_movable_structure_8hh.html" title="MovableStructure.hh" alt="" coords="1705,304,1845,331"/>
+<area shape="rect" id="node44" href="$_path_finder_8hh.html" title="PathFinder.hh" alt="" coords="2313,603,2416,629"/>
+</map>

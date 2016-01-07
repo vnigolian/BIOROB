@@ -7,20 +7,24 @@ Fall 2015
 
 #include "Model.hh"
 
-/**The vertices of this class define a cube and the
-texture coordinates are chosen so that it works with cubemap texture looking like this :
-______
-¦  ##  ¦
-¦  ##  ¦
-¦######¦
-¦__##__¦
+/*The vertices of this class define a cube and the texture coordinates are chosen so that it works 
+with cubemap textures looking like this :
+
+--------
+|  ##  |
+|  ##  |
+|######|
+|  ##  |
+--------
 
 where every ## is a face of the cube. More precisely :
-______
-¦  bb  ¦
-¦  rr  ¦
-¦uuffdd¦
-¦__ll__¦
+
+--------
+|  bb  |
+|  rr  |
+|uuffdd|
+|  ll  |
+--------
 
 where ff is the front face, bb the back face,
 uu the up face, dd the down face,

@@ -12,6 +12,10 @@ Fall 2015
 
 class GUI;
 
+/**The LeapmotionPointer is an object allowing to interact with the virtual environment by using the Leapmotion,
+a gesture-recognition device.
+It uses the pinching gesture to grab MovableStructures
+*/
 class LeapmotionPointer
 {
 	Leap::Controller  d_controller;                       ///<The object allowing us to get data from the Leapmotion device
@@ -34,10 +38,12 @@ class LeapmotionPointer
 public:
 
 	/**Initializes the LeapmotionPointer
-	Its offset, its position (set to (0,0,0)) and its Model*/
+	Its offset, its position (set to (0,0,0)) and its Model
+	\arg \c p_gui A pointer to the GUI that uses the pointer*/
 	void Init(GUI* p_gui);
 
-	/**Updates the the LeapmotionPointer's position and drags the pinched Structure if there is one*/
+	/**Updates the the LeapmotionPointer's position and drags the pinched Structure if there is one
+	\arg \c mode The current Simulator mode*/
 	void update(bool mode);
 
 	/**Updates the _invertedWorldMatrix with the one from the main*/
@@ -54,18 +60,20 @@ public:
 	or the last captured position if the hand is out of reach*/
 	glm::vec3 Position() const;
 
-	/**Returns a pointer to the Structure being dragged
-	Used to keep the pointer to grab another Structure while dragging one*/
+	/**Assigns a MovableStructure to the pointer
+	\arg \c p_structure A pointer to the desired MovableStructure*/
 	void AssignStructure(MovableStructure* p_structure);
 
-	/**Assigns a Structure to the LeapmotionPointer for dragging*/
+	/**Returns a pointer to the currently assigned MovableStructure*/
 	MovableStructure* AssignedStructure() const;
 
 	/**Cleans up the three models used to represent the Pointer*/
 	void CleanUp();
 
 private:
-	/**Adapts the offset, the limits and the sensitivity of the pointer depending on the current mode*/
+	/**Adapts the offset, the limits and the sensitivity of the pointer depending on the current mode
+	\arg \c right_hand_pos The current position of the user's right-most hand
+	\arg \c mode The current Simulator mode*/
 	Leap::Vector AdaptToMode(Leap::Vector right_hand_pos, 
 		                     bool mode);
 };

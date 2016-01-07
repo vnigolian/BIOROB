@@ -53,41 +53,6 @@ void Simulation::Initialize(const std::vector<Position> roombotsFinalPositions, 
 	std::cout << "Simulation initialized. Ready to run !" << std::endl;
 }
 
-void Simulation::Initialize(const std::vector<Path>& paths)
-{
-	Reset();
-
-	d_paths = paths;
-
-	OBJModel* hemisphere1 = new OBJModel("Models/hemisphere_10.obj", "Shaders/simple_vshader.glsl", "Shaders/colorvec_fshader.glsl", "", glm::vec4(0.2f, 0.2f, 0.2f, 1.0f));
-	OBJModel* hemisphere2 = new OBJModel("Models/hemisphere_10.obj", "Shaders/simple_vshader.glsl", "Shaders/colorvec_fshader.glsl", "", glm::vec4(0.8f, 0.8f, 0.8f, 1.0f));
-
-	hemisphere1->SetModelMatrix(glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
-	hemisphere2->SetModelMatrix(glm::rotate(1.57f, glm::vec3(1.0f, 0.0f, 0.0f))
-		*glm::rotate(3.14f, glm::vec3(.0f, 0.0f, 1.0f))
-		*glm::scale(glm::mat4(1.0f), glm::vec3(MODULE_SIZE)));
-
-	glm::vec4 pale_green(0.66f, 0.66f, 0.18f, 1.0f);
-	OBJModel* p_circle = new OBJModel("Models/circle_50.obj", "Shaders/simple_vshader.glsl", "Shaders/colorvec_fshader.glsl", "", pale_green);
-
-
-	//for every path, we create and add two separate HalfModules. 
-	//Every successive pair of HalfModules represents a Roombot
-	for (size_t i(0); i < paths.size(); i++)
-	{
-		d_halfModules.push_back(HalfModule(paths[i][0], hemisphere1, hemisphere2, p_circle));
-		d_halfModules.push_back(HalfModule(paths[i][1], hemisphere1, hemisphere2, p_circle));
-	}
-
-	d_init = true;
-	d_over = false;
-
-	//The reference clock is set to the current time
-	d_refClock = clock();
-
-	std::cout << "Simulation initialized. Ready to run !" << std::endl;
-}
-
 bool Simulation::NextStep()
 {
 	/*To run the Simulation, every step means to take a halfModule of every Roombot and move it to the next Position

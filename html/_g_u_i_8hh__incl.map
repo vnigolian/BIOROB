@@ -1,0 +1,16 @@
+<map id="RoombotsSimulator/GUI.hh" name="RoombotsSimulator/GUI.hh">
+<area shape="rect" id="node2" href="$_button_8hh.html" title="Button.hh" alt="" coords="1311,229,1389,256"/>
+<area shape="rect" id="node29" href="$_structure_8hh.html" title="Structure.hh" alt="" coords="1385,304,1478,331"/>
+<area shape="rect" id="node33" href="$_position_8hh.html" title="Position.hh" alt="" coords="2319,677,2405,704"/>
+<area shape="rect" id="node34" href="$_leapmotion_pointer_8hh.html" title="LeapmotionPointer.hh" alt="" coords="1361,80,1509,107"/>
+<area shape="rect" id="node36" href="$_trash_can_8hh.html" title="TrashCan.hh" alt="" coords="1089,229,1184,256"/>
+<area shape="rect" id="node3" href="$_cube_8hh.html" title="Cube.hh" alt="" coords="1185,304,1256,331"/>
+<area shape="rect" id="node28" href="$_quad_8hh.html" title="Quad.hh" alt="" coords="1280,304,1351,331"/>
+<area shape="rect" id="node4" href="$_model_8hh.html" title="Model.hh" alt="" coords="1197,603,1271,629"/>
+<area shape="rect" id="node5" href="$_shader_loader_8hh.html" title="ShaderLoader.hh" alt="" coords="1346,677,1466,704"/>
+<area shape="rect" id="node6" href="$common_8hh.html" title="common.hh" alt="" coords="1354,752,1445,779"/>
+<area shape="rect" id="node30" href="$_room_bot_8hh.html" title="RoomBot.hh" alt="" coords="1384,379,1479,405"/>
+<area shape="rect" id="node31" href="$_half_module_8hh.html" title="HalfModule.hh" alt="" coords="1379,453,1483,480"/>
+<area shape="rect" id="node32" href="$_o_b_j_model_8hh.html" title="OBJModel.hh" alt="" coords="1309,528,1409,555"/>
+<area shape="rect" id="node35" href="$_movable_structure_8hh.html" title="MovableStructure.hh" alt="" coords="1361,155,1501,181"/>
+</map>

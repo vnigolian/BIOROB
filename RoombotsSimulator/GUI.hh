@@ -11,7 +11,9 @@ Fall 2015
 #include "Position.hh"
 #include "TrashCan.hh"
 
-
+/**The Graphic User Interface (GUI) regroups everything related to the manipulation of the environment.
+It notably handles the LeapmotionPointer, the Buttons, the TrashCan and all MovableStructures.
+It is also the link between all those elements*/
 class GUI
 {
 	std::vector<const Button*>          d_buttons;        ///<The Buttons contained in the scene
@@ -25,11 +27,12 @@ class GUI
 	TrashCan*                           d_trashCan;
 
 public:
-
+	
 	/**Initializes the Graphic User Interface by initializing the LeapmotionPointer and adding Buttons*/
 	void Init();
 
-	/**Updates the positions of the Structures and the LeapmotionPointer*/
+	/**Updates the positions of the Structures and the LeapmotionPointer
+	\arg \c mode The current Simulator mode.*/
 	void Update(bool mode);
 
 	/**Updates the scene's world matrix. 
@@ -43,10 +46,11 @@ public:
 	size_t NButtons();
 
 	/**Notifies the GUI a Structure has been dropped and pops a new one 
-	  on the corresponding button if the ID passed in argument is valid*/
+	  on the corresponding button if the ID is valid
+	  \arg \c buttonID The ID of the Button from which the dropped MovableStructure comes*/
 	void DroppedStructure(unsigned int buttonID);
 
-	/**Returns a vector of the positions of all the Roombots*/
+	/**Returns a vector of the positions of all the RoomBots*/
 	std::vector<Position> GetAllRoombotsPositions();
 
 	/**Cleans up everything*/
@@ -54,15 +58,19 @@ public:
 
 private:
 
-	/**Adds a button to the interface (max 3 for now)*/
+	/**Adds a button to the interface (max 3 for now)
+	\arg \c  p_structure A pointer to the Structure that will be used to pop new 
+	 MovableStructures from the added Button*/
 	void AddButton(Structure* p_structure);
 
-	/**Checks for every structure if it is being pinched by the LeapmotionPointer*/
+	/**Checks for every Structure if it is being pinched by the LeapmotionPointer*/
 	void CheckForPinchedStructure();
 
-	/**Updates the LeapmotionPointer's position depending on the Leapmotion Controller's data*/
+	/**Updates the LeapmotionPointer's position depending on the Leapmotion Controller's data
+	\arg \c mode the current Simulator mode*/
 	void UpdatePointer(bool mode);
 
-	/**Pops a new structure in the Button whose ID is passed in argument*/
+	/**Pops a new structure in a Button
+	\arg \c buttonID The ID of the Button where to pop a new MovableStructure*/
 	void PopStructure(unsigned int buttonID);
 };

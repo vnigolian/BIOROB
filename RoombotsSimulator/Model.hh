@@ -5,7 +5,6 @@ Fall 2015
 */
 #pragma once
 
-#include "common.hh"
 #include "ShaderLoader.hh"
 
 /**
@@ -26,7 +25,11 @@ __declspec(align(16)) class Model{
 
 public:
 
-	/**This constructor initializes all the parts of the Model*/
+	/**This constructor initializes all the parts of the Model
+	\arg \c vShaderFileName The name of the file containing the vertex shader
+	\arg \c fShaderFileName The name of the file containing the fragment shader
+	\arg \c textureFileName The name of the file containing the texture
+	\arg \c color The RGBA-formatted color of the model (if no texture is used)*/
 	Model(const char* vShaderFileName,
 		const char* fShaderFileName,
 		const char* textureFileName,
@@ -55,14 +58,14 @@ public:
 	const char* Texture(){ return d_textureFilename; }  
 
 
-	/**Sets the model matrix as the one passed in argument
-	  The model matrix defines the scale, rotation and translation of the model
+	/**Sets the model matrix
+	  \arg \c M The model matrix defines the scale, rotation and translation of the model
 	  It doesn't change its vertices or definition but how and where it will appear 
 	  in the scene*/
 	void SetModelMatrix(const glm::mat4& M);
 
 	/**Draws the model into the scene.
-	  The Projection-View matrix passed in argument is required by the shaders*/
+	  \arg \c VP The Projection-View matrix, as required by the shaders*/
 	void Draw(const glm::mat4& VP) const;
 
 	/**Draws the Model twice. Once normaly and once only with the lines*/

@@ -21,8 +21,11 @@ class PathFinder
 {
 public:
 	/**	
-		This method takes a Path, a starting position and a finish position as arguments 
-		and fills the path with a series of Positions going from start to finish
+		Creates a Path, a succession of Position from a Position to another.
+		It uses an external Path and fills it
+		\arg \c path A reference to the Path to fill
+		\arg \c start The starting Position of the Path
+		\arg \c finish The finishing Position of the Path
 	*/
 	virtual void Run(Path& path, 
 		             const Position& start, 

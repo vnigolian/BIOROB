@@ -33,6 +33,10 @@ void GUI::Init()
 	Structure* chair = new Structure("Structures/chair.rbs", hemisphere1, hemisphere2, p_circle);
 	Structure* table = new Structure("Structures/table.rbs", hemisphere1, hemisphere2, p_circle);
 
+	MovableStructure* panda = new MovableStructure(new Structure("Structures/panda.rbs", hemisphere1, hemisphere2, p_circle), glm::vec3(-1.0f, 0.0f, -3.0f), -1, -2);
+	panda->Drop();
+	d_structures.push_back(panda);
+
 	//then we add buttons holding the Structures to the GUI
 	AddButton(table);
 	AddButton(stool);

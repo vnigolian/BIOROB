@@ -5,6 +5,10 @@ Fall 2015
 */
 #pragma once
 #include "common.hh"
+#include "glm\glm.hpp" //for mathematical operations used in OpenGL
+#include "glm\gtc\matrix_transform.hpp"//for transformations (matrices)
+#include "glm\gtx\transform.hpp" 
+#include "glm\gtx\euler_angles.hpp"
 
 /**
    This class is a simple triplet of integers that represent a discrete Position.

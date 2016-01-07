@@ -21,19 +21,12 @@ int min(int a, int b, int c)
 	return min(min(a, b), c);
 }
 
-typedef struct
-{
-	int x;
-	int y;
-	int z;
-} Triplet;
-
 Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2, OBJModel* p_circle) : d_filename(sourceFilename)
 {
 	std::fstream in(sourceFilename);
 	if (in.is_open())
 	{
-		std::vector<Triplet> positions;
+		std::vector<Position> positions;
 		int minX = 0, minY = 0, minZ = 0;
 		std::cout << "Loading " + sourceFilename + " file" << std::endl;
 		while (!in.eof())
@@ -57,8 +50,8 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2,
 		}
 		for (size_t i = 0; i < positions.size(); i+=2)
 		{
-			RoomBot roomBot(positions[i].x - minX, positions[i].y - minY, positions[i].z - minZ,
-				         positions[i+1].x - minX, positions[i+1].y - minY, positions[i+1].z - minZ,
+			RoomBot roomBot(positions[i].x() - minX, positions[i].y() - minY, positions[i].z() - minZ,
+				positions[i + 1].x() - minX, positions[i + 1].y() - minY, positions[i + 1].z() - minZ,
 						 p_h1, p_h2, p_circle);
 			d_roomBots.push_back(roomBot);
 		}

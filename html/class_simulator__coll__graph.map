@@ -1,0 +1,18 @@
+<map id="Simulator" name="Simulator">
+<area shape="rect" id="node2" href="$class_simulation.html" title="Simulation" alt="" coords="210,304,293,331"/>
+<area shape="rect" id="node3" href="$class_g_u_i.html" title="GUI" alt="" coords="849,304,893,331"/>
+<area shape="rect" id="node4" href="$class_leapmotion_pointer.html" title="LeapmotionPointer" alt="" coords="730,393,861,420"/>
+<area shape="rect" id="node5" href="$class_cube.html" title="Cube" alt="" coords="717,81,769,108"/>
+<area shape="rect" id="node12" href="$class_trash_can.html" title="TrashCan" alt="" coords="793,191,870,218"/>
+<area shape="rect" id="node7" href="$class_quad.html" title="Quad" alt="" coords="538,191,591,218"/>
+<area shape="rect" id="node11" href="$class_o_b_j_model.html" title="OBJModel" alt="" coords="886,132,969,159"/>
+<area shape="rect" id="node13" href="$class_scene.html" title="Scene" alt="" coords="458,304,517,331"/>
+<area shape="rect" id="node8" href="$class_movable_structure.html" title="MovableStructure" alt="" coords="1030,304,1153,331"/>
+<area shape="rect" id="node9" href="$class_structure.html" title="Structure" alt="" coords="1054,191,1129,218"/>
+<area shape="rect" id="node10" href="$class_position.html" title="Position" alt="" coords="1171,191,1241,218"/>
+<area shape="rect" id="node14" href="$class_brute_path_finder.html" title="BrutePathFinder" alt="" coords="317,304,433,331"/>
+<area shape="rect" id="node15" href="$class_path_finder.html" title="PathFinder" alt="" coords="333,191,418,218"/>
+<area shape="rect" id="node16" href="$class_rift_handler.html" title="RiftHandler" alt="" coords="101,304,186,331"/>
+<area shape="rect" id="node17" href="$struct_depth_buffer.html" title="DepthBuffer" alt="" coords="5,191,95,218"/>
+<area shape="rect" id="node18" href="$struct_texture_buffer.html" title="TextureBuffer" alt="" coords="138,191,237,218"/>
+</map>

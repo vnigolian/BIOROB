@@ -36,17 +36,22 @@ public:
 					 unsigned int buttonID);
 
 
-	/**Returns true if the position passed in argument is close enough from the Structure's center*/
+	/**Checks if a position is close enough from the MovableStructure's Structure's center
+	\arg \c position The reference position
+	\return true if \c position is within the default drag radius*/
 	bool CloseEnough(glm::vec3 position) const;
 
-	/**Returns true if the position passed in argument is at most at 'distance' from the Structure's center */
+	/**Checks if a position is at most at a certain distance from the MovableStructure's Structure's center
+	\arg \c position The position used to check the distance
+	\return true if \c position is within \c distance from the center*/
 	bool CloseEnough(glm::vec3 position, float distance) const;
 
 	/**Imidiately Drops the Structure where the shadow is drawn
 	There is no movement of the Model, it simply "teleports" on the ground*/
 	void Drop();
 
-	/**Moves the Structure to the position passed in argument*/
+	/**Moves the Structure to the position passed in argument
+	\arg \c position The target position where to drag the currently addigned MovableStructure*/
 	void Drag(const glm::vec3& position);
 
 	/**Draws the Structure*/

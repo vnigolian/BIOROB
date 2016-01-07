@@ -8,6 +8,9 @@ Fall 2015
 #include "OBJModel.hh"
 #include "Position.hh"
 
+/**
+	A HalfModule is the half of every RoomBot module
+*/
 
 class HalfModule
 {
@@ -19,17 +22,23 @@ private:
 
 public:
 
-	HalfModule(int, 
-		       int, 
-		       int, 
-		       OBJModel* p_h1, 
-		       OBJModel* p_h2, 
-		       OBJModel* p_circle);
-
+	/**Creates a new HalfModule
+	\arg \c position The position of the new HalfModule
+	\arg \c p_h1 A pointer to the first hemi-sphere OBJModel used to draw the HalfModule
+	\arg \c p_h2 A pointer to the second hemi-sphere OBJModel used to draw the HalfModule
+	\arg \c p_circle A pointer to the circle OBJModel used to draw all six faces of the HalfModule*/
 	HalfModule(Position position, 
 		       OBJModel* p_h1, 
 		       OBJModel* p_h2, 
 		       OBJModel* p_circle);
+	
+	/**Same as the first constructor, but with all three \c int used to create a new Position*/
+	HalfModule(int,
+		int,
+		int,
+		OBJModel* p_h1,
+		OBJModel* p_h2,
+		OBJModel* p_circle);
 
 	/**Draws the two hemispheres and the circle six times in different positions and orientations.*/
 	void Draw(const glm::mat4& VP) const;

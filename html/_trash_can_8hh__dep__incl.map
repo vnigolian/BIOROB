@@ -1,0 +1,9 @@
+<map id="RoombotsSimulator/TrashCan.hh" name="RoombotsSimulator/TrashCan.hh">
+<area shape="rect" id="node2" href="$_g_u_i_8hh.html" title="RoombotsSimulator/GUI.hh" alt="" coords="223,80,403,107"/>
+<area shape="rect" id="node8" href="$_trash_can_8cc.html" title="RoombotsSimulator/TrashCan.cc" alt="" coords="427,80,641,107"/>
+<area shape="rect" id="node3" href="$_g_u_i_8cc.html" title="RoombotsSimulator/GUI.cc" alt="" coords="5,162,185,189"/>
+<area shape="rect" id="node4" href="$_leapmotion_pointer_8cc.html" title="RoombotsSimulator/Leapmotion\lPointer.cc" alt="" coords="209,155,416,196"/>
+<area shape="rect" id="node5" href="$_simulator_8hh.html" title="RoombotsSimulator/Simulator.hh" alt="" coords="441,162,654,189"/>
+<area shape="rect" id="node6" href="$main_8cc.html" title="RoombotsSimulator/main.cc" alt="" coords="342,244,529,271"/>
+<area shape="rect" id="node7" href="$_simulator_8cc.html" title="RoombotsSimulator/Simulator.cc" alt="" coords="553,244,766,271"/>
+</map>

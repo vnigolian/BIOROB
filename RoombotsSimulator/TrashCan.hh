@@ -8,7 +8,7 @@ Fall 2015
 #include "common.hh"
 #include "Cube.hh"
 
-
+/**The TrashCan gives a way to remove MovableStructures from the Scene by dropping inside of it.*/
 class TrashCan
 {
 	Cube*                 d_model;       ///<the cube model used to represent the trashcan
@@ -16,7 +16,8 @@ class TrashCan
 
 public:
 
-	/**Creates a new TrashCan at the position passed by argument*/
+	/**Creates a new TrashCan
+	\arg \c position The position of the new TrashCan*/
 	TrashCan(glm::vec3 position);
 
 	/**Draws the TrashCan*/

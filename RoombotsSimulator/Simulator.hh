@@ -49,15 +49,11 @@ public:
 	static Simulator& Instance();
 
 	/**Initializes the Simulator by passing the various callback functions as argument.
-	- The first two are passed to the OpenGL-context creation function.
-	
-	- 'display' is the method that will be called at every rendering loop of the OpenGL context.
-	
-	- 'renderScene' is the method that will be called everytime the scene has to be drawn
-	   
-	- 'keyboardFunc' is the method that handles keystrokes
-	
-	- 'resizeFunc' is the method called everytime the window is resized*/
+	\arg \c  argc ,\c argv The first two are passed to the OpenGL context creation function.
+	\arg \c  display The method that will be called at every rendering loop of the OpenGL context.
+	\arg \c  renderScene The method that will be called everytime the scene has to be drawn   
+	\arg \c keyboardFunc The method that handles keystrokes	
+	\arg \c resizeFunc The method called everytime the window is resized*/
 	void Init(int argc, 
 		char **argv,
 		DisplayFunction display,

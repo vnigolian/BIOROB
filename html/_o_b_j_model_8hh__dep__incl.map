@@ -1,0 +1,22 @@
+<map id="RoombotsSimulator/OBJModel.hh" name="RoombotsSimulator/OBJModel.hh">
+<area shape="rect" id="node2" href="$_half_module_8hh.html" title="RoombotsSimulator/HalfModule.hh" alt="" coords="861,80,1084,107"/>
+<area shape="rect" id="node10" href="$_simulator_8hh.html" title="RoombotsSimulator/Simulator.hh" alt="" coords="919,639,1133,666"/>
+<area shape="rect" id="node21" href="$_o_b_j_model_8cc.html" title="RoombotsSimulator/OBJModel.cc" alt="" coords="1277,80,1495,107"/>
+<area shape="rect" id="node3" href="$_room_bot_8hh.html" title="RoombotsSimulator/RoomBot.hh" alt="" coords="867,155,1079,181"/>
+<area shape="rect" id="node20" href="$_half_module_8cc.html" title="RoombotsSimulator/HalfModule.cc" alt="" coords="620,155,843,181"/>
+<area shape="rect" id="node4" href="$_structure_8hh.html" title="RoombotsSimulator/Structure.hh" alt="" coords="465,229,675,256"/>
+<area shape="rect" id="node17" href="$_simulation_8hh.html" title="RoombotsSimulator/Simulation.hh" alt="" coords="746,229,965,256"/>
+<area shape="rect" id="node19" href="$_room_bot_8cc.html" title="RoombotsSimulator/RoomBot.cc" alt="" coords="989,229,1201,256"/>
+<area shape="rect" id="node5" href="$_button_8hh.html" title="RoombotsSimulator/Button.hh" alt="" coords="448,304,644,331"/>
+<area shape="rect" id="node6" href="$_button_8cc.html" title="RoombotsSimulator/Button.cc" alt="" coords="499,386,695,413"/>
+<area shape="rect" id="node7" href="$_g_u_i_8hh.html" title="RoombotsSimulator/GUI.hh" alt="" coords="371,557,551,584"/>
+<area shape="rect" id="node13" href="$_movable_structure_8hh.html" title="RoombotsSimulator/Movable\lStructure.hh" alt="" coords="159,379,346,420"/>
+<area shape="rect" id="node16" href="$_structure_8cc.html" title="RoombotsSimulator/Structure.cc" alt="" coords="213,304,423,331"/>
+<area shape="rect" id="node8" href="$_g_u_i_8cc.html" title="RoombotsSimulator/GUI.cc" alt="" coords="371,639,551,666"/>
+<area shape="rect" id="node9" href="$_leapmotion_pointer_8cc.html" title="RoombotsSimulator/Leapmotion\lPointer.cc" alt="" coords="107,632,313,673"/>
+<area shape="rect" id="node11" href="$main_8cc.html" title="RoombotsSimulator/main.cc" alt="" coords="821,721,1007,748"/>
+<area shape="rect" id="node12" href="$_simulator_8cc.html" title="RoombotsSimulator/Simulator.cc" alt="" coords="1031,721,1245,748"/>
+<area shape="rect" id="node14" href="$_leapmotion_pointer_8hh.html" title="RoombotsSimulator/Leapmotion\lPointer.hh" alt="" coords="5,468,212,509"/>
+<area shape="rect" id="node15" href="$_movable_structure_8cc.html" title="RoombotsSimulator/Movable\lStructure.cc" alt="" coords="237,468,423,509"/>
+<area shape="rect" id="node18" href="$_simulation_8cc.html" title="RoombotsSimulator/Simulation.cc" alt="" coords="770,304,989,331"/>
+</map>

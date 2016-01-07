@@ -38,7 +38,7 @@ public:
 	void DisplayOnRift();
 
 	/**Initializes the Rift
-	  The argument should be the function that will do the actual rendering and will draw what
+	  \arg DisplayFunction  the function that will do the actual rendering and will draw what
 	  is to be displayed on the Rift's screen*/
 	void Init(DisplayFunction);
 

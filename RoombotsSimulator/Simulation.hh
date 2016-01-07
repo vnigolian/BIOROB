@@ -32,10 +32,11 @@ private:
 
 
 public:
-	void Initialize(const std::vector<Position> roombotsFinalPositions, PathFinder* pathFinder);
 
-	/**Initializes the Simulation by passing the paths for all Modules by argument*/
-	void Initialize(const std::vector<Path>& paths);
+	/**Initializes the Simulation.
+	\arg \c roombotsFinalPositions A \c vector of all the Positions of all the Roombot
+	\arg \c pathFinder The PathFinder to use to compute all the Path */
+	void Initialize(const std::vector<Position> roombotsFinalPositions, PathFinder* pathFinder);
 
 	/**Executes a step of the Simulation.
 	Returns false if the simulation is over and true otherwise*/

@@ -5,11 +5,11 @@ Fall 2015
 */
 #pragma once
 
-#include "common.hh"
 #include "Cube.hh"
 #include "Quad.hh"
 #include "Structure.hh"
 
+/** A Button is a holder for MovableStructure to pop.*/
 
 class Button
 {
@@ -21,7 +21,10 @@ class Button
 
 public:
 	
-	/**Creates a new button containing the structure passed as argument*/
+	/**Creates a new button containing the structure passed as argument
+	\arg \c position the position of the new Button
+	\arg \c ID the unique ID of the new Button
+	\arg \c a pointer to the Structure that will be used to pop new MovableStructures*/
 	Button(glm::vec3 position, 
 		   unsigned int ID, 
 		   Structure* p_structure);

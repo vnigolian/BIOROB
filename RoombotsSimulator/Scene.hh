@@ -24,10 +24,12 @@ class Scene
 
 public:
 	/**Initializes the Scene
-	@roomSize the size of the room in the middle of the Scene*/
+	\arg \c roomSize the size of the room in the middle of the Scene*/
 	void Init(float roomSize);
 	
-	/**Drawns all the elements of the Scene and the roof if the current mode is RoomView*/
+	/**Drawns all the elements of the Scene and the roof if the current mode is RoomView
+	\arg \c VP the Projection-View matrix
+	\arg \c drawRoof whether or not the roof should be drawn*/
 	void const Render(const glm::mat4& VP, 
 		              bool drawRoof);
 
@@ -35,7 +37,8 @@ public:
 	void CleanUp();
 
 private:
-	/**Adds a Model to the list of elements of the Scene*/
+	/**Adds a Model to the Scene
+	\arg \c sourceModel The Model to add*/
 	void AddModel(Model* sourceModel);
 
 };

@@ -12,10 +12,10 @@ Fall 2015
    It is created from .rbs files, files that contain a list of positions for the Roombot modules.
    They take the form :
    
-   0 0 0
-   0 1 0
-   0 0 1
-   0 1 1
+   0 0 0 \n
+   0 1 0 \n
+   0 0 1 \n
+   0 1 1 \n
    ...
 
    Where every pair of triplet is interpreted as a Roombot module.
@@ -33,8 +33,9 @@ class Structure
 	std::vector<RoomBot> d_roomBots;      ///<The RoomBot modules of the Structure
 
 public:
-	/**The constructor takes the .rbs file name to import it and create the corresponding 
-	Structure and a pointer to both hemisphere.*/
+	/**Imports a new OBJModel from a .obj file
+	\arg \c sourceFilename The name of the .bj file containing the model to import
+	\arg \c \c p_h1,\c p_h2,\c p_circle Pointers to the OBJModels needed by the RoomBot of the Structure*/
 	Structure(std::string sourceFilename, 
 		      OBJModel* p_h1, 
 			  OBJModel* p_h2, 

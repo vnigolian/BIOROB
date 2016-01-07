@@ -48,12 +48,12 @@
 #define BUTTON_DEPTH_OFFSET -4.5f ///<The depth point where the buttons are positioned
 #define BUTTON_RIGHT_START 2.0f ///<The horizontal point from where the buttons are drawn
 #define LEAP_POINTER_SIZE 1.0f ///<The size of the LeapmotionPointer
-#define COORDINATE_SYSTEM_SCALE_CONVERSION 0.005f /**<A conversion factor to scale the data 
-											      coming from the Leapmotion device
-												  to fit the Room-View mode characteristics*/
-#define BOX_COORDINATE_SYSTEM_SCALE_CONVERSION 0.016f /**<A conversion factor to scale the data 
-													  coming from the Leapmotion device
-													  to fit the Box-View mode characteristics*/
+#define COORDINATE_SYSTEM_SCALE_CONVERSION 0.005f ///<A conversion factor to scale the data 
+                                                  ///<coming from the Leapmotion device
+                                                  ///<to fit the Room-View mode characteristics
+#define BOX_COORDINATE_SYSTEM_SCALE_CONVERSION 0.016f ///<A conversion factor to scale the data 
+													  ///<coming from the Leapmotion device
+													  ///<to fit the Box-View mode characteristics
 #define PINCHING_LIMIT 0.7f ///<The minimal pinching value to consider that the hand is pinching
 #define DRAG_RADIUS 0.4f ///<The minimal distance to grab a Structure
 #define TRASH_CAN_SIZE 2.0f///<The size of the TrashCan
