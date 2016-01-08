@@ -119,7 +119,7 @@ void Structure::Draw(const glm::mat4& VP) const
 	{
 		d_roomBots[i].Draw(VP * glm::translate(-d_centerOffset));
 	}
-	//centerCube->Draw(VP* glm::translate(-d_centerOffset));
+	centerCube->Draw(VP* glm::translate(-d_centerOffset));
 }
 
 

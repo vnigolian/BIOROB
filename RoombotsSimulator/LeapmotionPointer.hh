@@ -47,7 +47,6 @@ public:
 	/**Draws the LeapmotionPointer's Model */
 	void Draw(const glm::mat4& VP) const;
 
-
 	/**returns whether or not the user's rightmost hand is pinching*/
 	bool Pinching()const;
 
@@ -61,6 +60,9 @@ public:
 
 	/**Returns a pointer to the currently assigned MovableStructure*/
 	MovableStructure* AssignedStructure() const;
+
+	/**Rotates the MovableStructure currently assigned to the pointer*/
+	void RotateStructure(bool clockWise);
 
 	/**Cleans up the three models used to represent the Pointer*/
 	void CleanUp();

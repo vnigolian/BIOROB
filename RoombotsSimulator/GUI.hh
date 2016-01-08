@@ -45,6 +45,9 @@ public:
 	  \arg \c buttonID The ID of the Button from which the dropped MovableStructure comes*/
 	void DroppedStructure(unsigned int buttonID);
 
+	/**Rotates the MovableStructure currently assigned to the LeapmotionPointer*/
+	void RotateStructure(bool clockWise);
+
 	/**Returns a vector of the positions of all the RoomBots*/
 	std::vector<Position> GetAllRoombotsPositions();
 

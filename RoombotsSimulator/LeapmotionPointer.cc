@@ -176,6 +176,14 @@ MovableStructure* LeapmotionPointer::AssignedStructure() const
 	return d_p_structure;
 }
 
+void LeapmotionPointer::RotateStructure(bool clockWise)
+{
+	if (d_p_structure != NULL)
+	{
+		d_p_structure->Rotate(clockWise);
+	}
+}
+
 void LeapmotionPointer::CleanUp()
 {
 	d_p_referencePointerModel->CleanUp();

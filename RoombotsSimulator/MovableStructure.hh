@@ -15,7 +15,7 @@
 */
 class MovableStructure
 {
-	Structure* const d_p_structure;   ///<The pointer to the Structure to be moved
+	const Structure* d_p_structure;   ///<The pointer to the Structure to be moved
 	Position         d_position;      ///<The structure's position
 	int              d_ID;            ///<Its ID
 	unsigned int     d_buttonID;      ///<The ID of the button from which the Structure was created
@@ -32,7 +32,9 @@ public:
 					 unsigned int buttonID);
 
 
-	void Rotate(bool left);
+	/**Rotates the MovableStructure
+	\arg \c clockWise True if the rotation must clock-wise, false otherwise*/
+	void Rotate(bool clockWise);
 
 	/**Checks if a position is close enough from the MovableStructure's Structure's center
 	\arg \c position The reference position

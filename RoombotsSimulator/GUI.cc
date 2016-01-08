@@ -39,40 +39,6 @@ void GUI::Init()
 	AddButton(chair);
 
 
-	
-	MovableStructure* chair_rad = new MovableStructure(new Structure("Structures/chair-rad.rbs", hemisphere1, hemisphere2, p_circle) 
-		, d_buttons[2]->Position(), 5463457, -1);
-	chair_rad->Drop();
-	chair_rad->Rotate(false);
-	d_structures.push_back(chair_rad);
-	d_nStructures++;
-
-	/*MovableStructure* newStructure1 = new MovableStructure(table, d_buttons[0]->Position(), 5463457, -1);
-	MovableStructure* newStructure2 = new MovableStructure(stool, d_buttons[1]->Position(), 12351523, -1);
-	MovableStructure* newStructure3 = new MovableStructure(chair, d_buttons[2]->Position(), 123123, -1);
-
-	MovableStructure* newStructure12 = new MovableStructure(table, d_buttons[0]->Position(), 5463457, -1);
-	MovableStructure* newStructure22 = new MovableStructure(stool, d_buttons[1]->Position(), 12351523, -1);
-	MovableStructure* newStructure32 = new MovableStructure(chair, d_buttons[2]->Position(), 123123, -1);
-
-	newStructure1->Rotate(true);
-	newStructure1->Drop();
-	d_structures.push_back(newStructure1);
-	newStructure2->Rotate(true);
-	newStructure2->Drop();
-	d_structures.push_back(newStructure2);
-	newStructure3->Rotate(true);
-	newStructure3->Drop();
-	d_structures.push_back(newStructure3);
-
-	newStructure12->Drop();
-	d_structures.push_back(newStructure12);
-	newStructure22->Drop();
-	d_structures.push_back(newStructure22);
-	newStructure32->Drop();
-	d_structures.push_back(newStructure32);
-
-	d_nStructures += 6;*/
 
 	d_trashCan = new TrashCan(glm::vec3(ROOM_SIZE / 2 + TRASH_CAN_SIZE / 2 + 0.01f, 0.0f, - ROOM_SIZE / 2));
 
@@ -112,6 +78,11 @@ void GUI::PopStructure(unsigned int buttonID)
 		d_structures.push_back(newStructure);
 		d_nStructures++;
 	}
+}
+
+void GUI::RotateStructure(bool clockWise)
+{
+	d_pointer.RotateStructure(clockWise);
 }
 
 void GUI::DroppedStructure(unsigned int buttonID)

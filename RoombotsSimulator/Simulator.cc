@@ -234,13 +234,19 @@ void Simulator::HandleKeyboard(unsigned char key, int x, int y)
 	case 'd':
 		Right();
 		break;
+	case 'q':
+		d_GUI.RotateStructure(true);
+		break;
+	case 'e':
+		d_GUI.RotateStructure(false);
+		break;
 	case ' ':
 		SwitchViewMode();
 		break;
 	case 13:
 		InitSimulation();
 		break;
-
+	
 	default :
 		std::cout << "you pressed : " << (int)key << std::endl;
 	}
