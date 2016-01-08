@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RoomBot.hh"
+#include "Cube.hh"
 
 /**
    This class represents a set of Roombot Modules organized to form a particular structure.
@@ -26,6 +27,7 @@ class Structure
 	const std::string    d_filename = ""; ///<The .rbs file name from which the Structure is loaded
 	glm::vec3            d_centerOffset;  ///<The difference between the Structure's position and its center
 	std::vector<RoomBot> d_roomBots;      ///<The RoomBot modules of the Structure
+	Cube* centerCube;
 
 public:
 	/**Imports a new OBJModel from a .obj file
@@ -48,5 +50,5 @@ public:
 private:
 	/**Computes the offset between the lower, closer left corner and the center of the Structure.
 	The center is calculated as the average of all of the Roombots' positions*/
-	void SetCenterOffset();
+	//void SetCenterOffset();
 };

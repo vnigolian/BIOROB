@@ -22,6 +22,7 @@ class MovableStructure
 	                                  ///<Once dropped, it is set to -1 to "unlink" it from the button
 
 	bool             d_moving = false;///<Whether the Structure is moving or not. (used in Drop())
+	int              d_rotation = 0;
 
 
 public:
@@ -30,6 +31,8 @@ public:
 					 int ID, 
 					 unsigned int buttonID);
 
+
+	void Rotate(bool left);
 
 	/**Checks if a position is close enough from the MovableStructure's Structure's center
 	\arg \c position The reference position

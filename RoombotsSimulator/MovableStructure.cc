@@ -12,9 +12,23 @@ d_p_structure(p_structure), d_ID(ID), d_buttonID(buttonID)
 	SetPosition(position);
 }
 
+void MovableStructure::Rotate(bool left)
+{
+	if (left)
+	{
+		d_rotation++;
+	}
+	else
+	{
+		d_rotation--;
+	}
+}
+
 void MovableStructure::SetPosition(glm::vec3 position)
 {
-	d_position = Position(position - d_p_structure->CenterOffset());
+	d_position = Position(position);
+	//d_position = Position(position - d_p_structure->CenterOffset());
+
 }
 
 void MovableStructure::Drag(const glm::vec3& position)
@@ -28,9 +42,9 @@ void MovableStructure::Drop()
 {
 	//When the Structure is dropped, we simply set the y-coordinate to the ground's y-coordinate 
 	d_moving = false;
-	SetPosition(glm::vec3(d_position.x()*MODULE_SIZE, -EYES_POSITION + 0.01f, d_position.z()*MODULE_SIZE)
-		+ d_p_structure->CenterOffset() 
-		- glm::vec3(MODULE_SIZE / 2, 0.0f, MODULE_SIZE / 2));
+	SetPosition(glm::vec3(d_position.x()*MODULE_SIZE, -EYES_POSITION + 0.01f + d_p_structure->CenterOffset().y-MODULE_SIZE , d_position.z()*MODULE_SIZE));
+		//+ d_p_structure->CenterOffset() 
+		//- glm::vec3(MODULE_SIZE / 2, 0.0f, MODULE_SIZE / 2));
 
 	d_buttonID = -1;
 }
@@ -50,7 +64,18 @@ void MovableStructure::Draw(const glm::mat4& VP) const
 {
 	if (d_p_structure != NULL)
 	{
-		d_p_structure->Draw(VP*glm::translate(glm::mat4(1.0f), d_position.ToGLM()*MODULE_SIZE));
+		//This matrix represents the rotation of the Structure on itself.
+		//To perform such rotation, the Structure'center must be translated to the origin, 
+		//then rotated around the vertical axis and finally put back at its original place
+		glm::mat4 rotationMatrix(glm::translate(d_p_structure->CenterOffset())
+			*glm::rotate(1.57f * d_rotation, glm::vec3(0.0f, 1.0f, 0.0f))
+			*glm::translate(-d_p_structure->CenterOffset()));
+
+		//The drawing accounts for the position of the MovableStructure 
+		//and the self-rotation of the Structure
+		d_p_structure->Draw(VP
+			*glm::translate(glm::mat4(1.0f), d_position.ToGLM()*MODULE_SIZE)
+			*rotationMatrix);
 	}
 }
 

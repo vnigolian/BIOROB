@@ -13,9 +13,11 @@
 */
 class Scene
 {
-	std::vector<const Model*> d_models; ///<The models contained in the scene
-	size_t                    d_nModels;///<The number of models in the scene
-	Quad*                     d_roof;   ///<the roof
+	std::vector<const Model*> d_models;    ///<The models contained in the scene
+	size_t                    d_nModels;   ///<The number of models in the scene
+	Quad*                     d_roof;      ///<The roof
+	Quad*                     d_front_wall1;///<The first half of the back wall
+	Quad*                     d_front_wall2;///<The second half of the back wall
 
 public:
 	/**Initializes the Scene

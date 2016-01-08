@@ -21,6 +21,25 @@ int min(int a, int b, int c)
 	return min(min(a, b), c);
 }
 
+int max(int a, int b)
+{
+	if (a>b)
+	{
+		return a;
+	}
+	else
+	{
+		return b;
+	}
+}
+
+int max(int a, int b, int c)
+{
+	return max(max(a, b), c);
+}
+
+
+
 Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2, OBJModel* p_circle) : d_filename(sourceFilename)
 {
 	std::fstream in(sourceFilename);
@@ -28,6 +47,8 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2,
 	{
 		std::vector<Position> positions;
 		int minX = 0, minY = 0, minZ = 0;
+		int maxX = 0, maxY = 0, maxZ = 0;
+
 		std::cout << "Loading " + sourceFilename + " file" << std::endl;
 		while (!in.eof())
 		{
@@ -39,6 +60,10 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2,
 			in >> By;
 			in >> Bz;
 			
+			maxX = max(maxX, Ax, Bx);
+			maxY = max(maxY, Ay, By);
+			maxZ = max(maxZ, Az, Bz);
+
 			minX = min(minX, Ax, Bx);
 			minY = min(minY, Ay, By);
 			minZ = min(minZ, Az, Bz);
@@ -55,17 +80,25 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2,
 						 p_h1, p_h2, p_circle);
 			d_roomBots.push_back(roomBot);
 		}
+
+		d_centerOffset = MODULE_SIZE * glm::vec3(((float) maxX + 1.) / 2., ((float) maxY + 1) / 2, ((float) maxZ + 1.) / 2.);
 		
 	}
 	else
 	{
 		std::cerr << "ERROR - couldn't open Structure file" << std::endl;
 	}
-	SetCenterOffset();
+	
+
+	//std::cout << "center offset is at : " << d_centerOffset.x << " " << d_centerOffset.y << " " << d_centerOffset.z << std::endl;
+
+	centerCube = new Cube("Shaders/simple_vshader.glsl", "Shaders/colorvec_fshader.glsl", "", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	centerCube->SetModelMatrix(glm::translate(d_centerOffset) * glm::scale(glm::mat4(1.0f), glm::vec3(0.12f)));
+	
 }
 
 
-void Structure::SetCenterOffset()
+/*void Structure::SetCenterOffset()
 {
 	glm::vec3 centerOffset(0.0f);
 	size_t size = d_roomBots.size();
@@ -76,16 +109,17 @@ void Structure::SetCenterOffset()
 		glm::vec3 roomBotPosition = d_roomBots[i].MiddlePosition();
 		centerOffset += (1 / (float)size) * glm::vec3(roomBotPosition.x, roomBotPosition.y, roomBotPosition.z);
 	}
-	d_centerOffset = MODULE_SIZE * centerOffset;// -glm::vec3(MODULE_SIZE / 2, MODULE_SIZE / 2, -MODULE_SIZE / 2);
-}
+	d_centerOffset = MODULE_SIZE * centerOffset +glm::vec3(MODULE_SIZE / 2, MODULE_SIZE / 2, MODULE_SIZE / 2);
+}*/
 
 void Structure::Draw(const glm::mat4& VP) const
 {
 
 	for (size_t i = 0; i < d_roomBots.size(); i++)
 	{
-		d_roomBots[i].Draw(VP);
+		d_roomBots[i].Draw(VP * glm::translate(-d_centerOffset));
 	}
+	//centerCube->Draw(VP* glm::translate(-d_centerOffset));
 }
 
 

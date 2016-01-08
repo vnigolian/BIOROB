@@ -1,4 +1,4 @@
-/#pragma once
+#pragma once
 #include "common.hh"
 #include "DepthBuffer.hh"
 #include "TextureBuffer.hh"
