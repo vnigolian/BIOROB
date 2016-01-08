@@ -16,7 +16,7 @@
 class MovableStructure
 {
 	const Structure* d_p_structure;   ///<The pointer to the Structure to be moved
-	Position         d_position;      ///<The structure's position
+	glm::vec3        d_position;      ///<The structure's position
 	int              d_ID;            ///<Its ID
 	unsigned int     d_buttonID;      ///<The ID of the button from which the Structure was created
 	                                  ///<Once dropped, it is set to -1 to "unlink" it from the button

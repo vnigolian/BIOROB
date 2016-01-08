@@ -98,19 +98,6 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2,
 }
 
 
-/*void Structure::SetCenterOffset()
-{
-	glm::vec3 centerOffset(0.0f);
-	size_t size = d_roomBots.size();
-
-	//The center's offset is simply an average of all the Roombots relative Position
-	for (size_t i = 0; i < size; i++)
-	{
-		glm::vec3 roomBotPosition = d_roomBots[i].MiddlePosition();
-		centerOffset += (1 / (float)size) * glm::vec3(roomBotPosition.x, roomBotPosition.y, roomBotPosition.z);
-	}
-	d_centerOffset = MODULE_SIZE * centerOffset +glm::vec3(MODULE_SIZE / 2, MODULE_SIZE / 2, MODULE_SIZE / 2);
-}*/
 
 void Structure::Draw(const glm::mat4& VP) const
 {

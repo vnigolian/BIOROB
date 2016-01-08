@@ -36,7 +36,7 @@
 ///All the following macros are in meters
 
 #define MODULE_SIZE 0.12f ///<The size of a a half of a Roombots module
-#define EYES_POSITION (19.0f * MODULE_SIZE / 2.0f)///< The vertical position of the camera 
+#define EYES_POSITION (29 * MODULE_SIZE / 2)///< The vertical position of the camera. It must be an odd multiple of MODULE_SIZE / 2
 #define ROOM_SIZE 5.0f ///<The size of the room
 #define BUTTON_SIZE 0.5f ///<The size of a button
 #define BUTTON_SEPARATION 1.0f ///<The horizontal distance between two buttons

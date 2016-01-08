@@ -112,16 +112,18 @@ void Simulator::RenderScene()
 	{
 		VP = d_rift.glmViewProjMatrix() * d_worldMatrix;
 	}
+
 	d_scene.Render(VP, !d_mode);
 
 	if (d_simulation.IsOver())
 	{
-		d_GUI.Render(VP);
 	}
 	else
 	{
-		d_simulation.Draw(VP);
 	}
+
+	d_simulation.Draw(VP);
+		d_GUI.Render(VP);
 }
 
 void Simulator::Display()

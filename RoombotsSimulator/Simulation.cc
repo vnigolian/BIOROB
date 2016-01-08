@@ -14,7 +14,7 @@ void Simulation::Initialize(const std::vector<Position> roombotsFinalPositions, 
 	for (size_t i(0); i < roombotsFinalPositions.size() / 2; i++)
 	{
 		Position roombotInitialPosition = Position(glm::vec3(-ROOM_SIZE / 2 + MODULE_SIZE*(i % modulesPerLine),
-			-EYES_POSITION + MODULE_SIZE,
+			-EYES_POSITION + MODULE_SIZE / 2,
 			MODULE_SIZE * 2 * (i / modulesPerLine)));
 
 		d_paths.push_back(Path());
