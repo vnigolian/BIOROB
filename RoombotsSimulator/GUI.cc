@@ -29,16 +29,33 @@ void GUI::Init()
 	d_p_circle = p_circle;
 
 	//then we create new Structure based on .rbs files
-	Structure* table = new Structure("Structures/table.rbs", hemisphere1, hemisphere2, p_circle);
+	Structure* table = new Structure("Structures/table2.rbs", hemisphere1, hemisphere2, p_circle);
 	Structure* stool = new Structure("Structures/stool.rbs", hemisphere1,hemisphere2, p_circle);
 	Structure* chair = new Structure("Structures/chair.rbs", hemisphere1, hemisphere2, p_circle);
+
 
 	//then we add buttons holding the Structures to the GUI
 	AddButton(table);
 	AddButton(stool);
 	AddButton(chair);
 
+	MovableStructure* lol = new MovableStructure(table, glm::vec3(0.0f,0.0f,-2.0f), -1, -1);
+	lol->Drop();
+	lol->Rotate(true);
+	d_structures.push_back(lol);
+	d_nStructures++;
 
+	MovableStructure* lol2 = new MovableStructure(table, glm::vec3(0.0f, 0.0f, -2.0f), -1, -1);
+	lol2->Drop();
+	//lol->Rotate(true);
+	d_structures.push_back(lol2);
+	d_nStructures++;
+
+	MovableStructure* lol3 = new MovableStructure(chair, glm::vec3(-1.0f, 0.0f, -2.0f), -1, -1);
+	lol3->Drop();
+	lol3->Rotate(true);
+	d_structures.push_back(lol3);
+	d_nStructures++;
 
 	d_trashCan = new TrashCan(glm::vec3(ROOM_SIZE / 2 + TRASH_CAN_SIZE / 2 + 0.01f, 0.0f, - ROOM_SIZE / 2));
 
@@ -50,7 +67,7 @@ void GUI::AddButton(Structure* p_structure)
 	if (d_nButtons <= 5)//we want max 5 buttons for now
 	{
 		//we make the position of the buttons vary to get a line of buttons
-		glm::vec3 position = glm::vec3(BUTTON_RIGHT_START - (this->d_nButtons)*(BUTTON_SIZE + BUTTON_SEPARATION), BUTTON_UP_START, BUTTON_DEPTH_OFFSET);
+		glm::vec3 position = Position(glm::vec3(BUTTON_RIGHT_START - (this->d_nButtons)*(BUTTON_SIZE + BUTTON_SEPARATION), BUTTON_UP_START, BUTTON_DEPTH_OFFSET)).ToGLM()*MODULE_SIZE;
 
 		//we create the new Button with the position
 		Button* newButton = new Button(position, d_nButtons, p_structure);

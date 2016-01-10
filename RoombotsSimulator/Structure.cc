@@ -82,7 +82,6 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2,
 		}
 
 		d_centerOffset = MODULE_SIZE * glm::vec3(((float) maxX + 1.) / 2., ((float) maxY + 1) / 2, ((float) maxZ + 1.) / 2.);
-		
 	}
 	else
 	{

@@ -96,7 +96,7 @@ std::vector<Position> MovableStructure::RoombotsPositions() const
 	{
 		//We add the MovableStructure's discrete Position to the relative
 		//Roombot's Positions to get their actual Position within the scene
-		positions[i] += d_position;// -Position(d_p_structure->CenterOffset);
+		positions[i] += d_position;
 	}
 
 	return positions;

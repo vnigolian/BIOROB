@@ -43,6 +43,8 @@ public:
 	bool operator==(Position other) const;
 	bool operator!=(Position other) const;
 
+	void RotateY(unsigned int numberOfRotations, bool center);
+
 	/**Sums up the difference between all three coordinates of 'this' and 'other'*/
 	int distanceTo(Position other) const;
 
