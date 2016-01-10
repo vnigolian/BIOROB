@@ -87,7 +87,7 @@ protected:
 	const char*     d_fShaderFilename = "";  ///< The fragment shader's file name
 	const char*     d_textureFilename = "";  ///< The texture's file name
 	glm::vec4       d_color 
-		= glm::vec4(0.0f, 0.0f, 0.0f, 1.0f); //The color of the Model (black by default)
+		= glm::vec4(0.0f, 0.0f, 0.0f, 1.0f); ///<The color of the Model (black by default)
 
 	/**Calls 'SetVertices' and 'SetUVs' and makes sure both have the same size */
 	void SetVerticesAndUVs(std::vector<glm::vec3> *vertices, std::vector<glm::vec2> *uvs);

@@ -1,10 +1,9 @@
 <map id="GUI" name="GUI">
-<area shape="rect" id="node2" href="$class_leapmotion_pointer.html" title="LeapmotionPointer" alt="" coords="251,393,382,420"/>
-<area shape="rect" id="node3" href="$class_cube.html" title="Cube" alt="" coords="156,81,208,108"/>
-<area shape="rect" id="node10" href="$class_trash_can.html" title="TrashCan" alt="" coords="148,191,226,218"/>
-<area shape="rect" id="node5" href="$class_quad.html" title="Quad" alt="" coords="346,132,399,159"/>
-<area shape="rect" id="node9" href="$class_o_b_j_model.html" title="OBJModel" alt="" coords="242,132,324,159"/>
-<area shape="rect" id="node6" href="$class_movable_structure.html" title="MovableStructure" alt="" coords="432,304,555,331"/>
-<area shape="rect" id="node7" href="$class_structure.html" title="Structure" alt="" coords="456,191,531,218"/>
-<area shape="rect" id="node8" href="$class_position.html" title="Position" alt="" coords="574,191,643,218"/>
+<area shape="rect" id="node2" href="$class_leapmotion_pointer.html" title="LeapmotionPointer" alt="" coords="230,393,361,420"/>
+<area shape="rect" id="node3" href="$class_cube.html" title="Cube" alt="" coords="207,81,259,108"/>
+<area shape="rect" id="node7" href="$class_structure.html" title="Structure" alt="" coords="145,191,219,218"/>
+<area shape="rect" id="node9" href="$class_trash_can.html" title="TrashCan" alt="" coords="251,191,329,218"/>
+<area shape="rect" id="node5" href="$class_quad.html" title="Quad" alt="" coords="449,132,502,159"/>
+<area shape="rect" id="node8" href="$class_o_b_j_model.html" title="OBJModel" alt="" coords="345,132,427,159"/>
+<area shape="rect" id="node6" href="$class_movable_structure.html" title="MovableStructure" alt="" coords="119,304,242,331"/>
 </map>

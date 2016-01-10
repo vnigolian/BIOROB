@@ -61,17 +61,6 @@ bool Position::operator!=(Position other) const
 	return !(*this == other); 
 }
 
-void Position::RotateY(unsigned int numberOfRotations, bool center)
-{
-	if (numberOfRotations > 0)
-	{
-		int temp = d_z;
-		d_z = center - d_x;
-		d_x = temp;
-		RotateY(numberOfRotations - 1, center);
-	}
-}
-
 
 int Position::distanceTo(Position other) const
 {

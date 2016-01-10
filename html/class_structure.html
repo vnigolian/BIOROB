@@ -86,7 +86,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_structure-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -95,6 +94,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_structure_8hh_source.html">Structure.hh</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for Structure:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_structure__coll__graph.png" border="0" usemap="#_structure_coll__map" alt="Collaboration graph"/></div>
+<map name="_structure_coll__map" id="_structure_coll__map">
+<area shape="rect" id="node2" href="class_cube.html" title="Cube" alt="" coords="17,81,69,108"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -107,11 +114,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a645971aef006d92f1c6db22657260680"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_position.html">Position</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_structure.html#a645971aef006d92f1c6db22657260680">RoombotsPositions</a> () const </td></tr>
 <tr class="separator:a645971aef006d92f1c6db22657260680"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:adb3988c318cc443406bd86eefbf6ad7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_structure.html#adb3988c318cc443406bd86eefbf6ad7c">SetCenterOffset</a> ()</td></tr>
-<tr class="separator:adb3988c318cc443406bd86eefbf6ad7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a123a73bd1b32357f280ed373f8d42c75"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_structure.html#a123a73bd1b32357f280ed373f8d42c75">d_filename</a> = &quot;&quot;</td></tr>
@@ -123,6 +125,8 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a09d17d0475eacd5141900603e663c3e6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_room_bot.html">RoomBot</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_structure.html#a09d17d0475eacd5141900603e663c3e6">d_roomBots</a></td></tr>
 <tr class="memdesc:a09d17d0475eacd5141900603e663c3e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="class_room_bot.html">RoomBot</a> modules of the <a class="el" href="class_structure.html">Structure</a>.  <a href="#a09d17d0475eacd5141900603e663c3e6">More...</a><br /></td></tr>
 <tr class="separator:a09d17d0475eacd5141900603e663c3e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ffc83120937530ff789d8c00ad50b62"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_cube.html">Cube</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_structure.html#a1ffc83120937530ff789d8c00ad50b62">centerCube</a></td></tr>
+<tr class="separator:a1ffc83120937530ff789d8c00ad50b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class represents a set of Roombot Modules organized to form a particular structure. It is created from .rbs files, files that contain a list of positions for the Roombot modules. They take the form :</p>
@@ -227,7 +231,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="adb3988c318cc443406bd86eefbf6ad7c"></a>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a1ffc83120937530ff789d8c00ad50b62"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -235,10 +240,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Structure::SetCenterOffset </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="class_cube.html">Cube</a>* Structure::centerCube</td>
         </tr>
       </table>
   </td>
@@ -247,11 +249,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Computes the offset between the lower, closer left corner and the center of the <a class="el" href="class_structure.html">Structure</a>. The center is calculated as the average of all of the Roombots' positions </p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="ad60f3438189c066f4e1f8bda29e696a7"></a>
 <div class="memitem">
 <div class="memproto">

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['centercube',['centerCube',['../class_structure.html#a1ffc83120937530ff789d8c00ad50b62',1,'Structure']]],
   ['centeroffset',['CenterOffset',['../class_structure.html#a194bf6cfb1b870bdc04c1045c5741ce1',1,'Structure']]],
   ['checkforpinchedstructure',['CheckForPinchedStructure',['../class_g_u_i.html#aba3f403f1fff9730789bb18682a1811f',1,'GUI']]],
   ['cleanup',['CleanUp',['../class_button.html#a67b55e408fc3339d976bd0f7d6a80690',1,'Button::CleanUp()'],['../class_g_u_i.html#a2aedc566de9c970f96b3d4688a9663c6',1,'GUI::CleanUp()'],['../class_half_module.html#a1a74e456c2152af969343f74ec35a9af',1,'HalfModule::CleanUp()'],['../class_leapmotion_pointer.html#acac9d41c7fbebe139f8fd13730423465',1,'LeapmotionPointer::CleanUp()'],['../class_rift_handler.html#ab622cda224500a741ed2b99e367d04f9',1,'RiftHandler::CleanUp()'],['../class_scene.html#a830078c354d5df8ef9b811dac7b2c7dd',1,'Scene::CleanUp()'],['../class_simulator.html#af816130e0b98783cd05ec04310e31d30',1,'Simulator::CleanUp()'],['../class_trash_can.html#a312330e3c3052fd2cdade6d5bbc62f10',1,'TrashCan::CleanUp()']]],

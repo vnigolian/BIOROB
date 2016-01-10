@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['test',['test',['../index.html',1,'']]]
+  ['roombots_20simulator',['Roombots Simulator',['../index.html',1,'']]]
 ];

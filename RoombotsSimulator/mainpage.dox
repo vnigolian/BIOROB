@@ -1,12 +1,57 @@
-/*! \mainpage test
+/*! \mainpage Roombots Simulator
  *
  * \section intro_sec Introduction
  *
- * This is the introduction.
- *
- * \section install_sec Installation
- *
- * \subsection step1 Step 1: Opening the box
- *
- * 
- */
+ * "Roombots Simulator" is a software an immersive interface to interact with virtual Roombots.\n
+ Roombots are self-reconfigurable robots developed by the BioRobotics Laboratory (BioRob) at EPFL. \n
+For more information about Roombots or BioRob, please visit their website : http://biorob.epfl.ch/cms/page-36376.html \n
+This software uses the Leapmotion, a gesture-recognition device, as input and the Oculus Rift, a Virtual Reality (VR) device. \n
+Both those devices MUST be used in order to enjoy the full experience.
+*
+ * \section how_to_sec How to run
+First, make sure the Leapmotion AND the Oculus Rift are both ready for use (drivers installed, runtimes installed, etc.).\n
+Then, open the "release" folder and run "RoombotsSimulator.exe".\n
+It is important not to modify any file contained in this folder.\n
+For more information about the folders and files used by the software see section "File hierarchy"\n
+The software uses two windows : the main window showing the scene and the information window, \n
+a terminal-like window showing information about the current state of the software.
+
+\section hot_to_use How to use
+\subsection gui_sec The Graphic User Interface (GUI)
+The GUI consists of blue holders containing Roombots Structures. \n
+After grabbing and dropping a Structure coming from the holders, a new one will pop inside the corresponding holder.\n
+On the right side of the room, there is a big grey cube representing a trash can. By dropping a Structure inside it, it will be deleted.\n
+
+
+
+\subsection controls-sec Controls
+"Roombots Simulator" uses gesture-recognition. With the right-most hand above the Leapmotion, the user can grab Structures and drop them.\n
+To do so, the user must "pinch" the Structures and then move the hand around. Opening the hand while holding a Structure will drop it.\n
+One does not have to pinch exactly on the Structure, it is easier to grab Structure when keeping the hand pinching until the Structure is grabbed. \n
+\nThe software also uses the keyboard. The 'wasd' keys are used to move around,'q' and 'e' can rotate the Structure currently held, clock-wise \n
+or counter-clock-wise respectively and the space bar allows to switch between the Room-View and the Box-View.\n
+The Room-View puts the user inside the room, while the Box-View puts the user above the room, as if he or she was sitting in front of a box containing the room.\n
+In Room-view, it is not possible to reach for the holders and thus add new Structures, but allows to be more precise when moving Structures.\n
+In Box-View, it is not possible to move around with 'wasd'\n
+ 
+\subsection close-sec Closing the software.
+To close the software, first close the main window showing the scene and only then the information window.
+
+\section detail_sec Details
+\subsection hier_sec File Hierarchy
+The file hierachy of the "Release" folder is the following :\n
+
+Release \n
+-----Libraries  //Contains library-related files. DO NOT MODIFY \n
+-----Models     //Contains the various .obj (wavefront) files used to import models \n
+-----Shaders    //Contains all the .glsl program files used by the software\n
+-----Structures //Contains all the .rbs (RoomBotStructure) files representing the Structures \n
+-----Textures   //Contains all the texture images used to draw the scene \n
+
+\subsection files_sec File details
+Models : There are two models used in this software : a hemi-sphere and a circle.\n
+There are different version of both, each version having a different number of vertices.\n
+For instance, circle_100.obj is the base circle with 100% of its vertices, while hemisphere_10 is the hemi-sphere with 10% of its vertices\n
+\n
+Structures : There are a few .rbs files available, the most important ones being "chair.rbs", "table.rbs" and "stool.rbs"
+*/

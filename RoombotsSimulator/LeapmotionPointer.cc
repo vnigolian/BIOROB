@@ -44,8 +44,8 @@ void LeapmotionPointer::Init(GUI* p_gui)
 
 Leap::Vector LeapmotionPointer::AdaptToMode(Leap::Vector right_hand_pos, bool mode)
 {
-	//all values used in this method come from a longs fine-tuning sessions to figure out 
-	//what were the best parameters for a good use of the program
+	//all values used in this method come from long fine-tuning sessions to figure out 
+	//what were the best parameters for a ^comfortable use of the LeapmotionPointer
 	Leap::Vector adapted = right_hand_pos;
 	if (mode)
 	{

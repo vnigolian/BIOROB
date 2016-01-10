@@ -29,7 +29,7 @@ void GUI::Init()
 	d_p_circle = p_circle;
 
 	//then we create new Structure based on .rbs files
-	Structure* table = new Structure("Structures/table2.rbs", hemisphere1, hemisphere2, p_circle);
+	Structure* table = new Structure("Structures/table.rbs", hemisphere1, hemisphere2, p_circle);
 	Structure* stool = new Structure("Structures/stool.rbs", hemisphere1,hemisphere2, p_circle);
 	Structure* chair = new Structure("Structures/chair.rbs", hemisphere1, hemisphere2, p_circle);
 
@@ -38,24 +38,6 @@ void GUI::Init()
 	AddButton(table);
 	AddButton(stool);
 	AddButton(chair);
-
-	MovableStructure* lol = new MovableStructure(table, glm::vec3(0.0f,0.0f,-2.0f), -1, -1);
-	lol->Drop();
-	lol->Rotate(true);
-	d_structures.push_back(lol);
-	d_nStructures++;
-
-	MovableStructure* lol2 = new MovableStructure(table, glm::vec3(0.0f, 0.0f, -2.0f), -1, -1);
-	lol2->Drop();
-	//lol->Rotate(true);
-	d_structures.push_back(lol2);
-	d_nStructures++;
-
-	MovableStructure* lol3 = new MovableStructure(chair, glm::vec3(-1.0f, 0.0f, -2.0f), -1, -1);
-	lol3->Drop();
-	lol3->Rotate(true);
-	d_structures.push_back(lol3);
-	d_nStructures++;
 
 	d_trashCan = new TrashCan(glm::vec3(ROOM_SIZE / 2 + TRASH_CAN_SIZE / 2 + 0.01f, 0.0f, - ROOM_SIZE / 2));
 

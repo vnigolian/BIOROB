@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Roombots Simulator: test</title>
+<title>Roombots Simulator: Roombots Simulator</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -77,16 +77,65 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">test </div>  </div>
+<div class="title">Roombots <a class="el" href="class_simulator.html">Simulator</a> </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
-<p>This is the introduction.</p>
-<h1><a class="anchor" id="install_sec"></a>
-Installation</h1>
-<h2><a class="anchor" id="step1"></a>
-Step 1: Opening the box</h2>
+<p>"Roombots Simulator" is a software an immersive interface to interact with virtual Roombots.<br />
+ Roombots are self-reconfigurable robots developed by the BioRobotics Laboratory (BioRob) at EPFL. <br />
+For more information about Roombots or BioRob, please visit their website : <a href="http://biorob.epfl.ch/cms/page-36376.html">http://biorob.epfl.ch/cms/page-36376.html</a> <br />
+This software uses the Leapmotion, a gesture-recognition device, as input and the Oculus Rift, a Virtual Reality (VR) device. <br />
+Both those devices MUST be used in order to enjoy the full experience.</p>
+<h1><a class="anchor" id="how_to_sec"></a>
+How to run</h1>
+<p>First, make sure the Leapmotion AND the Oculus Rift are both ready for use (drivers installed, runtimes installed, etc.).<br />
+Then, open the "release" folder and run "RoombotsSimulator.exe".<br />
+It is important not to modify any file contained in this folder.<br />
+For more information about the folders and files used by the software see section "File hierarchy"<br />
+The software uses two windows : the main window showing the scene and the information window, <br />
+a terminal-like window showing information about the current state of the software.</p>
+<h1><a class="anchor" id="hot_to_use"></a>
+How to use</h1>
+<h2><a class="anchor" id="gui_sec"></a>
+The Graphic User Interface (GUI)</h2>
+<p>The <a class="el" href="class_g_u_i.html">GUI</a> consists of blue holders containing Roombots Structures. <br />
+After grabbing and dropping a <a class="el" href="class_structure.html">Structure</a> coming from the holders, a new one will pop inside the corresponding holder.<br />
+On the right side of the room, there is a big grey cube representing a trash can. By dropping a <a class="el" href="class_structure.html">Structure</a> inside it, it will be deleted.<br />
+</p>
+<h2><a class="anchor" id="controls-sec"></a>
+Controls</h2>
+<p>"Roombots Simulator" uses gesture-recognition. With the right-most hand above the Leapmotion, the user can grab Structures and drop them.<br />
+To do so, the user must "pinch" the Structures and then move the hand around. Opening the hand while holding a <a class="el" href="class_structure.html">Structure</a> will drop it.<br />
+One does not have to pinch exactly on the <a class="el" href="class_structure.html">Structure</a>, it is easier to grab <a class="el" href="class_structure.html">Structure</a> when keeping the hand pinching until the <a class="el" href="class_structure.html">Structure</a> is grabbed. <br />
+ software also uses the keyboard. The 'wasd' keys are used to move around,'q' and 'e' can rotate the <a class="el" href="class_structure.html">Structure</a> currently held, clock-wise <br />
+or counter-clock-wise respectively and the space bar allows to switch between the Room-View and the Box-View.<br />
+The Room-View puts the user inside the room, while the Box-View puts the user above the room, as if he or she was sitting in front of a box containing the room.<br />
+In Room-view, it is not possible to reach for the holders and thus add new Structures, but allows to be more precise when moving Structures.<br />
+In Box-View, it is not possible to move around with 'wasd'<br />
+ </p>
+<h2><a class="anchor" id="close-sec"></a>
+Closing the software.</h2>
+<p>To close the software, first close the main window showing the scene and only then the information window.</p>
+<h1><a class="anchor" id="detail_sec"></a>
+Details</h1>
+<h2><a class="anchor" id="hier_sec"></a>
+File Hierarchy</h2>
+<p>The file hierachy of the "Release" folder is the following :<br />
+ Release <br />
+--&mdash;Libraries //Contains library-related files. DO NOT MODIFY <br />
+--&mdash;Models //Contains the various .obj (wavefront) files used to import models <br />
+--&mdash;Shaders //Contains all the .glsl program files used by the software<br />
+--&mdash;Structures //Contains all the .rbs (RoomBotStructure) files representing the Structures <br />
+--&mdash;Textures //Contains all the texture images used to draw the scene <br />
+ </p>
+<h2><a class="anchor" id="files_sec"></a>
+File details</h2>
+<p>Models : There are two models used in this software : a hemi-sphere and a circle.<br />
+There are different version of both, each version having a different number of vertices.<br />
+For instance, circle_100.obj is the base circle with 100% of its vertices, while hemisphere_10 is the hemi-sphere with 10% of its vertices<br />
+<br />
+Structures : There are a few .rbs files available, the most important ones being "chair.rbs", "table.rbs" and "stool.rbs" </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

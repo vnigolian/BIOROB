@@ -100,8 +100,8 @@ Collaboration diagram for MovableStructure:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_movable_structure__coll__graph.png" border="0" usemap="#_movable_structure_coll__map" alt="Collaboration graph"/></div>
 <map name="_movable_structure_coll__map" id="_movable_structure_coll__map">
-<area shape="rect" id="node2" href="class_structure.html" title="Structure" alt="" coords="5,5,80,32"/>
-<area shape="rect" id="node3" href="class_position.html" title="Position" alt="" coords="123,5,192,32"/>
+<area shape="rect" id="node2" href="class_structure.html" title="Structure" alt="" coords="29,171,104,197"/>
+<area shape="rect" id="node3" href="class_cube.html" title="Cube" alt="" coords="41,81,93,108"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -109,6 +109,8 @@ Collaboration diagram for MovableStructure:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8da955823bc18ef5ff3d887d870eee60"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_movable_structure.html#a8da955823bc18ef5ff3d887d870eee60">MovableStructure</a> (<a class="el" href="class_structure.html">Structure</a> *p_structure, glm::vec3 position, int ID, unsigned int buttonID)</td></tr>
 <tr class="separator:a8da955823bc18ef5ff3d887d870eee60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac41c418a58e34c7d0e44210ca8f47b9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_movable_structure.html#ac41c418a58e34c7d0e44210ca8f47b9d">Rotate</a> (bool clockWise)</td></tr>
+<tr class="separator:ac41c418a58e34c7d0e44210ca8f47b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa20aa0ba37674cfdeee8670582a7012c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_movable_structure.html#aa20aa0ba37674cfdeee8670582a7012c">CloseEnough</a> (glm::vec3 position) const </td></tr>
 <tr class="separator:aa20aa0ba37674cfdeee8670582a7012c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa535af5af32dc94f0408e7fa06afe434"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_movable_structure.html#aa535af5af32dc94f0408e7fa06afe434">CloseEnough</a> (glm::vec3 position, float distance) const </td></tr>
@@ -135,12 +137,12 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a9588e0f01f32062436a4aabf0126f3ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_structure.html">Structure</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_movable_structure.html#a9588e0f01f32062436a4aabf0126f3ed">d_p_structure</a></td></tr>
-<tr class="memdesc:a9588e0f01f32062436a4aabf0126f3ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">The pointer to the <a class="el" href="class_structure.html">Structure</a> to be moved.  <a href="#a9588e0f01f32062436a4aabf0126f3ed">More...</a><br /></td></tr>
-<tr class="separator:a9588e0f01f32062436a4aabf0126f3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46d30cdbcdf2d472cbbac514498b8c97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_movable_structure.html#a46d30cdbcdf2d472cbbac514498b8c97">d_position</a></td></tr>
-<tr class="memdesc:a46d30cdbcdf2d472cbbac514498b8c97"><td class="mdescLeft">&#160;</td><td class="mdescRight">The structure's position.  <a href="#a46d30cdbcdf2d472cbbac514498b8c97">More...</a><br /></td></tr>
-<tr class="separator:a46d30cdbcdf2d472cbbac514498b8c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af80dce5fbd02f822179e2a7b3d9513f1"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_structure.html">Structure</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_movable_structure.html#af80dce5fbd02f822179e2a7b3d9513f1">d_p_structure</a></td></tr>
+<tr class="memdesc:af80dce5fbd02f822179e2a7b3d9513f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The pointer to the <a class="el" href="class_structure.html">Structure</a> to be moved.  <a href="#af80dce5fbd02f822179e2a7b3d9513f1">More...</a><br /></td></tr>
+<tr class="separator:af80dce5fbd02f822179e2a7b3d9513f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff2d20c03e81f2ecb2c549a3ed0e4641"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_movable_structure.html#aff2d20c03e81f2ecb2c549a3ed0e4641">d_position</a></td></tr>
+<tr class="memdesc:aff2d20c03e81f2ecb2c549a3ed0e4641"><td class="mdescLeft">&#160;</td><td class="mdescRight">The structure's position.  <a href="#aff2d20c03e81f2ecb2c549a3ed0e4641">More...</a><br /></td></tr>
+<tr class="separator:aff2d20c03e81f2ecb2c549a3ed0e4641"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cccbfdf03cc1ef9e2cc2d4b665e435a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_movable_structure.html#a8cccbfdf03cc1ef9e2cc2d4b665e435a">d_ID</a></td></tr>
 <tr class="memdesc:a8cccbfdf03cc1ef9e2cc2d4b665e435a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Its ID.  <a href="#a8cccbfdf03cc1ef9e2cc2d4b665e435a">More...</a><br /></td></tr>
 <tr class="separator:a8cccbfdf03cc1ef9e2cc2d4b665e435a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,6 +151,8 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ac0c2c626f277af2b499c51f30a1ce0bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_movable_structure.html#ac0c2c626f277af2b499c51f30a1ce0bb">d_moving</a> = false</td></tr>
 <tr class="memdesc:ac0c2c626f277af2b499c51f30a1ce0bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the <a class="el" href="class_structure.html">Structure</a> is moving or not. (used in <a class="el" href="class_movable_structure.html#ae668d3f5df0fc4aba72bea446c628ec1">Drop()</a>)  <a href="#ac0c2c626f277af2b499c51f30a1ce0bb">More...</a><br /></td></tr>
 <tr class="separator:ac0c2c626f277af2b499c51f30a1ce0bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdd578fca3f155d83c11d264d101d0c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_movable_structure.html#acdd578fca3f155d83c11d264d101d0c0">d_rotation</a> = 0</td></tr>
+<tr class="separator:acdd578fca3f155d83c11d264d101d0c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class encapsulates a Roombot <a class="el" href="class_structure.html">Structure</a> as something that interact with the buttons and the <a class="el" href="class_leapmotion_pointer.html">LeapmotionPointer</a>. Indeed, Structures are static sets of Roombots Module and are not meant to be moved around.</p>
@@ -344,6 +348,25 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ac41c418a58e34c7d0e44210ca8f47b9d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MovableStructure::Rotate </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>clockWise</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rotates the <a class="el" href="class_movable_structure.html">MovableStructure</a> </p><ul>
+<li><code>clockWise</code> True if the rotation must clock-wise, false otherwise </li>
+</ul>
+
+</div>
+</div>
 <a class="anchor" id="ae0de49f889a8372ddab365c9fbc1909e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -459,7 +482,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9588e0f01f32062436a4aabf0126f3ed"></a>
+<a class="anchor" id="af80dce5fbd02f822179e2a7b3d9513f1"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -467,7 +490,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_structure.html">Structure</a>* const MovableStructure::d_p_structure</td>
+          <td class="memname">const <a class="el" href="class_structure.html">Structure</a>* MovableStructure::d_p_structure</td>
         </tr>
       </table>
   </td>
@@ -481,7 +504,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a46d30cdbcdf2d472cbbac514498b8c97"></a>
+<a class="anchor" id="aff2d20c03e81f2ecb2c549a3ed0e4641"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -489,7 +512,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_position.html">Position</a> MovableStructure::d_position</td>
+          <td class="memname">glm::vec3 MovableStructure::d_position</td>
         </tr>
       </table>
   </td>
@@ -500,6 +523,26 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The structure's position. </p>
+
+</div>
+</div>
+<a class="anchor" id="acdd578fca3f155d83c11d264d101d0c0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MovableStructure::d_rotation = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

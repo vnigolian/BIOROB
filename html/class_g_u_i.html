@@ -100,14 +100,13 @@ Collaboration diagram for GUI:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_g_u_i__coll__graph.png" border="0" usemap="#_g_u_i_coll__map" alt="Collaboration graph"/></div>
 <map name="_g_u_i_coll__map" id="_g_u_i_coll__map">
-<area shape="rect" id="node2" href="class_leapmotion_pointer.html" title="LeapmotionPointer" alt="" coords="251,393,382,420"/>
-<area shape="rect" id="node3" href="class_cube.html" title="Cube" alt="" coords="156,81,208,108"/>
-<area shape="rect" id="node10" href="class_trash_can.html" title="TrashCan" alt="" coords="148,191,226,218"/>
-<area shape="rect" id="node5" href="class_quad.html" title="Quad" alt="" coords="346,132,399,159"/>
-<area shape="rect" id="node9" href="class_o_b_j_model.html" title="OBJModel" alt="" coords="242,132,324,159"/>
-<area shape="rect" id="node6" href="class_movable_structure.html" title="MovableStructure" alt="" coords="432,304,555,331"/>
-<area shape="rect" id="node7" href="class_structure.html" title="Structure" alt="" coords="456,191,531,218"/>
-<area shape="rect" id="node8" href="class_position.html" title="Position" alt="" coords="574,191,643,218"/>
+<area shape="rect" id="node2" href="class_leapmotion_pointer.html" title="LeapmotionPointer" alt="" coords="230,393,361,420"/>
+<area shape="rect" id="node3" href="class_cube.html" title="Cube" alt="" coords="207,81,259,108"/>
+<area shape="rect" id="node7" href="class_structure.html" title="Structure" alt="" coords="145,191,219,218"/>
+<area shape="rect" id="node9" href="class_trash_can.html" title="TrashCan" alt="" coords="251,191,329,218"/>
+<area shape="rect" id="node5" href="class_quad.html" title="Quad" alt="" coords="449,132,502,159"/>
+<area shape="rect" id="node8" href="class_o_b_j_model.html" title="OBJModel" alt="" coords="345,132,427,159"/>
+<area shape="rect" id="node6" href="class_movable_structure.html" title="MovableStructure" alt="" coords="119,304,242,331"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -125,6 +124,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af92dd8befec936d524a5093fb27774e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0814471a5f4f33f81a43c8d9cdb385c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_u_i.html#a0814471a5f4f33f81a43c8d9cdb385c5">DroppedStructure</a> (unsigned int buttonID)</td></tr>
 <tr class="separator:a0814471a5f4f33f81a43c8d9cdb385c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa42ba472f9c32382bc6d81ed256bbf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_u_i.html#afa42ba472f9c32382bc6d81ed256bbf2">RotateStructure</a> (bool clockWise)</td></tr>
+<tr class="separator:afa42ba472f9c32382bc6d81ed256bbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecfcf45864e0ef301cd4c7844b742c9b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_position.html">Position</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_u_i.html#aecfcf45864e0ef301cd4c7844b742c9b">GetAllRoombotsPositions</a> ()</td></tr>
 <tr class="separator:aecfcf45864e0ef301cd4c7844b742c9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2aedc566de9c970f96b3d4688a9663c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_u_i.html#a2aedc566de9c970f96b3d4688a9663c6">CleanUp</a> ()</td></tr>
@@ -348,6 +349,23 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Renders (draws) the Buttons, the Structures and the <a class="el" href="class_leapmotion_pointer.html">LeapmotionPointer</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="afa42ba472f9c32382bc6d81ed256bbf2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GUI::RotateStructure </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>clockWise</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rotates the <a class="el" href="class_movable_structure.html">MovableStructure</a> currently assigned to the <a class="el" href="class_leapmotion_pointer.html">LeapmotionPointer</a> </p>
 
 </div>
 </div>

@@ -10,5 +10,7 @@ var searchData=
   ['right',['Right',['../class_simulator.html#ae4b57eccf91e4d21c8f381f29581c208',1,'Simulator']]],
   ['roombot',['RoomBot',['../class_room_bot.html#a64caf0ec48d430caa99ae080d4f58bf1',1,'RoomBot::RoomBot(Position A, Position B, OBJModel *p_h1, OBJModel *p_h2, OBJModel *p_circle)'],['../class_room_bot.html#adcde67d632e9161d3c00a1703a3ffe68',1,'RoomBot::RoomBot(int Ax, int Ay, int Az, int Bx, int By, int Bz, OBJModel *p_h1, OBJModel *p_h2, OBJModel *p_circle)']]],
   ['roombotspositions',['RoombotsPositions',['../class_movable_structure.html#aba7348f2710be566eca6a5ae5c88bf21',1,'MovableStructure::RoombotsPositions()'],['../class_structure.html#a645971aef006d92f1c6db22657260680',1,'Structure::RoombotsPositions()']]],
+  ['rotate',['Rotate',['../class_movable_structure.html#ac41c418a58e34c7d0e44210ca8f47b9d',1,'MovableStructure']]],
+  ['rotatestructure',['RotateStructure',['../class_g_u_i.html#afa42ba472f9c32382bc6d81ed256bbf2',1,'GUI::RotateStructure()'],['../class_leapmotion_pointer.html#ab6fc4417825c47845c4acfc5baa196df',1,'LeapmotionPointer::RotateStructure()']]],
   ['run',['Run',['../class_brute_path_finder.html#a4ac757d7736c44e831c34f009a3db5da',1,'BrutePathFinder::Run()'],['../class_path_finder.html#a217b04fe11f88aed7a1384253dfc11c8',1,'PathFinder::Run()'],['../class_simulation.html#af0ad94212fd0a5af2f3f0b3a9be1b3a7',1,'Simulation::Run()']]]
 ];

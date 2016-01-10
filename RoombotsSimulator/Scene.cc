@@ -5,7 +5,6 @@ Fall 2015
 */
 #include "Scene.hh"
 
-//Scene::Scene(float roomSize)
 void Scene::Init(float roomSize)
 {
 

@@ -88,11 +88,8 @@ Structure::Structure(std::string sourceFilename, OBJModel* p_h1, OBJModel* p_h2,
 		std::cerr << "ERROR - couldn't open Structure file" << std::endl;
 	}
 	
-
-	//std::cout << "center offset is at : " << d_centerOffset.x << " " << d_centerOffset.y << " " << d_centerOffset.z << std::endl;
-
 	centerCube = new Cube("Shaders/simple_vshader.glsl", "Shaders/colorvec_fshader.glsl", "", glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
-	centerCube->SetModelMatrix(glm::translate(d_centerOffset) * glm::scale(glm::mat4(1.0f), glm::vec3(0.12f)));
+	centerCube->SetModelMatrix(glm::scale(glm::mat4(1.0f), glm::vec3(0.12f)));
 	
 }
 
@@ -105,7 +102,7 @@ void Structure::Draw(const glm::mat4& VP) const
 	{
 		d_roomBots[i].Draw(VP * glm::translate(-d_centerOffset));
 	}
-	centerCube->Draw(VP* glm::translate(-d_centerOffset));
+	centerCube->Draw(VP);
 }
 
 

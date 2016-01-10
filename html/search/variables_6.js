@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['z',['z',['../struct_triplet.html#a1222b9931cb4cbad43ff50fdf589c26a',1,'Triplet']]]
+  ['website',['website',['../mainpage_8dox.html#aff72c45a950c0827cf4502a8799c8ec4',1,'mainpage.dox']]]
 ];

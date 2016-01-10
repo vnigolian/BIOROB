@@ -91,7 +91,7 @@ std::vector<Position> MovableStructure::RoombotsPositions() const
 	//We get all the Roombot's relative Positions from the Structure
 	std::vector<Position> positions = d_p_structure->RoombotsPositions();
 
-
+	//TODO : account for the MovableStructure's self rotation
 	for (size_t i(0); i < positions.size(); i++)
 	{
 		//We add the MovableStructure's discrete Position to the relative

@@ -261,7 +261,3 @@ void Simulator::InitSimulation()
 	BrutePathFinder* pathFinder = new BrutePathFinder();
 	d_simulation.Initialize(d_GUI.GetAllRoombotsPositions(), pathFinder);
 }
-
-
-
-
