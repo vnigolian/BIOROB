@@ -132,8 +132,10 @@ void LeapmotionPointer::Draw(const glm::mat4& VP) const
 	d_p_shadow->Draw(VP);
 }
 
-
-
+bool LeapmotionPointer::Grabbing() const
+{
+	return (d_p_structure != NULL);
+}
 
 bool LeapmotionPointer::Pinching() const
 {

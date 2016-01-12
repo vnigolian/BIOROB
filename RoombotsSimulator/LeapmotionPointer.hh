@@ -54,6 +54,8 @@ public:
 	or the last captured position if the hand is out of reach*/
 	glm::vec3 Position() const;
 
+	bool Grabbing() const;
+
 	/**Assigns a MovableStructure to the pointer
 	\arg \c p_structure A pointer to the desired MovableStructure*/
 	void AssignStructure(MovableStructure* p_structure);

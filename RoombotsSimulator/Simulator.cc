@@ -117,13 +117,12 @@ void Simulator::RenderScene()
 
 	if (d_simulation.IsOver())
 	{
+		d_GUI.Render(VP);
 	}
 	else
 	{
-	}
-
-	d_simulation.Draw(VP);
-		d_GUI.Render(VP);
+		d_simulation.Draw(VP);
+	}	
 }
 
 void Simulator::Display()

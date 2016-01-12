@@ -90,7 +90,7 @@ void GUI::DroppedStructure(unsigned int buttonID)
 	size_t i(0);
 	while( i<d_nStructures)
 	{
-		if (d_structures[i]->CloseEnough(d_trashCan->Position(), TRASH_CAN_SIZE))
+		if (d_structures[i]->CloseEnough(d_trashCan->Position(), (TRASH_CAN_SIZE / 2) * 1.1f))
 		{
 			delete d_structures[i];
 			d_structures.erase(d_structures.begin() + i);
@@ -163,7 +163,7 @@ void GUI::CheckForPinchedStructure()
 	//we look for the first MovableStructure in pinching range from the LeapmotionPointer while it is pinching
 	for (size_t i(0); i < this->d_nStructures; i++)
 	{
-		if (d_structures[i]->CloseEnough(d_pointer.Position()) && d_pointer.Pinching())
+		if (d_structures[i]->CloseEnough(d_pointer.Position()) && d_pointer.Pinching() && ! d_pointer.Grabbing())
 		{
 			d_pointer.AssignStructure((d_structures[i]));
 		}

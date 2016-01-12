@@ -102,7 +102,7 @@ void Structure::Draw(const glm::mat4& VP) const
 	{
 		d_roomBots[i].Draw(VP * glm::translate(-d_centerOffset));
 	}
-	centerCube->Draw(VP);
+	//centerCube->Draw(VP); //un-comment if you also want to draw a red cube at the Structure's center
 }
 
 
